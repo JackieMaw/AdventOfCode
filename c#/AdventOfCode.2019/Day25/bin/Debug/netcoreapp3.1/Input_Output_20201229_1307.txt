@@ -1,0 +1,47 @@
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>north
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- mug
+
+Command?
+>>north
+
+
+
+== Sick Bay ==
+Supports both Red-Nosed Reindeer medicine and regular reindeer medicine.
+
+Doors here lead:
+- south
+
+Items here:
+- food ration
+
+Command?
+>>north
+
+You can't go that way.
+
+Command?

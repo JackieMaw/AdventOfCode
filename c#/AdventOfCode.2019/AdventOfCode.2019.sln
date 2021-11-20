@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day2", "Day2\Day2.csproj", "{E24AFB5B-598D-438A-90F7-978FB54A6F76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Utilities", "..\AdventOfCode.Utilities\AdventOfCode.Utilities\AdventOfCode.Utilities.csproj", "{08AA05EF-7EB7-4ABA-BF63-E70C51855F5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day17", "Day17\Day17.csproj", "{3AB09890-21E0-4B1F-969F-C70C4A284086}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day25", "Day25\Day25.csproj", "{9BD8968E-20D0-4169-9997-C3799E5FE9CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyComputer", "IntCodeComputer\MyComputer.csproj", "{4919BE15-2670-461A-9104-DC9A8AA634F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirksAlgorithm", "..\AdventOfCode.Utilities\DirksAlgorithm\DirksAlgorithm.csproj", "{1731D68E-B9DB-459E-9BA2-D40D633B7008}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E24AFB5B-598D-438A-90F7-978FB54A6F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E24AFB5B-598D-438A-90F7-978FB54A6F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E24AFB5B-598D-438A-90F7-978FB54A6F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E24AFB5B-598D-438A-90F7-978FB54A6F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08AA05EF-7EB7-4ABA-BF63-E70C51855F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08AA05EF-7EB7-4ABA-BF63-E70C51855F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08AA05EF-7EB7-4ABA-BF63-E70C51855F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08AA05EF-7EB7-4ABA-BF63-E70C51855F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AB09890-21E0-4B1F-969F-C70C4A284086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB09890-21E0-4B1F-969F-C70C4A284086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB09890-21E0-4B1F-969F-C70C4A284086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB09890-21E0-4B1F-969F-C70C4A284086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD8968E-20D0-4169-9997-C3799E5FE9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD8968E-20D0-4169-9997-C3799E5FE9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD8968E-20D0-4169-9997-C3799E5FE9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD8968E-20D0-4169-9997-C3799E5FE9CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4919BE15-2670-461A-9104-DC9A8AA634F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4919BE15-2670-461A-9104-DC9A8AA634F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4919BE15-2670-461A-9104-DC9A8AA634F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4919BE15-2670-461A-9104-DC9A8AA634F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1731D68E-B9DB-459E-9BA2-D40D633B7008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1731D68E-B9DB-459E-9BA2-D40D633B7008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1731D68E-B9DB-459E-9BA2-D40D633B7008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1731D68E-B9DB-459E-9BA2-D40D633B7008}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6EA837B3-C579-4F3E-A5C6-879EB6F324DD}
+	EndGlobalSection
+EndGlobal

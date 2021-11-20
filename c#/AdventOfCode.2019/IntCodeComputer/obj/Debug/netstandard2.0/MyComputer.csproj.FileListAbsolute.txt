@@ -1,0 +1,9 @@
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\obj\Debug\netstandard2.0\MyComputer.csprojAssemblyReference.cache
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\obj\Debug\netstandard2.0\MyComputer.AssemblyInfoInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\obj\Debug\netstandard2.0\MyComputer.AssemblyInfo.cs
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\obj\Debug\netstandard2.0\MyComputer.csproj.CoreCompileInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\bin\Debug\netstandard2.0\MyComputer.deps.json
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\bin\Debug\netstandard2.0\MyComputer.dll
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\bin\Debug\netstandard2.0\MyComputer.pdb
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\obj\Debug\netstandard2.0\MyComputer.dll
+C:\Users\jacki\source\repos\AdventOfCode.2019\IntCodeComputer\obj\Debug\netstandard2.0\MyComputer.pdb

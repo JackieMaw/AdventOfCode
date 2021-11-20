@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "sf90FaaQryC+OeO4gks1U1rSVlXSq0hpyaeyJgLg3TSdmkAkIOq2RMveRoIs3Js2aDg0XkDsB2m1hWnDmNs8sQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacki\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jacki\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\jacki\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512"
+  ],
+  "logs": []
+}

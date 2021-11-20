@@ -1,0 +1,1664 @@
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>north
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- mug
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>north
+
+
+
+== Sick Bay ==
+Supports both Red-Nosed Reindeer medicine and regular reindeer medicine.
+
+Doors here lead:
+- south
+
+Items here:
+- food ration
+
+Command?
+>>take food ration
+
+You take the food ration.
+
+Command?
+>>south
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>east
+
+
+
+== Holodeck ==
+Someone seems to have left it on the Giant Grid setting.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>north
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>north
+
+
+
+== Navigation ==
+Status: Stranded. Please supply measurements from fifty stars to recalibrate.
+
+Doors here lead:
+- south
+
+Command?
+>>south
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>east
+
+
+
+== Gift Wrapping Center ==
+How else do you wrap presents on the go?
+
+Doors here lead:
+- east
+- west
+
+Items here:
+- semiconductor
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>east
+
+
+
+== Passages ==
+They're a little twisty and starting to look all alike.
+
+Doors here lead:
+- west
+
+Items here:
+- escape pod
+
+Command?
+>>west
+
+
+
+== Gift Wrapping Center ==
+How else do you wrap presents on the go?
+
+Doors here lead:
+- east
+- west
+
+Command?
+>>west
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>south
+
+
+
+== Holodeck ==
+Someone seems to have left it on the Giant Grid setting.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>west
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>east
+
+
+
+== Engineering ==
+You see a whiteboard with plans for Springdroid v2.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- ornament
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>north
+
+
+
+== Observatory ==
+There are a few telescopes; they're all bolted down, though.
+
+Doors here lead:
+- east
+- south
+
+Items here:
+- coin
+
+Command?
+>>take coin
+
+You take the coin.
+
+Command?
+>>east
+
+
+
+== Stables ==
+Reindeer-sized. They're all empty.
+
+Doors here lead:
+- west
+
+Items here:
+- mutex
+
+Command?
+>>take mutex
+
+You take the mutex.
+
+Command?
+>>west
+
+
+
+== Observatory ==
+There are a few telescopes; they're all bolted down, though.
+
+Doors here lead:
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Engineering ==
+You see a whiteboard with plans for Springdroid v2.
+
+Doors here lead:
+- north
+- east
+- west
+
+Command?
+>>east
+
+
+
+== Warp Drive Maintenance ==
+It appears to be working normally.
+
+Doors here lead:
+- east
+- west
+
+Items here:
+- candy cane
+
+Command?
+>>take candy cane
+
+You take the candy cane.
+
+Command?
+>>east
+
+
+
+== Arcade ==
+None of the cabinets seem to have power.
+
+Doors here lead:
+- east
+- west
+
+Command?
+>>east
+
+
+
+== Science Lab ==
+You see evidence here of prototype polymer design work.
+
+Doors here lead:
+- west
+
+Items here:
+- infinite loop
+
+Command?
+>>take infinite loop
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+You take the infinite loop.
+
+Y

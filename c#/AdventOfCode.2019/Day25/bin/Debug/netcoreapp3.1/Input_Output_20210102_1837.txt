@@ -1,0 +1,5560 @@
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>north
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- mug
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>north
+
+
+
+== Sick Bay ==
+Supports both Red-Nosed Reindeer medicine and regular reindeer medicine.
+
+Doors here lead:
+- south
+
+Items here:
+- food ration
+
+Command?
+>>take food ration
+
+You take the food ration.
+
+Command?
+>>south
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>east
+
+
+
+== Holodeck ==
+Someone seems to have left it on the Giant Grid setting.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>north
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>north
+
+
+
+== Navigation ==
+Status: Stranded. Please supply measurements from fifty stars to recalibrate.
+
+Doors here lead:
+- south
+
+Command?
+>>south
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>east
+
+
+
+== Gift Wrapping Center ==
+How else do you wrap presents on the go?
+
+Doors here lead:
+- east
+- west
+
+Items here:
+- semiconductor
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>east
+
+
+
+== Passages ==
+They're a little twisty and starting to look all alike.
+
+Doors here lead:
+- west
+
+Items here:
+- escape pod
+
+Command?
+>>west
+
+
+
+== Gift Wrapping Center ==
+How else do you wrap presents on the go?
+
+Doors here lead:
+- east
+- west
+
+Command?
+>>west
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>south
+
+
+
+== Holodeck ==
+Someone seems to have left it on the Giant Grid setting.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>west
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>east
+
+
+
+== Engineering ==
+You see a whiteboard with plans for Springdroid v2.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- ornament
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>north
+
+
+
+== Observatory ==
+There are a few telescopes; they're all bolted down, though.
+
+Doors here lead:
+- east
+- south
+
+Items here:
+- coin
+
+Command?
+>>take coin
+
+You take the coin.
+
+Command?
+>>east
+
+
+
+== Stables ==
+Reindeer-sized. They're all empty.
+
+Doors here lead:
+- west
+
+Items here:
+- mutex
+
+Command?
+>>take mutex
+
+You take the mutex.
+
+Command?
+>>west
+
+
+
+== Observatory ==
+There are a few telescopes; they're all bolted down, though.
+
+Doors here lead:
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Engineering ==
+You see a whiteboard with plans for Springdroid v2.
+
+Doors here lead:
+- north
+- east
+- west
+
+Command?
+>>east
+
+
+
+== Warp Drive Maintenance ==
+It appears to be working normally.
+
+Doors here lead:
+- east
+- west
+
+Items here:
+- candy cane
+
+Command?
+>>take candy cane
+
+You take the candy cane.
+
+Command?
+>>east
+
+
+
+== Arcade ==
+None of the cabinets seem to have power.
+
+Doors here lead:
+- east
+- west
+
+Command?
+>>east
+
+
+
+== Science Lab ==
+You see evidence here of prototype polymer design work.
+
+Doors here lead:
+- west
+
+Items here:
+- infinite loop
+
+Command?
+>>west
+
+
+
+== Arcade ==
+None of the cabinets seem to have power.
+
+Doors here lead:
+- east
+- west
+
+Command?
+>>west
+
+
+
+== Warp Drive Maintenance ==
+It appears to be working normally.
+
+Doors here lead:
+- east
+- west
+
+Command?
+>>west
+
+
+
+== Engineering ==
+You see a whiteboard with plans for Springdroid v2.
+
+Doors here lead:
+- north
+- east
+- west
+
+Command?
+>>west
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Hot Chocolate Fountain ==
+Somehow, it's still working.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- giant electromagnet
+
+Command?
+>>east
+
+
+
+== Corridor ==
+The metal walls and the metal floor are slightly different colors. Or are they?
+
+Doors here lead:
+- south
+- west
+
+Items here:
+- mouse
+
+Command?
+>>take mouse
+
+You take the mouse.
+
+Command?
+>>south
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>north
+
+
+
+== Corridor ==
+The metal walls and the metal floor are slightly different colors. Or are they?
+
+Doors here lead:
+- south
+- west
+
+Command?
+>>west
+
+
+
+== Hot Chocolate Fountain ==
+Somehow, it's still working.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- giant electromagnet
+
+Command?
+>>west
+
+
+
+== Hallway ==
+This area has been optimized for something; you're just not quite sure what.
+
+Doors here lead:
+- north
+- east
+
+Items here:
+- molten lava
+
+Command?
+>>north
+
+
+
+== Storage ==
+The boxes just contain more boxes.  Recursively.
+
+Doors here lead:
+- south
+
+Command?
+>>south
+
+
+
+== Hallway ==
+This area has been optimized for something; you're just not quite sure what.
+
+Doors here lead:
+- north
+- east
+
+Items here:
+- molten lava
+
+Command?
+>>east
+
+
+
+== Hot Chocolate Fountain ==
+Somehow, it's still working.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- giant electromagnet
+
+Command?
+>>north
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Hot Chocolate Fountain ==
+Somehow, it's still working.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- giant electromagnet
+
+Command?
+>>east
+
+
+
+== Corridor ==
+The metal walls and the metal floor are slightly different colors. Or are they?
+
+Doors here lead:
+- south
+- west
+
+Command?
+>>south
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>drop ornament
+
+You drop the ornament.
+
+Command?
+>>drop coin
+
+You drop the coin.
+
+Command?
+>>drop mutex
+
+You drop the mutex.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You drop the mouse.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>drop ornament
+
+You drop the ornament.
+
+Command?
+>>take coin
+
+You take the coin.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>drop ornament
+
+You drop the ornament.
+
+Command?
+>>drop coin
+
+You drop the coin.
+
+Command?
+>>take mutex
+
+You take the mutex.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>drop ornament
+
+You drop the ornament.
+
+Command?
+>>take coin
+
+You take the coin.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- ornament
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- ornament
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- semiconductor
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- semiconductor
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>take ornament
+
+You don't see that item here.
+
+Command?
+>>take coin
+
+You don't see that item here.
+
+Command?
+>>take mutex
+
+You don't see that item here.
+
+Command?
+>>drop candy
+
+You don't have that item.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>drop ornament
+
+You drop the ornament.
+
+Command?
+>>drop coin
+
+You drop the coin.
+
+Command?
+>>drop mutex
+
+You drop the mutex.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>drop semiconductor
+
+You don't have that item.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- semiconductor
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You take the semiconductor.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- ornament
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>take food
+
+You don't see that item here.
+
+Command?
+>>take semiconductor
+
+You don't see that item here.
+
+Command?
+>>drop ornament
+
+You don't have that item.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are lighter than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- coin
+- ornament
+- mutex
+
+Command?
+>>drop mug
+
+You drop the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Command?
+>>drop semiconductor
+
+You drop the semiconductor.
+
+Command?
+>>take ornament
+
+You take the ornament.
+
+Command?
+>>drop coin
+
+You don't have that item.
+
+Command?
+>>drop mutex
+
+You don't have that item.
+
+Command?
+>>take candy
+
+You don't see that item here.
+
+Command?
+>>drop mouse
+
+You don't have that item.
+
+Command?
+>>west
+
+
+
+== Pressure-Sensitive Floor ==
+Analyzing...
+
+Doors here lead:
+- east
+
+A loud, robotic voice says "Alert! Droids on this ship are heavier than the detected value!" and you are ejected back to the checkpoint.
+
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- west
+
+Items here:
+- mouse
+- mug
+- coin
+- semiconductor
+- mutex
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>drop food
+
+You don't have that item.
+
+Co

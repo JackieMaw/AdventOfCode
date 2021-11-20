@@ -1,0 +1,68 @@
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>south
+
+
+
+== Hot Chocolate Fountain ==
+Somehow, it's still working.
+
+Doors here lead:
+- north
+- east
+- west
+
+Items here:
+- giant electromagnet
+
+Command?
+>>take giant electromagnet
+
+You take the giant electromagnet.
+
+Command?
+>>east
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?
+>>drop giant electromagnet
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?
+>>north
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?
+>>die
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?
+>>exit
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?
+>>kill me
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?
+>>help
+
+The giant electromagnet is stuck to you.  You can't move!!
+
+Command?

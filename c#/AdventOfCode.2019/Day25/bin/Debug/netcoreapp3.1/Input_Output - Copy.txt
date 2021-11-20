@@ -1,0 +1,110 @@
+
+
+
+== Hull Breach ==
+You got in through a hole in the floor here. To keep your ship from also freezing, the hole has been sealed.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>inv
+
+You aren't carrying any items.
+
+Command?
+>>north
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- mug
+
+Command?
+>>take mug
+
+You take the mug.
+
+Command?
+>>inv
+
+Items in your inventory:
+- mug
+
+Command?
+>>north
+
+
+
+== Sick Bay ==
+Supports both Red-Nosed Reindeer medicine and regular reindeer medicine.
+
+Doors here lead:
+- south
+
+Items here:
+- food ration
+
+Command?
+>>take food ration
+
+You take the food ration.
+
+Command?
+>>south
+
+
+
+== Crew Quarters ==
+The beds are all too small for you.
+
+Doors here lead:
+- north
+- east
+- south
+
+Command?
+>>east
+
+
+
+== Holodeck ==
+Someone seems to have left it on the Giant Grid setting.
+
+Doors here lead:
+- north
+- west
+
+Command?
+>>north
+
+
+
+== Kitchen ==
+Everything's freeze-dried.
+
+Doors here lead:
+- north
+- east
+- south
+
+Items here:
+- photons
+
+Command?
+>>take photons
+
+You take the photons.
+
+It is suddenly completely dark! You are eaten by a Grue!
+

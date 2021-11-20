@@ -1,0 +1,3 @@
+ =>  => Hull Breach
+Hull Breach => north => Crew Quarters
+Crew Quarters => north => Sick Bay

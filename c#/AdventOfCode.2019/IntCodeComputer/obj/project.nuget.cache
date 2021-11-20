@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8EFCJmjfcM0V7yLzKwrznMU8YvOG/sOtWQQ581zt9e+prSQjrFXvaMbzUFvJSN+mlK0u1uKBiKFQJzgTMjcsdg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacki\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jacki\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

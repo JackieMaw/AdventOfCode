@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "F92/ifeJpp5au5lTPB1zNE6kbNj16iFdUzpRGuuzvcUlRknh2fiU6Fpqc8S4Rbbkl0SUKHNEHG0pOVGICH+Dkw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\Day15\\Day15.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacki\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jacki\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\jacki\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512"
+  ],
+  "logs": []
+}

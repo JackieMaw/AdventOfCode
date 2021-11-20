@@ -1,0 +1,9 @@
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\bin\Debug\netstandard2.0\AdventOfCode.Utilities.deps.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\bin\Debug\netstandard2.0\AdventOfCode.Utilities.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\bin\Debug\netstandard2.0\AdventOfCode.Utilities.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\obj\Debug\netstandard2.0\AdventOfCode.Utilities.csprojAssemblyReference.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\obj\Debug\netstandard2.0\AdventOfCode.Utilities.AssemblyInfoInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\obj\Debug\netstandard2.0\AdventOfCode.Utilities.AssemblyInfo.cs
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\obj\Debug\netstandard2.0\AdventOfCode.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\obj\Debug\netstandard2.0\AdventOfCode.Utilities.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\AdventOfCode.Utilities\obj\Debug\netstandard2.0\AdventOfCode.Utilities.pdb

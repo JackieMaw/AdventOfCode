@@ -1,0 +1,17 @@
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.csprojAssemblyReference.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.AssemblyInfoInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.AssemblyInfo.cs
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.csproj.CoreCompileInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Day1.1.exe
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Day1.1.deps.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Day1.1.runtimeconfig.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Day1.1.runtimeconfig.dev.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Day1.1.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Day1.1.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\AdventOfCode.Utilities.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\AdventOfCode.Utilities.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.csproj.CopyComplete
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\obj\Debug\netcoreapp3.1\Day1.1.genruntimeconfig.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day1.1\bin\Debug\netcoreapp3.1\Input.txt

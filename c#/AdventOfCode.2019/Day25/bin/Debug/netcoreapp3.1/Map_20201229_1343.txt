@@ -1,0 +1,38 @@
+ =>  => Hull Breach
+Hull Breach => north => Crew Quarters
+Crew Quarters => north => Sick Bay
+Sick Bay => south => Crew Quarters
+Crew Quarters => east => Holodeck
+Holodeck => north => Kitchen
+Kitchen => north => Navigation
+Navigation => south => Kitchen
+Kitchen => east => Gift Wrapping Center
+Gift Wrapping Center => east => Passages
+Passages => west => Gift Wrapping Center
+Gift Wrapping Center => west => Kitchen
+Kitchen => south => Holodeck
+Holodeck => west => Crew Quarters
+Crew Quarters => south => Hull Breach
+Hull Breach => east => Engineering
+Engineering => north => Observatory
+Observatory => east => Stables
+Stables => west => Observatory
+Observatory => south => Engineering
+Engineering => east => Warp Drive Maintenance
+Warp Drive Maintenance => east => Arcade
+Arcade => east => Science Lab
+Science Lab => west => Arcade
+Arcade => west => Warp Drive Maintenance
+Warp Drive Maintenance => west => Engineering
+Engineering => west => Hull Breach
+Hull Breach => south => Hot Chocolate Fountain
+Hot Chocolate Fountain => east => Corridor
+Corridor => south => Security Checkpoint
+Security Checkpoint => west => Security Checkpoint
+Security Checkpoint => north => Corridor
+Corridor => west => Hot Chocolate Fountain
+Hot Chocolate Fountain => west => Hallway
+Hallway => north => Storage
+Storage => south => Hallway
+Hallway => east => Hot Chocolate Fountain
+Hot Chocolate Fountain => north => Hull Breach

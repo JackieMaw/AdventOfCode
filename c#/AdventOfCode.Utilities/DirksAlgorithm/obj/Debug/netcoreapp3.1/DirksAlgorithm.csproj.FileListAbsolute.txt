@@ -1,0 +1,15 @@
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.csprojAssemblyReference.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.AssemblyInfoInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.AssemblyInfo.cs
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.csproj.CoreCompileInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\DirksAlgorithm.exe
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\DirksAlgorithm.deps.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\DirksAlgorithm.runtimeconfig.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\DirksAlgorithm.runtimeconfig.dev.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\DirksAlgorithm.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\DirksAlgorithm.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\bin\Debug\netcoreapp3.1\nunit.framework.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.csproj.CopyComplete
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\DirksAlgorithm\obj\Debug\netcoreapp3.1\DirksAlgorithm.genruntimeconfig.cache

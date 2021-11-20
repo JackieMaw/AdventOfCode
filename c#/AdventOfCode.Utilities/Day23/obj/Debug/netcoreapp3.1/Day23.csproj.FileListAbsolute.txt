@@ -1,0 +1,16 @@
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\Day23.exe
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\Day23.deps.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\Day23.runtimeconfig.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\Day23.runtimeconfig.dev.json
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\Day23.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\Day23.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\AdventOfCode.Utilities.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\bin\Debug\netcoreapp3.1\AdventOfCode.Utilities.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.csprojAssemblyReference.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.AssemblyInfoInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.AssemblyInfo.cs
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.csproj.CoreCompileInputs.cache
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.csproj.CopyComplete
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.dll
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.pdb
+C:\Users\jacki\source\repos\AdventOfCode.Utilities\Day23\obj\Debug\netcoreapp3.1\Day23.genruntimeconfig.cache

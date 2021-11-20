@@ -1,0 +1,30 @@
+ =>  => Hull Breach
+Hull Breach => north => Crew Quarters
+Crew Quarters => take mug => Crew Quarters
+Crew Quarters => north => Sick Bay
+Sick Bay => take food ration => Sick Bay
+Sick Bay => south => Crew Quarters
+Crew Quarters => east => Holodeck
+Holodeck => north => Kitchen
+Kitchen => north => Navigation
+Navigation => south => Kitchen
+Kitchen => east => Gift Wrapping Center
+Gift Wrapping Center => take semiconductor => Gift Wrapping Center
+Gift Wrapping Center => east => Passages
+Passages => west => Gift Wrapping Center
+Gift Wrapping Center => west => Kitchen
+Kitchen => south => Holodeck
+Holodeck => west => Crew Quarters
+Crew Quarters => south => Hull Breach
+Hull Breach => east => Engineering
+Engineering => take ornament => Engineering
+Engineering => north => Observatory
+Observatory => take coin => Observatory
+Observatory => east => Stables
+Stables => take mutex => Stables
+Stables => west => Observatory
+Observatory => south => Engineering
+Engineering => east => Warp Drive Maintenance
+Warp Drive Maintenance => take candy cane => Warp Drive Maintenance
+Warp Drive Maintenance => east => Arcade
+Arcade => east => Science Lab

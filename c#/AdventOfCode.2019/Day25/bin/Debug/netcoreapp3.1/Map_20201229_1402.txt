@@ -1,0 +1,8 @@
+ =>  => Hull Breach
+Hull Breach => north => Crew Quarters
+Crew Quarters => take mug => Crew Quarters
+Crew Quarters => north => Sick Bay
+Sick Bay => take foodration => Sick Bay
+Sick Bay => south => Crew Quarters
+Crew Quarters => east => Holodeck
+Holodeck => north => Kitchen
