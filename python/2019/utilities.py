@@ -6,16 +6,23 @@ USER_AGENT = ""
 def download_input(year, day):
     uri = f'http://adventofcode.com/{year}/day/{day}/input'
     response = requests.get(uri, cookies={'session': SESSIONID}, headers={'User-Agent': USER_AGENT})
-    filename = f"Input_{year}_{day}.txt"
+    #TODO - fix hard-coded path
+    filename = f"2019\input\Input_{year}_{day}.txt"
     with open(filename, "w") as text_file:
-        text_file.write(response.text.strip())
+        text_file.write(response.text)
+    print(f"input downloaded: {filename}")
 
 def get_strings(year, day):
-    filename = f"Input_{year}_{day}.txt"
+    filename = f"2019\input\Input_{year}_{day}.txt"
     with open(filename, "r") as text_file:
         return [l.strip() for l in text_file.readlines()]
 
 def get_integers(year, day):
-    filename = f"Input_{year}_{day}.txt"
+    filename = f"2019\input\Input_{year}_{day}.txt"
     with open(filename, "r") as text_file:
         return [int(l.strip()) for l in text_file.readlines()]
+
+def get_integers_csv(year, day):
+    filename = f"2019\input\Input_{year}_{day}.txt"
+    with open(filename, "r") as text_file:
+        return [int(l.strip()) for l in text_file.read().split(",")]
