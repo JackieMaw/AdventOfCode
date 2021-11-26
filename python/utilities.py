@@ -15,8 +15,7 @@ def get_strings(year, day):
     with open(filename, "r") as text_file:
         return [l.strip() for l in text_file.readlines()]
 
-
-YEAR = 2019
-DAY = 1
-download_input(YEAR, DAY)
-print(get_strings(YEAR, DAY))
+def get_integers(year, day):
+    filename = f"Input_{year}_{day}.txt"
+    with open(filename, "r") as text_file:
+        return [int(l.strip()) for l in text_file.readlines()]
