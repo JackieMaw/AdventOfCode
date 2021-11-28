@@ -18,8 +18,7 @@ print("ALL TESTS PASSED")
 
 YEAR = 2019
 DAY = 1
-#download_input(YEAR, DAY)
-#input_data = get_strings(YEAR, DAY)
-input_data = get_integers(YEAR, DAY)
-print(execute(input_data))
-#3270338
+raw_input = get_or_download_input(YEAR, DAY)
+input = get_integers(raw_input)
+assert execute(input) == 3270338
+print("ANSWER CORRECT")

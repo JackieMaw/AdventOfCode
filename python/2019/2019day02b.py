@@ -10,7 +10,7 @@ def execute(input_data):
             temp_input_data[1] = noun
             temp_input_data[2] = verb
             answer =  run_intcode(temp_input_data)
-            print(f"{noun} {verb} => {answer}")
+            #print(f"{noun} {verb} => {answer}")
             if (answer == 19690720):
                 return 100 * noun + verb;
 
@@ -42,7 +42,7 @@ print("ALL TESTS PASSED")
 
 YEAR = 2019
 DAY = 2
-#download_input(YEAR, DAY)
-input_data = get_integers_csv(YEAR, DAY)
-print(execute(input_data))
-#9342
+raw_input = get_or_download_input(YEAR, DAY)
+input = get_integers_csv(raw_input)
+assert execute(input) == 9342
+print("ANSWER CORRECT")
