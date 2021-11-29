@@ -3,9 +3,13 @@ from utilities import *
 import math
 import copy
 
+#grid[(0, 0)] = "*" CENTRAL PORT
+#grid[(p.x, p.y)] = "X" INTERSECTION
+#grid[(p.x, p.y)] = "0" WIRE 0
 grid = { }
 shortest_distance = None
 
+#p = position(0, 0) current position
 class position:
   def __init__(self, x, y):
     self.x = x
