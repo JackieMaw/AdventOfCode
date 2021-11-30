@@ -6,7 +6,7 @@ USER_AGENT = ""
 
 def get_or_download_input(year, day):
     #TODO - fix hard-coded path
-    filename = f"2019\input\Input_{year}_{day}.txt"
+    filename = f"input\Input_{year}_{day}.txt"
     if not(exists(filename)):
         download_input(year, day, filename)    
     with open(filename, "r") as text_file:
