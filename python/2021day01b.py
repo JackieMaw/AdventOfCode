@@ -25,6 +25,5 @@ YEAR = 2021
 DAY = 1
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_integers(raw_input)
-print(execute(input))
-#assert execute(input) == 0
-#print("ANSWER CORRECT")
+assert execute(input) == 1748
+print("ANSWER CORRECT")
