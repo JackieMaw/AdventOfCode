@@ -5,10 +5,14 @@ SESSIONID = "53616c7465645f5f3d5d09564a9bb8b931491c70f588a3870571f6355a33b53d67c
 USER_AGENT = ""
 
 def get_or_download_input(year, day):
-    #TODO - fix hard-coded path
     filename = f"input\Input_{year}_{day}.txt"
     if not(exists(filename)):
         download_input(year, day, filename)    
+    with open(filename, "r") as text_file:
+        return [l.strip() for l in text_file.readlines()]
+
+def get_input(year, day, postfix):
+    filename = f"input\Input_{year}_{day}{postfix}.txt"
     with open(filename, "r") as text_file:
         return [l.strip() for l in text_file.readlines()]
 
