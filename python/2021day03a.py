@@ -46,7 +46,7 @@ def get_commons(input):
             min_frequency = 99999999
             for j in range(0,2):
                 frequency = num_occurances_for_ith_bit[j]
-                if frequency > max_frequency:
+                if frequency > max_frequency: 
                     max_frequency = frequency
                     most_common_digit = j
                 if frequency> 0 and frequency < min_frequency:
