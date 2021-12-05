@@ -108,10 +108,6 @@ def execute(input):
     print(f"result: {result}") 
     return result
 
-# TESTS
-# assert execute(get_strings_csv(["ABCD"])) == 0
-# print("ALL TESTS PASSED")
-
 YEAR = 2021
 DAY = 4
 

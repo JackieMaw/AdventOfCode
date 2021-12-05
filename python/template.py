@@ -18,10 +18,10 @@ YEAR = 2021
 DAY = 0
 
 # TEST INPUT DATA
-raw_input = get_input(YEAR, DAY, "_test")
-input = get_strings(raw_input)
-assert execute(input) == 230
-print("TEST INPUT PASSED")
+# raw_input = get_input(YEAR, DAY, "_test")
+# input = get_strings(raw_input)
+# assert execute(input) == 230
+# print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
