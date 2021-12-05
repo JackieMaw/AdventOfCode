@@ -6,6 +6,8 @@ import copy
 import re
 import collections
 
+# GOT THIS SOLUTION FROM@
+# https://github.com/CoconutJJ/AdventOfCode-Solutions/blob/master/2021/day5/day5.py
 
 from typing import Dict, List, Tuple
 import sys
@@ -111,7 +113,7 @@ def execute(input):
 
     vecs = parseInput(input)
 
-    result = countOverlappingPointsWithDiagonal(vecs)
+    result = countOverlappingPoints(vecs)
     print(f"result: {result}") 
     return result
 

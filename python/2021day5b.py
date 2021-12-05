@@ -48,7 +48,7 @@ def process_line(line, grid):
         add_to_grid(x, y, grid)
 
 def execute(input):
-    print(input)
+    
     grid = { }  
 
     for line in input:
@@ -70,5 +70,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 2775870
+assert execute(input) == 18423
 print("ANSWER CORRECT")

@@ -1,9 +1,10 @@
 #TODO - how to share utilities across folders? do I need to make a package?
 from os import execl
-from typing import no_type_check
 from utilities import *
 import math
 import copy
+
+# ORIGINAL SOLUTION, HAS A BUG
 
 def get_num_overlapping_lines(grid):
     total_count = sum([numLines for numLines in grid.values()])
@@ -26,45 +27,40 @@ def process_line(line, grid):
     pt2 = points[1].split(",")
 
     xChange = int(pt2[0]) - int(pt1[0])
-    xMove = 0
-    if xChange > 1:
-        xMove = 1
-    elif xChange < 0:
-        xMove = -1       
-
+    xDir = 1
+    if xChange < 0:
+        xDir = -1        
     yChange = int(pt2[1]) - int(pt1[1])
-    yMove = 0
-    if yChange > 1:
-        yMove = 1
-    elif yChange < 0:
-        yMove = -1    
-        
+    yDir = 1
+    if yChange < 0:
+        yDir = -1    
+
     if xChange == 0 and yChange == 0:
         print(f"Edge case found - line has length 0: {line}")
 
     if xChange != 0 and yChange != 0:
-        # ignore diagonals
-        return 0
-
-    magnitude = max(xChange * xMove, yChange * yMove)
+        return 0 #skip diagonals for now
 
     num_marked = 0
     x = int(pt1[0])
     y = int(pt1[1])
     add_to_grid(x, y, grid)
     num_marked += 1
-    for i in range(magnitude):
-        x += xMove                 
-        y += yMove
+
+    for i in range(xChange * xDir):
+        x += xDir                 
         add_to_grid(x, y, grid)
         num_marked += 1
     
-    assert num_marked == magnitude + 1
+    for i in range(yChange * yDir):
+        y += yDir                
+        add_to_grid(x, y, grid)
+        num_marked += 1
 
     return num_marked
 
 def execute(input):
-    
+
     grid = { }  
 
     for line in input:
