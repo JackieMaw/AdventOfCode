@@ -31,20 +31,51 @@ def is_lowest(matrix, x, y):
                 return False  
     return True
 
+def get_basin_size(matrix, x, y, visited):
+    #count myself as visited, don't visit me again!
+    visited.append((x, y))
+
+    # recursive function, base case
+    if matrix[x][y] == 9:
+        #print(f"({x}, {y}) ====> {0}")
+        return 0
+
+    total_basin_size = 1
+    #reduce problem space 
+    neighbours = [(-1, 0), (0, 1), (1,0), (0, -1)]
+    #neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    for (dx, dy) in neighbours:
+        x1 = x + dx
+        y1 = y + dy
+        if x1 >= 0 and x1 < x_max and y1 >= 0 and y1 < y_max:
+            if (x1, y1) not in visited:
+                #print(f"({x}, {y}) => visiting @ ({x1}, {y1})")
+                total_basin_size += get_basin_size(matrix, x1, y1, visited)
+
+    #print(f"({x}, {y}) ====> {total_basin_size}")
+    return total_basin_size
+
 def execute(input):
     print(input)
 
     matrix = read_matrix(input)
 
-    risk = 0
+    basin_sizes = []
+    visited = []
     global x_max, y_max
     for x in range(0, x_max):
         for y in range (0, y_max):
             if (is_lowest(matrix, x, y)):
-                print(f"found low @ ({x}, {y})")
-                risk += matrix[x][y] + 1
+                basin_size = get_basin_size(matrix, x, y, visited)
+                print(f"basin_size @ ({x}, {y}) => {basin_size}")
+                basin_sizes.append(basin_size)
 
-    result = risk
+    basin_sizes.sort(reverse=True)
+    total_basin_measure = 1
+    for basin_size in basin_sizes[:3]:
+        total_basin_measure = total_basin_measure * basin_size
+
+    result = total_basin_measure
     print(f"result: {result}") 
     return result
 
@@ -59,9 +90,15 @@ DAY = 9
 raw_input = get_input(YEAR, DAY, "_test")
 input = get_strings(raw_input)
 matrix = read_matrix(input)
-assert is_lowest(matrix, 0, 0) == False
 assert is_lowest(matrix, 0, 1) == True
-assert execute(input) == 15
+assert get_basin_size(matrix, 0, 1, []) == 3
+assert is_lowest(matrix, 0, 9) == True
+assert get_basin_size(matrix, 0, 9, []) == 9
+assert is_lowest(matrix, 2, 2) == True
+assert get_basin_size(matrix, 2, 2, []) == 14
+assert is_lowest(matrix, 4, 6) == True
+assert get_basin_size(matrix, 4, 6, []) == 9
+assert execute(input) == 1134
 print("TEST INPUT PASSED")
 
 raw_input = get_input(YEAR, DAY, "_test2")
@@ -69,11 +106,11 @@ input = get_strings(raw_input)
 matrix = read_matrix(input)
 assert is_lowest(matrix, 0, 0) == True
 assert is_lowest(matrix, 0, 1) == False
-assert execute(input) == 63
+assert execute(input) == 1
 print("TEST 2 INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 494
+assert execute(input) == 1048128
 print("ANSWER CORRECT")
