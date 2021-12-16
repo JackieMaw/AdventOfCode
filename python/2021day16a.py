@@ -5,9 +5,30 @@ import math
 import copy
 
 def get_bits(hex):
-    bits = "{0:04b}".format(int(hex, 16))
-    print(f"Hex Length: {len(hex)} => Bits Length: {len(bits)}")
-    # print(f"{hex} => {bits}")
+    # bits = "{0:04b}".format(int(hex, 16))
+
+    hexaDict = {}
+    hexaDict['0'] = '0000'
+    hexaDict['1'] = '0001'
+    hexaDict['2'] = '0010'
+    hexaDict['3'] = '0011'
+    hexaDict['4'] = '0100'
+    hexaDict['5'] = '0101'
+    hexaDict['6'] = '0110'
+    hexaDict['7'] = '0111'
+    hexaDict['8'] = '1000'
+    hexaDict['9'] = '1001'
+    hexaDict['A'] = '1010'
+    hexaDict['B'] = '1011'
+    hexaDict['C'] = '1100'
+    hexaDict['D'] = '1101'
+    hexaDict['E'] = '1110'
+    hexaDict['F'] = '1111'
+
+    bits = hex
+    for key in hexaDict.keys():
+        bits = bits.replace(key, hexaDict.get(key))
+
     return bits
 
 def get_all_bits(message):
@@ -182,5 +203,5 @@ DAY = 16
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 934
 print("ANSWER CORRECT")
