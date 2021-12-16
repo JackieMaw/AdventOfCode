@@ -6,6 +6,7 @@ import copy
 
 def get_bits(hex):
     bits = "{0:04b}".format(int(hex, 16))
+    print(f"Hex Length: {len(hex)} => Bits Length: {len(bits)}")
     # print(f"{hex} => {bits}")
     return bits
 
@@ -17,9 +18,9 @@ def get_all_bits(message):
     return bits
 
 def process_bits(bits, with_padding = True):
-    print()
+    #print()
     #print(f"process_bits: {bits}")
-    print()
+    #print()
     ptr = 0
     total_version_sum = 0
     while ptr < len(bits):
@@ -27,15 +28,15 @@ def process_bits(bits, with_padding = True):
         total_version_sum += version_sum
         if with_padding and ptr % 8 != 0:
             padding = 8 - (ptr % 8)
-            print(f"ptr: {ptr} needs padding => {padding}")
+            #print(f"ptr: {ptr} needs padding => {padding}")
             ptr += padding
-    print(f"total_version_sum: {total_version_sum}")
+    #print(f"total_version_sum: {total_version_sum}")
     return total_version_sum
 
 def parse_literal(bits, ptr):
     
     start = ptr
-    print(f"parse_literal @ {start}")
+    #print(f"parse_literal @ {start}")
 
     allbits = ""
     signal_bit = bits[ptr : ptr + 1]        
@@ -49,7 +50,7 @@ def parse_literal(bits, ptr):
         ptr += 4
 
     val = int(allbits, 2)
-    print(f"ptr: {start} => val: {val}")
+    #print(f"ptr: {start} => val: {val}")
 
     return val, ptr
 
@@ -61,14 +62,16 @@ def parse_operator(bits, ptr):
 
     total_version_sum = 0
     start = ptr
-    print(f"parse_operator @ {start}")
+    #print(f"parse_operator @ {start}")
     
     length_type_id = int(bits[ptr : ptr + 1], 2)
     ptr += 1
 
     if length_type_id == 0:
         total_length_in_bits = int(bits[ptr : ptr + 15], 2)
-        print(f"ptr: {start} => length_type_id: {length_type_id}, total_length_in_bits: {total_length_in_bits}")
+        print(f"[{start} of {len(bits)}]     ({total_length_in_bits} bits)")
+        assert ptr + total_length_in_bits <= len(bits)
+        #print(f"ptr: {start} => length_type_id: {length_type_id}, total_length_in_bits: {total_length_in_bits}")
         ptr += 15
 
         version_sum = process_bits(bits[ptr : ptr + total_length_in_bits], with_padding=False)
@@ -77,7 +80,8 @@ def parse_operator(bits, ptr):
 
     elif length_type_id == 1:
         number_of_subpackets = int(bits[ptr : ptr + 11], 2)
-        print(f"ptr: {start} => length_type_id: {length_type_id}, number_of_subpackets: {number_of_subpackets}")
+        print(f"[{start} of {len(bits)}]     ({number_of_subpackets} subpackets)")
+        #print(f"ptr: {start} => length_type_id: {length_type_id}, number_of_subpackets: {number_of_subpackets}")
         ptr += 11
 
         subpacket_count = 0
@@ -102,14 +106,14 @@ def parse_next_packet(bits, ptr):
     packet_type_id = int(bits[ptr : ptr + 3], 2)
     ptr += 3
 
-    print(f"ptr: {start} => packet_version: {packet_version}, packet_type_id: {packet_type_id}")
+    # print(f"ptr: {start} => packet_version: {packet_version}, packet_type_id: {packet_type_id}")
     total_version_sum += packet_version
 
     if packet_type_id == 4: # literal value
         val, ptr = parse_literal(bits, ptr)        
-        print(f"*** LITERAL = {val}")
+        print(f"[{start} of {len(bits)}] LITERAL = {val}      <version {packet_version}>")
     else: # operator    
-        print(f"*** OPERATOR = {packet_type_id}")
+        print(f"[{start} of {len(bits)}] OPERATOR = {packet_type_id}      <version {packet_version}>")
         version_sum, ptr = parse_operator(bits, ptr)
         total_version_sum += version_sum
 
