@@ -13,12 +13,12 @@ def get_all_bits(message):
     bits = ""
     for char in message:
         bits += get_bits(char)
-    print(f"{message} => {bits}")
+    #print(f"{message} => {bits}")
     return bits
 
 def process_bits(bits, with_padding = True):
     print()
-    print(f"process_bits: {bits}")
+    #print(f"process_bits: {bits}")
     print()
     ptr = 0
     total_version_sum = 0
@@ -106,8 +106,10 @@ def parse_next_packet(bits, ptr):
     total_version_sum += packet_version
 
     if packet_type_id == 4: # literal value
-        val, ptr = parse_literal(bits, ptr)
-    else: # operator
+        val, ptr = parse_literal(bits, ptr)        
+        print(f"*** LITERAL = {val}")
+    else: # operator    
+        print(f"*** OPERATOR = {packet_type_id}")
         version_sum, ptr = parse_operator(bits, ptr)
         total_version_sum += version_sum
 
@@ -127,19 +129,40 @@ def execute(input):
 #assert process_bits("01010010001001000000000") == 1 # literal 20
 #assert process_bits("010100100010010000000000000000") == 1 # literal 20 with extra padding
 #assert process_bits("1101000101001010010001001000000000") == 1 # literal 10, literal 20 with extra padding
-# assert execute("38006F45291200") == 9
 
-# assert execute("EE00D40C823060") == 14 # literal 1, literal 2, literal 3
+# For example, here is an operator packet (hexadecimal string 38006F45291200) with length type ID 0 that contains two sub-packets:
+# 00111000000000000110111101000101001010010001001000000000
+# VVVTTTILLLLLLLLLLLLLLLAAAAAAAAAAABBBBBBBBBBBBBBBB
+# The three bits labeled V (001) are the packet version, 1.
+# The three bits labeled T (110) are the packet type ID, 6, which means the packet is an operator.
+# The bit labeled I (0) is the length type ID, which indicates that the length is a 15-bit number representing the number of bits in the sub-packets.
+# The 15 bits labeled L (000000000011011) contain the length of the sub-packets in bits, 27.
+# The 11 bits labeled A contain the first sub-packet, a literal value representing the number 10.
+# The 16 bits labeled B contain the second sub-packet, a literal value representing the number 20.
+# After reading 11 and 16 bits of sub-packet data, the total length indicated in L (27) is reached, and so parsing of this packet stops.
+# assert execute("38006F45291200") == 9 # operator => literal 10, literal 20
 
+# As another example, here is an operator packet (hexadecimal string EE00D40C823060) with length type ID 1 that contains three sub-packets:
+# 11101110000000001101010000001100100000100011000001100000
+# VVVTTTILLLLLLLLLLLAAAAAAAAAAABBBBBBBBBBBCCCCCCCCCCC
+# The three bits labeled V (111) are the packet version, 7.
+# The three bits labeled T (011) are the packet type ID, 3, which means the packet is an operator.
+# The bit labeled I (1) is the length type ID, which indicates that the length is a 11-bit number representing the number of sub-packets.
+# The 11 bits labeled L (00000000011) contain the number of sub-packets, 3.
+# The 11 bits labeled A contain the first sub-packet, a literal value representing the number 1.
+# The 11 bits labeled B contain the second sub-packet, a literal value representing the number 2.
+# The 11 bits labeled C contain the third sub-packet, a literal value representing the number 3.
+# After reading 3 complete sub-packets, the number of sub-packets indicated in L (3) is reached, and so parsing of this packet stops.
+# assert execute("EE00D40C823060") == 14 # operator => literal 1, literal 2, literal 3
 
 # 8A004A801A8002F478 represents an operator packet (version 4) which contains an operator packet (version 1) which contains an operator packet (version 5) which contains a literal value (version 6); this packet has a version sum of 16.
-assert execute("8A004A801A8002F478") == 16
+# assert execute("8A004A801A8002F478") == 16
 # 620080001611562C8802118E34 represents an operator packet (version 3) which contains two sub-packets; each sub-packet is an operator packet that contains two literal values. This packet has a version sum of 12.
-assert execute("620080001611562C8802118E34") == 12
+# assert execute("620080001611562C8802118E34") == 12
 # C0015000016115A2E0802F182340 has the same structure as the previous example, but the outermost packet uses a different length type ID. This packet has a version sum of 23.
-assert execute("8A004A8C0015000016115A2E0802F18234001A8002F478") == 23
+# assert execute("C0015000016115A2E0802F182340") == 23
 # A0016C880162017C3686B18A3D4780 is an operator packet that contains an operator packet that contains an operator packet that contains five literal values; it has a version sum of 31.
-assert execute("A0016C880162017C3686B18A3D4780") == 31
+# assert execute("A0016C880162017C3686B18A3D4780") == 31
 
 print("ALL TESTS PASSED")
 
