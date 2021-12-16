@@ -16,15 +16,20 @@ def get_all_bits(message):
     print(f"{message} => {bits}")
     return bits
 
-def process_bits(bits):
+def process_bits(bits, with_padding = True):
+    print()
+    print(f"process_bits: {bits}")
+    print()
     ptr = 0
     total_version_sum = 0
     while ptr < len(bits):
         version_sum, ptr = parse_next_packet(bits, ptr)
         total_version_sum += version_sum
-        padding = 16 - (ptr % 16)
-        print(f"ptr: {ptr} needs padding => {padding}")
-        ptr += padding
+        if with_padding and ptr % 8 != 0:
+            padding = 8 - (ptr % 8)
+            print(f"ptr: {ptr} needs padding => {padding}")
+            ptr += padding
+    print(f"total_version_sum: {total_version_sum}")
     return total_version_sum
 
 def parse_literal(bits, ptr):
@@ -37,7 +42,7 @@ def parse_literal(bits, ptr):
     ptr += 1
     allbits += bits[ptr : ptr + 4]
     ptr += 4
-    while signal_bit == 1: # keep going
+    while signal_bit == '1': # keep going
         signal_bit = bits[ptr : ptr + 1]        
         ptr += 1
         allbits += bits[ptr : ptr + 4]
@@ -66,7 +71,7 @@ def parse_operator(bits, ptr):
         print(f"ptr: {start} => length_type_id: {length_type_id}, total_length_in_bits: {total_length_in_bits}")
         ptr += 15
 
-        version_sum = process_bits(bits[ptr : ptr + total_length_in_bits])
+        version_sum = process_bits(bits[ptr : ptr + total_length_in_bits], with_padding=False)
         ptr += total_length_in_bits
         total_version_sum += version_sum
 
@@ -101,9 +106,8 @@ def parse_next_packet(bits, ptr):
     total_version_sum += packet_version
 
     if packet_type_id == 4: # literal value
-        version_sum, ptr = parse_literal(bits, ptr)
-        total_version_sum += version_sum
-    else:
+        val, ptr = parse_literal(bits, ptr)
+    else: # operator
         version_sum, ptr = parse_operator(bits, ptr)
         total_version_sum += version_sum
 
@@ -116,20 +120,27 @@ def execute(input):
     return result
 
 # TESTS
-assert get_all_bits("D2FE28") == "110100101111111000101000"
+#assert get_all_bits("D2FE28") == "110100101111111000101000"
+#assert process_bits("110100101111111000101000") == 6 # literal 2021
 
-assert process_bits("11010001010") == 1 # literal 10
-assert process_bits("01010010001001000000000") == 1 # literal 20
-assert process_bits("010100100010010000000000000000") == 1 # literal 20 with extra padding
-assert process_bits("1101000101001010010001001000000000") == 1 # literal 10, literal 20 with extra padding
-assert execute("38006F45291200") == 16
+#assert process_bits("11010001010") == 6 # literal 10
+#assert process_bits("01010010001001000000000") == 1 # literal 20
+#assert process_bits("010100100010010000000000000000") == 1 # literal 20 with extra padding
+#assert process_bits("1101000101001010010001001000000000") == 1 # literal 10, literal 20 with extra padding
+# assert execute("38006F45291200") == 9
 
-assert execute("EE00D40C823060") == 16 # literal 1, literal 2, literal 3
+# assert execute("EE00D40C823060") == 14 # literal 1, literal 2, literal 3
 
+
+# 8A004A801A8002F478 represents an operator packet (version 4) which contains an operator packet (version 1) which contains an operator packet (version 5) which contains a literal value (version 6); this packet has a version sum of 16.
 assert execute("8A004A801A8002F478") == 16
-assert execute("620080001611562C8802118E34") == 16
-assert execute("8A004A8C0015000016115A2E0802F18234001A8002F478") == 16
-assert execute("A0016C880162017C3686B18A3D4780") == 16
+# 620080001611562C8802118E34 represents an operator packet (version 3) which contains two sub-packets; each sub-packet is an operator packet that contains two literal values. This packet has a version sum of 12.
+assert execute("620080001611562C8802118E34") == 12
+# C0015000016115A2E0802F182340 has the same structure as the previous example, but the outermost packet uses a different length type ID. This packet has a version sum of 23.
+assert execute("8A004A8C0015000016115A2E0802F18234001A8002F478") == 23
+# A0016C880162017C3686B18A3D4780 is an operator packet that contains an operator packet that contains an operator packet that contains five literal values; it has a version sum of 31.
+assert execute("A0016C880162017C3686B18A3D4780") == 31
+
 print("ALL TESTS PASSED")
 
 YEAR = 2021
