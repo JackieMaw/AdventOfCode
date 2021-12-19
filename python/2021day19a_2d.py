@@ -14,7 +14,7 @@ def add_to_space(tile, offset, space):
         (x, y) = beacon
         (ox, oy) = offset
         beacon_in_space = (x + ox, y + oy)
-        space.append(beacon_in_space)
+        space.add(beacon_in_space)
 
 def parse_input(input):
 
@@ -29,7 +29,7 @@ def parse_input(input):
             current_tile = []
         else:
             line_parts = line.split(",")
-            current_tile.append(int(line_parts[0]), line_parts[1])
+            current_tile.append((int(line_parts[0]), int(line_parts[1])))
 
     # this scanner is completed
     tiles.append(current_tile)
@@ -37,31 +37,8 @@ def parse_input(input):
     return tiles
 
 def rotate(tile):
-
     # tile: [ (x, y), (x, y) ]
-
-    xs = [ x for (x, y) in tile] 
-    x_min = min(xs)
-    x_max = max(xs)
-    
-    ys = [ y for (x, y) in tile] 
-    y_min = min(ys)
-    y_max = max(ys)
-
-    new_tile = []
-
-    for (x, y) in tile:
-        if (x >= 0 and y >= 0):
-            new_beacon = (y, -x)
-        elif (x >= 0 and y < 0):
-            new_beacon = (y, -x)
-        elif (x < 0 and y < 0):
-            new_beacon = (y, -x)
-        elif (x < 0 and y >= 0):
-            new_beacon = (y, -x)
-        new_tile.append(new_beacon)
-
-    return new_tile
+    return [(y, -x) for (x, y) in tile]
 
 def get_all_rotations(tile):
 
@@ -87,7 +64,20 @@ def get_bounds(tile):
     return ((x_min, x_max), (y_min, y_max)) 
 
 def overlap(space, tile, offset):
-    return True
+    match_count = 0
+    (ox, oy) = offset
+
+    for (x, y) in tile:
+        beacon_offset = (x + ox, y + oy)
+        if beacon_offset in space:
+            match_count += 1
+    
+    print(f"offset {offset} has {match_count} matches")
+
+    if (match_count >= 3):
+        return True
+    else:
+        return False
 
 def check_overlap(space, tile):
 
@@ -96,13 +86,17 @@ def check_overlap(space, tile):
     tile_bounds = get_bounds(tile)
     ((tile_x_min, tile_x_max), (tile_y_min, tile_y_max)) = tile_bounds
 
-    start_ox = 0 - space_x_min - tile_x_max
+    start_ox = space_x_min - tile_x_max
     end_ox = space_x_max - tile_x_min 
-    start_oy = 0 - space_y_min - tile_y_max
-    end_oy = space_y_max - tile_y_min 
 
-    for ox in range(start_ox, end_ox):
-        for oy in range (start_oy, end_oy):
+    start_oy = space_y_max - tile_y_min
+    end_oy = space_y_min - tile_y_max 
+
+    step_x = 1 if end_ox >= start_ox else -1 
+    step_y = 1 if end_oy >= start_oy else -1
+
+    for ox in range(start_ox, end_ox, step_x):
+        for oy in range (start_oy, end_oy, step_y):
             offset = (ox, oy)
             if overlap(space, tile, offset):
                 return offset
@@ -117,18 +111,25 @@ def execute(input):
     space = set()
     
     # anchor the first tile
-    next_tile = tiles.pop()
+    next_tile = tiles[0]
+    tiles.remove(next_tile)
     add_to_space(next_tile, (0, 0), space)
+    print(f"Added another tile to space, space has {len(space)} beacons, {len(tiles)} tiles left...")
 
     # for all remaining tiles, try to fit them into the existing space
     while len(tiles) > 0:
-        next_tile = tiles.pop()
+        next_tile = tiles[0]
+        tiles.remove(next_tile)
         tile_rotations = get_all_rotations(next_tile)
+        offset = None        
         for next_tile_rotation in tile_rotations:
             offset = check_overlap(space, next_tile_rotation)
             if offset is not None:
                 add_to_space(next_tile, offset, space)
+                print(f"Added another tile to space, {len(tiles)} left...")
                 break
+        if offset is None:
+            tiles.append(next_tile)
 
     # count the number of beacons in space
     result = len(space)
@@ -140,6 +141,7 @@ assert rotate([(1, 5)]) == [(5, -1)]
 assert rotate([(5, -1)]) == [(-1, -5)]
 assert rotate([(-1, -5)]) == [(-5, 1)]
 assert rotate([(-5, 1)]) == [(1, 5)]
+assert overlap({(0, 2), (3, 3), (4, 1)}, [(-1, -1), (-5, 0), (-2, 1)], (5, 2)) == True
 print("ALL TESTS PASSED")
 
 YEAR = 2021
@@ -148,7 +150,7 @@ DAY = 19
 # TEST INPUT DATA
 raw_input = get_input(YEAR, DAY, "_test_2d")
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 3
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
