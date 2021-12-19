@@ -78,7 +78,7 @@ def execute(x_min, x_max, y_min, y_max):
     hit_target = will_hit_target(velocity, target)
     if hit_target and vy > max_vy:
         max_vy = vy
-        print(f"New max vy {max_vy}")
+        #print(f"New max vy {max_vy}")
 
     # since vy has a direct correlation to the max_height, 
     # increase vy until we miss - will this ever happen?
@@ -92,7 +92,7 @@ def execute(x_min, x_max, y_min, y_max):
             # print(f"New max vy {max_vy}")
 
     # try a few more times, just to see
-    for _ in range(1000):
+    while vy < max_vy + 100:
         vy += 1
         # print(f"...increasing vy to {vy}")
         velocity = (vx, vy)
@@ -101,6 +101,7 @@ def execute(x_min, x_max, y_min, y_max):
             max_vy = vy
             # print(f"New max vy {max_vy}")
 
+    print(f"max_vy: {max_vy}") 
     result = max_vy * (max_vy + 1) / 2
     print(f"result: {result}") 
     return result
@@ -124,5 +125,5 @@ print("TEST INPUT PASSED")
 # raw_input = get_or_download_input(YEAR, DAY)
 # input = get_strings(raw_input)
 # target area: x=207..263, y=-115..-63
-#assert execute(207, 263, -115, -63) == 0
+assert execute(207, 263, -115, -63) == 6555
 print("ANSWER CORRECT")
