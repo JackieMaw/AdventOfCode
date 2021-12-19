@@ -36,9 +36,9 @@ def parse_input(input):
             beacons.append(beacon)
 
     # this cube is completed
-    cubes.append((f"Cube #{cube_number}", beacons))    
-    print(f"Loaded Last Cube #{cube_number}")
-
+    cubes.append((f"Cube #{cube_number}", beacons))
+    
+    print(f"Loaded Cube: {cubes}")
     return cubes
 
 # CHEAT!
@@ -103,7 +103,7 @@ def get_bounds(beacons):
 
     return ((x_min, x_max), (y_min, y_max), (z_min, z_max)) 
 
-def overlap(space, beacons, offset, expected_match_count):
+def overlap(space, beacons, offset):
     match_count = 0
     (ox, oy, oz) = offset
 
@@ -114,12 +114,12 @@ def overlap(space, beacons, offset, expected_match_count):
     
     #print(f"offset {offset} has {match_count} matches")
 
-    if (match_count >= expected_match_count):
+    if (match_count >= 12):
         return True
     else:
         return False
 
-def check_overlap(space, cube, match_count):
+def check_overlap(space, cube):
 
     beacons = cube[1]
 
@@ -130,31 +130,27 @@ def check_overlap(space, cube, match_count):
 
     start_ox = space_x_min - tile_x_max
     end_ox = space_x_max - tile_x_min 
-    step_x = 1 if end_ox >= start_ox else -1 
-    xchecks = (end_ox - start_ox) * step_x
 
     start_oy = space_y_max - tile_y_min
     end_oy = space_y_min - tile_y_max 
-    step_y = 1 if end_oy >= start_oy else -1
-    ychecks = (end_oy - start_oy) * step_y
 
     start_oz = space_z_max - tile_z_min
     end_oz = space_z_min - tile_z_max 
-    step_z = 1 if end_oz >= start_oz else -1
-    zchecks = (end_oz - start_oz) * step_z
 
-    print(f"check_overlap: must do { xchecks * ychecks * zchecks} checks")
+    step_x = 1 if end_ox >= start_ox else -1 
+    step_y = 1 if end_oy >= start_oy else -1
+    step_z = 1 if end_oz >= start_oz else -1
 
     for ox in range(start_ox, end_ox, step_x):
         for oy in range (start_oy, end_oy, step_y):
             for oz in range (start_oz, end_oz, step_z):
                 offset = (ox, oy, oz)
-                if overlap(space, beacons, offset, match_count):
+                if overlap(space, beacons, offset):
                     return offset
 
     return None
 
-def get_distinct_beacons(cubes, match_count):
+def get_distinct_beacons(cubes):
 
     space = set()
     
@@ -167,26 +163,26 @@ def get_distinct_beacons(cubes, match_count):
     while len(cubes) > 0:
         cube = cubes[0]
         cubes.remove(cube)
+        print(f"Trying {cube[0]}...")
         cube_rotations = get_all_rotations(cube)
         offset = None        
         for cube_rotation in cube_rotations:
-            print(f"Checking '{cube_rotation[0]}'...")
-            offset = check_overlap(space, cube_rotation, match_count)
+            offset = check_overlap(space, cube_rotation)
             if offset is not None:
                 add_to_space(cube_rotation, offset, space)
                 break
         if offset is None: # after checking all rotations, we failed to place this tile, save it for later
-            print(f"FAILED to match '{cube[0]}' in any rotation... will try again later")
+            print(f"Failed to match {cube[0]}...")
             cubes.append(cube)
 
     # count the number of beacons in space
     return len(space)
 
-def execute(input, match_count = 12):
+def execute(input):
     #print(input)
     cubes = parse_input(input) 
 
-    result = get_distinct_beacons(cubes, match_count)
+    result = get_distinct_beacons(cubes)
     print(f"result: {result}") 
     return result
 
@@ -201,11 +197,9 @@ def execute(input, match_count = 12):
 # # assert overlap({(-1, -1, 1), (-2, -2, 2), (-3, -3, 3), (-2, -3, 1), (5, 6, -4), (8, 0, 7)}, [(1, -1, 1), (2, -2, 2), (3, -3, 3), (2, -1, 3), (-5, 4, -6), (-8, -7, 0)]) == True
 # # assert overlap({(0, 2), (3, 3), (4, 1)}, [(-1, -1), (-5, 0), (-2, 1)], (5, 2)) == True
 
-
-beacons = [(i, i+1, i+2) for i in range(1, 13)]
-cube0 = ('Cube #0', beacons)
+cube0 = ('Cube #0', [(1, 2, 3), (4, 5, 6), (7, 8, 9)])
 rotations = get_all_rotations(cube0)
-assert get_distinct_beacons(rotations, 12) == 12
+assert get_distinct_beacons(rotations) == 3
 
 print("ALL TESTS PASSED")
 
@@ -215,7 +209,7 @@ DAY = 19
 # TEST INPUT DATA
 raw_input = get_input(YEAR, DAY, "_test_3d_single_scanner")
 input = get_strings(raw_input)
-assert execute(input, 6) == 6
+assert execute(input) == 6
 print("TEST INPUT (single scanner) PASSED")
 
 raw_input = get_input(YEAR, DAY, "_test_3d")
