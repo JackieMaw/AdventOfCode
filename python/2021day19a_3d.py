@@ -119,38 +119,21 @@ def overlap(space, beacons, offset, expected_match_count):
     else:
         return False
 
-def check_overlap(space, cube, match_count):
+def check_overlap(space_beacons, cube_beacons, match_count):
 
-    beacons = cube[1]
+    distances = {}
+    
+    # print(f"check_overlap: must do { len(cube_beacons) * len(space_beacons)} checks")
 
-    space_bounds = get_bounds(space)
-    ((space_x_min, space_x_max), (space_y_min, space_y_max), (space_z_min, space_z_max)) = space_bounds
-    tile_bounds = get_bounds(beacons)
-    ((tile_x_min, tile_x_max), (tile_y_min, tile_y_max), (tile_z_min, tile_z_max)) = tile_bounds
-
-    start_ox = space_x_min - tile_x_max
-    end_ox = space_x_max - tile_x_min 
-    step_x = 1 if end_ox >= start_ox else -1 
-    xchecks = (end_ox - start_ox) * step_x
-
-    start_oy = space_y_max - tile_y_min
-    end_oy = space_y_min - tile_y_max 
-    step_y = 1 if end_oy >= start_oy else -1
-    ychecks = (end_oy - start_oy) * step_y
-
-    start_oz = space_z_max - tile_z_min
-    end_oz = space_z_min - tile_z_max 
-    step_z = 1 if end_oz >= start_oz else -1
-    zchecks = (end_oz - start_oz) * step_z
-
-    print(f"check_overlap: must do { xchecks * ychecks * zchecks} checks")
-
-    for ox in range(start_ox, end_ox, step_x):
-        for oy in range (start_oy, end_oy, step_y):
-            for oz in range (start_oz, end_oz, step_z):
-                offset = (ox, oy, oz)
-                if overlap(space, beacons, offset, match_count):
-                    return offset
+    for cube_beacon in cube_beacons:
+        for space_beacon in space_beacons:
+            distance = (cube_beacon[0] - space_beacon[0], cube_beacon[1] - space_beacon[1], cube_beacon[2] - space_beacon[2])
+            if distance in distances:
+                distances[distance] += 1
+                if distances[distance] >= match_count:
+                    return distance
+            else:
+                distances[distance] = 1
 
     return None
 
@@ -171,7 +154,7 @@ def get_distinct_beacons(cubes, match_count):
         offset = None        
         for cube_rotation in cube_rotations:
             print(f"Checking '{cube_rotation[0]}'...")
-            offset = check_overlap(space, cube_rotation, match_count)
+            offset = check_overlap(space, cube_rotation[1], match_count)
             if offset is not None:
                 add_to_space(cube_rotation, offset, space)
                 break
