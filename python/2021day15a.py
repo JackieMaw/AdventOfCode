@@ -22,10 +22,6 @@ def get_neighbours(visited, node, max_x, max_y):
     (x, y) = node
     neighbours = []
 
-    #for i in range(max(x-1, 0), min(x+2, max_x)):
-        #for j in range(max(y-1, 0), min(y+2, max_y)):
-            #if not (i == x and j == y):
-
     # Diagonal locations do not count
     directions = [(-1, 0), (0, 1), (1,0), (0, -1)]
     for (dx, dy) in directions:
@@ -42,19 +38,6 @@ def get_next_node(distance_queue):
     min_distance = min(distance_queue.keys())
     next_node = distance_queue[min_distance][0]
     return next_node
-
-    # next_node = None
-    # distance_to_next_node = None
-    # for (node, (distance, _)) in shortest_path.items():
-    #     if node not in visited:
-    #         if next_node is None: # we have no value yet so pick the first one
-    #             next_node = node
-    #             distance_to_next_node = distance
-    #         elif distance is not None: # we found something with a valid distance
-    #             if distance_to_next_node is None or distance < distance_to_next_node:
-    #                 next_node = node
-    #                 distance_to_next_node = distance
-    # return next_node
 
 def add(key, dic, item):    
     if key in dic:
@@ -143,5 +126,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0 #711 is wrong :-(
+assert execute(input) == 707
 print("ANSWER CORRECT")
