@@ -72,18 +72,25 @@ def get_shortest_path(nodes, max_x, max_y):
     
     extra_nodes = {}
     for i in range(0, 5):
-        for j in range(0, 5):
-            for n in nodes:
-                if i == 0 and j == 0:
-                    shortest_path[n] = (inf, None) # (distance_to_node, previous_node)            
-                    add(inf, distance_queue, n)
-                else:
-                    new_node = (n[0] + i * width, n[1] + j * length)
-                    shortest_path[new_node] = (inf, None) # (distance_to_node, previous_node)            
-                    add(inf, distance_queue, new_node)
+        for y in range(length):
+            print_string = ""
+            for j in range(0, 5):
+                for x in range(width):
+                    n = (x, y)
                     risk_factor = nodes[n]
-                    additional_risk_factor = i + j                    
-                    extra_nodes[new_node] = (risk_factor + additional_risk_factor) % 10
+                    if i == 0 and j == 0:
+                        shortest_path[n] = (inf, None) # (distance_to_node, previous_node)            
+                        add(inf, distance_queue, n)
+                        print_string += str(risk_factor)
+                    else:
+                        new_node = (n[0] + i * width, n[1] + j * length)
+                        shortest_path[new_node] = (inf, None) # (distance_to_node, previous_node)            
+                        add(inf, distance_queue, new_node)
+                        additional_risk_factor = i + j    
+                        new_risk_factor = (risk_factor + additional_risk_factor) % 10              
+                        extra_nodes[new_node] = new_risk_factor
+                        print_string += str(new_risk_factor)
+            print(print_string)
 
     nodes.update(extra_nodes)
 
@@ -133,6 +140,11 @@ YEAR = 2021
 DAY = 15
 
 # TEST INPUT DATA
+raw_input = get_input(YEAR, DAY, "_test_super_small")
+input = get_strings(raw_input)
+assert execute(input) == 136 # no idea if this is correct or not
+print("TEST INPUT (super small) PASSED")
+
 raw_input = get_input(YEAR, DAY, "_test_small")
 input = get_strings(raw_input)
 assert execute(input) == 171 # no idea if this is correct or not
