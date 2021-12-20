@@ -110,6 +110,8 @@ def get_shortest_path(nodes, max_x, max_y):
         more_work_to_do = len(visited) < len(nodes)
 
     (distance_to_end, _) = shortest_path[end]
+    distance_to_end -= nodes[start]
+    distance_to_end += nodes[end]
     return distance_to_end
 
 def execute(input):
@@ -128,6 +130,11 @@ YEAR = 2021
 DAY = 15
 
 # TEST INPUT DATA
+raw_input = get_input(YEAR, DAY, "_test_small")
+input = get_strings(raw_input)
+assert execute(input) == 12
+print("TEST INPUT (small) PASSED")
+
 raw_input = get_input(YEAR, DAY, "_test")
 input = get_strings(raw_input)
 assert execute(input) == 40
