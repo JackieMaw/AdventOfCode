@@ -44,6 +44,8 @@ def parse_input(input):
 # CHEAT!
 
 transformation_functions = []
+transformation_functions.append(lambda x, y, z: (x, y, z))
+
 transformation_functions.append(lambda x, y, z: (x, z, -y))
 transformation_functions.append(lambda x, y, z: (-z, x, -y))
 transformation_functions.append(lambda x, y, z: (-x, -z, -y))
@@ -58,7 +60,6 @@ transformation_functions.append(lambda x, y, z: (-y, x, z))
 
 transformation_functions.append(lambda x, y, z: (-x, -y, z))
 transformation_functions.append(lambda x, y, z: (y, -x, z))
-transformation_functions.append(lambda x, y, z: (x, y, z))
 
 transformation_functions.append(lambda x, y, z: (-z, -x, y))
 transformation_functions.append(lambda x, y, z: (x, -z, y))
@@ -127,11 +128,15 @@ def check_overlap(space_beacons, cube_beacons, match_count):
 
     for cube_beacon in cube_beacons:
         for space_beacon in space_beacons:
-            distance = (cube_beacon[0] - space_beacon[0], cube_beacon[1] - space_beacon[1], cube_beacon[2] - space_beacon[2])
+            dx = cube_beacon[0] - space_beacon[0]
+            dy = cube_beacon[1] - space_beacon[1]
+            dz = cube_beacon[2] - space_beacon[2]
+            distance = (dx, dy, dz)
             if distance in distances:
                 distances[distance] += 1
                 if distances[distance] >= match_count:
-                    return distance
+                    offset = (-dx, -dy, -dz)
+                    return offset
             else:
                 distances[distance] = 1
 
@@ -153,7 +158,7 @@ def get_distinct_beacons(cubes, match_count):
         cube_rotations = get_all_rotations(cube)
         offset = None        
         for cube_rotation in cube_rotations:
-            print(f"Checking '{cube_rotation[0]}'...")
+            #print(f"Checking '{cube_rotation[0]}'...")
             offset = check_overlap(space, cube_rotation[1], match_count)
             if offset is not None:
                 add_to_space(cube_rotation, offset, space)
@@ -184,11 +189,18 @@ def execute(input, match_count = 12):
 # # assert overlap({(-1, -1, 1), (-2, -2, 2), (-3, -3, 3), (-2, -3, 1), (5, 6, -4), (8, 0, 7)}, [(1, -1, 1), (2, -2, 2), (3, -3, 3), (2, -1, 3), (-5, 4, -6), (-8, -7, 0)]) == True
 # # assert overlap({(0, 2), (3, 3), (4, 1)}, [(-1, -1), (-5, 0), (-2, 1)], (5, 2)) == True
 
+# testing transformations with 0 offset
 
 beacons = [(-1,-1,1), (-2,-2,2), (-3,-3,3), (-2,-3,1), (5,6,-4), (8,0,7)]
-cube0 = ('TEST CUBE', beacons)
-rotations = get_all_rotations(cube0)
+test_cube = ('TEST CUBE', beacons)
+rotations = get_all_rotations(test_cube)
 assert get_distinct_beacons(rotations, 6) == 6
+
+# testing no transformations with (5,5,5) offset
+
+test_cube0 = ('TEST CUBE 0', [(1,1,1), (2,2,2), (3,3,3)])
+test_cube1 = ('TEST CUBE 1 + (5,5,5)', [(6,6,6), (7,7,7), (8,8,8)])
+assert get_distinct_beacons([test_cube0, test_cube1], 3) == 3
 
 print("ALL TESTS PASSED")
 
@@ -203,11 +215,11 @@ print("TEST INPUT (single scanner) PASSED")
 
 raw_input = get_input(YEAR, DAY, "_test_3d")
 input = get_strings(raw_input)
-#assert execute(input) == 79 # not 127
+assert execute(input) == 79
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0 # not 985
+assert execute(input) == 472
 print("ANSWER CORRECT")
