@@ -185,7 +185,7 @@ def execute(input, match_count = 12):
 # # assert overlap({(0, 2), (3, 3), (4, 1)}, [(-1, -1), (-5, 0), (-2, 1)], (5, 2)) == True
 
 
-beacons = [(i, i+1, i+2) for i in range(1, 13)]
+beacons = [(-1,-1,1), (-2,-2,2), (-3,-3,3), (-2,-3,1), (5,6,-4), (8,0,7)]
 cube0 = ('Cube #0', beacons)
 rotations = get_all_rotations(cube0)
 assert get_distinct_beacons(rotations, 12) == 12
