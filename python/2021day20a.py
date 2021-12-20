@@ -9,15 +9,17 @@ def parse_input(input):
     image_lookup = input[0]
 
     image = set()
-    y = 0
+    y = 0    
+    print()
     for line in input[2:]:
+        print(line)
         x = 0
         for char in line:
             if char == "#":
                 image.add((x, y))
             x += 1
         y += 1
-
+    print()
     return image_lookup, image
 
 def get_image_key(x, y, image):
@@ -42,15 +44,22 @@ def play(image_lookup, image):
     ys = [ y for (x, y) in image] 
     y_min = min(ys)
     y_max = max(ys)
+    
+    print(f"PLAY: {x_min - 1}  => {x_max + 2}, {y_min - 1}  => {y_max + 2}")
 
     new_image = set()
+    print()
     for y in range(y_min - 1, y_max + 2):
+        line = ""
         for x in range(x_min - 1, x_max + 2):
             key = get_image_key(x, y, image)
             pixel = image_lookup[key]
+            line += pixel
             if pixel == "#":
                 new_image.add((x, y))
-    
+        print(line)
+    print()
+
     return new_image
 
 def execute(input):
@@ -82,5 +91,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 0 # not 5469
 print("ANSWER CORRECT")
