@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KXqCg5zU6ujapzHpkdDROqjFU0mXgVpy4OtVS//AeWz/O2kkBY5zE3l2LcIWX11RHp8gapFQVtIWmqsP5AU3Hg==",
+  "dgSpecHash": "kohn5/2Xfn0vri9Jby8EbMDyQT1qPIRdjVG8g86mGuYWpwP5Oj5x0U4qKaQv4Fh/MJLhXxFOiL3q1MzHmK4OBQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\AdventOfCode.Utilities\\AdventOfCode.Utilities.csproj",
+  "projectFilePath": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.Utilities\\AdventOfCode.Utilities\\AdventOfCode.Utilities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jacki\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\jacki\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
