@@ -5,7 +5,7 @@ import math
 import copy
 
 def in_range(x, x_min, x_max):
-    return x >= x_min and x <= x_max
+    return x > x_min and x < x_max
 
 class Point(object):
     def __init__(self, x, y, z):
@@ -72,38 +72,91 @@ class Cube(object):
             return False
         return True
 
+    def fit_within(self, other_cube):
+
+        # if my start is after the other end, or my end is before the other start, this cube is not valid
+        if self.Start.X > other_cube.End.X:
+            return False
+        if self.Start.Y > other_cube.End.Y:
+            return False
+        if self.Start.Z > other_cube.End.Z:
+            return False
+        if self.End.X < other_cube.Start.X:
+            return False
+        if self.End.Y < other_cube.Start.Y:
+            return False
+        if self.End.Z < other_cube.Start.Z:
+            return False            
+
+        # if my start is before the other start, make it the other start
+
+        if self.Start.X < other_cube.Start.X:
+            self.Start.X = other_cube.Start.X
+        if self.Start.Y < other_cube.Start.Y:
+            self.Start.Y = other_cube.Start.Y
+        if self.Start.Z < other_cube.Start.Z:
+            self.Start.Z = other_cube.Start.Z
+                
+        # if my end is after the other end, make it the other end
+
+        if self.End.X > other_cube.End.X:
+            self.End.X = other_cube.End.X
+        if self.End.Y > other_cube.End.Y:
+            self.End.Y = other_cube.End.Y
+        if self.End.Z > other_cube.End.Z:
+            self.End.Z = other_cube.End.Z
+
+        return True
+
 def split_cube_without_new_cube(old, new):
 
-    bottom_slice = Cube(old.Start, Point(new.Start.X, old.End.Y, old.End.Z)) # same start point but the top is the bottom of the new cube
-    top_slice = Cube(Point(new.End.X, old.Start.Y, old.Start.Z), old.End) # same end point but the bottom is the top of the new cube
+    # split cubes cannot be outside the bounds of the original cube
+    # nSX = max(new.Start.X, old.Start.X)
+    # nEX = min(new.End.X, old.End.X)
+    # nSY = max(new.Start.Y, old.Start.Y)
+    # nEY = min(new.End.Y, old.End.Y)
+    # nSZ = max(new.Start.Z, old.Start.Z)
+    # nEZ = min(new.End.Z, old.End.Z)
 
-    TODO, max and min the boundary points
+    existing_cube_split_without_new_cube = set()
+
+    nSX = new.Start.X
+    nEX = new.End.X
+    nSY = new.Start.Y
+    nEY = new.End.Y
+    nSZ = new.Start.Z
+    nEZ = new.End.Z
+
+    if nSX > old.Start.X:
+        bottom_slice = Cube(old.Start, Point(nSX, old.End.Y, old.End.Z)) # same start point but the top is the bottom of the new cube    
+        if bottom_slice.is_valid():
+            existing_cube_split_without_new_cube.add(bottom_slice)
+    
+    if nEX < old.End.X:
+        top_slice = Cube(Point(nEX, old.Start.Y, old.Start.Z), old.End) # same end point but the bottom is the top of the new cube
+        if top_slice.is_valid():
+            existing_cube_split_without_new_cube.add(top_slice)
 
     middle_cubes = { 
         # same X as the new cube, old.Start.Z => new.Start.Z
-        Cube(Point(new.Start.X, old.Start.Y, old.Start.Z), Point(new.End.X, new.Start.Y, new.Start.Z)), 
-        Cube(Point(new.Start.X, new.Start.Y, old.Start.Z), Point(new.End.X, new.End.Y, new.Start.Z)), 
-        Cube(Point(new.Start.X, new.End.Y, old.Start.Z), Point(new.End.X, old.End.Y, new.Start.Z)),
+        Cube(Point(nSX, old.Start.Y, old.Start.Z), Point(nEX, nSY, nSZ)), 
+        Cube(Point(nSX, nSY, old.Start.Z), Point(nEX, nEY, nSZ)), 
+        Cube(Point(nSX, nEY, old.Start.Z), Point(nEX, old.End.Y, nSZ)),
 
         # same X as the new cube, new.Start.Z => new.End.Z
-        Cube(Point(new.Start.X, old.Start.Y, new.Start.Z), Point(new.End.X, new.Start.Y, new.End.Z)), 
-        #Cube(Point(new.Start.X, new.Start.Y, new.Start.Z), Point(new.End.X, new.End.Y, new.End.Z)), 
-        Cube(Point(new.Start.X, new.End.Y, new.Start.Z), Point(new.End.X, old.End.Y, new.End.Z)),
+        Cube(Point(nSX, old.Start.Y, nSZ), Point(nEX, nSY, nEZ)), 
+        #Cube(Point(nSX, nSY, nSZ), Point(nEX, nEY, nEZ)), 
+        Cube(Point(nSX, nEY, nSZ), Point(nEX, old.End.Y, nEZ)),
         
         # same X as the new cube, new.End.Z => old.End.Z
-        Cube(Point(new.Start.X, old.Start.Y, new.End.Z), Point(new.End.X, new.Start.Y, old.End.Z)), 
-        Cube(Point(new.Start.X, new.Start.Y, new.End.Z), Point(new.End.X, new.End.Y, old.End.Z)), 
-        Cube(Point(new.Start.X, new.End.Y,new.End.Z), Point(new.End.X, old.End.Y, old.End.Z)),
+        Cube(Point(nSX, old.Start.Y, nEZ), Point(nEX, nSY, old.End.Z)), 
+        Cube(Point(nSX, nSY, nEZ), Point(nEX, nEY, old.End.Z)), 
+        Cube(Point(nSX, nEY, nEZ), Point(nEX, old.End.Y, old.End.Z)),
     }
-
-    existing_cube_split_without_new_cube = set()
-    if bottom_slice.is_valid():
-        existing_cube_split_without_new_cube.add(bottom_slice)
-    if top_slice.is_valid():
-        existing_cube_split_without_new_cube.add(top_slice)
     for middle_cube in middle_cubes:
-        if middle_cube.is_valid():
-            existing_cube_split_without_new_cube.add(middle_cube)
+        if middle_cube.fit_within(old):
+            if middle_cube.is_valid():
+                existing_cube_split_without_new_cube.add(middle_cube)
 
     return existing_cube_split_without_new_cube
 
@@ -171,8 +224,21 @@ def execute(input):
     return result
 
 # TESTS
-# assert execute(get_strings_csv(["ABCD"])) == 0
-# print("ALL TESTS PASSED")
+raw_input = ["on x=1..3,y=1..3,z=1..3"]
+input = get_strings(raw_input)
+assert execute(input) == 8
+
+raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=3..5,y=3..5,z=3..5"]
+input = get_strings(raw_input)
+assert execute(input) == 16
+
+raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=2..4,y=2..4,z=2..4"]
+input = get_strings(raw_input)
+assert execute(input) == 15
+
+raw_input = ["on x=1..3,y=1..3,z=1..3", "off x=2..4,y=2..4,z=2..4"]
+input = get_strings(raw_input)
+assert execute(input) == 7
 
 YEAR = 2021
 DAY = 22
