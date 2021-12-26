@@ -58,7 +58,12 @@ class Cube(object):
         y_in_range = in_range(self.Start.Y, other_cube.Start.Y, other_cube.End.Y) or in_range(self.End.Y, other_cube.Start.Y, other_cube.End.Y)
         z_in_range = in_range(self.Start.Z, other_cube.Start.Z, other_cube.End.Z) or in_range(self.End.Z, other_cube.Start.Z, other_cube.End.Z)        
 
-        return x_in_range and y_in_range and z_in_range
+        result = x_in_range and y_in_range and z_in_range
+
+        if result:
+            print(f"Existing cube {self} overlaps with {other_cube}")
+
+        return result
 
     def size(self):
         return (self.End.X - self.Start.X) * (self.End.Y - self.Start.Y) * (self.End.Z - self.Start.Z)
@@ -155,7 +160,7 @@ def split_cube_without_new_cube(old, new):
     }
     for middle_cube in middle_cubes:
         if middle_cube.fit_within(old):
-            if middle_cube.is_valid():
+            if middle_cube.is_valid() and not middle_cube.overlaps_with(new):
                 existing_cube_split_without_new_cube.add(middle_cube)
 
     return existing_cube_split_without_new_cube
@@ -181,13 +186,23 @@ def initialize(space, line):
     end = Point(x_range[1], y_range[1], z_range[1])
     new_cube = Cube(start, end)
 
+    # if this is the first cube, just add it
+    if len(space) == 0 and switch_on:
+        space.add(new_cube)
+        return
+
     cubes_to_remove = set()
     cubes_to_add = set()
     for existing_cube in space:
         if switch_on:
-            if existing_cube.is_contained_within(new_cube):
+            if new_cube.is_contained_within(existing_cube):
+                # new cube is a duplicate of an existing cube, we can ignore it completely
+                return
+            elif existing_cube.is_contained_within(new_cube):
+                # new cube is larger than an existing cube, an existing cube can be removed
                 cubes_to_remove.add(existing_cube)
-            elif not new_cube.is_contained_within(existing_cube) and new_cube.overlaps_with(existing_cube):
+            elif new_cube.overlaps_with(existing_cube):                   
+                # new cube overlaps with an existing cube, the existing cube must be split and overlapping bits removed
                 existing_cube_split_without_new_cube = split_cube_without_new_cube(existing_cube, new_cube)
                 cubes_to_remove.add(existing_cube)
                 for existing_cube_split in existing_cube_split_without_new_cube:
@@ -207,6 +222,7 @@ def initialize(space, line):
     for cube_to_add in cubes_to_add:
         space.add(cube_to_add)
 
+    # we always add the new cube
     if switch_on:
         space.add(new_cube)
 
@@ -224,14 +240,43 @@ def execute(input):
     return result
 
 # TESTS
+
+# a single cube
 raw_input = ["on x=1..3,y=1..3,z=1..3"]
 input = get_strings(raw_input)
 assert execute(input) == 8
 
+# two cubes which do not overlap
 raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=3..5,y=3..5,z=3..5"]
 input = get_strings(raw_input)
 assert execute(input) == 16
 
+# two identical cubes
+raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=1..3,y=1..3,z=1..3"]
+input = get_strings(raw_input)
+assert execute(input) == 8
+
+# second cube is inside the first cube
+raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=1..2,y=1..2,z=1..2"]
+input = get_strings(raw_input)
+assert execute(input) == 8
+
+# second cube is inside the first cube
+raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=2..3,y=2..3,z=2..3"]
+input = get_strings(raw_input)
+assert execute(input) == 8
+
+# first cube is inside the second cube
+raw_input = ["on x=1..2,y=1..2,z=1..2", "on x=1..3,y=1..3,z=1..3"]
+input = get_strings(raw_input)
+assert execute(input) == 8
+
+# first cube is inside the second cube
+raw_input = ["on x=2..3,y=2..3,z=2..3", "on x=1..3,y=1..3,z=1..3"]
+input = get_strings(raw_input)
+assert execute(input) == 8
+
+# two cubes of size 8 which overlap by 1
 raw_input = ["on x=1..3,y=1..3,z=1..3", "on x=2..4,y=2..4,z=2..4"]
 input = get_strings(raw_input)
 assert execute(input) == 15
