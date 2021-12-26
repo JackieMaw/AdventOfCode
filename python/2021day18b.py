@@ -175,6 +175,15 @@ def reduce(number):
     
     return number
 
+def add_numbers(number1, number2):
+    result = add(number1, number2)
+    result_reduced = reduce(result)
+    # print(f"  {number1}")
+    # print(f"+ {number2}")
+    # print(f"= {result_reduced}")
+    # print()
+    return result_reduced
+
 def add_list(numbers):
 
     result = None
@@ -182,13 +191,7 @@ def add_list(numbers):
         if result is None:
             result = number
         else:
-            new_result = add(result, number)
-            result_reduced = reduce(new_result)
-            # print(f"  {result}")
-            # print(f"+ {number}")
-            # print(f"= {result_reduced}")
-            # print()
-            result = result_reduced
+            result = add_numbers(result, number)
     return result
 
 def get_magnitude(number):
@@ -200,11 +203,22 @@ def get_magnitude(number):
 def execute(input):
     #print(input)
 
-    number = add_list(input)
+    max_magnitude = 0
+    i = 0
+    max_i = len(input) * (len(input) - 1)
 
-    result = get_magnitude(number)
-    print(f"result: {result}") 
-    return result
+    for number1 in input:
+        for number2 in input:
+            if number1 != number2:             
+                i += 1
+                print(f"Computing {i} of {max_i}...")   
+                result = add_numbers(number1, number2)
+                magnitude = get_magnitude(result)
+                if magnitude > max_magnitude:
+                    max_magnitude = magnitude
+
+    print(f"max_magnitude: {max_magnitude}") 
+    return max_magnitude
 
 # TESTS
 
@@ -267,8 +281,11 @@ assert result == "[[[[6,6],[7,6]],[[7,7],[7,0]]],[[[7,7],[7,7]],[[7,8],[9,9]]]]"
 assert get_magnitude(result) == 4140
 print("TEST INPUT 5 PASSED - CORRECT MAGNITUDE")
 
+assert execute(input) == 3993
+print("TEST INPUT 5 PASSED - LARGEST MAGNITUDE")
+
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 3763
+assert execute(input) == 4664
 print("ANSWER CORRECT")
