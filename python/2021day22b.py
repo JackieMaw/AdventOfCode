@@ -289,21 +289,21 @@ YEAR = 2021
 DAY = 22
 
 # TEST INPUT DATA
-raw_input = get_input(YEAR, DAY, "_test1")
-input = get_strings(raw_input)
-assert execute(input) == 39
+# raw_input = get_input(YEAR, DAY, "_test1")
+# input = get_strings(raw_input)
+# assert execute(input) == 39
 
-raw_input = get_input(YEAR, DAY, "_test2")
-input = get_strings(raw_input)
-assert execute(input) == 590784
+# raw_input = get_input(YEAR, DAY, "_test2")
+# input = get_strings(raw_input)
+# assert execute(input) == 590784
 
 raw_input = get_input(YEAR, DAY, "_test3")
 input = get_strings(raw_input)
-assert execute(input) == 2758514936282235
+assert execute(input) == 2758514936282235 # not 6411488869913901
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 647076
+assert execute(input) == 0 # not 2130779000262977
 print("ANSWER CORRECT")
