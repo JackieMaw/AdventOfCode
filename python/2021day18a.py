@@ -87,19 +87,26 @@ def explode_at(number, ptr):
         right_ptr_end += 1
     right_number = int(number[right_ptr_start:right_ptr_end])
 
+    #print(f"explode [{left_number},{right_number}] @ {ptr}")
+
     s1 = number[:ptr]
     s2 = number[right_ptr_end+1:]
 
-    new_left_ptr = len(s1) - 1
-    while new_left_ptr > 0 and s1[new_left_ptr] in ["[", "]", ","]:
-        new_left_ptr -= 1
+    assert f"{s1}[{left_number},{right_number}]{s2}" == number
 
-    if new_left_ptr > 0:
-        new_left_ptr_end = new_left_ptr + 1
-        while new_left_ptr_end < len(s1) and s1[new_left_ptr_end] not in ["[", "]", ","]:
-            new_left_ptr_end += 1
-        new_left_number = left_number + int(s1[new_left_ptr:new_left_ptr_end])
-        s1 = s1[:new_left_ptr] + str(new_left_number) + s1[new_left_ptr_end:]
+    new_left_ptr_end = len(s1) - 1
+    while new_left_ptr_end > 0 and s1[new_left_ptr_end] in ["[", "]", ","]: # keep looking for a number on the left
+        new_left_ptr_end -= 1
+
+    if new_left_ptr_end > 0: # we found a number on the left, now where does this number start?
+        new_left_ptr_start = new_left_ptr_end
+        while new_left_ptr_start > 0 and s1[new_left_ptr_start] not in ["[", "]", ","]:
+            new_left_ptr_start -= 1
+        new_left_ptr_start += 1 # we found the first non-numeric, so the number must start after that
+        old_left_number = int(s1[new_left_ptr_start:new_left_ptr_end + 1])
+        new_left_number = left_number + old_left_number
+        #print(f"*** LHS {left_number} ==> {old_left_number} + {left_number} = {new_left_number}")
+        s1 = s1[:new_left_ptr_start] + str(new_left_number) + s1[new_left_ptr_end + 1:]
 
     new_right_ptr = 0
     while new_right_ptr < len(s2) and s2[new_right_ptr] in ["[", "]", ","]:
@@ -109,7 +116,9 @@ def explode_at(number, ptr):
         new_right_ptr_end = new_right_ptr + 1
         while new_right_ptr_end < len(s2) and s2[new_right_ptr_end] not in ["[", "]", ","]:
             new_right_ptr_end += 1
-        new_right_number = right_number + int(s2[new_right_ptr:new_right_ptr_end])
+        old_right_number = int(s2[new_right_ptr:new_right_ptr_end])
+        new_right_number = right_number + old_right_number        
+        #print(f"*** RHS {right_number} ==> {old_right_number} + {right_number} = {new_right_number}")
         s2 = s2[:new_right_ptr] + str(new_right_number) + s2[new_right_ptr_end:]
        
     return s1 + "0" + s2
@@ -175,10 +184,10 @@ def add_list(numbers):
         else:
             new_result = add(result, number)
             result_reduced = reduce(new_result)
-            print(f"  {result}")
-            print(f"+ {number}")
-            print(f"= {result_reduced}")
-            print()
+            # print(f"  {result}")
+            # print(f"+ {number}")
+            # print(f"= {result_reduced}")
+            # print()
             result = result_reduced
     return result
 
@@ -189,7 +198,7 @@ def get_magnitude(number):
     return snail_fish_number.get_magnitude()
 
 def execute(input):
-    print(input)
+    #print(input)
 
     number = add_list(input)
 
@@ -223,26 +232,25 @@ YEAR = 2021
 DAY = 18
 
 # TEST INPUT DATA
-# raw_input = get_input(YEAR, DAY, "_test1")
-# input = get_strings(raw_input)
-# assert add_list(input) == "[[[[1,1],[2,2]],[3,3]],[4,4]]"
-# print("TEST INPUT 1 PASSED")
+raw_input = get_input(YEAR, DAY, "_test1")
+input = get_strings(raw_input)
+assert add_list(input) == "[[[[1,1],[2,2]],[3,3]],[4,4]]"
+print("TEST INPUT 1 PASSED")
 
-# raw_input = get_input(YEAR, DAY, "_test2")
-# input = get_strings(raw_input)
-# assert add_list(input) == "[[[[3,0],[5,3]],[4,4]],[5,5]]"
-# print("TEST INPUT 2 PASSED")
+raw_input = get_input(YEAR, DAY, "_test2")
+input = get_strings(raw_input)
+assert add_list(input) == "[[[[3,0],[5,3]],[4,4]],[5,5]]"
+print("TEST INPUT 2 PASSED")
 
-# raw_input = get_input(YEAR, DAY, "_test3")
-# input = get_strings(raw_input)
-# assert add_list(input) == "[[[[5,0],[7,4]],[5,5]],[6,6]]"
-# print("TEST INPUT 3 PASSED")
+raw_input = get_input(YEAR, DAY, "_test3")
+input = get_strings(raw_input)
+assert add_list(input) == "[[[[5,0],[7,4]],[5,5]],[6,6]]"
+print("TEST INPUT 3 PASSED")
 
-# assert get_magnitude("[9,1]") == 29
-# assert get_magnitude("[1,9]") == 21
-# assert get_magnitude("[[9,1],[1,9]]") == 129
+assert get_magnitude("[9,1]") == 29
+assert get_magnitude("[1,9]") == 21
+assert get_magnitude("[[9,1],[1,9]]") == 129
 
-# breaking test!
 test4_line7 = ["[[[[6,6],[6,6]],[[6,0],[6,7]]],[[[7,7],[8,9]],[8,[8,1]]]]", "[2,9]"]
 assert add_list(test4_line7) == "[[[[6,6],[7,7]],[[0,7],[7,7]]],[[[5,5],[5,6]],9]]"
 
@@ -254,5 +262,5 @@ print("TEST INPUT 4 PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 3763
 print("ANSWER CORRECT")
