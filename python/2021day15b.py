@@ -143,22 +143,26 @@ DAY = 15
 
 # TEST INPUT DATA
 raw_input = get_input(YEAR, DAY, "_test_super_small")
-input = get_strings(raw_input)
-assert execute(input) == 136
+input_data = get_strings(raw_input)
+assert execute(input_data) == 136
 print("TEST INPUT (super small) PASSED")
 
 raw_input = get_input(YEAR, DAY, "_test_small")
-input = get_strings(raw_input)
-assert execute(input) == 204
+input_data = get_strings(raw_input)
+assert execute(input_data) == 204
 print("TEST INPUT (small) PASSED")
 
 raw_input = get_input(YEAR, DAY, "_test")
-input = get_strings(raw_input)
-assert execute(input) == 315
+input_data = get_strings(raw_input)
+assert execute(input_data) == 315
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
-input = get_strings(raw_input)
-assert execute(input) == 0
-print("ANSWER CORRECT")
+input_data = get_strings(raw_input)
+result = execute(input_data)
+print(f"RESULT: {result}")
+
+print()
+print(f"Press ENTER to continue...")
+user_input = input()

@@ -69,10 +69,10 @@ def play(east, south, width, depth):
 
     return num_moved, east, south
 
-def execute(input):
+def execute(input_data):
     #print(input)
 
-    east, south, width, depth = load(input)
+    east, south, width, depth = load(input_data)
 
     num_moved = 1
     iterations = 0
@@ -98,13 +98,13 @@ DAY = 25
 # assert execute(input) == 58
 
 raw_input = get_input(YEAR, DAY, "_test2")
-input = get_strings(raw_input)
-assert execute(input) == 58
+input_data = get_strings(raw_input)
+assert execute(input_data) == 58
 
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
-input = get_strings(raw_input)
-assert execute(input) == 474
+input_data = get_strings(raw_input)
+assert execute(input_data) == 474
 print("ANSWER CORRECT")
