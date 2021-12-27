@@ -92,7 +92,7 @@ def get_shortest_path(nodes, max_x, max_y):
                             new_risk_factor -= 9            
                         extra_nodes[new_node] = new_risk_factor
                         print_string += str(new_risk_factor)
-            print(print_string)
+            #print(print_string)
 
     nodes.update(extra_nodes)
 

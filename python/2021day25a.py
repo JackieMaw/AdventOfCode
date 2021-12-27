@@ -6,7 +6,8 @@ import copy
 
 def load(input):
 
-    east, south = set()
+    east = set()
+    south = set()
 
     width = len(input[0])
     depth = len(input)
@@ -24,41 +25,60 @@ def load(input):
 
 def play(east, south, width, depth):
 
+    # print()
+    # for d in range(depth):
+    #     s = ""
+    #     for w in range(width):
+    #         pos = (w, d)
+    #         if pos in east:
+    #             s += ">"
+    #         elif pos in south:
+    #             s += "v"
+    #         else:
+    #             s += "."
+    #     print(s)
+    # print()
+
     num_moved = 0
 
     new_east = east.copy()
     for current_position in east:
         (w, d) = current_position
-        new_w = 0 if w == width else w + 1
+        new_w = 0 if w == width - 1 else w + 1
         new_position = (new_w, d)
         
         if new_position not in east and new_position not in south:
             new_east.remove(current_position)
             new_east.add(new_position)
+            #print(f"> moved from {current_position} to {new_position}")
             num_moved += 1
     east = new_east
     
     new_south = south.copy()
     for current_position in south:
         (w, d) = current_position
-        new_d = 0 if d == depth else d + 1
+        new_d = 0 if d == depth - 1 else d + 1
         new_position = (w, new_d)
         
         if new_position not in east and new_position not in south:
             new_south.remove(current_position)
             new_south.add(new_position)
+            #print(f"v moved from {current_position} to {new_position}")
             num_moved += 1
     south = new_south
 
-def execute(input):
-    print(input)
+    return num_moved, east, south
 
-    state = load(input)
+def execute(input):
+    #print(input)
+
+    east, south, width, depth = load(input)
 
     num_moved = 1
     iterations = 0
     while num_moved > 0:
-        num_moved = play(state)
+        # print(f"STEP {iterations}:")
+        num_moved, east, south = play(east, south, width, depth)        
         iterations += 1
 
     result = iterations
@@ -73,13 +93,18 @@ YEAR = 2021
 DAY = 25
 
 # TEST INPUT DATA
-raw_input = get_input(YEAR, DAY, "_test")
+# raw_input = get_input(YEAR, DAY, "_test1")
+# input = get_strings(raw_input)
+# assert execute(input) == 58
+
+raw_input = get_input(YEAR, DAY, "_test2")
 input = get_strings(raw_input)
 assert execute(input) == 58
+
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 474
 print("ANSWER CORRECT")
