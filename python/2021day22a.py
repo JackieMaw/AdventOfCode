@@ -31,11 +31,13 @@ def initialize(space, line):
                         space.remove(cube)                    
 
 def execute(input):
-    print(input)
+    #print(input)
 
     space = set()
     for line in input:
         initialize(space, line)
+        #size = len(space)
+        #print(f"size: {size}")
 
     result = len(space)
     print(f"result: {result}") 

@@ -54,11 +54,11 @@ class Cube(object):
     
     def overlaps_with(self, other_cube):
 
-        x_in_range = in_range(self.Start.X, other_cube.Start.X, other_cube.End.X) or in_range(self.End.X, other_cube.Start.X, other_cube.End.X)
-        y_in_range = in_range(self.Start.Y, other_cube.Start.Y, other_cube.End.Y) or in_range(self.End.Y, other_cube.Start.Y, other_cube.End.Y)
-        z_in_range = in_range(self.Start.Z, other_cube.Start.Z, other_cube.End.Z) or in_range(self.End.Z, other_cube.Start.Z, other_cube.End.Z)        
+        x_out_of_range = other_cube.End.X <= self.Start.X or other_cube.Start.X >= self.End.X
+        y_out_of_range = other_cube.End.Y <= self.Start.Y or other_cube.Start.Y >= self.End.Y
+        z_out_of_range = other_cube.End.Z <= self.Start.Z or other_cube.Start.Z >= self.End.Z 
 
-        result = x_in_range and y_in_range and z_in_range
+        result = not x_out_of_range and not y_out_of_range and not z_out_of_range
 
         #if result:
         #    print(f"Existing cube {self} overlaps with {other_cube}")
@@ -126,8 +126,11 @@ def get_range(string, limit):
     line_parts = string.split("..")
     start = int(line_parts[0][2:])
     end = int(line_parts[1]) + 1
-    if limit is not None:
+    if limit is not None and start < -limit:
+        #print(f"LIMIT APPLIED TO START: {start}")
         start = max(start, -limit)
+    if limit is not None and end > limit + 1:
+        #print(f"LIMIT APPLIED TO END: {end}")
         end = min(end, limit)
     return (start, end)
 
@@ -195,6 +198,8 @@ def execute(input, limit = None):
     space = set()
     for line in input:
         initialize(space, line, limit)
+        #size = sum([cube.size() for cube in space])
+        #print(f"size: {size}")
 
     size = sum([cube.size() for cube in space])
 
@@ -269,11 +274,11 @@ assert execute(input, 50) == 590784
 raw_input = get_input(YEAR, DAY, "_test3")
 input = get_strings(raw_input)
 assert execute(input, 50) == 474140 
-assert execute(input) == 2758514936282235 # not 6726338736433640
+assert execute(input) == 2758514936282235
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0 # not 2130779000262977
+assert execute(input) == 1233304599156793
 print("ANSWER CORRECT")
