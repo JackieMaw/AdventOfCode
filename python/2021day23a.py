@@ -32,14 +32,16 @@ hallway = [(1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1)]
 def get_settled(state):
     return []
 
-def try_move_to(start, end, state, player_cost):
-    
-    players = [player for team_state in state for player in team_state]
-    # check if the destination is free
-    if end in players:
-        #print(f"  Cannot move from {start} to {end} because another player is already there.")
-        return None
+moves_cache = {}
 
+def get_moves_from_cache(start, end):
+    if (start, end) in moves_cache:
+        return moves_cache[(start, end)]
+    moves = get_moves(start, end)
+    moves_cache[(start, end)] = moves
+    return moves
+
+def get_moves(start, end):
     # try to move to the destination one step at a time
     (start_x, start_y) = start
     (end_x, end_y) = end
@@ -59,6 +61,19 @@ def try_move_to(start, end, state, player_cost):
 
     # then move down into the room from 1 to end_y
     moves.extend([(end_x, y) for y in range(1, end_y)])
+
+    return moves
+
+def try_move_to(start, end, state, player_cost):
+    
+    players = [player for team_state in state for player in team_state]
+
+    # check if the destination is free
+    if end in players:
+        #print(f"  Cannot move from {start} to {end} because another player is already there.")
+        return None
+
+    moves = get_moves(start, end)    
 
     for move in moves:
         if move in players:
