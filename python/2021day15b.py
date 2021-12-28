@@ -3,19 +3,40 @@ from os import execl
 from utilities import *
 import math
 import copy
+import heapq
 
-def parse_input(input):
-    nodes = {}
+def get_risk_factors(input_data):
 
-    x = 0
-    for line in input:
-        y = 0
-        for char in line:
-            nodes[(x, y)] = int(char)
-            y += 1
-        x += 1
+    width = len(input_data[0])
+    length = len(input_data)
 
-    return nodes, x-1, y-1
+    total_width = width * 5
+    total_length = length * 5
+    risk_factors = [ [ 0 for i in range(total_width) ] for j in range(total_length) ]
+
+    for x in range(width):
+        for y in range(length):
+
+            risk_factor = int(input_data[y][x])
+
+            for j in range(0, 5):
+                for i in range(0, 5):
+
+                    if i == 0 and j == 0:
+                        risk_factors[y][x] = risk_factor
+
+                    else:
+                        new_x = x + i * width
+                        new_y = y + j * length
+                        additional_risk_factor = i + j    
+                        new_risk_factor = (risk_factor + additional_risk_factor)
+                        if new_risk_factor > 9:
+                            new_risk_factor -= 9            
+                        risk_factors[new_y][new_x] = new_risk_factor
+
+    #display_matrix(risk_factors)
+
+    return risk_factors, total_width, total_length
 
 def get_neighbours(visited, node, max_x, max_y):
 
@@ -27,7 +48,7 @@ def get_neighbours(visited, node, max_x, max_y):
     for (dx, dy) in directions:
         x1 = x + dx
         y1 = y + dy
-        if x1 >= 0 and x1 <= max_x and y1 >= 0 and y1 <= max_y:
+        if x1 >= 0 and x1 < max_x and y1 >= 0 and y1 < max_y:
             if (x1, y1) not in visited:
                 neighbours.append((x1, y1))
 
@@ -54,81 +75,45 @@ def remove(key, dic, item):
         if len(dic[key]) == 0:
             dic.pop(key)
 
-def get_shortest_path(nodes, max_x, max_y):
+def display_matrix(matrix):
+    for row in matrix:
+        print(' '.join([ str(col) for col in row ]))
 
-    width = max_x + 1
-    length = max_y + 1
+def get_shortest_path(risk_factors, total_width, total_length):
 
-    max_x = width * 5 - 1
-    max_y = length * 5 - 1
+    shortest_path = [ [ None for _ in range(total_width) ] for _ in range(total_length) ]
+    visited = [ [ 0 for _ in range(total_width) ] for _ in range(total_length) ]
 
-    distance_queue = {} # 0 : [items at 0 distance away]
-    shortest_path = {}
-    start = (0, 0)
-    end = (max_x, max_y)
+    priority_queue = [(0, 0, 0)] # (cost, x, y)
+    shortest_path[0][0] = 0
 
-    inf = 99999999999999
-    # initialize
-    
-    extra_nodes = {}
-    for j in range(0, 5):
-        for x in range(width):
-            print_string = ""
-            for i in range(0, 5):
-                for y in range(length):
-                    n = (x, y)
-                    risk_factor = nodes[n]
-                    if i == 0 and j == 0:
-                        shortest_path[n] = (inf, None) # (distance_to_node, previous_node)            
-                        add(inf, distance_queue, n)
-                        print_string += str(risk_factor)
-                    else:
-                        new_node = (n[0] + i * width, n[1] + j * length)
-                        shortest_path[new_node] = (inf, None) # (distance_to_node, previous_node)            
-                        add(inf, distance_queue, new_node)
-                        additional_risk_factor = i + j    
-                        new_risk_factor = (risk_factor + additional_risk_factor)
-                        if new_risk_factor > 9:
-                            new_risk_factor -= 9            
-                        extra_nodes[new_node] = new_risk_factor
-                        print_string += str(new_risk_factor)
-            #print(print_string)
+    #display_matrix(shortest_path)
+    #display_matrix(visited)
 
-    nodes.update(extra_nodes)
-
-    shortest_path[start] = (0, None)
-    add(0, distance_queue, start)
-
-    visited = []
-    more_work_to_do = True
-    while more_work_to_do:
-        node = get_next_node(distance_queue)
-        visited.append(node)
-        (distance_to_node, _) = shortest_path[node]
-        node_weight = nodes[node]
-        remove(distance_to_node, distance_queue, node)
-        #print(f"Visiting: {node}")
-        neighbours = get_neighbours(visited, node, max_x, max_y)
-        for neighbour in neighbours:
-            (distance_to_neighbour, _) = shortest_path[neighbour]
+    while len(priority_queue) > 0:
+        (distance_to_node, x, y) = heapq.heappop(priority_queue)
+        visited[y][x] = 1
+        node_weight = risk_factors[y][x]
+        #print(f"Visiting: {(x, y)}")
+        neighbours = get_neighbours(visited, (x, y), total_width, total_length)
+        for (nx, ny) in neighbours:
+            distance_to_neighbour = shortest_path[ny][nx]
             new_distance_to_neighbour = distance_to_node + node_weight
-            if new_distance_to_neighbour < distance_to_neighbour:
-                #print(f"    found shortest path to {neighbour} : {new_distance_to_neighbour}")
-                shortest_path[neighbour] = (new_distance_to_neighbour, node)
-                remove(distance_to_neighbour, distance_queue, neighbour)
+            if distance_to_neighbour is None or new_distance_to_neighbour < distance_to_neighbour:
+                #print(f"    found shortest path to {(nx, ny)} : {new_distance_to_neighbour}")
+                shortest_path[ny][nx] = new_distance_to_neighbour
                 # do not add if already visited
-                if neighbour not in visited:
-                    add(new_distance_to_neighbour, distance_queue, neighbour)
-        more_work_to_do = len(visited) < len(nodes)
+                if not visited[ny][nx]:
+                    heapq.heappush(priority_queue, (new_distance_to_neighbour, nx, ny))
 
-    (distance_to_end, _) = shortest_path[end]
-    distance_to_end -= nodes[start]
-    distance_to_end += nodes[end]
+    distance_to_end = shortest_path[total_length - 1][total_width - 1]
+    distance_to_end -= risk_factors[0][0]
+    distance_to_end += risk_factors[total_length - 1][total_width - 1]
     return distance_to_end
 
-def execute(input):
-    nodes, max_x, max_y = parse_input(input)    
-    shortest_path = get_shortest_path(nodes, max_x, max_y)
+def execute(input_data):
+    risk_factors, total_width, total_length = get_risk_factors(input_data)    
+    shortest_path = get_shortest_path(risk_factors, total_width, total_length)
 
     result = shortest_path
     print(f"result: {result}") 
@@ -160,9 +145,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input_data = get_strings(raw_input)
-result = execute(input_data)
-print(f"RESULT: {result}")
-
-print()
-print(f"Press ENTER to continue...")
-user_input = input()
+assert execute(input_data) == 2942
+print("ANSWER CORRECT")

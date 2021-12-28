@@ -4,6 +4,31 @@ from utilities import *
 import math
 import copy
 
+
+
+def get_possible_moves():
+    possible_moves = []
+
+    # 1. Are there any players in the top of a room which can go home now?
+    # 
+    # Once an amphipod stops moving in the hallway, it will stay in that spot until it can move into a room
+    # Amphipods will never move from the hallway into a room unless that room is their destination room 
+    #   and that room contains no amphipods which do not also have that room as their own destination.
+
+    # 2. Are there any players in the hallway which can go home?
+    # 
+    # Once an amphipod stops moving in the hallway, it will stay in that spot until it can move into a room
+    # Amphipods will never move from the hallway into a room unless that room is their destination room 
+    #   and that room contains no amphipods which do not also have that room as their own destination.
+    
+    # 2. For each room, does the top player in the room need to move? There are 7 possible spaces in the hallway it can move to.
+    # 
+    # Amphipods will never stop on the space immediately outside any room.
+    # Amphipods will never move from the hallway into a room unless that room is their destination room 
+    #   and that room contains no amphipods which do not also have that room as their own destination.
+
+    return possible_moves
+
 def execute(input):
     print(input)
     result = 0
