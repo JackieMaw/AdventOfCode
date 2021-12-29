@@ -29,8 +29,45 @@ def get_players(input_data):
 final_state = [[(3, 2), (3, 3)], [(5, 2), (5, 3)], [(7, 2), (7, 3)], [(9, 2), (9, 3)]]
 hallway = [(1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1)]
 
-def get_settled(state):
-    return []
+
+def is_foreigner_present(state, team_number, team_room_spaces, player):
+
+    team_players = state[team_number]
+
+    (player_x, player_y) = player
+    for team_room_space in team_room_spaces:
+        (x, y) = team_room_space
+        # deeper in the room than the player
+        if y > player_y: 
+            # this space should be occupied by someone in my team
+            if team_room_space not in team_players:
+                return True
+    
+    return False
+
+def is_settled(player, team_number, state):
+
+    # to be settled, the player should be in the team room, and there should be no other foreign players deeper in the room
+    team_room_spaces = final_state[team_number]
+    if player in team_room_spaces:
+        if is_foreigner_present(state, team_number, team_room_spaces, player):
+            return False
+        else:
+            return True
+
+    return False
+
+def get_all_settled(state):
+
+    settled = []
+
+    for team_number in range(4):
+        team_state = state[team_number]
+        for player in team_state:            
+            if is_settled(player, team_number, state):
+                settled.append(player)
+
+    return settled
 
 moves_cache = {}
 
@@ -42,7 +79,7 @@ def get_moves_from_cache(start, end):
     return moves
 
 def get_moves(start, end):
-    # try to move to the destination one step at a time
+    
     (start_x, start_y) = start
     (end_x, end_y) = end
 
@@ -73,7 +110,8 @@ def try_move_to(start, end, state, player_cost):
         #print(f"  Cannot move from {start} to {end} because another player is already there.")
         return None
 
-    moves = get_moves(start, end)    
+    # try to move to the destination one step at a time
+    moves = get_moves_from_cache(start, end) 
 
     for move in moves:
         if move in players:
@@ -90,7 +128,7 @@ def get_possible_moves(state):
     #players = [[(5, 2), (5, 3)], [(3, 3), (7, 3)], [(3, 2), (9, 3)], [(7, 2), (9, 2)]]
 
     possible_moves = []
-    settled = get_settled(state)
+    settled = get_all_settled(state)
 
     for team_number in range(4):
         team_state = state[team_number]
@@ -101,7 +139,9 @@ def get_possible_moves(state):
             print(f"Computing all possible moves for {team_name} @ {player}:")
 
             # if the player is already home it will not move again
-            if player not in settled:
+            if player in settled:
+                print(f"    {team_name} @ {player} IS SETTLED")
+            else:
 
                 player_cost = 10 ** team_number
 
@@ -110,7 +150,8 @@ def get_possible_moves(state):
                 for home_space in home_room:
                     cost = try_move_to(player, home_space, state, player_cost)
                     if cost is not None:
-                        # TODO - also check no foreigners are in the room!
+                        # TODO - also check no foreigners are in the room lower down!
+                        # TODO - also move right down to the bottom of the room if the room is empty
                         possible_moves.append((player, home_space, cost))       
                         print(f"*** {team_name} can move from {player} to {home_space} [HOME] with cost {cost}")
                         # if you can move home, then all other moves are WORSE
@@ -146,8 +187,13 @@ DAY = 23
 # TEST INPUT DATA
 raw_input = get_input(YEAR, DAY, "_test")
 input = get_strings(raw_input)
-assert execute(input) == 12521
+assert execute(input) == 24
 print("TEST INPUT PASSED")
+
+raw_input = get_input(YEAR, DAY, "_final")
+input = get_strings(raw_input)
+assert execute(input) == 0
+print("TEST INPUT PASSED - FINAL")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
