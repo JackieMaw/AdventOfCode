@@ -8,9 +8,9 @@ import heapq
 team_map = {"A" : 0, "B" : 1, "C" : 2, "D" : 3} 
 team_number_map = ["A", "B", "C", "D"]
 
-def get_players(input_data):
+def get_initial_state(input_data):
 
-    players = [ [] for _ in range(4) ]
+    state = [ [] for _ in range(4) ]
 
     width = len(input_data[0])
     length = len(input_data)
@@ -20,11 +20,14 @@ def get_players(input_data):
             player = input_data[y][x]
             if player in team_map:
                 index = team_map[player]
-                players[index].append((x, y))
+                state[index].append((x, y))
 
-    print(players)
+    for team_state in state:
+        team_state.sort(key = lambda player: player[1])
 
-    return players
+    print(state)
+
+    return state
 
 final_state = [[(3, 2), (3, 3)], [(5, 2), (5, 3)], [(7, 2), (7, 3)], [(9, 2), (9, 3)]]
 hallway = [(1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1)]
@@ -152,12 +155,14 @@ def get_possible_moves(state):
 
         for player in team_state:
             
-            print(f"Computing all possible moves for {team_name} @ {player}:")
+            #print(f"Computing all possible moves for {team_name} @ {player}:")
 
             # if the player is already home it will not move again
-            if player in settled:
-                print(f"    {team_name} @ {player} IS SETTLED")
-            else:
+            # if player in settled:
+            #     print(f"    {team_name} @ {player} IS SETTLED")
+            # else:
+
+            if player not in settled:
 
                 player_cost = 10 ** team_number
 
@@ -169,7 +174,7 @@ def get_possible_moves(state):
                         # TODO - also check no foreigners are in the room lower down!
                         # TODO - also move right down to the bottom of the room if the room is empty
                         possible_moves.append((player, home_space, cost))       
-                        print(f"*** {team_name} can move from {player} to {home_space} [HOME] with cost {cost}")
+                        #print(f"*** {team_name} can move from {player} to {home_space} [HOME] with cost {cost}")
                         # if you can move home, then all other moves are WORSE
                         # return possible_moves    
 
@@ -179,7 +184,7 @@ def get_possible_moves(state):
                         cost = try_move_to(player, hallway_space, state, player_cost)
                         if cost is not None:
                             possible_moves.append((player, hallway_space, cost))
-                            print(f"*** {team_name} can move from {player} to {hallway_space} [HALLWAY] with cost {cost}")
+                            #print(f"*** {team_name} can move from {player} to {hallway_space} [HALLWAY] with cost {cost}")
 
     return possible_moves
 
@@ -189,6 +194,7 @@ def apply_move(current_state, start, end):
 
     for team_state in current_state:
         new_team_state = [end if player == start else player for player in team_state]
+        new_team_state.sort(key = lambda player: player[1])
         new_state.append(new_team_state)
 
     return new_state
@@ -201,6 +207,7 @@ def get_shortest_path(initial_state):
     priority_queue = [(0, initial_state)]
 
     while len(priority_queue) > 0:
+        #print(f"Visited: {len(visited)}")
         (cost_to_current_state, current_state) = heapq.heappop(priority_queue)
         current_state_string = to_state_string(current_state)
         visited.add(current_state_string)
@@ -224,7 +231,7 @@ def get_shortest_path(initial_state):
 def execute(input_data):
     print(input_data)
 
-    state = get_players(input_data)
+    state = get_initial_state(input_data)
     cost = get_shortest_path(state)
 
     result = cost
