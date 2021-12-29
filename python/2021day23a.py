@@ -168,15 +168,14 @@ def get_possible_moves(state):
 
                 # try to move home 
                 home_room = final_state[team_number]
-                for home_space in home_room:
+                for home_space in reversed(home_room): # try the lowest space first
                     cost = try_move_to(player, home_space, state, player_cost)
                     if cost is not None:
-                        # TODO - also check no foreigners are in the room lower down!
-                        # TODO - also move right down to the bottom of the room if the room is empty
-                        possible_moves.append((player, home_space, cost))       
-                        #print(f"*** {team_name} can move from {player} to {home_space} [HOME] with cost {cost}")
-                        # if you can move home, then all other moves are WORSE
-                        # return possible_moves    
+                        if not is_foreigner_present(state, team_number, home_room, home_space):
+                            #print(f"*** {team_name} can move from {player} to {home_space} [HOME] with cost {cost}")
+                            #possible_moves.append((player, home_space, cost))                            
+                            # if you can move home into the lowest space, then all other moves are WORSE so abandon them
+                            return [(player, home_space, cost)]   
 
                 # if you are not in the hallway already, try to move into hallway
                 if player not in hallway:
@@ -261,5 +260,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 10526
 print("ANSWER CORRECT")
