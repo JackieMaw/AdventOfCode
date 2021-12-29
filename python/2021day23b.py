@@ -7,7 +7,7 @@ import heapq
 
 team_map = {"A" : 0, "B" : 1, "C" : 2, "D" : 3} 
 team_number_map = ["A", "B", "C", "D"]
-hallway = [(1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1)]
+hallway = [(1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1), (11, 1)]
 
 def get_initial_state(input_data):
 
@@ -271,5 +271,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_input(YEAR, DAY, "_b")
 input_data = get_strings(raw_input)
-assert execute(input_data) == 10526
+assert execute(input_data) == 41284
 print("ANSWER CORRECT")
