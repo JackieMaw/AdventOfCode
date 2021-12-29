@@ -3,7 +3,7 @@ from os import execl
 from utilities import *
 import math
 import copy
-
+import heapq
 
 team_map = {"A" : 0, "B" : 1, "C" : 2, "D" : 3} 
 team_number_map = ["A", "B", "C", "D"]
@@ -28,6 +28,22 @@ def get_players(input_data):
 
 final_state = [[(3, 2), (3, 3)], [(5, 2), (5, 3)], [(7, 2), (7, 3)], [(9, 2), (9, 3)]]
 hallway = [(1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1)]
+
+def to_state_string(state):
+    return "#".join(["|".join([str(player) for player in team_state]) for team_state in state])
+
+def from_state_string(state_string):        
+    # state = []
+
+    # for team_state_string in state_string.split("#"):
+    #     team_state = []
+    #     for player_state_string in team_state_string.split("|"):
+    #         player_state = eval(player_state_string)
+    #         team_state.append(player_state)
+    #     state.append(team_state)
+
+    # return state    
+    return [[eval(player_state_string) for player_state_string in team_state_string.split("|")] for team_state_string in state_string.split("#")]
 
 
 def is_foreigner_present(state, team_number, team_room_spaces, player):
@@ -167,33 +183,73 @@ def get_possible_moves(state):
 
     return possible_moves
 
+def apply_move(current_state, start, end):
+
+    new_state = []
+
+    for team_state in current_state:
+        new_team_state = [end if player == start else player for player in team_state]
+        new_state.append(new_team_state)
+
+    return new_state
+
+def get_shortest_path(initial_state):
+
+    shortest_path = { to_state_string(initial_state) : 0 }
+    visited = set()
+
+    priority_queue = [(0, initial_state)]
+
+    while len(priority_queue) > 0:
+        (cost_to_current_state, current_state) = heapq.heappop(priority_queue)
+        current_state_string = to_state_string(current_state)
+        visited.add(current_state_string)
+        # list of (start, end, cost)
+        possible_moves = get_possible_moves(current_state)
+        for (start, end, cost_of_move) in possible_moves:
+            new_state = apply_move(current_state, start, end)  
+            new_state_string = to_state_string(new_state)          
+            existing_cost_to_new_state = shortest_path[new_state_string] if new_state_string in shortest_path else None
+            new_distance_to_new_state = cost_to_current_state + cost_of_move
+            if existing_cost_to_new_state is None or new_distance_to_new_state < existing_cost_to_new_state:
+                #print(f"    found shortest path to {(nx, ny)} : {new_distance_to_neighbour}")
+                shortest_path[new_state_string] = new_distance_to_new_state
+                # do not add if already visited
+                if new_state_string not in visited:
+                    heapq.heappush(priority_queue, (new_distance_to_new_state, new_state))
+
+    final_state_string = to_state_string(final_state)
+    return shortest_path[final_state_string]
+
 def execute(input_data):
     print(input_data)
 
-    players = get_players(input_data)
-    possible_moves = get_possible_moves(players)
+    state = get_players(input_data)
+    cost = get_shortest_path(state)
 
-    result = len(possible_moves)
+    result = cost
     print(f"result: {result}") 
     return result
 
 # TESTS
-# assert execute(get_strings_csv(["ABCD"])) == 0
-# print("ALL TESTS PASSED")
+assert to_state_string(final_state) == "(3, 2)|(3, 3)#(5, 2)|(5, 3)#(7, 2)|(7, 3)#(9, 2)|(9, 3)"
+assert final_state == from_state_string("(3, 2)|(3, 3)#(5, 2)|(5, 3)#(7, 2)|(7, 3)#(9, 2)|(9, 3)")
+print("ALL TESTS PASSED")
 
 YEAR = 2021
 DAY = 23
 
 # TEST INPUT DATA
-raw_input = get_input(YEAR, DAY, "_test")
-input = get_strings(raw_input)
-assert execute(input) == 24
-print("TEST INPUT PASSED")
 
 raw_input = get_input(YEAR, DAY, "_final")
 input = get_strings(raw_input)
 assert execute(input) == 0
-print("TEST INPUT PASSED - FINAL")
+print("TEST INPUT PASSED - FINAL STATE")
+
+raw_input = get_input(YEAR, DAY, "_test")
+input = get_strings(raw_input)
+assert execute(input) == 12521
+print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
