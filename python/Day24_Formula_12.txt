@@ -1,0 +1,121 @@
+(Program authors should be especially cautious; attempting to execute div with b=0 
+or attempting to execute mod with a<0 or b<=0 will cause the program to crash and might even damage the ALU. 
+These operations are never intended in any serious ALU program.)
+
+FORMULA #12 - Given 9 possible values for z12, solve for (z11, w)
+
+param1 = -15
+param2 = 9
+
+z12 = (9..17)
+	= (z11 div 26) x (25x + 1) + (w + param2) * x 
+	= (z11 div 26) x (25x + 1) + (w + 9) * x 
+	
+x = 0: if (z11 mod 26) + param1 == w
+x = 0: if (z11 mod 26) - 15 == w
+x = 1: if (z11 mod 26) + param1 != w
+x = 1: if (z11 mod 26) - 15 != w
+
+note: (25x + 1) is only ever 1 or 26
+note: we know that z12 >= 0 because it's used in mod operation
+
+CASE 1
+
+x = 0: if (z11 mod 26) + param1 == w
+x = 0: if (z11 mod 26) - 15 == w
+
+z12 = (9..17)
+	= (z11 div 26) x (25x + 1) + (w + param2) * x 
+	= (z11 div 26)
+
+so z11 could be any number from 9 x 26 to 18 x 26 - 1 (which is a lot of numbers)
+we also know that w is between 1 and 9
+so we can generate pairs of (z12, w) which would satify the formula
+note: in this case param2 is irrelevant
+
+w 	= (z11 mod 26) + param1
+	= (z11 mod 26) - 15
+
+
+(z11, w)
+
+(416, 1)
+(417, 1)
+(418, 1)
+(419, 1)
+(420, 1)
+(421, 1)
+(422, 1)
+(423, 1)
+(424, 1)
+(425, 1)
+(426, 1)
+(427, 1)
+(428, 1)
+(429, 1)
+(430, 1)
+(431, 1)
+(432, 1)
+(433, 1)
+(434, 1)
+(435, 1)
+(436, 1)
+(437, 1)
+(438, 1)
+(439, 1)
+(440, 1)
+(441, 1)
+(442, 2)
+(443, 2)
+(444, 2)
+(445, 2)
+(446, 2)
+(447, 2)
+(448, 2)
+(449, 2)
+(450, 2)
+(451, 2)
+(452, 2)
+(453, 2)
+(454, 2)
+(455, 2)
+(456, 2)
+(457, 2)
+(458, 2)
+(459, 2)
+(460, 2)
+(461, 2)
+(462, 2)
+(463, 2)
+(464, 2)
+(465, 2)
+(466, 2)
+(467, 2)
+
+# 52 possible pairs for CASE 1, but only 2 possible digits = 1 and 2
+
+
+CASE 2
+
+x = 1: if (z11 mod 26) + param1 != w
+x = 1: if (z11 mod 26) - 15 != w
+
+z12 = (9..17)
+	= (z11 div 26) x (25x + 1) + (w + param2) * x 
+	= (z11 div 26) x 26 + (w + 9)
+	
+(z11 div 26) x 26 + (w + 9) = (9..17) 
+26 x (z11 div 26) = (9..17) - w - 9 
+z11 div 26 = ((9..17) -w - 9) / 26
+
+because div returns a round number, ((9..17) -w - 9) must be a multiple of 26
+z11 cannot be negative, so ((9..17) -w - 9) cannot be negative
+
+9: 9 - 9 - w = - w > 0 = INVALID
+10: 10 - 9 - w = 1 - w >= 0 VALID FOR w = 1 only, 10 - 1 - 9 = 0 which is a multiple of 26
+11: 11 - 9 - w = 2 - w >= 0 VALID for w = 2 only, 11 - 2 - 9 = 0 which is a multiple of 26
+12: 12 - 9 - w = 3 - w >= 0 VALID for w = 4 only, 12 - 3 - 9 = 0 which is a multiple of 26
+
+OH DEAR ME, they are all valid! shit
+
+	

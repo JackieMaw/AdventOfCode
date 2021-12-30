@@ -18,8 +18,8 @@ def check_number(number):
     if 0 in digits:
         return False
 
-    if digits[12] not in [1, 2]:
-        return False
+    # if digits[12] not in [1, 2]:
+    #     return False
 
     z = f1(digits[0], 1, 12, 6, 0)
     z = f1(digits[1], 1, 11, 12, z)
