@@ -4,7 +4,18 @@ from utilities import *
 import math
 import copy
 
-def f1(w, divisor, param1, param2, z):
+function_cache = {}
+
+def function(w, divisor, param1, param2, z):
+    params = (w, divisor, param1, param2, z)
+    if params in function_cache:
+        return function_cache[params]
+    else:
+        result = exec_function(w, divisor, param1, param2, z)
+        function_cache[params] = result
+        return result
+
+def exec_function(w, divisor, param1, param2, z):
     x = 0 if (z % 26 + param1) == w else 1
     y1 = 25 * x + 1
     z = (z // divisor) * y1
@@ -21,25 +32,25 @@ def check_number(number):
     # if digits[12] not in [1, 2]:
     #     return False
 
-    z = f1(digits[0], 1, 12, 6, 0)
-    z = f1(digits[1], 1, 11, 12, z)
-    z = f1(digits[2], 1, 10, 5, z)
-    z = f1(digits[3], 1, 10, 10, z)
+    z = function(digits[0], 1, 12, 6, 0)
+    z = function(digits[1], 1, 11, 12, z)
+    z = function(digits[2], 1, 10, 5, z)
+    z = function(digits[3], 1, 10, 10, z)
 
-    z = f1(digits[4], 26, -16, 7, z)
+    z = function(digits[4], 26, -16, 7, z)
     
-    z = f1(digits[5], 1, 14, 0, z)
-    z = f1(digits[6], 1, 12, 4, z)
+    z = function(digits[5], 1, 14, 0, z)
+    z = function(digits[6], 1, 12, 4, z)
 
-    z = f1(digits[7], 26, -4, 12, z)
+    z = function(digits[7], 26, -4, 12, z)
 
-    z = f1(digits[8], 1, 15, 14, z)
+    z = function(digits[8], 1, 15, 14, z)
 
-    z = f1(digits[9], 26, -7, 13, z)
-    z = f1(digits[10], 26, -8, 10, z)
-    z = f1(digits[11], 26, -4, 11, z)
-    z = f1(digits[12], 26, -15, 9, z)
-    z = f1(digits[13], 26, -8, 9, z)
+    z = function(digits[9], 26, -7, 13, z)
+    z = function(digits[10], 26, -8, 10, z)
+    z = function(digits[11], 26, -4, 11, z)
+    z = function(digits[12], 26, -15, 9, z)
+    z = function(digits[13], 26, -8, 9, z)
 
     model_number_accepted = z == 0
 
@@ -88,7 +99,7 @@ def execute():
 
 pairs = [(z12, z12 - 8) for z12 in range(9, 18)]
 for (z12, w) in pairs:
-    z13 = f1(w, 26, -8, 9, z12)
+    z13 = function(w, 26, -8, 9, z12)
     assert z13 == 0
 
 print(f"z13 Sanity Check Passed, yay!")
