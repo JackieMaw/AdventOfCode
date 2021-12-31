@@ -116,6 +116,8 @@ z11 cannot be negative, so ((9..17) -w - 9) cannot be negative
 11: 11 - 9 - w = 2 - w >= 0 VALID for w = 2 only, 11 - 2 - 9 = 0 which is a multiple of 26
 12: 12 - 9 - w = 3 - w >= 0 VALID for w = 4 only, 12 - 3 - 9 = 0 which is a multiple of 26
 
-OH DEAR ME, they are all valid! shit
+OH DEAR ME, all the digits are valid
+
+which gives us 9 + 52 = 61 possible pairs of (z11, w)
 
 	

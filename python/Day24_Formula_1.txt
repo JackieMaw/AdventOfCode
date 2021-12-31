@@ -1,0 +1,48 @@
+(Program authors should be especially cautious; attempting to execute div with b=0 
+or attempting to execute mod with a<0 or b<=0 will cause the program to crash and might even damage the ALU. 
+These operations are never intended in any serious ALU program.)
+
+inp w
+mul x 0
+add x z
+mod x 26
+div z 1
+add x 12 *
+eql x w
+eql x 0
+mul y 0
+add y 25
+mul y x
+add y 1
+mul z y
+mul y 0
+add y w
+add y 6 *
+mul y x
+add z y
+
+FORMULA #1
+
+divisor = 1
+param1 = 12
+param2 = 6
+
+z1 	= (z0 div 1) x (25x + 1) + (w + param2) * x 
+	
+x = 0: if (z0 mod 26) + param1 == w
+x = 1: if (z0 mod 26) + param1 != w
+
+if x = 0:
+z1 	= (z0 div 1) x (25x + 1) + (w + param2) * x 
+	= z0
+	
+if x = 1:
+z1 	= (z0 div 1) x (25x + 1) + (w + param2) * x 
+	= 26 x z0 + w + param2
+
+if param1 > 9 then (z0 mod 26) + param1 > w so x MUST BE 1
+
+z1 	= 26 x z0 + w + param2
+	= 26 x z0 + w + 6
+	
+In this case, w can be anything. So we need to check all 9 cases.

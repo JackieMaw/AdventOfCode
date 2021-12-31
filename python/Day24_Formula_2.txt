@@ -1,0 +1,51 @@
+(Program authors should be especially cautious; attempting to execute div with b=0 
+or attempting to execute mod with a<0 or b<=0 will cause the program to crash and might even damage the ALU. 
+These operations are never intended in any serious ALU program.)
+
+inp w
+mul x 0
+add x z
+mod x 26
+div z 26 *
+add x -16 *
+eql x w
+eql x 0
+mul y 0
+add y 25
+mul y x
+add y 1
+mul z y
+mul y 0
+add y w
+add y 7 *
+mul y x
+add z y
+
+FORMULA #2
+
+divisor = 26
+param1 = -16
+param2 = 7
+
+z1 	= (z0 div 26) x (25x + 1) + (w + param2) * x 
+	
+x = 0: if (z0 mod 26) + param1 == w
+x = 1: if (z0 mod 26) + param1 != w
+
+if x = 0:
+z1 	= (z0 div 26) x (25x + 1) + (w + param2) * x 
+	= z0 div 26 *scaling down
+	
+if x = 1:
+z1 	= (z0 div 26) x (25x + 1) + (w + param2) * x 
+	= 26 x (z0 div 26) + w + param2 *scaling up
+
+z starts at 0 and must end at zero
+we really need x = 0 in order to scale down z
+
+to make x = 0 we must have:
+	(z0 mod 26) + param1 = w
+	z0 mod 26 - 16 = w
+	
+we know z0 because we have it computed from the previous formula
+so we can uniquely determine w

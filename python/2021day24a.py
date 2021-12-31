@@ -92,28 +92,25 @@ def execute():
     
     print(f"SMALLEST MODEL NUMBER ACCEPTED: {result}") 
 
-    return result
-
-
 # CHECK THE FINAL FORMULA
 
-pairs = [(z12, z12 - 8) for z12 in range(9, 18)]
-for (z12, w) in pairs:
-    z13 = function(w, 26, -8, 9, z12)
-    assert z13 == 0
+# pairs = [(z12, z12 - 8) for z12 in range(9, 18)]
+# for (z12, w) in pairs:
+#     z13 = function(w, 26, -8, 9, z12)
+#     assert z13 == 0
 
-print(f"z13 Sanity Check Passed, yay!")
+# print(f"z13 Sanity Check Passed, yay!")
 
-# z = 9 * 26 to 18 * 26 - 1
-# w = (z11 mod 26) - 15
+# # z = 9 * 26 to 18 * 26 - 1
+# # w = (z11 mod 26) - 15
 
-valid_digits = list(range(1, 10))
-for z11 in range(9 * 26, 18 * 26):
-    w = (z11 // 26) - 15 
-    if w in valid_digits:
-        print(f"{(z11, w)}")
+# valid_digits = list(range(1, 10))
+# for z11 in range(9 * 26, 18 * 26):
+#     w = (z11 // 26) - 15 
+#     if w in valid_digits:
+#         print(f"{(z11, w)}")
 
-print(f"z11 Generation Completed")
+# print(f"z11 Generation Completed")
 
 
 # TESTS
@@ -132,5 +129,7 @@ DAY = 24
 # REAL INPUT DATA
 # raw_input = get_or_download_input(YEAR, DAY)
 # input = get_strings(raw_input)
-assert execute() == 0
-print("ANSWER CORRECT")
+execute()
+print()
+print(f"Press ENTER to continue...")
+user_input = input()
