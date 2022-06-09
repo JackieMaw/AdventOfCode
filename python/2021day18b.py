@@ -72,14 +72,15 @@ def add(number1, number2):
 
 def explode_at(number, ptr):
 
-    # number[ptr] = "[11,8]"
-    # number[ptr] = "[5,777]"
+    # extract the left number for the exploding pair
 
     left_ptr_start = ptr + 1
     left_ptr_end = left_ptr_start + 1
     while left_ptr_end < len(number) and number[left_ptr_end] not in ["[", "]", ","]:
         left_ptr_end += 1
     left_number = int(number[left_ptr_start:left_ptr_end])
+
+    # extract the right number for the exploding pair
 
     right_ptr_start = left_ptr_end + 1
     right_ptr_end = right_ptr_start + 1
@@ -89,10 +90,12 @@ def explode_at(number, ptr):
 
     #print(f"explode [{left_number},{right_number}] @ {ptr}")
 
-    s1 = number[:ptr]
-    s2 = number[right_ptr_end+1:]
+    s1 = number[:ptr] # the beginning of the string will remain the same
+    s2 = number[right_ptr_end+1:] # the end of the string will remain the same
 
     assert f"{s1}[{left_number},{right_number}]{s2}" == number
+
+    # look for the neighbour to the left
 
     new_left_ptr_end = len(s1) - 1
     while new_left_ptr_end > 0 and s1[new_left_ptr_end] in ["[", "]", ","]: # keep looking for a number on the left
@@ -104,9 +107,11 @@ def explode_at(number, ptr):
             new_left_ptr_start -= 1
         new_left_ptr_start += 1 # we found the first non-numeric, so the number must start after that
         old_left_number = int(s1[new_left_ptr_start:new_left_ptr_end + 1])
-        new_left_number = left_number + old_left_number
+        new_left_number = left_number + old_left_number 
         #print(f"*** LHS {left_number} ==> {old_left_number} + {left_number} = {new_left_number}")
         s1 = s1[:new_left_ptr_start] + str(new_left_number) + s1[new_left_ptr_end + 1:]
+
+    # look for the neighbour to the right
 
     new_right_ptr = 0
     while new_right_ptr < len(s2) and s2[new_right_ptr] in ["[", "]", ","]:
@@ -125,6 +130,9 @@ def explode_at(number, ptr):
 
 def explode(number):
 
+    # walk through the number from left to right, counting the nesting level by counting the brackets
+    # as soon as you get to a nesting level of 5 we know we are too deep and we need to "expode" this number (prune the branch)
+
     nesting = 0
     for ptr in range(len(number)):
         if number[ptr] == "[":
@@ -140,8 +148,6 @@ def explode(number):
 
 def split_at(number, ptr):
 
-    # number[ptr] = "201"
-
     end_ptr = ptr + 1
     while end_ptr < len(number) and number[end_ptr] not in ["[", "]", ","]:
         end_ptr += 1
@@ -156,6 +162,9 @@ def split_at(number, ptr):
 
 
 def split(number):
+
+    # walk through the number from left to right, checking to see if there is any two-digit number, ie: 10 or greater
+    # as soon as you find one we know the number is too big and we need to "split" this number into a pair (make a new branch)
 
     for ptr in range(len(number) - 1):
         if number[ptr] not in ["[", "]", ","] and number[ptr + 1] not in ["[", "]", ","]:

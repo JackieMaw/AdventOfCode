@@ -46,23 +46,6 @@ def will_hit_target(velocity, target):
             #print(f"MISSED: velocity => {starting_velocity}")
             return False    
 
-def get_good_vx(target):
-    
-    ((x_min, x_max), (y_min, y_max)) = target
-    # find the vx which has a vx_sum within the target range of x:
-    vx = 0
-    missed = False
-    while not missed:
-        vx += 1
-        vx_sum = vx * (vx + 1) / 2
-        in_range = vx_sum >= x_min and vx_sum <= x_max
-        missed = vx_sum > x_max
-        if in_range:
-            return vx
-
-    return None
-
-
 def execute(x_min, x_max, y_min, y_max):
 
     target = ((x_min, x_max), (y_min, y_max))

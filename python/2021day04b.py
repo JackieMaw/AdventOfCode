@@ -79,25 +79,7 @@ def execute(input):
 
     numbers = input[0].split(",")
 
-    boards = read_boards(input)
-
-    boards = []
-    this_board = None
-    marked = None
-    row_counter = 2
-    while row_counter < len(input):
-        line = input[row_counter].split()
-        if len(line) == 5:
-            if this_board is None:
-                this_board = []      
-                marked = []           
-            this_board.append(line)
-            marked.append([0,0,0,0,0])
-            if len(this_board) == 5:
-                boards.append((this_board, marked))
-                this_board = None
-                marked = None
-        row_counter += 1     
+    boards = read_boards(input) 
 
     (board, marked, num) = play(numbers, boards)
 
