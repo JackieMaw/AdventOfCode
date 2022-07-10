@@ -1,13 +1,13 @@
-# --- Day 14: Snailfish ---
+# --- Day 18: Snailfish ---
 https://adventofcode.com/2021/day/18
-
-## State Representation
 
 There are two operations we need to perform:
  1) Add two Snailfish numbers together (including reduction)
  2) Calculate the Magnitude of a Snailfish number
 
- How we choose to represent a Snailfish number is really quite important because that will enable the algorithm we implement.
+## State Representation
+
+How we choose to represent a Snailfish number is really quite important because that will enable the algorithm we implement.
 
 ## Algorithm
 
