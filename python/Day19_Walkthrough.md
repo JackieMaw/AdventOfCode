@@ -32,7 +32,15 @@ And for each of those 6 directions, you could spin the scanner around in 4 possi
 
 ### Attempt to Fit
 
+Well how would know if this cube actually fits?
 
+At least 12 of the beacons in the cube should be exactly the same distance away from beacons in the puzzle space.
+So we calculate the distance from every cube beacon to every space beacon, and if we get 12 distances which are the same, then we have found a successful fit.
+We can add this cube to the puzzle space with the distance we have calculated as our offset.
+
+offset = (-dx, -dy, -dz)
+
+We could optimize this further by reducing the search space...
 
 ## Part Two - What is the largest Manhattan distance between any two scanners?
 

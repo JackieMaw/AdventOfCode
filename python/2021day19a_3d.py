@@ -9,9 +9,10 @@ class Cube():
         self.name = name
         self.beacons = beacons
 
-def add_to_space(tile, offset, space):
-    print(f"Added {tile[0]} to space with offset: {offset}")
-    for beacon in tile[1]:
+def add_to_space(cube, offset, space):
+    (cube_name, beacons) = cube
+    #print(f"Added {cube_name} to space with offset: {offset}")
+    for beacon in beacons:
         (x, y, z) = beacon
         (ox, oy, oz) = offset
         beacon_in_space = (x + ox, y + oy, z + oz)
@@ -37,7 +38,7 @@ def parse_input(input):
 
     # this cube is completed
     cubes.append((f"Cube #{cube_number}", beacons))    
-    print(f"Loaded Last Cube #{cube_number}")
+    #print(f"Loaded Last Cube #{cube_number}")
 
     return cubes
 
@@ -119,23 +120,25 @@ def try_to_fit(space_beacons, cube_beacons, match_count):
 
     distances = {}
     
-    # print(f"check_overlap: must do { len(cube_beacons) * len(space_beacons)} checks")
+    # print(f"try_to_fit: must do { len(cube_beacons) * len(space_beacons)} checks")
 
     for cube_beacon in cube_beacons:
         for space_beacon in space_beacons:
+            # calculate the distance from the cube beacon to the space beacon
             dx = cube_beacon[0] - space_beacon[0]
             dy = cube_beacon[1] - space_beacon[1]
             dz = cube_beacon[2] - space_beacon[2]
             distance = (dx, dy, dz)
             if distance in distances:
                 distances[distance] += 1
+                # if we have enough distances which are the same, then we can count this as a fit
                 if distances[distance] >= match_count:
                     offset = (-dx, -dy, -dz)
-                    return offset
+                    return (True, offset) # (cube_fits, offset)
             else:
                 distances[distance] = 1
 
-    return None
+    return (False, None) # (cube_fits, offset)
 
 def build_space(cubes, match_count):
 
@@ -160,7 +163,7 @@ def build_space(cubes, match_count):
                 add_to_space(rotated_cube, offset, space)
                 break
         if offset is None: # after checking all rotations, we failed to place this cube, save it for later
-            print(f"FAILED to fit '{cube[0]}' in any rotation... will try again later")
+            #print(f"FAILED to fit '{cube[0]}' in any rotation... will try again later")
             cubes.append(cube)
 
     return space
@@ -184,13 +187,17 @@ def execute(input, match_count = 12):
 beacons = [(-1,-1,1), (-2,-2,2), (-3,-3,3), (-2,-3,1), (5,6,-4), (8,0,7)]
 test_cube = ('TEST CUBE', beacons)
 rotations = get_all_rotations(test_cube)
-assert get_distinct_beacons(rotations, 6) == 6
+space = build_space(rotations, 6)
+result = get_number_of_beacons(space)
+assert result == 6
 
 # testing no transformations with (5,5,5) offset
 
 test_cube0 = ('TEST CUBE 0', [(1,1,1), (2,2,2), (3,3,3)])
 test_cube1 = ('TEST CUBE 1 + (5,5,5)', [(6,6,6), (7,7,7), (8,8,8)])
-assert get_distinct_beacons([test_cube0, test_cube1], 3) == 3
+space = build_space([test_cube0, test_cube1], 3)
+result = get_number_of_beacons(space)
+assert result == 3
 
 print("ALL TESTS PASSED")
 
