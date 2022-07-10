@@ -9,7 +9,7 @@ Imagine that we have a pile of cubes (these are our puzzle pieces) and an empty 
 
 1. Take the first cube and use it as the center of our puzzle space.
 2. Take the next cube from the pile and try to fit it somewhere in the puzzle space. You might need to rotate it 23 times to see if it will fit.
-3. If it does fit, add it to our puzzle space and make a note of where you put it.
+3. If it does fit, add it to our puzzle space. Also, make a note of where you put it because you'll need this information for Part Two.
 4. If it doesn't fit anywhere, put it aside to try again later.
 5. If you still have more cubes left to try, go to step 2.
 
@@ -30,10 +30,9 @@ For 3 dimensions, there are 24 possible rotations, which is best understood by l
 As the cube has 6 faces, they cube can be facing 6 directions. north, south, east, west, up, down.
 And for each of those 6 directions, you could spin the scanner around in 4 possible 2-dimensional rotations leaving the 3rd dimension fixed.
 
-So you could rotate:
-xy, xz
-yx, yz
-zx, zy
+### Attempt to Fit
+
+
 
 ## Part Two - What is the largest Manhattan distance between any two scanners?
 

@@ -41,50 +41,45 @@ def parse_input(input):
 
     return cubes
 
-# CHEAT!
+# I totally cheated here!
+# I spent hours trying to do the rotations logically but couldn't get it right so I gave up
 
-transformation_functions = []
-transformation_functions.append(lambda x, y, z: (x, y, z))
-
-transformation_functions.append(lambda x, y, z: (x, z, -y))
-transformation_functions.append(lambda x, y, z: (-z, x, -y))
-transformation_functions.append(lambda x, y, z: (-x, -z, -y))
-
-transformation_functions.append(lambda x, y, z: (z, -x, -y))
-transformation_functions.append(lambda x, y, z: (z, -y, x))
-transformation_functions.append(lambda x, y, z: (y, z, x))
-
-transformation_functions.append(lambda x, y, z: (-z, y, x))
-transformation_functions.append(lambda x, y, z: (-y, -z, x))
-transformation_functions.append(lambda x, y, z: (-y, x, z))
-
-transformation_functions.append(lambda x, y, z: (-x, -y, z))
-transformation_functions.append(lambda x, y, z: (y, -x, z))
-
-transformation_functions.append(lambda x, y, z: (-z, -x, y))
-transformation_functions.append(lambda x, y, z: (x, -z, y))
-transformation_functions.append(lambda x, y, z: (z, x, y))
-
-transformation_functions.append(lambda x, y, z: (-x, z, y))
-transformation_functions.append(lambda x, y, z: (-x, y, -z))
-transformation_functions.append(lambda x, y, z: (-y, -x, -z))
-
-transformation_functions.append(lambda x, y, z: (x, -y, -z))
-transformation_functions.append(lambda x, y, z: (y, x, -z))
-transformation_functions.append(lambda x, y, z: (y, -z, -x))
-
-transformation_functions.append(lambda x, y, z: (z, y, -x))
-transformation_functions.append(lambda x, y, z: (-y, z, -x))
-transformation_functions.append(lambda x, y, z: (-z, -y, -x))
+rotation_functions = []
+rotation_functions.append(lambda x, y, z: (x, y, z))
+rotation_functions.append(lambda x, y, z: (x, z, -y))
+rotation_functions.append(lambda x, y, z: (-z, x, -y))
+rotation_functions.append(lambda x, y, z: (-x, -z, -y))
+rotation_functions.append(lambda x, y, z: (z, -x, -y))
+rotation_functions.append(lambda x, y, z: (z, -y, x))
+rotation_functions.append(lambda x, y, z: (y, z, x))
+rotation_functions.append(lambda x, y, z: (-z, y, x))
+rotation_functions.append(lambda x, y, z: (-y, -z, x))
+rotation_functions.append(lambda x, y, z: (-y, x, z))
+rotation_functions.append(lambda x, y, z: (-x, -y, z))
+rotation_functions.append(lambda x, y, z: (y, -x, z))
+rotation_functions.append(lambda x, y, z: (-z, -x, y))
+rotation_functions.append(lambda x, y, z: (x, -z, y))
+rotation_functions.append(lambda x, y, z: (z, x, y))
+rotation_functions.append(lambda x, y, z: (-x, z, y))
+rotation_functions.append(lambda x, y, z: (-x, y, -z))
+rotation_functions.append(lambda x, y, z: (-y, -x, -z))
+rotation_functions.append(lambda x, y, z: (x, -y, -z))
+rotation_functions.append(lambda x, y, z: (y, x, -z))
+rotation_functions.append(lambda x, y, z: (y, -z, -x))
+rotation_functions.append(lambda x, y, z: (z, y, -x))
+rotation_functions.append(lambda x, y, z: (-y, z, -x))
+rotation_functions.append(lambda x, y, z: (-z, -y, -x))
 
 def get_all_rotations(cube):
  
     all_rotations = []
 
-    for i, transformation_function in enumerate(transformation_functions):
-        cube_name = f"{cube[0]} => {i}"
-        beacons = [transformation_function(x, y, z) for (x, y, z) in cube[1]]
-        all_rotations.append((cube_name, beacons))
+    for i, rotation_function in enumerate(rotation_functions):
+        (original_cube_name, original_beacons) = cube
+        rotated_cube_name = f"{original_cube_name} => {i}" # this is only useful for debugging
+        rotated_beacons = [rotation_function(x, y, z) for (x, y, z) in original_beacons]
+        rotated_cube = (rotated_cube_name, rotated_beacons)
+        all_rotations.append(rotated_cube)
 
     return all_rotations
 
@@ -120,7 +115,7 @@ def overlap(space, beacons, offset, expected_match_count):
     else:
         return False
 
-def check_overlap(space_beacons, cube_beacons, match_count):
+def try_to_fit(space_beacons, cube_beacons, match_count):
 
     distances = {}
     
@@ -142,11 +137,11 @@ def check_overlap(space_beacons, cube_beacons, match_count):
 
     return None
 
-def get_distinct_beacons(cubes, match_count):
+def build_space(cubes, match_count):
 
     space = set()
     
-    # anchor the first tile
+    # anchor the first cube as the center of our space
     cube = cubes[0]
     cubes.remove(cube)
     add_to_space(cube, (0, 0, 0), space)
@@ -157,37 +152,32 @@ def get_distinct_beacons(cubes, match_count):
         cubes.remove(cube)
         cube_rotations = get_all_rotations(cube)
         offset = None        
-        for cube_rotation in cube_rotations:
-            #print(f"Checking '{cube_rotation[0]}'...")
-            offset = check_overlap(space, cube_rotation[1], match_count)
-            if offset is not None:
-                add_to_space(cube_rotation, offset, space)
+        for rotated_cube in cube_rotations:
+            (rotated_cube_name, rotated_beacons) = rotated_cube
+            #print(f"Attempting to fit '{rotated_cube_name}'...")
+            (cube_fits, offset) = try_to_fit(space, rotated_beacons, match_count)
+            if cube_fits:
+                add_to_space(rotated_cube, offset, space)
                 break
-        if offset is None: # after checking all rotations, we failed to place this tile, save it for later
-            print(f"FAILED to match '{cube[0]}' in any rotation... will try again later")
+        if offset is None: # after checking all rotations, we failed to place this cube, save it for later
+            print(f"FAILED to fit '{cube[0]}' in any rotation... will try again later")
             cubes.append(cube)
 
-    # count the number of beacons in space
+    return space
+
+def get_number_of_beacons(space):
     return len(space)
 
 def execute(input, match_count = 12):
-    #print(input)
-    cubes = parse_input(input) 
 
-    result = get_distinct_beacons(cubes, match_count)
+    cubes = parse_input(input) 
+    space = build_space(cubes, match_count)
+    result = get_number_of_beacons(space)
+
     print(f"result: {result}") 
     return result
 
 # TESTS
-# assert rotate([(1, 5)]) == [(5, -1)]
-# assert rotate("xy", ("test1", [(1, 2, 3)])) == ("test1 xy", [(2, -1, 3)])
-# assert rotate("yz", ("test1", [(1, 2, 3)])) == ("test1 yz", [(1, 3, -2)])
-# assert rotate("xz", ("test1", [(1, 2, 3)])) == ("test1 xz", [(3, 2, -1)])
-# # assert rotate([(5, -1)]) == [(-1, -5)]
-# # assert rotate([(-1, -5)]) == [(-5, 1)]
-# # assert rotate([(-5, 1)]) == [(1, 5)]
-# # assert overlap({(-1, -1, 1), (-2, -2, 2), (-3, -3, 3), (-2, -3, 1), (5, 6, -4), (8, 0, 7)}, [(1, -1, 1), (2, -2, 2), (3, -3, 3), (2, -1, 3), (-5, 4, -6), (-8, -7, 0)]) == True
-# # assert overlap({(0, 2), (3, 3), (4, 1)}, [(-1, -1), (-5, 0), (-2, 1)], (5, 2)) == True
 
 # testing transformations with 0 offset
 
