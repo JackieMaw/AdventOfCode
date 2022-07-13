@@ -48,7 +48,6 @@ def get_all_rotations(tile):
         tile = rotate(tile)
         all_rotations.append(tile)
 
-    #flipped = get_flipped(tile)
     return all_rotations
 
 
