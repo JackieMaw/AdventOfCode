@@ -42,6 +42,8 @@ For 3 dimensions, there are 24 possible rotations, which is best understood by l
 - And for each of those 6 directions, you could spin the cube around in 4 possible 2-dimensional rotations leaving the 3rd dimension fixed.
 - 6 x 4 = 24 QED
 
+I quite honestly couldn't figure out how to do the rotations logically so I "cheated" and hard-code all 24 :-)
+
 ### Fit
 
 Well how would know if this cube actually fits?
