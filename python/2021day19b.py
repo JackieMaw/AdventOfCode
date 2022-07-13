@@ -195,7 +195,6 @@ def execute(input, match_count = 12):
     return result
 
 # TESTS
-# print("ALL TESTS PASSED")
 
 YEAR = 2021
 DAY = 19
