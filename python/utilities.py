@@ -1,7 +1,7 @@
 import requests
 from os.path import exists
 
-SESSIONID = "53616c7465645f5f3d5d09564a9bb8b931491c70f588a3870571f6355a33b53d67ce7b2f6aec80f9886d54e419789dfe"
+SESSIONID = "PUT YOUR OWN SESSION ID IN HERE"
 USER_AGENT = ""
 
 def get_or_download_input(year, day):
