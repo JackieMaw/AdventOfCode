@@ -13,15 +13,17 @@ def get_or_download_input(year, day):
 
 def get_input(year, day, postfix):
     filename = f"input\Input_{year}_{day}{postfix}.txt"
+    print(f"Reading input from file: {filename}")
     with open(filename, "r") as text_file:
         return text_file.read().splitlines()
 
 def download_input(year, day, filename):
     uri = f'http://adventofcode.com/{year}/day/{day}/input'
+    print(f"Reading input from uri: {uri}")
     response = requests.get(uri, cookies={'session': SESSIONID}, headers={'User-Agent': USER_AGENT})
+    print(f"Writing input to file: {filename}")
     with open(filename, "w") as text_file:
         text_file.write(response.text)
-    print(f"input downloaded: {filename}")
 
 def get_strings(raw_input):
     return [l for l in raw_input]
