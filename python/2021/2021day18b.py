@@ -1,7 +1,7 @@
 #TODO - how to share utilities across folders? do I need to make a package?
 from abc import ABC, abstractmethod
 from os import execl
-from utilities import *
+from utilities.utilities import *
 import math
 import copy
 

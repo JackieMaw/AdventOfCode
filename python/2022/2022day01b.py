@@ -1,4 +1,4 @@
-from utilities import get_input
+from utilities import *
 
 def execute(input):
     total_calories_per_elf = []

@@ -1,6 +1,6 @@
 #TODO - how to share utilities?
 from os import execl
-from utilities import *
+from utilities.utilities import *
 import math
 import copy
 

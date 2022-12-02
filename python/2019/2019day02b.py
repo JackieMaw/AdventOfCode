@@ -1,5 +1,5 @@
 #TODO - how to share utilities?
-from utilities import *
+from utilities.utilities import *
 import math
 import copy
 

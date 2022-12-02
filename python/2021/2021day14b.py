@@ -1,6 +1,6 @@
 #TODO - how to share utilities across folders? do I need to make a package?
 from os import execl, system
-from utilities import *
+from utilities.utilities import *
 import math
 import copy
 
