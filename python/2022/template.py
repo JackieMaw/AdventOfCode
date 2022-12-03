@@ -1,4 +1,4 @@
-from .utilities import *
+from utilities import *
 import math
 import copy
 
@@ -12,7 +12,7 @@ def execute(input):
 # assert execute(get_strings_csv(["ABCD"])) == 0
 # print("ALL TESTS PASSED")
 
-YEAR = 2021
+YEAR = 2022
 DAY = 0
 
 # TEST INPUT DATA
