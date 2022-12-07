@@ -38,8 +38,9 @@ def get_stars_count(json_file_name: str) -> int:
 # process leaderboards
 
 YEAR = 2022
-GLOBAL = "384496"
-
-filename = download_leaderboard(YEAR, GLOBAL)
+all_leaderboards = { "GLOBAL":"384496", "Singpore":"", "India":"", "Poland":"", "Switzerland":"", "UK":"", "US":"" }
+ 
+for (leaderboard, code) in all_leaderboards.items():
+    filename = download_leaderboard(YEAR, code)
 result = get_stars_count(filename)
-print(f"GLOBAL leaderboard has {result} stars")
+print(f"{leaderboard} leaderboard has {result} stars")
