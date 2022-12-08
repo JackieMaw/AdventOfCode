@@ -6,10 +6,10 @@ USER_AGENT = ""
 
 def download_leaderboard(year, leaderboard_code):
     uri = f'https://adventofcode.com/{year}/leaderboard/private/view/{leaderboard_code}.json'
-    print(f"Reading input from uri: {uri}")
+    #print(f"Reading input from uri: {uri}")
     response = requests.get(uri, cookies={'session': SESSIONID}, headers={'User-Agent': USER_AGENT})
     filename = f"leaderboards\{year}_{leaderboard_code}.txt"
-    print(f"Writing input to file: {filename}")
+    #print(f"Writing input to file: {filename}")
     with open(filename, "w", encoding='utf-8') as text_file:
         text_file.write(response.text)
     return filename
