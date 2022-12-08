@@ -1,7 +1,7 @@
 import json
 import requests
 
-SESSIONID = "53616c7465645f5f8560ccb8622b41b149bda67a0fdaa8b9ca7c4f1c96049aa1f53ab73883b3eacc8ae8d91467a4e1cc8fbcfdb0fcb52921b5797863118fe880"
+SESSIONID = "53616c7465645f5f511ed419e8ad25692462aa7eb9415640eed6fd74e6329a6060f5de44b990cb75042374476541572f35dbf43c1052f29a6581973b7346dc73"
 USER_AGENT = ""
 
 def download_leaderboard(year, leaderboard_code):
@@ -38,9 +38,9 @@ def get_stars_count(json_file_name: str) -> int:
 # process leaderboards
 
 YEAR = 2022
-all_leaderboards = { "GLOBAL":"384496", "Singpore":"", "India":"", "Poland":"", "Switzerland":"", "UK":"", "US":"" }
+all_leaderboards = { "GLOBAL":"384496", "Singpore":"1580364", "India":"639163", "Poland":"392146", "Switzerland":"212737", "UK":"825756", "US":"984566" }
  
 for (leaderboard, code) in all_leaderboards.items():
     filename = download_leaderboard(YEAR, code)
-result = get_stars_count(filename)
-print(f"{leaderboard} leaderboard has {result} stars")
+    result = get_stars_count(filename)
+    print(f"{leaderboard} leaderboard has {result} stars")

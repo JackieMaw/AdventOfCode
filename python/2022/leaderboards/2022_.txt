@@ -1,1 +1,15 @@
-404 Not Found
+"384496":
+{"name":"Jacqueline Ungerer",
+"completion_day_level":{
+    "2":{
+        "1":{"get_star_ts":1669991869,"star_index":444923},
+        "2":{"get_star_ts":1669992356,"star_index":447211}},
+        "3":{"1":{"star_index":621666,"get_star_ts":1670052057},
+        "2":{"get_star_ts":1670053001,"star_index":624774}},
+        "1":{"2":{"star_index":62932,"get_star_ts":1669885679},
+        "1":{"get_star_ts":1669885306,"star_index":61403}},
+        "4":{"2":{"get_star_ts":1670137298,"star_index":890483},
+        "1":{"star_index":885674,"get_star_ts":1670135800}}},"local_score":876,"last_star_ts":1670137298,"stars":8,
+        "id":384496,"global_score":0},
+"109772":{"completion_day_level":{"4":{"2":{"star_index":863082,"get_star_ts":1670131366},"1":{"star_index":858271,"get_star_ts":1670130976}},"6":{"1":{"star_index":1454642,"get_star_ts":1670303792},"2":{"get_star_ts":1670303864,"star_index":1455793}},"1":{"2":{"star_index":27719,"get_star_ts":1669875806},"1":{"get_star_ts":1669875411,"star_index":26511}},"3":{"1":{"get_star_ts":1670045083,"star_index":589965},"2":{"get_star_ts":1670045669,"star_index":595317}},"7":{"2":{"get_star_ts":1670395081,"star_index":1757577},"1":{"get_star_ts":1670393350,"star_index":1750991}},"5":{"2":{"star_index":1145963,"get_star_ts":1670218144},"1":{"star_index":1144414,"get_star_ts":1670217977}},
+"2":{"2":{"star_index":279208,"get_star_ts":1669958427},"1":{"star_index":275444,"get_star_ts":1669958178}}}
