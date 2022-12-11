@@ -38,7 +38,7 @@ def sort_by_total_stars(stat):
 # process leaderboards
 
 YEAR = 2022
-all_leaderboards = { "GLOBAL":"384496", "Singpore":"1580364", "India":"639163", "Poland":"392146", "Switzerland":"212737", "UK":"825756", "US":"984566" }
+all_leaderboards = { "GLOBAL":"384496", "Singapore":"1580364", "India":"639163", "Poland":"392146", "Switzerland":"212737", "UK":"825756", "US":"984566" }
 goal=14
 
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
