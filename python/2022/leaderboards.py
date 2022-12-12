@@ -39,7 +39,7 @@ def sort_by_total_stars(stat):
 
 YEAR = 2022
 all_leaderboards = { "GLOBAL":"384496", "Singapore":"1580364", "India":"639163", "Poland":"392146", "Switzerland":"212737", "UK":"825756", "US":"984566" }
-goal=14
+goal=24
 
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
 stats.sort(reverse=True, key=sort_by_total_stars)
