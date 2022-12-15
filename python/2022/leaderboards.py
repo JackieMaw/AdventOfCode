@@ -38,14 +38,30 @@ def sort_by_total_stars(stat):
     (_, _, total_stars, _) = stat
     return total_stars
 
+def print_active_members(leaderboard_json):
+    data = json.loads(leaderboard_json)
+    members = data.get("members")
+    for key in members.keys():
+        num_stars = members[key]["stars"]
+        if num_stars >= 1:
+            print(f"{members[key]['name']}; ")
+
+def print_active_members_for_leaderboard(code):
+    leaderboard_json = get_leaderboard_json(YEAR, code)
+    print_active_members(leaderboard_json)
+
 # process leaderboards
 
 YEAR = 2022
 all_leaderboards = { "GLOBAL":"384496", "Singapore":"1580364", "India":"639163", "Poland":"392146", "Switzerland":"212737", "UK":"825756", "US":"984566" }
-goal=26
+goal=30
+
+print_active_members_for_leaderboard(all_leaderboards["GLOBAL"])
 
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
 stats.sort(reverse=True, key=sort_by_total_stars)
 
 for (leaderboard, total_active_members, total_stars, count_goal) in stats:
     print(f"{leaderboard} leaderboard has {total_active_members} active members achieving {total_stars} stars, with {count_goal} participants achieving at least {goal} stars")
+
+
