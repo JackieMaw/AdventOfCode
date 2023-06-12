@@ -1,7 +1,7 @@
 #https://adventofcode.com/2019/day/9
 #--- Day 9: Sensor Boost ---
 
-from day9a import IntCodeComputer, ParameterMode, OpCode, execute
+from model.IntCodeComputer import *
 
 
 def test_split_opcode():
@@ -30,7 +30,7 @@ def test_add_immediate_mode():
     computer = IntCodeComputer(intcode_program, [], [])
 
     mode1 = ParameterMode.IMMEDIATE_MODE
-    mode2 = ParameterMode.POSITION_MODE
+    mode2 = ParameterMode.IMMEDIATE_MODE
     mode3 = ParameterMode.POSITION_MODE
 
     computer.add(mode1, mode2, mode3)
@@ -58,7 +58,7 @@ def test_add_position_mode():
 
 def test_add_relative_mode():
 
-    intcode_program = [2203, 1, 2, 3, 0, 6, 6, 0]
+    intcode_program = [2203, 1, 2, 3, 0, 0, 6, 6, 0]
     computer = IntCodeComputer(intcode_program, [], [])
 
     mode1 = ParameterMode.RELATIVE_MODE
@@ -76,16 +76,12 @@ def test_add_relative_mode():
         2: 2,
         3: 3,
         4: 0,
-        5: 6,
+        5: 0,
         6: 6,
-        7: 12
+        7: 6,
+        8: 12
     }
 
-
-def test_add():
-    test_add_immediate_mode()
-    test_add_position_mode()
-    test_add_relative_mode()
 
 
 def test_input_output():
@@ -153,6 +149,10 @@ def test_large_number():
     test_result = execute(test_data, [], [])
     assert test_result == 1125899906842624
 
+def execute(input_data, input_stream, output_stream):
+    computer = IntCodeComputer(input_data, input_stream, output_stream)
+    computer.run_intcode()
+    return output_stream[len(output_stream) - 1]
 
 def execute_all():
 

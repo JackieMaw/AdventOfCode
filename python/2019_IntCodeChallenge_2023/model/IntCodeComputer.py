@@ -65,20 +65,28 @@ class IntCodeComputer():
         else:
             raise Exception(f"Unsupported Parameter Mode: {mode}")
 
+    def set_value(self, value, pointer, mode):
+
+        param = self.memory_space[pointer]
+
+        if mode == ParameterMode.POSITION_MODE:
+            self.memory_space[param] = value
+        elif mode == ParameterMode.RELATIVE_MODE:
+            self.memory_space[param + self.relative_base] = value
+        else:
+            raise Exception(f"Unsupported Parameter Mode: {mode}")
+
     def add(self, mode1, mode2, mode3):
 
-        print(f"Add: {mode1} + {mode2}")
+        print(f"Add: {mode1} + {mode2} => {mode3}")
 
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
         print(f"Add: {value1} + {value2}")
         output = value1 + value2
-        output_ptr = self.memory_space[self.instruction_pointer + 3]
-        if mode3 == ParameterMode.RELATIVE_MODE:
-            output_ptr = output_ptr + self.relative_base
-        
-        self.memory_space[output_ptr] = output
+
+        self.set_value(output, self.instruction_pointer + 3, mode3)
 
         self.instruction_pointer = self.instruction_pointer + 4
 
@@ -192,7 +200,7 @@ class IntCodeComputer():
                 return return_code
 
             elif opcode == OpCode.ADD:
-                self.add(mode1, mode2)
+                self.add(mode1, mode2, mode3)
 
             elif opcode == OpCode.MULTIPLY:
                 self.multiply(mode1, mode2)
@@ -223,25 +231,3 @@ class IntCodeComputer():
         raise Exception("Unexpected end of program.")
 
 
-def execute(input_data, input_stream, output_stream):
-    computer = IntCodeComputer(input_data, input_stream, output_stream)
-    computer.run_intcode()
-    print(f"Diagnostic Test Completed.")
-    print(f"All Outputs: {output_stream}")
-    diagnostic_code = output_stream[len(output_stream) - 1]
-    print(f"Diagnostic code: {diagnostic_code}")
-    return diagnostic_code
-
-
-def execute_all():
-
-    with open("./input/day9_actual.txt", "r") as text_file:
-        input_data = [int(l) for l in text_file.read().split(",")]
-
-    input_stream = [1]
-    output_stream = []
-    result = execute(input_data, input_stream, output_stream)
-    print(f" ==== ACTUAL Result: {result}  ====")
-
-    assert result == 2369720
-    print(f"ACTUAL PASSED!")
