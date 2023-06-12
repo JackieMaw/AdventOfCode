@@ -128,12 +128,14 @@ def test_jump():
 
 
 def test_copy_myself():
-    test_data = [
+    test_program = [
         int(l) for l in
         "109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99".split(",")
     ]
-    test_result = execute(test_data, [], [])
-    assert test_result == 109
+    output_stream = []
+    computer = IntCodeComputer(test_program, [], output_stream)
+    computer.run_intcode()
+    assert computer.output_stream == test_data
 
 
 def test_16_digit():
@@ -149,10 +151,10 @@ def test_large_number():
     test_result = execute(test_data, [], [])
     assert test_result == 1125899906842624
 
-def execute(input_data, input_stream, output_stream):
-    computer = IntCodeComputer(input_data, input_stream, output_stream)
+def execute(program, input_stream, output_stream):
+    computer = IntCodeComputer(program, input_stream, output_stream)
     computer.run_intcode()
-    return output_stream[len(output_stream) - 1]
+    return computer.get_diagnostic_code()
 
 def execute_all():
 

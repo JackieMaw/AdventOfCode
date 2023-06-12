@@ -54,14 +54,14 @@ class IntCodeComputer():
 
     def get_value(self, pointer, mode):
 
-        param = self.memory_space[pointer]
+        param = self.memory_space.get(pointer, 0)
 
         if mode == ParameterMode.IMMEDIATE_MODE:
             return param
         elif mode == ParameterMode.POSITION_MODE:
-            return self.memory_space[param]
+            return self.memory_space.get(param, 0)
         elif mode == ParameterMode.RELATIVE_MODE:
-            return self.memory_space[param + self.relative_base]
+            return self.memory_space.get(param + self.relative_base, 0)
         else:
             raise Exception(f"Unsupported Parameter Mode: {mode}")
 
@@ -84,13 +84,13 @@ class IntCodeComputer():
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
         print(f"Add: {value1} + {value2}")
-        output = value1 + value2
+        result = value1 + value2
 
-        self.set_value(output, self.instruction_pointer + 3, mode3)
+        self.set_value(result, self.instruction_pointer + 3, mode3)
 
         self.instruction_pointer = self.instruction_pointer + 4
 
-    def multiply(self, mode1, mode2):
+    def multiply(self, mode1, mode2, mode3):
 
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
@@ -98,17 +98,16 @@ class IntCodeComputer():
         print(f"Multiply: {value1} x {value2}")
         result = value1 * value2
 
-        output_ptr = self.memory_space[self.instruction_pointer + 3]
-        self.memory_space[output_ptr] = result
+        self.set_value(result, self.instruction_pointer + 3, mode3)
 
         self.instruction_pointer = self.instruction_pointer + 4
 
-    def input(self):
+    def input(self, mode1):
 
         input_to_save = self.input_stream.pop(0)
         print(f"INPUT: {input_to_save}")
-        output_ptr = self.memory_space[self.instruction_pointer + 1]
-        self.memory_space[output_ptr] = input_to_save
+        
+        self.set_value(input_to_save, self.instruction_pointer + 1, mode1)
 
         self.instruction_pointer = self.instruction_pointer + 2
 
@@ -143,35 +142,33 @@ class IntCodeComputer():
         else:
             self.instruction_pointer = self.instruction_pointer + 3
 
-    def less_than(self, mode1, mode2):
+    def less_than(self, mode1, mode2, mode3):
 
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
         print(f"Less Than: {value1} < {value2}")
         if value1 < value2:
-            output = 1
+            result = 1
         else:
-            output = 0
-
-        output_ptr = self.memory_space[self.instruction_pointer + 3]
-        self.memory_space[output_ptr] = output
+            result = 0
+        
+        self.set_value(result, self.instruction_pointer + 3, mode3)
 
         self.instruction_pointer = self.instruction_pointer + 4
 
-    def equals(self, mode1, mode2):
+    def equals(self, mode1, mode2, mode3):
 
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
         print(f"Equals: {value1} == {value2}")
         if value1 == value2:
-            output = 1
+            result = 1
         else:
-            output = 0
-
-        output_ptr = self.memory_space[self.instruction_pointer + 3]
-        self.memory_space[output_ptr] = output
+            result = 0
+        
+        self.set_value(result, self.instruction_pointer + 3, mode3)
 
         self.instruction_pointer = self.instruction_pointer + 4
 
@@ -184,6 +181,10 @@ class IntCodeComputer():
         print(f"Adjust Relative Base by: {value1} ==> {self.relative_base}")
 
         self.instruction_pointer = self.instruction_pointer + 2
+
+    def get_diagnostic_code(self):
+        return self.output_stream[len(self.output_stream) - 1]
+
 
     def run_intcode(self):
 
@@ -203,13 +204,14 @@ class IntCodeComputer():
                 self.add(mode1, mode2, mode3)
 
             elif opcode == OpCode.MULTIPLY:
-                self.multiply(mode1, mode2)
+                self.multiply(mode1, mode2, mode3)
 
             elif opcode == OpCode.INPUT:
-                self.input()
+                self.input(mode1)
 
             elif opcode == OpCode.OUTPUT:
                 self.output(mode1)
+
             elif opcode == OpCode.JUMP_IF_TRUE:
                 self.jump_if_true(mode1, mode2)
 
@@ -217,10 +219,10 @@ class IntCodeComputer():
                 self.jump_if_false(mode1, mode2)
 
             elif opcode == OpCode.LESS_THAN:
-                self.less_than(mode1, mode2)
+                self.less_than(mode1, mode2, mode3)
 
             elif opcode == OpCode.EQUALS:
-                self.equals(mode1, mode2)
+                self.equals(mode1, mode2, mode3)
 
             elif opcode == OpCode.ADJUST_RELATIVE_BASE:
                 self.adjust_relative_base()
