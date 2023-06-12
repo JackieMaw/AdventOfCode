@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj": {}
+    "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj": {
+    "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj",
+        "projectUniqueName": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj",
         "projectName": "DirksAlgorithm",
-        "projectPath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj",
+        "projectPath": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.Utilities\\DirksAlgorithm\\DirksAlgorithm.csproj",
         "packagesPath": "C:\\Users\\jacki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.Utilities\\DirksAlgorithm\\obj\\",
+        "outputPath": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.Utilities\\DirksAlgorithm\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacki\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,12 +55,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.22, 3.1.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

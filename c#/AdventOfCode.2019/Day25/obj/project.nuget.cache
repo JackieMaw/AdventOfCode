@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RsSjldC2gDpDP4YzPCWpH5m08UKjshEIrC1O/MZ/Kx5ZxbtoI5xHrOLdf+Rw5g+rtWOsF6yHAjHwEF2vJHr2NA==",
+  "dgSpecHash": "i19evQRulXgX7a4eEZrQI+TUCycUVfac1LgFOMmn3078ju0DRR0c7gN4nFNLeTqmUCPQrbh3ATJZi3fDS0XFcw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\Day25\\Day25.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.2019\\Day25\\Day25.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacki\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+  ],
   "logs": []
 }

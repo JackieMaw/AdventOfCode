@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj": {}
+    "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj": {
+    "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj",
+        "projectUniqueName": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj",
         "projectName": "MyComputer",
-        "projectPath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj",
+        "projectPath": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.2019\\IntCodeComputer\\MyComputer.csproj",
         "packagesPath": "C:\\Users\\jacki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacki\\source\\repos\\AdventOfCode.2019\\IntCodeComputer\\obj\\",
+        "outputPath": "C:\\Work\\AdventOfCode\\c#\\AdventOfCode.2019\\IntCodeComputer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacki\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,7 +57,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
