@@ -17,3 +17,14 @@ def test_execute_9a():
     result = execute_diagnostic(input_data, input_stream, output_stream)
 
     assert result == 2377080455
+
+def test_execute_9b():
+
+    with open("./input/day9_actual.txt", "r") as text_file:
+        input_data = [int(l) for l in text_file.read().split(",")]
+
+    input_stream = [2]
+    output_stream = []
+    result = execute_diagnostic(input_data, input_stream, output_stream)
+
+    assert result == 2377080455
