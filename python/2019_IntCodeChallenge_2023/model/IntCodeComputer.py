@@ -78,13 +78,11 @@ class IntCodeComputer():
 
     def add(self, mode1, mode2, mode3):
 
-        print(f"Add: {mode1} + {mode2} => {mode3}")
-
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
-        print(f"Add: {value1} + {value2}")
         result = value1 + value2
+        print(f"Add: {value1} + {value2} = {result}")
 
         self.set_value(result, self.instruction_pointer + 3, mode3)
 
@@ -95,8 +93,8 @@ class IntCodeComputer():
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
-        print(f"Multiply: {value1} x {value2}")
         result = value1 * value2
+        print(f"Multiply: {value1} x {value2} = {result}")
 
         self.set_value(result, self.instruction_pointer + 3, mode3)
 
@@ -105,7 +103,7 @@ class IntCodeComputer():
     def input(self, mode1):
 
         input_to_save = self.input_stream.pop(0)
-        print(f"INPUT: {input_to_save}")
+        print(f"INPUT received: {input_to_save}")
         
         self.set_value(input_to_save, self.instruction_pointer + 1, mode1)
 
@@ -115,7 +113,7 @@ class IntCodeComputer():
 
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
 
-        print(f"OUTPUT: {value1}")
+        print(f"OUTPUT sent: {value1}")
         self.output_stream.append(value1)
 
         self.instruction_pointer = self.instruction_pointer + 2
@@ -124,11 +122,12 @@ class IntCodeComputer():
 
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
-
-        print(f"Jump-if-True: {value1} >> {value2}")
+        
         if value1 != 0:
+            print(f"Jump-if-True: {value1} = TRUE, instruction_pointer >> {value2} ")
             self.instruction_pointer = value2
         else:
+            print(f"Jump-if-True: {value1} = FALSE, NO JUMP")
             self.instruction_pointer = self.instruction_pointer + 3
 
     def jump_if_false(self, mode1, mode2):
@@ -136,10 +135,11 @@ class IntCodeComputer():
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
-        print(f"Jump-if-False: {value1} >> {value2}")
         if value1 == 0:
+            print(f"Jump-if-False: {value1} = FALSE, instruction_pointer >> {value2} ")
             self.instruction_pointer = value2
         else:
+            print(f"Jump-if-False: {value1} = TRUE, NO JUMP")
             self.instruction_pointer = self.instruction_pointer + 3
 
     def less_than(self, mode1, mode2, mode3):
@@ -147,10 +147,11 @@ class IntCodeComputer():
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
         value2 = self.get_value(self.instruction_pointer + 2, mode2)
 
-        print(f"Less Than: {value1} < {value2}")
         if value1 < value2:
+            print(f"Less Than: {value1} < {value2} => TRUE(1)")
             result = 1
         else:
+            print(f"Less Than: {value1} < {value2} => FALSE(0)")
             result = 0
         
         self.set_value(result, self.instruction_pointer + 3, mode3)
@@ -164,21 +165,23 @@ class IntCodeComputer():
 
         print(f"Equals: {value1} == {value2}")
         if value1 == value2:
+            print(f"Equals: {value1} == {value2} => TRUE(1)")
             result = 1
         else:
+            print(f"Equals: {value1} == {value2} => FALSE(0)")
             result = 0
         
         self.set_value(result, self.instruction_pointer + 3, mode3)
 
         self.instruction_pointer = self.instruction_pointer + 4
 
-    def adjust_relative_base(self):
+    def adjust_relative_base(self, mode1):
 
-        value1 = self.get_value(self.instruction_pointer + 1,
-                                ParameterMode.IMMEDIATE_MODE)
+        #assert mode1 == ParameterMode.IMMEDIATE_MODE
+        value1 = self.get_value(self.instruction_pointer + 1, mode1)
 
+        print(f"Adjust Relative Base by: {value1}. {self.relative_base} ==> {self.relative_base + value1}")
         self.relative_base = self.relative_base + value1
-        print(f"Adjust Relative Base by: {value1} ==> {self.relative_base}")
 
         self.instruction_pointer = self.instruction_pointer + 2
 
@@ -186,7 +189,7 @@ class IntCodeComputer():
         return self.output_stream[len(self.output_stream) - 1]
 
 
-    def run_intcode(self):
+    def run(self):
 
         while True:
 
@@ -225,7 +228,7 @@ class IntCodeComputer():
                 self.equals(mode1, mode2, mode3)
 
             elif opcode == OpCode.ADJUST_RELATIVE_BASE:
-                self.adjust_relative_base()
+                self.adjust_relative_base(mode1)
 
             else:
                 raise Exception(f"Unsupported OpCode: {opcode}")
