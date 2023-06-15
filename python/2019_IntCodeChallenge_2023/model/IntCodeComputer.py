@@ -177,7 +177,6 @@ class IntCodeComputer():
 
     def adjust_relative_base(self, mode1):
 
-        #assert mode1 == ParameterMode.IMMEDIATE_MODE
         value1 = self.get_value(self.instruction_pointer + 1, mode1)
 
         print(f"Adjust Relative Base by: {value1}. {self.relative_base} ==> {self.relative_base + value1}")
@@ -187,6 +186,11 @@ class IntCodeComputer():
 
     def get_diagnostic_code(self):
         return self.output_stream[len(self.output_stream) - 1]
+    
+    def get_ascii_output(self):       
+        ascii_output = ''.join(chr(i) for i in self.output_stream)
+        ascii_output_no_empty_lines = [line for line in ascii_output.split("\n") if line]
+        return ascii_output_no_empty_lines
 
 
     def run(self):
