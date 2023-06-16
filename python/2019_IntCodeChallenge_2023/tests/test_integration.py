@@ -52,8 +52,8 @@ def test_copy_myself():
         "109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99".split(",")
     ]
     output_stream = []
-    computer = IntCodeComputer(test_program, [], output_stream)
-    computer.run()
+    computer = IntCodeComputer()
+    computer.run(test_program, [], output_stream)
     assert computer.output_stream == test_program
 
 
@@ -73,9 +73,9 @@ def test_large_number():
 def test_input_from_relative_base():
 
     program = [203, 2, 2, 3, 4, 5, 6, 7, 8]
-    computer = IntCodeComputer(program, [99], [])
+    computer = IntCodeComputer()
 
-    computer.run()
+    computer.run(program, [99], [])
 
     print(computer.memory_space)
 
@@ -94,6 +94,6 @@ def test_input_from_relative_base():
 
 
 def execute_diagnostic(program, input_stream, output_stream):
-    computer = IntCodeComputer(program, input_stream, output_stream)
-    computer.run()
+    computer = IntCodeComputer()
+    computer.run(program, input_stream, output_stream)
     return computer.get_diagnostic_code()

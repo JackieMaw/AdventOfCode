@@ -22,16 +22,14 @@ class OpCode(Enum):
     ADJUST_RELATIVE_BASE = 9
     TERMINATE = 99
 
-
 class IntCodeComputer():
-    def __init__(self, input_data, input_stream, output_stream):
+    def __init__(self, ascii_mode = False):
         self.instruction_pointer = 0
         self.relative_base = 0
         self.memory_space = {}
-        for memory_pointer in range(len(input_data)):
-            self.memory_space[memory_pointer] = input_data[memory_pointer]
-        self.input_stream = input_stream
-        self.output_stream = output_stream
+        self.ascii_mode = ascii_mode
+        self.input_stream = []
+        self.output_stream = []
 
     def split_opcode(full_opcode):
 
@@ -104,6 +102,9 @@ class IntCodeComputer():
 
         input_to_save = self.input_stream.pop(0)
         print(f"INPUT received: {input_to_save}")
+
+        if self.ascii_mode:
+            input_to_save = ord(input_to_save)
         
         self.set_value(input_to_save, self.instruction_pointer + 1, mode1)
 
@@ -111,10 +112,13 @@ class IntCodeComputer():
 
     def output(self, mode1):
 
-        value1 = self.get_value(self.instruction_pointer + 1, mode1)
+        value_to_output = self.get_value(self.instruction_pointer + 1, mode1)        
 
-        print(f"OUTPUT sent: {value1}")
-        self.output_stream.append(value1)
+        if self.ascii_mode:
+            value_to_output = chr(value_to_output)
+
+        print(f"OUTPUT sent: {value_to_output}")
+        self.output_stream.append(value_to_output)
 
         self.instruction_pointer = self.instruction_pointer + 2
 
@@ -192,8 +196,16 @@ class IntCodeComputer():
         ascii_output_no_empty_lines = [line for line in ascii_output.split("\n") if line]
         return ascii_output_no_empty_lines
 
+    def load_program_into_memory(self, intcode):
+        for memory_pointer in range(len(intcode)):
+            self.memory_space[memory_pointer] = intcode[memory_pointer]
 
-    def run(self):
+    def run(self, intcode, input_stream, output_stream):
+
+        self.load_program_into_memory(intcode)
+        
+        self.input_stream = input_stream
+        self.output_stream = output_stream
 
         while True:
 
