@@ -1,24 +1,24 @@
-def init_memory(input_data):
+def init_memory(intcode_program):
     memory_space = {}
-    for i in range(len(input_data)):
-        memory_space[i] = input_data[i]
+    for i in range(len(intcode_program)):
+        memory_space[i] = intcode_program[i]
     return memory_space
 
 
-def run_intcode(input_data):
+def run_intcode(intcode_program):
     program_counter = 0
     while True:
 
-        opcode = input_data[program_counter]
+        opcode = intcode_program[program_counter]
 
         if opcode == 99:
             break
 
-        input1ptr = input_data[program_counter + 1]
-        input1 = input_data[input1ptr]
+        input1ptr = intcode_program[program_counter + 1]
+        input1 = intcode_program[input1ptr]
 
-        input2ptr = input_data[program_counter + 2]
-        input2 = input_data[input2ptr]
+        input2ptr = intcode_program[program_counter + 2]
+        input2 = intcode_program[input2ptr]
 
         output = 0
         if opcode == 1:  #ADD
@@ -26,19 +26,19 @@ def run_intcode(input_data):
         elif opcode == 2:  #MULTIPLY
             output = input1 * input2
 
-        output_ptr = input_data[program_counter + 3]
-        input_data[output_ptr] = output
+        output_ptr = intcode_program[program_counter + 3]
+        intcode_program[output_ptr] = output
 
         program_counter += 4
 
-    return input_data[0]
+    return intcode_program[0]
 
 
-def execute(input_data):
+def execute(intcode_program):
 
     for noun in range(0, 100):
         for verb in range(0, 100):
-            memory_space = init_memory(input_data)
+            memory_space = init_memory(intcode_program)
             memory_space[1] = noun
             memory_space[2] = verb
             return_code = run_intcode(memory_space)
@@ -58,11 +58,11 @@ def execute_all():
 
     # ACTUAL
     with open("./input/day2_actual.txt", "r") as text_file:
-        input_data = [int(l) for l in text_file.read().split(",")]
+        intcode_program = [int(l) for l in text_file.read().split(",")]
 
     #BUG - memory_space should be initialized inside the loop
-    #memory_space = init_memory(input_data)
-    result = execute(input_data)
+    #memory_space = init_memory(intcode_program)
+    result = execute(intcode_program)
     print(f"ACTUAL Result: {result}")
     assert result == 8609
     print(f"ACTUAL PASSED!")

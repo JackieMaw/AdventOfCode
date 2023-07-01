@@ -1,7 +1,7 @@
-o0lk,i.'/[def init_memory(input_data):
+o0lk,i.'/[def init_memory(intcode_program):
     memory = {}
-    for memory_pointer in range(len(input_data)):
-        memory[memory_pointer] = input_data[memory_pointer]
+    for memory_pointer in range(len(intcode_program)):
+        memory[memory_pointer] = intcode_program[memory_pointer]
     return memory
 
 def add(memory, instruction_pointer):
@@ -26,8 +26,8 @@ def add(memory, instruction_pointer):
 
 """
 """
-def run_intcode(input_data, input_stream, output_stream):
-    memory = init_memory(input_data)
+def run_intcode(intcode_program, input_stream, output_stream):
+    memory = init_memory(intcode_program)
 
     instruction_pointer = 0
     while True:
@@ -103,8 +103,8 @@ def run_intcode(input_data, input_stream, output_stream):
     return None
 
 
-def execute(input_data, input_stream, output_stream):
-    run_intcode(input_data, input_stream, output_stream)
+def execute(intcode_program, input_stream, output_stream):
+    run_intcode(intcode_program, input_stream, output_stream)
     diagnostic_code = output_stream[0]
     print(f"Diagnostic Test Completed. Diagnostic code: {diagnostic_code}")
     return diagnostic_code
@@ -126,11 +126,11 @@ def execute_all():
 
     # ACTUAL
     with open("./input/day5_actual.txt", "r") as text_file:
-        input_data = [int(l) for l in text_file.read().split(",")]
+        intcode_program = [int(l) for l in text_file.read().split(",")]
 
     input_stream = [1]
     output_stream = []
-    result = execute(input_data, input_stream, output_stream)
+    result = execute(intcode_program, input_stream, output_stream)
     print(f"ACTUAL Result: {result}")
     assert result == 7157989
     print(f"ACTUAL PASSED!")

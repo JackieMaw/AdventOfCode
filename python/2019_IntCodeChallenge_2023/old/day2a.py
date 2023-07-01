@@ -1,17 +1,17 @@
-def run_intcode(input_data):
+def run_intcode(intcode_program):
     program_counter = 0
-    while program_counter + 3 < len(input_data):
+    while program_counter + 3 < len(intcode_program):
 
-        opcode = input_data[program_counter]
+        opcode = intcode_program[program_counter]
 
         if opcode == 99:
             break
 
-        input1ptr = input_data[program_counter + 1]
-        input1 = input_data[input1ptr]
+        input1ptr = intcode_program[program_counter + 1]
+        input1 = intcode_program[input1ptr]
 
-        input2ptr = input_data[program_counter + 2]
-        input2 = input_data[input2ptr]
+        input2ptr = intcode_program[program_counter + 2]
+        input2 = intcode_program[input2ptr]
 
         output = 0
         if opcode == 1:  #ADD
@@ -19,19 +19,19 @@ def run_intcode(input_data):
         elif opcode == 2:  #MULTIPLY
             output = input1 * input2
 
-        output_ptr = input_data[program_counter + 3]
-        input_data[output_ptr] = output
+        output_ptr = intcode_program[program_counter + 3]
+        intcode_program[output_ptr] = output
 
         program_counter += 4
 
-    return input_data[0]
+    return intcode_program[0]
 
 
-def execute(input_data):
+def execute(intcode_program):
     #replace position 1 with the value 12 and replace position 2 with the value 2
-    input_data[1] = 12
-    input_data[2] = 2
-    return run_intcode(input_data)
+    intcode_program[1] = 12
+    intcode_program[2] = 2
+    return run_intcode(intcode_program)
 
 
 def execute_all():
@@ -44,9 +44,9 @@ def execute_all():
 
     # ACTUAL
     with open("./input/day2_actual.txt", "r") as text_file:
-        input_data = [int(l) for l in text_file.read().split(",")]
+        intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    result = execute(input_data)
+    result = execute(intcode_program)
     print(f"ACTUAL Result: {result}")
     assert result == 3706713
     print(f"ACTUAL PASSED!")

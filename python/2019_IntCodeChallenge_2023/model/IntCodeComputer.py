@@ -1,7 +1,5 @@
-#https://adventofcode.com/2019/day/9
-#--- Day 9: Sensor Boost ---
-
 from enum import Enum
+from model.InteractionHandler import InteractionHandler
 
 
 class ParameterMode(Enum):
@@ -23,14 +21,14 @@ class OpCode(Enum):
     TERMINATE = 99
 
 class IntCodeComputer():
-    def __init__(self):
+    def __init__(self, interaction_handler : InteractionHandler):
         self.instruction_pointer = 0
         self.relative_base = 0
         self.memory_space = {}
-        self.input_stream = []
-        self.output_stream = []
+        self._interaction_handler = interaction_handler
 
-    def split_opcode(self, full_opcode):
+    @staticmethod
+    def split_opcode(full_opcode):
 
         #The opcode is a two-digit number based only on the ones and tens digit of the value, that is, the opcode is the rightmost two digits of the first value in an instruction.
 
@@ -99,7 +97,7 @@ class IntCodeComputer():
 
     def input(self, mode1):
 
-        input_to_save = self.input_stream.receive()
+        input_to_save = self._interaction_handler.receive()
         #print(f"INPUT received: {input_to_save}")
 
         self.set_value(input_to_save, self.instruction_pointer + 1, mode1)
@@ -111,7 +109,7 @@ class IntCodeComputer():
         value_to_output = self.get_value(self.instruction_pointer + 1, mode1)        
 
         #print(f"OUTPUT sent: {value_to_output}")
-        self.output_stream.send(value_to_output)
+        self._interaction_handler.send(value_to_output)
 
         self.instruction_pointer = self.instruction_pointer + 2
 
@@ -181,17 +179,14 @@ class IntCodeComputer():
 
         self.instruction_pointer = self.instruction_pointer + 2
 
-    def load_program_into_memory(self, intcode):
+    def _load_program_into_memory(self, intcode):
         for memory_pointer in range(len(intcode)):
             self.memory_space[memory_pointer] = intcode[memory_pointer]
 
-    def run(self, intcode, input_stream, output_stream):
+    def run(self, intcode_program):
 
-        self.load_program_into_memory(intcode)
+        self._load_program_into_memory(intcode_program)
         
-        self.input_stream = input_stream
-        self.output_stream = output_stream
-
         while True:
 
             full_opcode = self.memory_space[self.instruction_pointer]

@@ -20,20 +20,12 @@ class UserInputStream(InputStream):
 
 class FixedInputStream(InputStream):
 
-    def __init__(self, all_input, ascii_enabled = True):
-        self.ascii_enabled = ascii_enabled
-        if (self.ascii_enabled):
-            self.all_input = get_intcode_from_ascii_enabled(all_input)
-        else:
-            self.all_input = all_input
+    def __init__(self, all_input):
+        self._all_input = all_input
 
     def receive(self):
-        int_code = self.all_input.pop()
-        if self.ascii_enabled:
-            print(chr(int_code), end="")
-        else:
-            print(int_code, end="")
-
+        int_code = self._all_input.pop()
+        #print(int_code, end="")
         return int_code
 
 

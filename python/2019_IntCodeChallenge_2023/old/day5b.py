@@ -21,10 +21,10 @@ class OpCode(Enum):
     TERMINATE = 99
 
 
-def init_memory(input_data):
+def init_memory(intcode_program):
     memory_space = {}
-    for memory_pointer in range(len(input_data)):
-        memory_space[memory_pointer] = input_data[memory_pointer]
+    for memory_pointer in range(len(intcode_program)):
+        memory_space[memory_pointer] = intcode_program[memory_pointer]
     return memory_space
 
 
@@ -165,9 +165,9 @@ def equals(instruction_pointer, memory_space, mode1, mode2):
     return instruction_pointer + 4
 
 
-def run_intcode(input_data, input_stream, output_stream):
+def run_intcode(intcode_program, input_stream, output_stream):
 
-    memory_space = init_memory(input_data)
+    memory_space = init_memory(intcode_program)
 
     instruction_pointer = 0
     while True:
@@ -218,8 +218,8 @@ def run_intcode(input_data, input_stream, output_stream):
     raise Exception("Unexpected end of program.")
 
 
-def execute(input_data, input_stream, output_stream):
-    run_intcode(input_data, input_stream, output_stream)
+def execute(intcode_program, input_stream, output_stream):
+    run_intcode(intcode_program, input_stream, output_stream)
     print(f"Diagnostic Test Completed. All Outputs: {output_stream}")
     diagnostic_code = output_stream[len(output_stream) - 1]
     return diagnostic_code
@@ -237,11 +237,11 @@ def test_input_output():
 def execute_all():
 
     with open("./input/day5_actual.txt", "r") as text_file:
-        input_data = [int(l) for l in text_file.read().split(",")]
+        intcode_program = [int(l) for l in text_file.read().split(",")]
 
     input_stream = [1]
     output_stream = []
-    result = execute(input_data, input_stream, output_stream)
+    result = execute(intcode_program, input_stream, output_stream)
     print(f"REGRESSION Result: {result}")
 
     assert result == 13933662
@@ -249,7 +249,7 @@ def execute_all():
 
     input_stream = [5]
     output_stream = []
-    result = execute(input_data, input_stream, output_stream)
+    result = execute(intcode_program, input_stream, output_stream)
     print(f" ==== ACTUAL Result: {result}  ====")
 
     assert result == 2369720

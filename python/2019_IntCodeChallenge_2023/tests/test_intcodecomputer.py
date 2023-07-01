@@ -25,9 +25,9 @@ def test_split_opcode():
 
 def test_add_immediate_mode():
 
-    program = [0, 5, 6, 0]
-    computer = IntCodeComputer()
-    computer.load_program_into_memory(program)
+    intcode_program = [0, 5, 6, 0]
+    computer = IntCodeComputer(None)
+    computer._load_program_into_memory(intcode_program)
 
     mode1 = ParameterMode.IMMEDIATE_MODE
     mode2 = ParameterMode.IMMEDIATE_MODE
@@ -41,9 +41,9 @@ def test_add_immediate_mode():
 
 def test_add_position_mode():
 
-    program = [0, 4, 5, 0, 5, 6]
-    computer = IntCodeComputer()
-    computer.load_program_into_memory(program)
+    intcode_program = [0, 4, 5, 0, 5, 6]
+    computer = IntCodeComputer(None)
+    computer._load_program_into_memory(intcode_program)
 
     mode1 = ParameterMode.POSITION_MODE
     mode2 = ParameterMode.POSITION_MODE
@@ -59,9 +59,9 @@ def test_add_position_mode():
 
 def test_add_relative_mode():
 
-    program = [22201, 1, 2, 3, 0, 0, 6, 6, 0]
-    computer = IntCodeComputer()
-    computer.load_program_into_memory(program)
+    intcode_program = [22201, 1, 2, 3, 0, 0, 6, 6, 0]
+    computer = IntCodeComputer(None)
+    computer._load_program_into_memory(intcode_program)
 
     mode1 = ParameterMode.RELATIVE_MODE
     mode2 = ParameterMode.RELATIVE_MODE
@@ -88,16 +88,15 @@ def test_add_relative_mode():
 def test_input_from_relative_base():
 
 
-    program = [203, 1, 2, 3, 4, 5, 6, 7, 8]
-    computer = IntCodeComputer()
-    computer.load_program_into_memory(program)
-    computer.input_stream = [999]
+    intcode_program = [203, 1, 2, 3, 4, 5, 6, 7, 8]
+    computer = IntCodeComputer(InteractionHandler.create_fixed_input([999]))
+    computer._load_program_into_memory(intcode_program)
 
     mode1 = ParameterMode.RELATIVE_MODE
     computer.relative_base = 5
     computer.input(mode1)
 
-    print(computer.memory_space)
+    #print(computer.memory_space)
 
     assert computer.instruction_pointer == 2
     assert computer.memory_space == {
