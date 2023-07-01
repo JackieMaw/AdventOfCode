@@ -1,7 +1,9 @@
 #https://adventofcode.com/2019/day/9
 #--- Day 9: Sensor Boost ---
 
+from model.InputStream import FixedInputStream
 from model.IntCodeComputer import *
+from model.OutputStream import ConsoleOutputStream
 
 def test_input_output():
     program = [int(l) for l in "3,0,4,0,99".split(",")]
@@ -94,6 +96,6 @@ def test_input_from_relative_base():
 
 
 def execute_diagnostic(program, input_stream, output_stream):
-    computer = IntCodeComputer()
-    computer.run(program, input_stream, output_stream)
-    return computer.get_diagnostic_code()
+    computer = IntCodeComputer()  
+    computer.run(program, FixedInputStream(input_stream), ConsoleOutputStream(output_stream))
+    return output_stream[len(output_stream) - 1]

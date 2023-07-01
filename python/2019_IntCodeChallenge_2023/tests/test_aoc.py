@@ -1,18 +1,22 @@
-from model.InputStreamDisplayAscii import InputStreamDisplayAscii
+from model.InputOutputHandler import InputOutputHandler
+from model.InputStream import *
 from model.IntCodeComputer import *
-from model.OutputStreamDisplayAscii import OutputStreamDisplayAscii
+from model.OutputStream import *
 from model.VacuumRobot import *
+
+def get_diagnostic_code(output_stream):
+    return output_stream[len(output_stream) - 1]
 
 def test_execute_9a():
 
     with open("./input/day9_actual.txt", "r") as text_file:
         input_data = [int(l) for l in text_file.read().split(",")]
 
-    input_stream = [1]
-    output_stream = []
+    input_stream = FixedInputStream([1], ascii_enabled = False)
+    output_stream = ConsoleOutputStream()
     computer = IntCodeComputer()
     computer.run(input_data, input_stream, output_stream)
-    result = computer.get_diagnostic_code()
+    result = get_diagnostic_code(output_stream.all_output)
 
     assert result == 2377080455
 
@@ -21,11 +25,11 @@ def test_execute_9b():
     with open("./input/day9_actual.txt", "r") as text_file:
         input_data = [int(l) for l in text_file.read().split(",")]
 
-    input_stream = [2]
-    output_stream = []
+    input_stream = FixedInputStream([2], ascii_enabled = False)
+    output_stream = ConsoleOutputStream()
     computer = IntCodeComputer()
     computer.run(input_data, input_stream, output_stream)
-    result = computer.get_diagnostic_code()
+    result = get_diagnostic_code(output_stream.all_output)
 
     assert result == 74917
 
@@ -36,8 +40,11 @@ def test_execute_17a():
         input_data = [int(l) for l in text_file.read().split(",")]
 
     computer = IntCodeComputer()
-    computer.run(input_data, [], [])
-    ascii_output = computer.get_ascii_output()
+    input_stream = FixedInputStream([])
+    output_stream = ConsoleOutputStream()
+    intput_output_handler = InputOutputHandler(input_stream, output_stream)
+    computer.run(input_data, intput_output_handler, intput_output_handler)
+    ascii_output = output_stream.get_ascii_output()
 
     vacuum_robot = VaccumRobot(ascii_output)
     sum_of_alignment_parameters = vacuum_robot.get_alignment_parameters()
@@ -53,8 +60,20 @@ def test_execute_17b():
     #force the robot to wake up
     input_data[0] = 2
     computer = IntCodeComputer()
-    input_stream = InputStreamDisplayAscii(input_stream_ascii)
-    output_stream = OutputStreamDisplayAscii()
+    input_stream = FixedInputStream(input_stream_ascii)
+    output_stream = ConsoleOutputStream()
     computer.run(input_data, input_stream, output_stream)
-    dust_collected = computer.get_diagnostic_code()
+    dust_collected = get_diagnostic_code(output_stream.all_output)
     assert dust_collected == 0
+
+def test_execute_25a():
+
+    with open("./input/day25_actual.txt", "r") as text_file:
+        input_data = [int(l) for l in text_file.read().split(",")]
+
+    computer = IntCodeComputer()
+    input_stream = UserInputStream()
+    output_stream = ConsoleOutputStream()
+    computer.run(input_data, input_stream, output_stream)
+
+    assert False

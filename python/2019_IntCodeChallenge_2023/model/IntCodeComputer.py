@@ -23,15 +23,14 @@ class OpCode(Enum):
     TERMINATE = 99
 
 class IntCodeComputer():
-    def __init__(self, ascii_mode = False):
+    def __init__(self):
         self.instruction_pointer = 0
         self.relative_base = 0
         self.memory_space = {}
-        self.ascii_mode = ascii_mode
         self.input_stream = []
         self.output_stream = []
 
-    def split_opcode(full_opcode):
+    def split_opcode(self, full_opcode):
 
         #The opcode is a two-digit number based only on the ones and tens digit of the value, that is, the opcode is the rightmost two digits of the first value in an instruction.
 
@@ -100,9 +99,9 @@ class IntCodeComputer():
 
     def input(self, mode1):
 
-        input_to_save = self.input_stream.pop(0)
+        input_to_save = self.input_stream.receive()
         #print(f"INPUT received: {input_to_save}")
-        
+
         self.set_value(input_to_save, self.instruction_pointer + 1, mode1)
 
         self.instruction_pointer = self.instruction_pointer + 2
@@ -111,11 +110,8 @@ class IntCodeComputer():
 
         value_to_output = self.get_value(self.instruction_pointer + 1, mode1)        
 
-        if self.ascii_mode:
-            value_to_output = chr(value_to_output)
-
         #print(f"OUTPUT sent: {value_to_output}")
-        self.output_stream.append(value_to_output)
+        self.output_stream.send(value_to_output)
 
         self.instruction_pointer = self.instruction_pointer + 2
 
@@ -185,14 +181,6 @@ class IntCodeComputer():
 
         self.instruction_pointer = self.instruction_pointer + 2
 
-    def get_diagnostic_code(self):
-        return self.output_stream[len(self.output_stream) - 1]
-    
-    def get_ascii_output(self):       
-        ascii_output = ''.join(chr(i) for i in self.output_stream)
-        ascii_output_no_empty_lines = [line for line in ascii_output.split("\n") if line]
-        return ascii_output_no_empty_lines
-
     def load_program_into_memory(self, intcode):
         for memory_pointer in range(len(intcode)):
             self.memory_space[memory_pointer] = intcode[memory_pointer]
@@ -209,7 +197,7 @@ class IntCodeComputer():
             full_opcode = self.memory_space[self.instruction_pointer]
 
             (opcode, mode1, mode2,
-             mode3) = IntCodeComputer.split_opcode(full_opcode)
+             mode3) = self.split_opcode(full_opcode)
 
             if opcode == OpCode.TERMINATE:
                 return_code = self.memory_space[0]
@@ -245,7 +233,5 @@ class IntCodeComputer():
 
             else:
                 raise Exception(f"Unsupported OpCode: {opcode}")
-
-        raise Exception("Unexpected end of program.")
 
 
