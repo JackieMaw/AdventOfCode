@@ -42,9 +42,9 @@ def test_add():
 def test_input_output():
     test_data = [int(l) for l in "3,0,4,0,99".split(",")]
     expected_result = 5
-    input_stream = [expected_result]
-    output_stream = []
-    test_result = execute(test_data, input_stream, output_stream)
+    input_handler = [expected_result]
+    output_handler = []
+    test_result = execute(test_data, input_handler, output_handler)
     assert test_result == expected_result
 
 

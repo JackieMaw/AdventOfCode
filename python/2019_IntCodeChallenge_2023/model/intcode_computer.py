@@ -1,5 +1,5 @@
 from enum import Enum
-from model.InteractionHandler import InteractionHandler
+from model.interaction_handler import InteractionHandler
 
 
 class ParameterMode(Enum):

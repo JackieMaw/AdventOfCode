@@ -94,9 +94,9 @@ def multiply(instruction_pointer, memory_space, mode1, mode2, mode3):
     return instruction_pointer + 4
 
 
-def input(instruction_pointer, memory_space, input_stream):
+def input(instruction_pointer, memory_space, input_handler):
 
-    input_to_save = input_stream.pop(0)
+    input_to_save = input_handler.pop(0)
     print(f"INPUT: {input_to_save}")
     output_ptr = memory_space[instruction_pointer + 1]
     memory_space[output_ptr] = input_to_save
@@ -104,17 +104,17 @@ def input(instruction_pointer, memory_space, input_stream):
     return instruction_pointer + 2
 
 
-def output(instruction_pointer, memory_space, output_stream):
+def output(instruction_pointer, memory_space, output_handler):
 
     output_ptr = memory_space[instruction_pointer + 1]
     output = memory_space[output_ptr]
     print(f"OUTPUT: {output}")
-    output_stream.append(output)
+    output_handler.append(output)
 
     return instruction_pointer + 2
 
 
-def run_intcode(intcode_program, input_stream, output_stream):
+def run_intcode(intcode_program, input_handler, output_handler):
 
     memory_space = init_memory(intcode_program)
 
@@ -140,11 +140,11 @@ def run_intcode(intcode_program, input_stream, output_stream):
 
         elif opcode == INPUT:
             instruction_pointer = input(instruction_pointer, memory_space,
-                                        input_stream)
+                                        input_handler)
 
         elif opcode == OUTPUT:
             instruction_pointer = output(instruction_pointer, memory_space,
-                                         output_stream)
+                                         output_handler)
 
         else:
             raise Exception(f"Unsupported OpCode: {opcode}")
@@ -152,11 +152,11 @@ def run_intcode(intcode_program, input_stream, output_stream):
     raise Exception("Unexpected end of program.")
 
 
-def execute(intcode_program, input_stream, output_stream):
-    run_intcode(intcode_program, input_stream, output_stream)
+def execute(intcode_program, input_handler, output_handler):
+    run_intcode(intcode_program, input_handler, output_handler)
     print(f"Diagnostic Test Completed.")
-    print(f"All Outputs: {output_stream}")
-    diagnostic_code = output_stream[len(output_stream) - 1]
+    print(f"All Outputs: {output_handler}")
+    diagnostic_code = output_handler[len(output_handler) - 1]
     print(f"Diagnostic code: {diagnostic_code}")
     return diagnostic_code
 
@@ -166,9 +166,9 @@ def run_all_tests():
 
     test_data = [int(l) for l in "3,0,4,0,99".split(",")]
     expected_result = 5
-    input_stream = [expected_result]
-    output_stream = []
-    test_result = execute(test_data, input_stream, output_stream)
+    input_handler = [expected_result]
+    output_handler = []
+    test_result = execute(test_data, input_handler, output_handler)
     assert test_result == expected_result
 
     test_data = [int(l) for l in "1002,4,3,4,33".split(",")]
@@ -185,9 +185,9 @@ def execute_all():
     with open("./input/day5_actual.txt", "r") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    input_stream = [1]
-    output_stream = []
-    result = execute(intcode_program, input_stream, output_stream)
+    input_handler = [1]
+    output_handler = []
+    result = execute(intcode_program, input_handler, output_handler)
     print(f"ACTUAL Result: {result}")
   
     assert result == 7157989  

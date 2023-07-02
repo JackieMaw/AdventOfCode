@@ -26,7 +26,7 @@ def add(memory, instruction_pointer):
 
 """
 """
-def run_intcode(intcode_program, input_stream, output_stream):
+def run_intcode(intcode_program, input_handler, output_handler):
     memory = init_memory(intcode_program)
 
     instruction_pointer = 0
@@ -81,10 +81,10 @@ def run_intcode(intcode_program, input_stream, output_stream):
             instruction_pointer += 4
 
         elif opcode == OPERATION_INPUT:  
-            input_to_save = input_stream.pop(0)
+            input_to_save = input_handler.pop(0)
             #input_to_save = input("INPUT: ")
             print(f"INPUT: {input_to_save}")
-            #print(f"Input Stream Remaining: {input_stream}")
+            #print(f"Input Handler Remaining: {input_handler}")
             output_ptr = memory[instruction_pointer + 1]
             memory[output_ptr] = input_to_save
             instruction_pointer += 2
@@ -93,8 +93,8 @@ def run_intcode(intcode_program, input_stream, output_stream):
             output_ptr = memory[instruction_pointer + 1]
             output = memory[output_ptr]
             print(f"OUTPUT: {output}")
-            output_stream.append(output)
-            #print(f"Output Stream Remaining: {output_stream}")
+            output_handler.append(output)
+            #print(f"Output Handler Remaining: {output_handler}")
             instruction_pointer += 2
 
         else:
@@ -103,9 +103,9 @@ def run_intcode(intcode_program, input_stream, output_stream):
     return None
 
 
-def execute(intcode_program, input_stream, output_stream):
-    run_intcode(intcode_program, input_stream, output_stream)
-    diagnostic_code = output_stream[0]
+def execute(intcode_program, input_handler, output_handler):
+    run_intcode(intcode_program, input_handler, output_handler)
+    diagnostic_code = output_handler[0]
     print(f"Diagnostic Test Completed. Diagnostic code: {diagnostic_code}")
     return diagnostic_code
 
@@ -114,9 +114,9 @@ def execute_all():
 
     test_data = [int(l) for l in "3,0,4,0,99".split(",")]
     expected_result = 5
-    input_stream = [expected_result]
-    output_stream = []
-    test_result = execute(test_data, input_stream, output_stream)
+    input_handler = [expected_result]
+    output_handler = []
+    test_result = execute(test_data, input_handler, output_handler)
     assert test_result == expected_result
 
     test_data = [int(l) for l in "1002,4,3,4,33".split(",")]
@@ -128,9 +128,9 @@ def execute_all():
     with open("./input/day5_actual.txt", "r") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    input_stream = [1]
-    output_stream = []
-    result = execute(intcode_program, input_stream, output_stream)
+    input_handler = [1]
+    output_handler = []
+    result = execute(intcode_program, input_handler, output_handler)
     print(f"ACTUAL Result: {result}")
     assert result == 7157989
     print(f"ACTUAL PASSED!")

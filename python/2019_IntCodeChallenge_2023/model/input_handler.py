@@ -1,10 +1,10 @@
 from abc import ABC
 
-class InputStream(ABC):
+class InputHandler(ABC):
     def receive(self):
         pass
 
-class UserInputStream(InputStream):
+class UserInputHandler(InputHandler):
 
     def __init__(self):
         self.accumulated_input = []
@@ -18,7 +18,7 @@ class UserInputStream(InputStream):
 
         return next_input
 
-class FixedInputStream(InputStream):
+class FixedInputHandler(InputHandler):
 
     def __init__(self, all_input):
         self._all_input = all_input

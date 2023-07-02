@@ -1,7 +1,7 @@
 #https://adventofcode.com/2019/day/9
 #--- Day 9: Sensor Boost ---
 
-from model.IntCodeComputer import *
+from model.intcode_computer import *
 
 def test_split_opcode():
     (opcode, mode1, mode2, mode3) = IntCodeComputer.split_opcode(11001)

@@ -1,10 +1,10 @@
 #https://adventofcode.com/2019/day/9
 #--- Day 9: Sensor Boost ---
 
-from model.InputStream import FixedInputStream
-from model.IntCodeComputer import IntCodeComputer
-from model.InteractionHandler import InteractionHandler
-from model.OutputStream import ConsoleOutputStream
+from model.input_handler import FixedInputHandler
+from model.intcode_computer import IntCodeComputer
+from model.interaction_handler import InteractionHandler
+from model.output_handler import ConsoleOutputHandler
 
 def execute_diagnostic_test(intcode_program, fixed_input):
 

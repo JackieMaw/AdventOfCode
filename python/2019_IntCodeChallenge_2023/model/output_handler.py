@@ -1,10 +1,10 @@
 from abc import ABC
 
-class OutputStream(ABC):
+class OutputHandler(ABC):
     def send(self, int_code):
         pass
 
-class BasicOutputStream(OutputStream):
+class BasicOutputHandler(OutputHandler):
     
     def __init__(self, all_output = []):
         self._all_output = all_output
@@ -17,7 +17,7 @@ class BasicOutputStream(OutputStream):
         ascii_output_no_empty_lines = [line for line in ascii_output.split("\n") if line]
         return ascii_output_no_empty_lines
 
-class ConsoleOutputStream(OutputStream):
+class ConsoleOutputHandler(OutputHandler):
 
     def __init__(self, all_output = []):
         self._all_output = all_output
