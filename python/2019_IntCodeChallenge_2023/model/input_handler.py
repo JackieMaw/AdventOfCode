@@ -1,7 +1,7 @@
 from abc import ABC
 
 class InputHandler(ABC):
-    def receive(self):
+    def get_input(self):
         pass
 
 class UserInputHandler(InputHandler):
@@ -9,7 +9,7 @@ class UserInputHandler(InputHandler):
     def __init__(self):
         self.accumulated_input = []
 
-    def receive(self):
+    def get_input(self):
         if len(self.accumulated_input) == 0:
             user_input = input(">> ")
             self.accumulated_input = list(user_input)
@@ -23,7 +23,7 @@ class FixedInputHandler(InputHandler):
     def __init__(self, all_input):
         self._all_input = all_input
 
-    def receive(self):
+    def get_input(self):
         int_code = self._all_input.pop()
         #print(int_code, end="")
         return int_code

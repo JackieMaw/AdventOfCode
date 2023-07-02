@@ -97,7 +97,7 @@ class IntCodeComputer():
 
     def input(self, mode1):
 
-        input_to_save = self._interaction_handler.receive()
+        input_to_save = self._interaction_handler.get_input()
         #print(f"INPUT received: {input_to_save}")
 
         self.set_value(input_to_save, self.instruction_pointer + 1, mode1)
@@ -109,7 +109,7 @@ class IntCodeComputer():
         value_to_output = self.get_value(self.instruction_pointer + 1, mode1)        
 
         #print(f"OUTPUT sent: {value_to_output}")
-        self._interaction_handler.send(value_to_output)
+        self._interaction_handler.send_output(value_to_output)
 
         self.instruction_pointer = self.instruction_pointer + 2
 

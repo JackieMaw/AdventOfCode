@@ -1,4 +1,4 @@
-from model.interaction_handler import InteractionHandler
+from model.interaction_handler import InteractionHandler, SimpleInteractionHandler
 from model.input_handler import *
 from model.intcode_computer import *
 from model.output_handler import *
@@ -39,7 +39,7 @@ def test_execute_17a():
 
     input_handler = FixedInputHandler([])
     output_handler = BasicOutputHandler()
-    interaction_handler = InteractionHandler(input_handler, output_handler)
+    interaction_handler = SimpleInteractionHandler(input_handler, output_handler)
     computer = IntCodeComputer(interaction_handler)
     computer.run(intcode_program)
     ascii_output = output_handler.get_ascii_output()
