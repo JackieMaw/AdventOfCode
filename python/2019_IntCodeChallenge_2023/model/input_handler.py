@@ -24,16 +24,19 @@ class FixedInputHandler(InputHandler):
         self._all_input = all_input
 
     def get_input(self):
-        int_code = self._all_input.pop()
-        #print(int_code, end="")
-        return int_code
-
-
-def get_intcode_from_ascii_enabled(ascii_enabled):
-    intcode = []
-    for ascii_enabled_line in ascii_enabled:
-        ascii_enabled_line = ",".join(ascii_enabled_line)
-        for ascii_enabled_char in ascii_enabled_line:
-            intcode.append(ord(ascii_enabled_char))
-        intcode.append(10)
-    return intcode
+        single_input = self._all_input.pop(0)
+        print(single_input, end="")
+        return single_input
+    
+    @staticmethod
+    def FromAscii(ascii_lines):
+        return FixedInputHandler(FixedInputHandler.get_input_from_ascii_lines(ascii_lines))
+    
+    @staticmethod
+    def get_input_from_ascii_lines(ascii_lines):
+        all_input = []
+        for ascii_line in ascii_lines:
+            for ascii_char in ascii_line:
+                all_input.append(ascii_char)
+            all_input.append(chr(10))
+        return all_input
