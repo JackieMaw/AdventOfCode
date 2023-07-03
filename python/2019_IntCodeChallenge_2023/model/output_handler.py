@@ -12,11 +12,6 @@ class BasicOutputHandler(OutputHandler):
     def send_output(self, output):
         self._all_output.append(output)
 
-    def get_ascii_output(self):  
-        ascii_output = ''.join(self._all_output)
-        ascii_output_no_empty_lines = [line for line in ascii_output.split("\n") if line]
-        return ascii_output_no_empty_lines
-
 class ConsoleOutputHandler(OutputHandler):
 
     def __init__(self, all_output = []):
@@ -25,8 +20,3 @@ class ConsoleOutputHandler(OutputHandler):
     def send_output(self, output):
         self._all_output.append(output)
         print(output, end="")
-
-    def get_ascii_output(self):  
-        ascii_output = ''.join(self._all_output)
-        ascii_output_no_empty_lines = [line for line in ascii_output.split("\n") if line]
-        return ascii_output_no_empty_lines

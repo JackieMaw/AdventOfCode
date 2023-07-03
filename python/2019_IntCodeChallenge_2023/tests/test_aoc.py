@@ -1,3 +1,4 @@
+from model.ascii_helper import translate_to_ascii
 from model.interaction_handler import InteractionHandler, SimpleInteractionHandler
 from model.input_handler import *
 from model.intcode_computer import *
@@ -37,12 +38,12 @@ def test_execute_17a():
     with open("./input/day17_actual.txt", "r") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    input_handler = PredefinedInputHandler([])
+    input_handler = PredefinedInputProvider([])
     output_handler = BasicOutputHandler()
     interaction_handler = SimpleInteractionHandler(input_handler, output_handler)
     computer = IntCodeComputer(interaction_handler)
     computer.run(intcode_program)
-    ascii_output = output_handler.get_ascii_output()
+    ascii_output = translate_to_ascii(output_handler._all_output)
 
     vacuum_robot = VaccumRobot(ascii_output)
     sum_of_alignment_parameters = vacuum_robot.get_alignment_parameters()
@@ -57,7 +58,7 @@ def test_execute_17b():
 
     #force the robot to wake up
     intcode_program[0] = 2
-    input_handler = PredefinedInputHandler(input_handler_ascii)
+    input_handler = PredefinedInputProvider(input_handler_ascii)
     basic_output = []
     output_handler = ConsoleOutputHandler(basic_output)
     interaction_handler = InteractionHandler(input_handler, output_handler)
@@ -71,7 +72,7 @@ def test_execute_25a():
     with open("./input/day25_actual.txt", "r") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    input_handler = UserInputHandler()
+    input_handler = UserInputProvider()
     output_handler = ConsoleOutputHandler()
     interaction_handler = InteractionHandler(input_handler, output_handler)
     computer = IntCodeComputer(interaction_handler)

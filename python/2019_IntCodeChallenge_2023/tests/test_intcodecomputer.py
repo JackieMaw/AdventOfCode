@@ -35,8 +35,8 @@ def test_add_immediate_mode():
 
     computer.add(mode1, mode2, mode3)
 
-    assert computer.instruction_pointer == 4
-    assert computer.memory_space == {0: 11, 1: 5, 2: 6, 3: 0}
+    assert computer._instruction_pointer == 4
+    assert computer._memory_space == {0: 11, 1: 5, 2: 6, 3: 0}
 
 
 def test_add_position_mode():
@@ -51,10 +51,10 @@ def test_add_position_mode():
 
     computer.add(mode1, mode2, mode3)
 
-    print(computer.memory_space)
+    print(computer._memory_space)
 
-    assert computer.instruction_pointer == 4
-    assert computer.memory_space == {0: 11, 1: 4, 2: 5, 3: 0, 4: 5, 5: 6}
+    assert computer._instruction_pointer == 4
+    assert computer._memory_space == {0: 11, 1: 4, 2: 5, 3: 0, 4: 5, 5: 6}
 
 
 def test_add_relative_mode():
@@ -69,10 +69,10 @@ def test_add_relative_mode():
     computer.relative_base = 5
     computer.add(mode1, mode2, mode3)
 
-    print(computer.memory_space)
+    print(computer._memory_space)
 
-    assert computer.instruction_pointer == 4
-    assert computer.memory_space == {
+    assert computer._instruction_pointer == 4
+    assert computer._memory_space == {
         0: 22201,
         1: 1,
         2: 2,
@@ -96,10 +96,10 @@ def test_input_from_relative_base():
     computer.relative_base = 5
     computer.input(mode1)
 
-    #print(computer.memory_space)
+    #print(computer._memory_space)
 
-    assert computer.instruction_pointer == 2
-    assert computer.memory_space == {
+    assert computer._instruction_pointer == 2
+    assert computer._memory_space == {
         0: 203,
         1: 1,
         2: 2,

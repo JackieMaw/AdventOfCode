@@ -1,7 +1,7 @@
 #https://adventofcode.com/2019/day/9
 #--- Day 9: Sensor Boost ---
 
-from model.input_handler import PredefinedInputHandler
+from model.input_handler import PredefinedInputProvider
 from model.intcode_computer import IntCodeComputer
 from model.interaction_handler import InteractionHandler
 from model.output_handler import ConsoleOutputHandler
@@ -89,10 +89,10 @@ def test_input_from_relative_base():
     computer = IntCodeComputer(interaction_handler)
     computer.run(intcode_program)
 
-    #print(computer.memory_space)
+    #print(computer._memory_space)
 
-    assert computer.instruction_pointer == 2
-    assert computer.memory_space == {
+    assert computer._instruction_pointer == 2
+    assert computer._memory_space == {
         0: 203,
         1: 2,
         2: 99,
