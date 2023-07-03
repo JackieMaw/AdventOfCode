@@ -1,12 +1,12 @@
 from abc import ABC
 import time
-from model.input_handler import FixedInputHandler, InputHandler, UserInputHandler
+from model.input_handler import PredefinedInputHandler, InputHandler, UserInputHandler
 from model.output_handler import BasicOutputHandler, ConsoleOutputHandler, OutputHandler
 
 class InteractionHandler(OutputHandler, InputHandler, ABC):
     @staticmethod
     def create_fixed_input(fixed_input, basic_output = []):
-        return SimpleInteractionHandler(input_handler=FixedInputHandler(fixed_input), output_handler=BasicOutputHandler(basic_output), ascii_enabled=False)
+        return SimpleInteractionHandler(input_handler=PredefinedInputHandler(fixed_input), output_handler=BasicOutputHandler(basic_output), ascii_enabled=False)
 
 class SimpleInteractionHandler(OutputHandler, InputHandler):
 

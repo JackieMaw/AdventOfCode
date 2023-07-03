@@ -37,7 +37,7 @@ def test_execute_17a():
     with open("./input/day17_actual.txt", "r") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    input_handler = FixedInputHandler([])
+    input_handler = PredefinedInputHandler([])
     output_handler = BasicOutputHandler()
     interaction_handler = SimpleInteractionHandler(input_handler, output_handler)
     computer = IntCodeComputer(interaction_handler)
@@ -57,7 +57,7 @@ def test_execute_17b():
 
     #force the robot to wake up
     intcode_program[0] = 2
-    input_handler = FixedInputHandler(input_handler_ascii)
+    input_handler = PredefinedInputHandler(input_handler_ascii)
     basic_output = []
     output_handler = ConsoleOutputHandler(basic_output)
     interaction_handler = InteractionHandler(input_handler, output_handler)

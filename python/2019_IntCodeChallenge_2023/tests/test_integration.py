@@ -1,7 +1,7 @@
 #https://adventofcode.com/2019/day/9
 #--- Day 9: Sensor Boost ---
 
-from model.input_handler import FixedInputHandler
+from model.input_handler import PredefinedInputHandler
 from model.intcode_computer import IntCodeComputer
 from model.interaction_handler import InteractionHandler
 from model.output_handler import ConsoleOutputHandler

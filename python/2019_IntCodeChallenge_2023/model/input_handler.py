@@ -18,19 +18,21 @@ class UserInputHandler(InputHandler):
 
         return next_input
 
-class FixedInputHandler(InputHandler):
+class PredefinedInputHandler(InputHandler):
 
     def __init__(self, all_input):
         self._all_input = all_input
 
     def get_input(self):
+        if len(self._all_input) == 0:
+            raise Exception("No Input Found")
         single_input = self._all_input.pop(0)
         print(single_input, end="")
         return single_input
     
     @staticmethod
     def FromAscii(ascii_lines):
-        return FixedInputHandler(FixedInputHandler.get_input_from_ascii_lines(ascii_lines))
+        return PredefinedInputHandler(PredefinedInputHandler.get_input_from_ascii_lines(ascii_lines))
     
     @staticmethod
     def get_input_from_ascii_lines(ascii_lines):
