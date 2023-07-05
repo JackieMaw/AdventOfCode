@@ -23,12 +23,11 @@ class SimpleInteractionHandler(OutputHandler, InputProvider):
         self._write_to_file(input)
         return input
 
-    def send_output(self, output):
+    def process_output(self, output):
         self._write_to_file(output)
-        self._output_handler.send_output(output)
+        self._output_handler.process_output(output)
 
     def _write_to_file(self, s):
         if self._file_write:
             with open(self._file_name, "a", encoding="utf-8") as file_handler:
                 file_handler.write(s)
-

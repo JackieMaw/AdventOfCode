@@ -113,10 +113,10 @@ class IntCodeComputer():
         value_to_output = self.get_value(self._instruction_pointer + 1, mode1)
 
         if self._ascii_enabled:
-            value_to_output = chr(value_to_output) 
+            value_to_output = chr(value_to_output)
 
         #print(f"OUTPUT sent: {value_to_output}")
-        self._interaction_handler.send_output(value_to_output)
+        self._interaction_handler.process_output(value_to_output)
 
         self._instruction_pointer = self._instruction_pointer + 2
 
