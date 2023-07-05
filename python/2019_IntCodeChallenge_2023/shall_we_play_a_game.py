@@ -15,7 +15,7 @@ print("Mode 3 = Auto-pilot")
 mode = input("Choose your mode: 1/2/3 >> ")
 
 if mode == "1":
-    interaction_handler = SimpleInteractionHandler(input_handler=UserInputProvide3r(), file_write=True)
+    interaction_handler = SimpleInteractionHandler(input_handler=UserInputProvider(), file_write=True)
 elif mode == "2":
     predefined_input = ["north", "north", "east"]
     interaction_handler = SimpleInteractionHandler(input_handler=PredefinedInputProvider.FromAscii(predefined_input), file_write=True)

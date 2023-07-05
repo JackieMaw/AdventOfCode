@@ -1,26 +1,37 @@
+from model.autopilot.room_info import RoomInfo
+
+
+ALL_DIRECTIONS = ["north", "south", "east", "west"]
+OPPOSITE_DIRECTIONS = {"north": "south", "east" : "west", "south" : "north", "west" : "east"}
+
 class Room:
-     
-    def __init__(self, room_description):
-        self.name = self._get_room(room_description)
-        self.doors = self._get_doors(room_description)
-        self.items = self._get_items(room_description)
 
-    def _get_room(self, room_description):
-        startIndex = room_description.find("==") + 3
-        endIndex = room_description.rfind("==") - 1
-        return room_description[startIndex:endIndex]
+    def __init__(self, room_info : RoomInfo):
+        self._room_info = room_info
+        self._all_doors = dict.fromkeys(room_info.doors, None)
+        self._way_out = None
+        self._collected_items = False
 
-    def _get_doors(self, room_description):
-        startIndex = room_description.find("Doors here lead:") + 19
-        endIndex = room_description.find("\n\n", startIndex)
-        substring = room_description[startIndex:endIndex]
-        return substring.split("\n- ")
+    def mark_entry(self, exit_door, previous_room):
 
-    def _get_items(self, room_description):
-        
-        startIndex = room_description.find("Items here:") + 14
-        if startIndex > 0:
-            substring = room_description[startIndex:]
-            return substring.split("\n- ")
-        else:
-            return []
+        entry_door = OPPOSITE_DIRECTIONS[exit_door]
+        self._all_doors[entry_door] = previous_room
+
+        if self._way_out is None:
+            self._way_out = entry_door
+    
+    def mark_exit(self, exit_door, next_room):
+        self._all_doors[exit_door] = next_room
+
+    def get_next_commands(self):
+        next_commands = []
+        if not self._collected_items:
+            for item in self._room_info.items:
+                next_commands.append(f"take {item}")
+            self._collected_items = True
+        next_door = self._get_next_door()
+        next_commands.append(next_door)
+        return next_commands
+    
+    def _get_next_door(self):        
+        return next((door for (door, door_node) in self._all_doors.items() if door_node is None), self._way_out)

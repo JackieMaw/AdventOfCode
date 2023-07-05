@@ -1,4 +1,6 @@
 import time
+from model.autopilot.room import Room
+from model.autopilot.room_info import RoomInfo
 
 from model.interaction_handler import InteractionHandler
 
@@ -32,9 +34,35 @@ class AutoPilotTranslator(InteractionHandler):
     def _get_next_command(self):
         output = "".join(self._accumulated_output)
         self._accumulated_output = []
-        return self._auto_pilot.get_next_command(output)
+        return self._auto_pilot.get_commands(output)
 
 class AutoPilot:
 
-    def get_next_command(self, room_description):
-        return "north"
+    def __init__(self):
+        self._all_rooms = {}
+        self._previous_room = None
+        self._previous_door = None
+
+    def get_commands(self, room_description):
+        room_info = RoomInfo(room_description)
+
+        if room_info.name in self._all_rooms:
+            print("AutoPilot - already seen this room")
+            current_room = self._all_rooms[room_info.name]
+        else:
+            print("AutoPilot - a new room!")
+            current_room = Room(room_info)
+            self._all_rooms[room_info.name] = current_room
+        
+        #if we travelled to this room from another room, we can mark the opposite door as already explored
+        if self._previous_room is not None:
+            current_room.mark_entry(_previous_door, _previous_room)
+            _previous_room.mark_exit(_previous_door, current_room)
+
+        self._previous_room = current_room
+        commands = current_room.get_next_commands()
+
+        print("AutoPilot - next commands:")
+        print(commands)
+
+        return commands
