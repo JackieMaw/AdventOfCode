@@ -66,7 +66,7 @@ def test_add_relative_mode():
     mode1 = ParameterMode.RELATIVE_MODE
     mode2 = ParameterMode.RELATIVE_MODE
     mode3 = ParameterMode.RELATIVE_MODE
-    computer.relative_base = 5
+    computer._relative_base = 5
     computer.add(mode1, mode2, mode3)
 
     print(computer._memory_space)
@@ -93,7 +93,7 @@ def test_input_from_relative_base():
     computer._load_program_into_memory(intcode_program)
 
     mode1 = ParameterMode.RELATIVE_MODE
-    computer.relative_base = 5
+    computer._relative_base = 5
     computer.input(mode1)
 
     #print(computer._memory_space)
