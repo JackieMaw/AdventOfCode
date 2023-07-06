@@ -44,25 +44,26 @@ class AutoPilot:
         self._previous_door = None
 
     def get_commands(self, room_description):
+
         room_info = RoomInfo(room_description)
 
         if room_info.name in self._all_rooms:
-            print("AutoPilot - already seen this room")
+            print("[AutoPilot] already seen this room")
             current_room = self._all_rooms[room_info.name]
         else:
-            print("AutoPilot - a new room!")
+            print("[AutoPilot] a new room!")
             current_room = Room(room_info)
             self._all_rooms[room_info.name] = current_room
         
         #if we travelled to this room from another room, we can mark the opposite door as already explored
         if self._previous_room is not None:
-            current_room.mark_entry(_previous_door, _previous_room)
-            _previous_room.mark_exit(_previous_door, current_room)
+            current_room.mark_entry(self._previous_door, self._previous_room)
+            self._previous_room.mark_exit(self._previous_door, current_room)
 
         self._previous_room = current_room
         commands = current_room.get_next_commands()
 
-        print("AutoPilot - next commands:")
+        print("[AutoPilot] next commands:")
         print(commands)
 
         return commands

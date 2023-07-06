@@ -17,10 +17,11 @@ class RoomInfo:
         return substring.split("\n- ")
 
     def _get_items(self, room_description):
-        
-        startIndex = room_description.find("Items here:") + 14
+        startIndex = room_description.find("Items here:")
         if startIndex > 0:
-            substring = room_description[startIndex:]
+            startIndex = startIndex + 14
+            endIndex = room_description.find("\n\n", startIndex)
+            substring = room_description[startIndex:endIndex]
             return substring.split("\n- ")
         else:
             return []
