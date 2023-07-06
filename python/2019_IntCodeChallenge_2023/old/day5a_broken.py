@@ -125,7 +125,7 @@ def execute_all():
     print(f"TESTS PASSED!")
 
     # ACTUAL
-    with open("./input/day5_actual.txt", "r") as text_file:
+    with open("./input/day5_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     input_handler = [1]

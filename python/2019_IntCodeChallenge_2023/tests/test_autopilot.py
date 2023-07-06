@@ -1,5 +1,5 @@
-from model.autopilot.room import Room
-from model.autopilot.room_info import RoomInfo
+from model.auto_pilot.room import Room
+from model.auto_pilot.room_info import RoomInfo
 
 ROOM_DESCRIPTION_HULL_BREACH = """
 

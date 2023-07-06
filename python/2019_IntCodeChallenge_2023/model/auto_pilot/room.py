@@ -1,4 +1,4 @@
-from model.autopilot.room_info import RoomInfo
+from model.auto_pilot.room_info import RoomInfo
 
 
 ALL_DIRECTIONS = ["north", "south", "east", "west"]

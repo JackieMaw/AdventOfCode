@@ -96,7 +96,7 @@ class IntCodeComputer():
 
         self._instruction_pointer = self._instruction_pointer + 4
 
-    def input(self, mode1):
+    def get_input(self, mode1):
 
         input_to_save = self._interaction_handler.provide_input()
 
@@ -108,7 +108,7 @@ class IntCodeComputer():
 
         self._instruction_pointer = self._instruction_pointer + 2
 
-    def output(self, mode1):
+    def send_output(self, mode1):
 
         value_to_output = self.get_value(self._instruction_pointer + 1, mode1)
 
@@ -213,10 +213,10 @@ class IntCodeComputer():
                 self.multiply(mode1, mode2, mode3)
 
             elif opcode == OpCode.INPUT:
-                self.input(mode1)
+                self.get_input(mode1)
 
             elif opcode == OpCode.OUTPUT:
-                self.output(mode1)
+                self.send_output(mode1)
 
             elif opcode == OpCode.JUMP_IF_TRUE:
                 self.jump_if_true(mode1, mode2)

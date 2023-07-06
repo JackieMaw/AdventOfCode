@@ -1,7 +1,7 @@
 from abc import ABC
 
 class OutputHandler(ABC):
-    def process_output(self, int_code):
+    def process_output(self, output):
         pass
 
 class BasicOutputHandler(OutputHandler):

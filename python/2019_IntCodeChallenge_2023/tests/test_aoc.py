@@ -1,5 +1,6 @@
 from model.ascii_helper import translate_to_ascii
-from model.interaction_handler import InteractionHandler, SimpleInteractionHandler
+from model.auto_pilot.auto_pilot import AutoPilot
+from model.interaction_handler import CommandInteractionHandler, InteractionHandler, SimpleInteractionHandler
 from model.input_handler import *
 from model.intcode_computer import *
 from model.output_handler import *
@@ -16,7 +17,7 @@ def execute_diagnostic_test(intcode_program, fixed_input):
 
 def test_execute_9a():
 
-    with open("./input/day9_actual.txt", "r") as text_file:
+    with open("./input/day9_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [1])
@@ -25,7 +26,7 @@ def test_execute_9a():
 
 def test_execute_9b():
 
-    with open("./input/day9_actual.txt", "r") as text_file:
+    with open("./input/day9_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [2])
@@ -35,7 +36,7 @@ def test_execute_9b():
 
 def test_execute_17a():
 
-    with open("./input/day17_actual.txt", "r") as text_file:
+    with open("./input/day17_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     input_handler = PredefinedInputProvider([])
@@ -51,7 +52,7 @@ def test_execute_17a():
 
 def test_execute_17b():
 
-    with open("./input/day17_actual.txt", "r") as text_file:
+    with open("./input/day17_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     input_handler_ascii = ["AABCCACBCB", "L4L4L6R10L6", "L12L6R10L6", "R8R10L6", "y"]
@@ -61,7 +62,7 @@ def test_execute_17b():
     input_handler = PredefinedInputProvider(input_handler_ascii)
     basic_output = []
     output_handler = ConsoleOutputHandler(basic_output)
-    interaction_handler = InteractionHandler(input_handler, output_handler)
+    interaction_handler = SimpleInteractionHandler(input_handler, output_handler)
     computer = IntCodeComputer(interaction_handler)
     computer.run(intcode_program)
     diagnostic_code = basic_output[len(basic_output) - 1]
@@ -69,13 +70,9 @@ def test_execute_17b():
 
 def test_execute_25a():
 
-    with open("./input/day25_actual.txt", "r") as text_file:
+    with open("./input/day25_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    input_handler = UserInputProvider()
-    output_handler = ConsoleOutputHandler()
-    interaction_handler = InteractionHandler(input_handler, output_handler)
+    interaction_handler = CommandInteractionHandler(AutoPilot())
     computer = IntCodeComputer(interaction_handler)
     computer.run(intcode_program)
-
-    assert False

@@ -94,7 +94,7 @@ def test_input_from_relative_base():
 
     mode1 = ParameterMode.RELATIVE_MODE
     computer._relative_base = 5
-    computer.input(mode1)
+    computer.get_input(mode1)
 
     #print(computer._memory_space)
 

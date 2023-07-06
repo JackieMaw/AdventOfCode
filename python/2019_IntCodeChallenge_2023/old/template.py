@@ -9,7 +9,7 @@ def execute(state):
 def execute_all():
 
   # TEST
-  with open("./input/day?_test.txt", "r") as text_file:
+  with open("./input/day?_test.txt", "r", encoding="utf-8") as text_file:
     input_lines = text_file.read().splitlines()
 
   state = parse_input(input_lines)
@@ -19,7 +19,7 @@ def execute_all():
   #print(f"TEST PASSED!")
 
   # ACTUAL
-  with open("./input/day?_actual.txt", "r") as text_file:
+  with open("./input/day?_actual.txt", "r", encoding="utf-8") as text_file:
     input_lines = text_file.read().splitlines()
 
   state = parse_input(input_lines)
