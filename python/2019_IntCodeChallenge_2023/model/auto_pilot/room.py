@@ -3,6 +3,7 @@ from model.auto_pilot.room_info import RoomInfo
 
 ALL_DIRECTIONS = ["north", "south", "east", "west"]
 OPPOSITE_DIRECTIONS = {"north": "south", "east" : "west", "south" : "north", "west" : "east"}
+DANGEROUS_ITEMS = {"giant electromagnet", "infinite loop", "photons", "escape pod"}
 
 class Room:
 
@@ -27,7 +28,8 @@ class Room:
         next_commands = []
         if not self._collected_items:
             for item in self._room_info.items:
-                next_commands.append(f"take {item}")
+                if not self._is_dangerous(item):
+                    next_commands.append(f"take {item}")
             self._collected_items = True
         next_door = self._get_next_door()
         next_commands.append(next_door)
@@ -35,3 +37,7 @@ class Room:
     
     def _get_next_door(self):        
         return next((door for (door, door_node) in self._all_doors.items() if door_node is None), self._way_out)
+    
+    def _is_dangerous(self, item):
+        return item in DANGEROUS_ITEMS
+

@@ -46,7 +46,7 @@ class CommandInteractionHandler(InteractionHandler):
         if len(self._accumulated_input) == 0:
             next_commands = self._get_next_commands()
             for single_command in next_commands:
-                self._accumulated_input = list(single_command)
+                self._accumulated_input += list(single_command)
                 self._accumulated_input.append(chr(10))
         single_input = self._accumulated_input.pop(0)
         self._write_to_file(single_input)
