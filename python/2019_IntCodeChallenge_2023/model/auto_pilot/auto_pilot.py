@@ -47,27 +47,27 @@ class Explorer(Commander):
 
         return commands
     
-    def _connect_rooms(self, current_room):
+    def _connect_rooms(self, current_room : Room):
         if self._previous_room is not None:
             self._previous_room.connect_room(current_room, self._previous_door)
             opposite_door = OPPOSITE_DIRECTIONS[self._previous_door]
             current_room.connect_room(self._previous_room, opposite_door)
 
-    def _get_next_commands_for_room(self, current_room):
+    def _get_next_commands_for_room(self, current_room : Room):
         next_commands = []
-        if not current_room._collected_items:
-            for item in current_room._room_info.items:
+        if not current_room.collected_items:
+            for item in current_room.items:
                 if not self._is_dangerous(item):
                     next_commands.append(f"take {item}")
-            current_room._collected_items = True
+            current_room.collected_items = True
         next_door = self._get_next_door(current_room)
         next_commands.append(next_door)
         return next_commands
     
-    def _get_next_door(self, current_room):
-        if current_room._room_info.name == "Security Checkpoint":
-            return current_room._way_out
-        return next((door for (door, door_node) in current_room._all_doors.items() if door_node is None), current_room._way_out)
+    def _get_next_door(self, current_room : Room):
+        if current_room.name == "Security Checkpoint":
+            return current_room.way_out
+        return next((door for (door, door_node) in current_room.doors.items() if door_node is None), current_room.way_out)
     
     def _is_dangerous(self, item):
         return item in DANGEROUS_ITEMS

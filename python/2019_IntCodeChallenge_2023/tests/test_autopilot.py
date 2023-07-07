@@ -1,6 +1,6 @@
 from model.auto_pilot.auto_pilot import Explorer
 from model.auto_pilot.room import Room
-from model.auto_pilot.room_parser import get_room
+from model.auto_pilot.room_parser import get_room_info
 
 ROOM_DESCRIPTION_HULL_BREACH = """
 
@@ -47,7 +47,7 @@ Command?
 """
 
 def setup_room(room_description, way_out):
-    (name, doors, items)  = get_room(room_description)
+    (name, doors, items)  = get_room_info(room_description)
     return Room(name, doors, items, way_out)
 
 def test_room_parsing_hull_breach():
@@ -55,7 +55,7 @@ def test_room_parsing_hull_breach():
     room = setup_room(ROOM_DESCRIPTION_HULL_BREACH, None)
 
     assert room.name == "Hull Breach"
-    assert room.doors == ["north", "south", "west"]
+    assert list(room.doors.keys()) == ["north", "south", "west"]
     assert room.items == []
 
 def test_room_parsing_hallway():
@@ -63,7 +63,7 @@ def test_room_parsing_hallway():
     room = setup_room(ROOM_DESCRIPTION_HALLWAY, None)
 
     assert room.name == "Hallway"
-    assert room.doors == ["north", "east", "south"]
+    assert list(room.doors.keys())  == ["north", "east", "south"]
     assert room.items == ["mouse"]
 
 
