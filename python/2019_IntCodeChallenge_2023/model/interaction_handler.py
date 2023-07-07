@@ -1,6 +1,6 @@
 from abc import ABC
 import time
-from model.auto_pilot.auto_pilot import CommandProvider
+from model.auto_pilot.auto_pilot import Commander
 from model.input_handler import PredefinedInputProvider, InputProvider, UserInputProvider
 from model.output_handler import BasicOutputHandler, ConsoleOutputHandler, OutputHandler
 
@@ -35,7 +35,7 @@ class SimpleInteractionHandler(OutputHandler, InputProvider):
 
 class CommandInteractionHandler(InteractionHandler):
      
-    def __init__(self, command_provider : CommandProvider):
+    def __init__(self, command_provider : Commander):
         timestr = time.strftime("%Y%m%d-%H%M%S")
         self._file_name = f"logs\\autopilot_log_{timestr}.txt"
         self._accumulated_output = []

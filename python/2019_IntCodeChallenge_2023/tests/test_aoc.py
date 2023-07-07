@@ -1,5 +1,5 @@
 from model.ascii_helper import translate_to_ascii
-from model.auto_pilot.auto_pilot import AutoPilot
+from model.auto_pilot.auto_pilot import Explorer
 from model.interaction_handler import CommandInteractionHandler, InteractionHandler, SimpleInteractionHandler
 from model.input_handler import *
 from model.intcode_computer import *
@@ -73,6 +73,6 @@ def test_execute_25a():
     with open("./input/day25_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    interaction_handler = CommandInteractionHandler(AutoPilot())
+    interaction_handler = CommandInteractionHandler(Explorer())
     computer = IntCodeComputer(interaction_handler)
     computer.run(intcode_program)

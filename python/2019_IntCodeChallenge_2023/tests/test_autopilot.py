@@ -1,5 +1,6 @@
+from model.auto_pilot.auto_pilot import Explorer
 from model.auto_pilot.room import Room
-from model.auto_pilot.room_info import RoomInfo
+from model.auto_pilot.room_parser import get_room
 
 ROOM_DESCRIPTION_HULL_BREACH = """
 
@@ -32,28 +33,72 @@ Items here:
 Command?
 """
 
+ROOM_DESCRIPTION_SECURITY_CHECKPOINT = """
+
+
+== Security Checkpoint ==
+In the next room, a pressure-sensitive floor will verify your identity.
+
+Doors here lead:
+- north
+- east
+
+Command?
+"""
+
+def setup_room(room_description, way_out):
+    (name, doors, items)  = get_room(room_description)
+    return Room(name, doors, items, way_out)
 
 def test_room_parsing_hull_breach():
 
-    room_info = RoomInfo(ROOM_DESCRIPTION_HULL_BREACH)
+    room = setup_room(ROOM_DESCRIPTION_HULL_BREACH, None)
 
-    assert room_info.name == "Hull Breach"
-    assert room_info.doors == ["north", "south", "west"]
-    assert room_info.items == []
+    assert room.name == "Hull Breach"
+    assert room.doors == ["north", "south", "west"]
+    assert room.items == []
 
 def test_room_parsing_hallway():
 
-    room_info = RoomInfo(ROOM_DESCRIPTION_HALLWAY)
+    room = setup_room(ROOM_DESCRIPTION_HALLWAY, None)
 
-    assert room_info.name == "Hallway"
-    assert room_info.doors == ["north", "east", "south"]
-    assert room_info.items == ["mouse"]
+    assert room.name == "Hallway"
+    assert room.doors == ["north", "east", "south"]
+    assert room.items == ["mouse"]
 
 
 def test_get_commands():
     
-    room_info = RoomInfo(ROOM_DESCRIPTION_HALLWAY) #this should create a room manually, it should not rely on the text parser
+    room = setup_room(ROOM_DESCRIPTION_HALLWAY, "south") #this should create a room manually, it should not rely on the text parser
 
-    room = Room(room_info)
+    auto_pilot = Explorer()
+    assert auto_pilot._get_next_commands_for_room(room) == ['take mouse', 'north']
 
-    assert room.get_next_commands() == ['take mouse', 'north']
+def test_get_commands_no_doors_left_must_exit():
+    
+    room = setup_room(ROOM_DESCRIPTION_HALLWAY, "south") #this should create a room manually, it should not rely on the text parser
+
+    room.connect_room("north", room)
+    room.connect_room("south", room)
+    room.connect_room("east", room)
+
+    auto_pilot = Explorer()
+    assert auto_pilot._get_next_commands_for_room(room) == ['take mouse', 'south']
+
+def test_get_commands_no_doors_left_no_exit():
+    
+    room = setup_room(ROOM_DESCRIPTION_HULL_BREACH, None) #this should create a room manually, it should not rely on the text parser
+
+    room.connect_room("north", room)
+    room.connect_room("south", room)
+    room.connect_room("west", room)
+
+    auto_pilot = Explorer()
+    assert auto_pilot._get_next_commands_for_room(room) == [None]
+
+def test_get_commands_do_not_pass_security_checkpoint():
+    
+    room = setup_room(ROOM_DESCRIPTION_SECURITY_CHECKPOINT, "north") #this should create a room manually, it should not rely on the text parser
+
+    auto_pilot = Explorer()
+    assert auto_pilot._get_next_commands_for_room(room) == ['north']
