@@ -12,8 +12,6 @@ class Commander(ABC):
     def get_next_commands(self, room_description):
         pass
 
-
-
 class Explorer(Commander):
 
     def __init__(self):
@@ -22,7 +20,7 @@ class Explorer(Commander):
         self._previous_door = None
         
         timestr = time.strftime("%Y%m%d-%H%M%S")
-        self._file_name = f"logs\\explorer_log_{timestr}.txt"
+        self._file_name = f"logs\\explorer_summary_{timestr}.txt"
 
     def get_next_commands(self, room_description):
 
@@ -50,7 +48,7 @@ class Explorer(Commander):
     
     def _connect_rooms(self, current_room : Room):
         if self._previous_room is not None:
-            self._previous_room.connect_room(current_room, self._previous_door)
+            self._previous_room.connect_room(self._previous_door, current_room)
             opposite_door = OPPOSITE_DIRECTIONS[self._previous_door]
             current_room.connect_room(self._previous_room, opposite_door)
             self._write_to_file(f"{self._previous_room.name} >> {self._previous_door} >> {current_room.name}")
@@ -77,3 +75,28 @@ class Explorer(Commander):
     
     def _is_dangerous(self, item):
         return item in DANGEROUS_ITEMS
+
+class Navigator(Commander):
+    def get_next_commands(self, room_description):
+        raise NotImplementedError()
+
+class Juggler(Commander):
+    def get_next_commands(self, room_description):
+        raise NotImplementedError()
+
+class CommanderOrchestrator(Commander):
+
+    def __init__(self):
+        self._all_commanders = [Explorer(), Navigator(), Juggler()]
+    
+    def get_next_commands(self, room_description):
+        while len(self._all_commanders) > 0:
+            current_commander = self._all_commanders[0]
+            next_commands = current_commander.get_next_commands(room_description)
+            if next_commands == [None]:
+                self._all_commanders.pop(0)
+                print(f"COMMANDER IS COMPLETE: {type(current_commander)}")
+            else:
+                return next_commands
+        return None
+

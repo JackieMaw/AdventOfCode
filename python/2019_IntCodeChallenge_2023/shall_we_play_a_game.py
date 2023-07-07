@@ -1,4 +1,4 @@
-from model.auto_pilot.commander import Explorer
+from model.auto_pilot.commander import CommanderOrchestrator, Explorer
 from model.input_handler import PredefinedInputProvider, UserInputProvider
 from model.intcode_computer import IntCodeComputer
 from model.interaction_handler import CommandInteractionHandler, SimpleInteractionHandler
@@ -20,7 +20,7 @@ elif mode == "2":
     predefined_input = input("Enter commands separated by commas >> "). split(",")
     interaction_handler = SimpleInteractionHandler(input_handler=PredefinedInputProvider.FromAsciiLines(predefined_input), file_write=True)
 elif mode == "3":
-    interaction_handler = CommandInteractionHandler(Explorer())
+    interaction_handler = CommandInteractionHandler(CommanderOrchestrator())
 else:
     assert False, "Invalid Mode: " + mode
 
