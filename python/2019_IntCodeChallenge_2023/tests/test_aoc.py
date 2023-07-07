@@ -1,5 +1,5 @@
 from model.ascii_helper import translate_to_ascii
-from model.auto_pilot.auto_pilot import Explorer
+from model.auto_pilot.commander import Explorer
 from model.interaction_handler import CommandInteractionHandler, InteractionHandler, SimpleInteractionHandler
 from model.input_handler import *
 from model.intcode_computer import *

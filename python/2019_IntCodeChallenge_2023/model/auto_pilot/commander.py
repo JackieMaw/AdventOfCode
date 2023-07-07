@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import time
 from model.auto_pilot.room import Room
 from model.auto_pilot.room_parser import get_room_info
 
@@ -19,6 +20,9 @@ class Explorer(Commander):
         self._all_rooms = {}
         self._previous_room = None
         self._previous_door = None
+        
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        self._file_name = f"logs\\explorer_log_{timestr}.txt"
 
     def get_next_commands(self, room_description):
 
@@ -31,9 +35,6 @@ class Explorer(Commander):
             print(f"[Explorer] yay, a new room! {name}")
             way_out = OPPOSITE_DIRECTIONS[self._previous_door]
             current_room = Room(name, doors, items, way_out)
-            
-            self._connect_rooms(current_room)
-
             self._all_rooms[name] = current_room
         
         self._connect_rooms(current_room)
@@ -52,6 +53,11 @@ class Explorer(Commander):
             self._previous_room.connect_room(current_room, self._previous_door)
             opposite_door = OPPOSITE_DIRECTIONS[self._previous_door]
             current_room.connect_room(self._previous_room, opposite_door)
+            self._write_to_file(f"{self._previous_room.name} >> {self._previous_door} >> {current_room.name}")
+
+    def _write_to_file(self, s):
+        with open(self._file_name, "a", encoding="utf-8") as file_handler:
+            file_handler.write(s + "\n")
 
     def _get_next_commands_for_room(self, current_room : Room):
         next_commands = []
