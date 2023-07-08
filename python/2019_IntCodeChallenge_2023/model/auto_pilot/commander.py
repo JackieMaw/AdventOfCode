@@ -14,8 +14,9 @@ class Commander(ABC):
 
 class Explorer(Commander):
 
-    def __init__(self):
-        self._all_rooms = {}
+    def __init__(self, all_rooms = {}, items = []):
+        self._all_rooms = all_rooms
+        self._items = items
         self._previous_room = None
         self._previous_door = None
         
@@ -39,7 +40,7 @@ class Explorer(Commander):
 
         commands = self._get_next_commands_for_room(current_room)
 
-        self._previous_room = current_room 
+        self._previous_room = current_room
         self._previous_door = commands[-1]
 
         print(f"[Explorer] next commands: {commands}")
@@ -63,6 +64,7 @@ class Explorer(Commander):
             for item in current_room.items:
                 if not self._is_dangerous(item):
                     next_commands.append(f"take {item}")
+                    self._items.append(item)
             current_room.collected_items = True
         next_door = self._get_next_door(current_room)
         next_commands.append(next_door)
@@ -77,17 +79,27 @@ class Explorer(Commander):
         return item in DANGEROUS_ITEMS
 
 class Navigator(Commander):
+   
+    def __init__(self, all_rooms):
+        self._all_rooms = all_rooms
+
     def get_next_commands(self, room_description):
         raise NotImplementedError()
 
 class Juggler(Commander):
+
+    def __init__(self, items):
+        self._items = items
+
     def get_next_commands(self, room_description):
         raise NotImplementedError()
 
 class CommanderOrchestrator(Commander):
 
     def __init__(self):
-        self._all_commanders = [Explorer(), Navigator(), Juggler()]
+        all_rooms = {}
+        items = []
+        self._all_commanders = [Explorer(all_rooms, items), Navigator(all_rooms), Juggler(items)]
     
     def get_next_commands(self, room_description):
         while len(self._all_commanders) > 0:
