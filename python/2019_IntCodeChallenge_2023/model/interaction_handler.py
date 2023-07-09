@@ -1,6 +1,6 @@
 from abc import ABC
 import time
-from model.auto_pilot.commander import Commander
+from model.auto_pilot.commander.commander import Commander
 from model.input_handler import PredefinedInputProvider, InputProvider, UserInputProvider
 from model.output_handler import BasicOutputHandler, ConsoleOutputHandler, OutputHandler
 

@@ -17,9 +17,14 @@ It doesn't really matter what order you explore the doors.
 This is essentially a "depth-first" search, which is more convenient as we are physically moving through the game.
 There is no benefit to a "breadth-first" search because we are not interested in the shortest path at this stage, we are just exploring the graph.
 
+Is there a flaw in the algorithm?
+What if there is a loop in the graph and you return to a previous room and then exit but along the way you missed some doors?
+
 ### 2. Navigating to the Security Checkpoint (Graph Navigation)
 
 Once the map is completely explored, we want to get back to the security checkpoint.
+
+Ideally we want to find the shortest path from the Hull Breach to the Security Checkpoint, so we can use a breadth-first search / Djkstra's algorithm to find the shortest path.
 
 ### 3. Passing the Security Checkpoint 
 

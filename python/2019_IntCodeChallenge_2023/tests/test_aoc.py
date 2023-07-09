@@ -1,10 +1,10 @@
+from model.VacuumRobot import VaccumRobot
 from model.ascii_helper import translate_to_ascii
-from model.auto_pilot.commander import Explorer
+from model.auto_pilot.commander.explorer import Explorer
+from model.input_handler import PredefinedInputProvider
+from model.intcode_computer import IntCodeComputer
 from model.interaction_handler import CommandInteractionHandler, InteractionHandler, SimpleInteractionHandler
-from model.input_handler import *
-from model.intcode_computer import *
-from model.output_handler import *
-from model.VacuumRobot import *
+from model.output_handler import BasicOutputHandler, ConsoleOutputHandler
 
 def execute_diagnostic_test(intcode_program, fixed_input):
 

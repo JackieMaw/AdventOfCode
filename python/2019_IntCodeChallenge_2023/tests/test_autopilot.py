@@ -1,4 +1,4 @@
-from model.auto_pilot.commander import Explorer
+from model.auto_pilot.commander.explorer import Explorer
 from model.auto_pilot.room import Room
 from model.auto_pilot.room_parser import get_room_info
 
