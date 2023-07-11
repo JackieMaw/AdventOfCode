@@ -1,3 +1,6 @@
+
+OPPOSITE_DIRECTIONS = {"north": "south", "east" : "west", "south" : "north", "west" : "east", None : None}
+
 class Room:
 
     def __init__(self, name, doors, items, way_out):
@@ -9,4 +12,6 @@ class Room:
     
     def connect_room(self, exit_door, next_room):
         self.doors[exit_door] = next_room
+        opposite_door = OPPOSITE_DIRECTIONS[exit_door]
+        next_room.doors[opposite_door] = self
 

@@ -3,8 +3,6 @@ from model.auto_pilot.commander.commander import Commander
 from model.auto_pilot.room import Room
 from model.auto_pilot.room_parser import get_room_info
 
-
-OPPOSITE_DIRECTIONS = {"north": "south", "east" : "west", "south" : "north", "west" : "east", None : None}
 DANGEROUS_ITEMS = {"giant electromagnet", "infinite loop", "photons", "escape pod", "molten lava"}
 
 class Explorer(Commander):
@@ -45,8 +43,6 @@ class Explorer(Commander):
     def _connect_rooms(self, current_room : Room):
         if self._previous_room is not None:
             self._previous_room.connect_room(self._previous_door, current_room)
-            opposite_door = OPPOSITE_DIRECTIONS[self._previous_door]
-            current_room.connect_room(self._previous_room, opposite_door)
             self._write_to_file(f"{self._previous_room.name} >> {self._previous_door} >> {current_room.name}")
 
     def _write_to_file(self, s):
