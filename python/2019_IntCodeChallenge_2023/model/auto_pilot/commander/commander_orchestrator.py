@@ -9,7 +9,7 @@ class CommanderOrchestrator(Commander):
     def __init__(self):
         all_rooms = {}
         items = []
-        self._all_commanders = [Explorer(all_rooms, items), Navigator(all_rooms), Juggler(items)]
+        self._all_commanders = [Explorer(all_rooms, items), Navigator(all_rooms, "Hull Breach", "Security Checkpoint"), Juggler(items)]
     
     def get_next_commands(self, room_description):
         while len(self._all_commanders) > 0:

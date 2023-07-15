@@ -1,9 +1,9 @@
 from model.VacuumRobot import VaccumRobot
 from model.ascii_helper import translate_to_ascii
-from model.auto_pilot.commander.explorer import Explorer
 from model.input_handler import PredefinedInputProvider
 from model.intcode_computer import IntCodeComputer
 from model.interaction_handler import CommandInteractionHandler, InteractionHandler, SimpleInteractionHandler
+from model.auto_pilot.commander.commander_orchestrator import CommanderOrchestrator
 from model.output_handler import BasicOutputHandler, ConsoleOutputHandler
 
 def execute_diagnostic_test(intcode_program, fixed_input):
@@ -73,6 +73,6 @@ def test_execute_25a():
     with open("./input/day25_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
-    interaction_handler = CommandInteractionHandler(Explorer())
-    computer = IntCodeComputer(interaction_handler)
+    interaction_handler = CommandInteractionHandler(CommanderOrchestrator())
+    computer = IntCodeComputer(interaction_handler, ascii_enabled = True)
     computer.run(intcode_program)
