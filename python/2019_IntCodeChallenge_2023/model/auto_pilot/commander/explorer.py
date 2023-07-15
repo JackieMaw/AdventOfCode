@@ -1,6 +1,6 @@
 import time
 from model.auto_pilot.commander.commander import Commander
-from model.auto_pilot.room import Room
+from model.auto_pilot.room import OPPOSITE_DIRECTIONS, Room
 from model.auto_pilot.room_parser import get_room_info
 
 DANGEROUS_ITEMS = {"giant electromagnet", "infinite loop", "photons", "escape pod", "molten lava"}
