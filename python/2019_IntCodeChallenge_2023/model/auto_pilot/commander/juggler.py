@@ -11,10 +11,12 @@ class Juggler(Commander):
     def get_next_commands(self, room_description):
 
         if self._passed_the_checkpoint(room_description):
-            return [None]
+            return [None] # nothing more to do, we have passed the checkpoint :-)
         else:            
             if self._item_combinations is None:
                 self._item_combinations = self._get_all_item_combinations()
+            elif len(self._item_combinations) == 0:
+                return [None] # nothing more to do, there are no more combinations to try :-(
             return self.get_commands_for(self._item_combinations.pop(0))
 
     def _passed_the_checkpoint(self, room_description):
@@ -31,7 +33,8 @@ class Juggler(Commander):
         commands = []
         items_to_drop = set(self._all_items) - set(items_to_keep)
         for item in items_to_drop:
-            commands += "drop " + item
+            commands.append(f"drop {item}")
         for item in items_to_keep:
-            commands += "take " + item
+            commands.append(f"take {item}")
+        return commands
 

@@ -73,6 +73,8 @@ def test_execute_25a():
     with open("./input/day25_actual.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
+    assert False
+
     interaction_handler = CommandInteractionHandler(CommanderOrchestrator())
     computer = IntCodeComputer(interaction_handler, ascii_enabled = True)
     computer.run(intcode_program)

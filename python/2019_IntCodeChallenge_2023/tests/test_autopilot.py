@@ -1,4 +1,5 @@
 from model.auto_pilot.commander.explorer import Explorer
+from model.auto_pilot.commander.juggler import Juggler
 from model.auto_pilot.room import Room
 from model.auto_pilot.room_parser import get_room_info
 
@@ -102,3 +103,26 @@ def test_get_commands_do_not_pass_security_checkpoint():
 
     auto_pilot = Explorer()
     assert auto_pilot._get_next_commands_for_room(room) == ['north']
+
+def test_juggler_one_item():
+
+    juggler = Juggler(["item1"])
+
+    commands = juggler.get_next_commands("Any room description")
+    assert commands == ['drop  item1']
+
+    commands = juggler.get_next_commands("Any room description")
+    assert commands == [None]
+
+def test_juggler_two_items():
+
+    juggler = Juggler(["item1", "item2"])
+
+    commands = juggler.get_next_commands("Any room description")
+    assert commands == ['drop  item1', 'drop item2']
+
+    commands = juggler.get_next_commands("Any room description")
+    assert commands == ['drop  item1', 'take item2']
+
+    commands = juggler.get_next_commands("Any room description")
+    assert commands == ['take  item1', 'drop item2']
