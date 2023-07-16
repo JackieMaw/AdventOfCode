@@ -20,7 +20,7 @@ class Juggler(Commander):
             return self.get_commands_for(self._item_combinations.pop(0))
 
     def _passed_the_checkpoint(self, room_description):
-        return False
+        return "Analysis complete! You may proceed." in room_description
     
     def _get_all_item_combinations(self):
         item_combinations = []
@@ -37,5 +37,7 @@ class Juggler(Commander):
             commands.append(f"drop {item}")
         for item in sorted(items_to_keep):
             commands.append(f"take {item}")
+
+        commands.append("east")
         return commands
 
