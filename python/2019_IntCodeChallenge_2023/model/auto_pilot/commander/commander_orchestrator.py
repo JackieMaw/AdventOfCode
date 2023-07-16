@@ -1,5 +1,6 @@
 from model.auto_pilot.commander.commander import Commander
-from model.auto_pilot.commander.explorer import Explorer
+from model.auto_pilot.commander.explorer import Explorer 
+from model.auto_pilot.commander.human import Human
 from model.auto_pilot.commander.juggler import Juggler
 from model.auto_pilot.commander.navigator import Navigator
 
@@ -9,7 +10,7 @@ class CommanderOrchestrator(Commander):
     def __init__(self):
         all_rooms = {}
         items = []
-        self._all_commanders = [Explorer(all_rooms, items), Navigator(all_rooms, "Hull Breach", "Security Checkpoint"), Juggler(items)]
+        self._all_commanders = [Explorer(all_rooms, items), Navigator(all_rooms, "Hull Breach", "Security Checkpoint"), Juggler(items), Human()]
     
     def get_next_commands(self, room_description):
         while len(self._all_commanders) > 0:
