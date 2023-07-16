@@ -109,7 +109,7 @@ def test_juggler_one_item():
     juggler = Juggler(["item1"])
 
     commands = juggler.get_next_commands("Any room description")
-    assert commands == ['drop  item1']
+    assert commands == ['drop item1']
 
     commands = juggler.get_next_commands("Any room description")
     assert commands == [None]
@@ -119,10 +119,10 @@ def test_juggler_two_items():
     juggler = Juggler(["item1", "item2"])
 
     commands = juggler.get_next_commands("Any room description")
-    assert commands == ['drop  item1', 'drop item2']
+    assert commands == ['drop item1', 'drop item2']
 
     commands = juggler.get_next_commands("Any room description")
-    assert commands == ['drop  item1', 'take item2']
+    assert commands == ['drop item2', 'take item1']
 
     commands = juggler.get_next_commands("Any room description")
-    assert commands == ['take  item1', 'drop item2']
+    assert commands == ['drop item1', 'take item2']

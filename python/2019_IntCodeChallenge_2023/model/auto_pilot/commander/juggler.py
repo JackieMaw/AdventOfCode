@@ -27,14 +27,15 @@ class Juggler(Commander):
         for num_items_to_carry in range(0, len(self._all_items)):
             for items_to_keep in itertools.combinations(self._all_items, num_items_to_carry):
                 item_combinations.append(items_to_keep)
+        item_combinations.sort()
         return item_combinations
     
     def get_commands_for(self, items_to_keep):
         commands = []
         items_to_drop = set(self._all_items) - set(items_to_keep)
-        for item in items_to_drop:
+        for item in sorted(items_to_drop):
             commands.append(f"drop {item}")
-        for item in items_to_keep:
+        for item in sorted(items_to_keep):
             commands.append(f"take {item}")
         return commands
 
