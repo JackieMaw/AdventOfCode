@@ -21,10 +21,8 @@ class Explorer(Commander):
         (name, doors, items)  = get_room_info(room_description)
 
         if name in self._all_rooms:
-            print(f"[Explorer] already seen this room: {name}")
             current_room = self._all_rooms[name]
         else:
-            print(f"[Explorer] yay, a new room! {name}")
             way_out = OPPOSITE_DIRECTIONS[self._previous_door]
             current_room = Room(name, doors, items, way_out)
             self._all_rooms[name] = current_room
@@ -35,8 +33,6 @@ class Explorer(Commander):
 
         self._previous_room = current_room
         self._previous_door = commands[-1]
-
-        print(f"[Explorer] next commands: {commands}")
 
         return commands
     

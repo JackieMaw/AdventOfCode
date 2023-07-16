@@ -7,12 +7,19 @@ class Navigator(Commander):
         self._all_rooms = all_rooms
         self._start_room_name = start_room_name
         self._end_room_name = end_room_name
+        self._navigation_completed = False
 
     def get_next_commands(self, room_description):
+
+        if self._navigation_completed:
+            return [None]
+
         start_room = self._all_rooms[self._start_room_name]
         end_room = self._all_rooms[self._end_room_name]
 
         shortest_path = self._get_shortest_path(start_room, end_room)
+
+        self._navigation_completed = True
 
         return shortest_path
 
@@ -42,9 +49,7 @@ class Navigator(Commander):
             current_room = all_rooms[current_room_name]
 
             for door, neighbouring_room in current_room.doors.items():
-                if (
-                    neighbouring_room.name not in visited_rooms
-                ):  # we have never visited this room before
+                if neighbouring_room is not None and neighbouring_room.name not in visited_rooms:  # we have never visited this room before
                     all_rooms[neighbouring_room.name] = neighbouring_room
 
                     new_distance_to_neighbouring_room = distance_to_current_room + 1
