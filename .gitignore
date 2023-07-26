@@ -1,4 +1,3 @@
 *.pyc
-*.txt
+/python/2019_IntCodeChallenge_2023/logs/*.txt
 __pycache__
-python/2019_IntCodeChallenge_2023/tests/__pycache__/test_aoc.cpython-39-pytest-6.2.4.pyc
