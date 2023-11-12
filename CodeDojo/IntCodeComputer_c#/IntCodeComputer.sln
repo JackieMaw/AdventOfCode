@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntCodeComputer", "IntCodeComputer\IntCodeComputer.csproj", "{EE3A14BE-A2F5-4FD9-8932-168B7C0040D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntCodeComputerTests", "IntCodeComputerTests\IntCodeComputerTests.csproj", "{DE520142-5869-464D-AF70-5207C97E842E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE3A14BE-A2F5-4FD9-8932-168B7C0040D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3A14BE-A2F5-4FD9-8932-168B7C0040D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3A14BE-A2F5-4FD9-8932-168B7C0040D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3A14BE-A2F5-4FD9-8932-168B7C0040D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE520142-5869-464D-AF70-5207C97E842E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE520142-5869-464D-AF70-5207C97E842E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE520142-5869-464D-AF70-5207C97E842E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE520142-5869-464D-AF70-5207C97E842E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

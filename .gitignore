@@ -1,3 +1,5 @@
 *.pyc
 /python/2019_IntCodeChallenge_2023/logs/*.txt
 __pycache__
+**/bin
+**/obj
