@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntCodeComputer", "IntCodeComputer\IntCodeComputer.csproj", "{EE3A14BE-A2F5-4FD9-8932-168B7C0040D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntCodeComputerTests", "IntCodeComputerTests\IntCodeComputerTests.csproj", "{DE520142-5869-464D-AF70-5207C97E842E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntCodeComputer.Execute", "IntCodeComputer.Execute\IntCodeComputer.Execute.csproj", "{8914BE5A-5CB3-4EB1-95E2-F7455B465E38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntCodeComputer.Tests", "IntCodeComputer.Tests\IntCodeComputer.Tests.csproj", "{594F5177-CC10-4074-8979-E9CDBD96C1EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,13 @@ Global
 		{DE520142-5869-464D-AF70-5207C97E842E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE520142-5869-464D-AF70-5207C97E842E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE520142-5869-464D-AF70-5207C97E842E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8914BE5A-5CB3-4EB1-95E2-F7455B465E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8914BE5A-5CB3-4EB1-95E2-F7455B465E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8914BE5A-5CB3-4EB1-95E2-F7455B465E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8914BE5A-5CB3-4EB1-95E2-F7455B465E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594F5177-CC10-4074-8979-E9CDBD96C1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594F5177-CC10-4074-8979-E9CDBD96C1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594F5177-CC10-4074-8979-E9CDBD96C1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594F5177-CC10-4074-8979-E9CDBD96C1EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

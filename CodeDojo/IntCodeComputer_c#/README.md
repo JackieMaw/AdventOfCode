@@ -4,6 +4,7 @@
 
 dotnet build
 dotnet test
+dotnet run --project .\IntCodeComputer.Execute
 
 ## Basic Computer: Add + Multiply
 https://adventofcode.com/2019/day/2
