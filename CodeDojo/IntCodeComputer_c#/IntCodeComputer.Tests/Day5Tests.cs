@@ -8,7 +8,7 @@ namespace Tests
         [Test]
         public void Day5a()
         {
-            var intCodeProgram = Computer.LoadIntCodeProgram("..\\..\\..\\InputData\\2019day5.txt");
+            var intCodeProgram = Helper.LoadIntsFromFile("..\\..\\..\\InputData\\2019day5.txt");
             var output = new Computer().Execute(intCodeProgram);            
             Assert.AreEqual(13933662, output);
         }
@@ -16,7 +16,7 @@ namespace Tests
         [Test]
         public void Day5b()
         {
-            var intCodeProgram = Computer.LoadIntCodeProgram("..\\..\\..\\InputData\\2019day5.txt");
+            var intCodeProgram = Helper.LoadIntsFromFile("..\\..\\..\\InputData\\2019day5.txt");
             var output = new Computer().Execute(intCodeProgram);            
             Assert.AreEqual(2369720, output);
         }

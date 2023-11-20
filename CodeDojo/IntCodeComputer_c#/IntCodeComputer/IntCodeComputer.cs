@@ -33,10 +33,5 @@
 
             return input_data[0];
         }
-
-        public static int[] LoadIntCodeProgram(string filePath)
-        {
-            return System.IO.File.ReadAllLines(filePath)[0].Split(',').Select(l => Convert.ToInt32(l)).ToArray();
-        }
     }
 }
