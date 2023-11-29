@@ -1,7 +1,7 @@
 import requests
 from os.path import exists
 
-SESSIONID = "GET_THIS_FROM_SESSION_COOKIE"
+SESSIONID = "GET_FROM_SESSION_COOKIE"
 USER_AGENT = ""
 
 def get_or_download_input(year, day):
@@ -20,7 +20,7 @@ def get_input(year, day, postfix):
 def download_input(year, day, filename):
     uri = f'http://adventofcode.com/{year}/day/{day}/input'
     print(f"Reading input from uri: {uri}")
-    response = requests.get(uri, cookies={'session': SESSIONID}, headers={'User-Agent': USER_AGENT})
+    response = requests.get(uri, cookies={'session': SESSIONID})
     print(f"Writing input to file: {filename}")
     with open(filename, "w") as text_file:
         text_file.write(response.text)

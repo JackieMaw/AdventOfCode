@@ -9,11 +9,11 @@ def execute(input):
     return result
 
 # TESTS
-# assert execute(get_strings_csv(["ABCD"])) == 0
+assert execute(get_strings (["(())"])) == 0
 # print("ALL TESTS PASSED")
 
-YEAR = 2023
-DAY = 0
+YEAR = 2015
+DAY = 1
 
 # TEST INPUT DATA
 # raw_input = get_input(YEAR, DAY, "_test")

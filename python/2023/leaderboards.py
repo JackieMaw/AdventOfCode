@@ -1,13 +1,12 @@
 import json
 import requests
 
-SESSIONID = "GET_THIS_FROM_SESSION_COOKIE"
-USER_AGENT = ""
+SESSIONID = "GET_FROM_SESSION_COOKIE"
 
 def get_leaderboard_json(year, leaderboard_code):
     uri = f'https://adventofcode.com/{year}/leaderboard/private/view/{leaderboard_code}.json'
     print(f"Reading input from uri: {uri}")
-    response = requests.get(uri, cookies={'session': SESSIONID}, headers={'User-Agent': USER_AGENT})
+    response = requests.get(uri, cookies={'session': SESSIONID})
     print(response.text)
     return response.text
 
