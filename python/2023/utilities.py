@@ -32,9 +32,11 @@ def get_strings_csv(raw_input):
     result = []
     for line in raw_input:
         inner_result = []
-        for l in line.split(","):   
-            inner_result.append(l)
+        for l in line.split(","): 
+            inner_result.append(l.strip())
         result.append(inner_result)
+    if len(result) == 1:
+        return result[0]
     return result
 
 def get_integers(raw_input):
