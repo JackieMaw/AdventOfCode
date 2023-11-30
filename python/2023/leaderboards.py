@@ -61,5 +61,8 @@ goal=50
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
 stats.sort(reverse=True, key=sort_by_total_stars)
 
+total_members_on_all_leaderboards = sum([total_members for (_, total_members, _, _, _) in stats])
+print(f"{total_members_on_all_leaderboards} total members accross all leaderboards")
+
 for (leaderboard, total_members, total_active_members, total_stars, count_goal) in stats:
     print(f"{leaderboard} leaderboard has {total_active_members}/{total_members} active members achieving {total_stars} stars, with {count_goal} participants achieving at least {goal} stars")
