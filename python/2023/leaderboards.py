@@ -1,12 +1,14 @@
 import json
 import requests
 
-SESSIONID = "GET_FROM_SESSION_COOKIE"
+def get_session_id():
+    with open("session_id_ubs_admin.txt", "r") as text_file:
+        return text_file.read()
 
 def get_leaderboard_json(year, leaderboard_code):
     uri = f'https://adventofcode.com/{year}/leaderboard/private/view/{leaderboard_code}.json'
     print(f"Reading input from uri: {uri}")
-    response = requests.get(uri, cookies={'session': SESSIONID})
+    response = requests.get(uri, cookies={'session': get_session_id()})
     print(response.text)
     return response.text
 
@@ -56,7 +58,7 @@ def print_active_members_for_leaderboard(code):
 
 YEAR = 2023
 all_leaderboards = { "APAC":"1580364", "Switzerland":"212737", "EMEA":"825756", "AMER":"2328970" }
-goal=50
+goal=2
 
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
 stats.sort(reverse=True, key=sort_by_total_stars)
