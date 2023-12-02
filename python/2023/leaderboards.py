@@ -54,6 +54,17 @@ def print_active_members_for_leaderboard(code):
     leaderboard_json = get_leaderboard_json(YEAR, code)
     print_active_members(leaderboard_json)
 
+
+def get_sum(stats):
+    (sum_leaderboard, sum_total_members, sum_total_active_members, sum_total_stars, sum_count_goal) = ("ALL", 0, 0, 0, 0)
+    for (leaderboard, total_members, total_active_members, total_stars, count_goal) in stats:
+        sum_total_members += total_members
+        sum_total_active_members += total_active_members
+        sum_total_stars += total_stars
+        sum_count_goal += count_goal
+    return (sum_leaderboard, sum_total_members, sum_total_active_members, sum_total_stars, sum_count_goal)
+    
+
 # process leaderboards
 
 YEAR = 2023
@@ -63,8 +74,7 @@ goal=2
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
 stats.sort(reverse=True, key=sort_by_total_stars)
 
-total_members_on_all_leaderboards = sum([total_members for (_, total_members, _, _, _) in stats])
-print(f"{total_members_on_all_leaderboards} total members accross all leaderboards")
+stats.append(get_sum(stats))
 
 for (leaderboard, total_members, total_active_members, total_stars, count_goal) in stats:
     print(f"{leaderboard} leaderboard has {total_active_members}/{total_members} active members achieving {total_stars} stars, with {count_goal} participants achieving at least {goal} stars")
