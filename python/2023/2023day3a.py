@@ -27,10 +27,10 @@ def execute(all_lines):
 
     all_part_numbers = []
 
-    all_digits = ''
-    is_part_number = False
 
     for row, line in enumerate(all_lines):
+        all_digits = ''
+        is_part_number = False
         for col, char in enumerate(line):
             if char.isdigit():
                 all_digits += char
@@ -41,14 +41,17 @@ def execute(all_lines):
                 if len(all_digits) > 0: #reset
                     if is_part_number:  #save the last part_number
                         all_part_numbers.append(int(all_digits))
-                        print(f"Part Number Found: {all_digits}")
+                        #print(f"Part Number Found: {all_digits}")
                         is_part_number = False #reset
                     all_digits = '' #reset
 
         # don't forget to save the last number on each line!
-        if len(all_digits) > 0 and is_part_number:
-            all_part_numbers.append(int(all_digits))
-            print(f"Part Number Found @ EOL: {all_digits}")
+        if len(all_digits) > 0: #reset
+            if is_part_number:  #save the last part_number
+                all_part_numbers.append(int(all_digits))
+                #print(f"Part Number Found EOL: {all_digits}")
+                is_part_number = False #reset
+            all_digits = '' #reset
 
     result = sum(all_part_numbers)
     print(f"result: {result}")
@@ -76,5 +79,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 0
+assert execute(input) == 544664
 print("ANSWER CORRECT")
