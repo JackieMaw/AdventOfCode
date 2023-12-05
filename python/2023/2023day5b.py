@@ -18,8 +18,6 @@ class MapItem():
 
     def translate(self, range_start, range_end):
 
-        print(f"* ({range_start}, {range_end}) => ({self.source_start}, {self.source_end}))")
-
         if range_start > self.source_end or range_end < self.source_start:
             return (None, [(range_start, range_end)]) # no overlap
 
@@ -37,7 +35,9 @@ class MapItem():
         before_range = (a, b - 1)
         mid_range = (b, c)
         after_range = (c + 1, d)
-        print(f"* {before_range} + {mid_range} + {after_range}")
+
+        print(f"*** ({range_start}, {range_end}) => ({self.source_start}, {self.source_end}))")
+        print(f"*   {before_range} + {mid_range} + {after_range}")
         
         if self.is_valid_range(mid_range):
             mapped_range = (mid_range[0] + self.destination_offset, mid_range[1] + self.destination_offset)
@@ -48,7 +48,7 @@ class MapItem():
         if self.is_valid_range(after_range):
             failed_to_map_ranges.append(after_range)
 
-        print(f"mapped_range: {mapped_range} failed_to_map_ranges: {failed_to_map_ranges}")
+        print(f"*   mapped_range: {mapped_range} failed_to_map_ranges: {failed_to_map_ranges}")
         
         return (mapped_range, failed_to_map_ranges)
 
@@ -115,7 +115,6 @@ def map_ranges(this_state_map : StateMap, source_ranges):
         something_to_map = False
         for map_item in this_state_map.map_items:
             if len(source_ranges) > 0:
-                print(f"source_ranges : {source_ranges}")
                 (range_start, range_end) = source_ranges.pop()
                 (mapped_range, failed_to_map_ranges) = map_item.translate(range_start, range_end)
                 if mapped_range is not None:
@@ -124,6 +123,7 @@ def map_ranges(this_state_map : StateMap, source_ranges):
                 source_ranges.extend(failed_to_map_ranges)
 
     if len(source_ranges) > 0:
+        print(f"NO MAPPING FOR RANGES : {source_ranges}")
         destination_ranges.extend(source_ranges)
 
     return destination_ranges
@@ -192,5 +192,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input = get_strings(raw_input)
-assert execute(input) == 173706076
+assert execute(input) == 0
 print("ANSWER CORRECT")
