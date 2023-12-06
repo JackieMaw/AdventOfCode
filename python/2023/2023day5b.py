@@ -15,11 +15,12 @@ class MapItem():
     
     def is_valid_range(self, range):
         return range[0] <= range[1]
+    
+    def overlaps_with(self, range_start, range_end):
+        out_of_bounds = range_start > self.source_end or range_end < self.source_start
+        return not out_of_bounds
 
     def translate(self, range_start, range_end):
-
-        if range_start > self.source_end or range_end < self.source_start:
-            return (None, [(range_start, range_end)]) # no overlap
 
         if range_start >= self.source_start and range_end <= self.source_end:
             return ((range_start + self.destination_offset, range_end + self.destination_offset), []) # no excess
@@ -36,19 +37,20 @@ class MapItem():
         mid_range = (b, c)
         after_range = (c + 1, d)
 
-        print(f"*** ({range_start}, {range_end}) => ({self.source_start}, {self.source_end}))")
-        print(f"*   {before_range} + {mid_range} + {after_range}")
+        #print(f"*** ({range_start}, {range_end}) => ({self.source_start}, {self.source_end}))")
+        #print(f"*   {before_range} + {mid_range} + {after_range}")
         
         if self.is_valid_range(mid_range):
-            mapped_range = (mid_range[0] + self.destination_offset, mid_range[1] + self.destination_offset)
-        
+            mapped_range = (mid_range[0] + self.destination_offset, mid_range[1] + self.destination_offset) 
+            print(f"    {mid_range} ==> {mapped_range}")
+                         
         if self.is_valid_range(before_range):
             failed_to_map_ranges.append(before_range)
         
         if self.is_valid_range(after_range):
             failed_to_map_ranges.append(after_range)
 
-        print(f"*   mapped_range: {mapped_range} failed_to_map_ranges: {failed_to_map_ranges}")
+        #print(f"*   mapped_range: {mapped_range} failed_to_map_ranges: {failed_to_map_ranges}")
         
         return (mapped_range, failed_to_map_ranges)
 
@@ -109,28 +111,37 @@ def get_destination_from_map(state_map, source):
 
 def map_ranges(this_state_map : StateMap, source_ranges):
     
-    destination_ranges = []
-    something_to_map = True
-    while len(source_ranges) > 0 and something_to_map:
-        something_to_map = False
-        for map_item in this_state_map.map_items:
-            if len(source_ranges) > 0:
-                (range_start, range_end) = source_ranges.pop()
-                (mapped_range, failed_to_map_ranges) = map_item.translate(range_start, range_end)
-                if mapped_range is not None:
-                    destination_ranges.append(mapped_range)
-                    something_to_map = True
-                source_ranges.extend(failed_to_map_ranges)
+    range_size_before = get_range_size(source_ranges)
 
-    if len(source_ranges) > 0:
-        print(f"NO MAPPING FOR RANGES : {source_ranges}")
-        destination_ranges.extend(source_ranges)
+    destination_ranges = []
+    something_changed = True
+    while len(source_ranges) > 0:
+        (range_start, range_end) = source_ranges.pop(0)
+        something_changed = False
+        for map_item in this_state_map.map_items:
+            if map_item.overlaps_with(range_start, range_end):
+                (mapped_range, failed_to_map_ranges) = map_item.translate(range_start, range_end)
+                destination_ranges.append(mapped_range)
+                print(f"MAPPING FOUND FOR RANGE : {mapped_range}")
+                source_ranges.extend(failed_to_map_ranges)
+                something_changed = True
+                break
+        if not something_changed:
+            print(f"NO MAPPING FOR RANGES : {(range_start, range_end)}")
+            destination_ranges.append((range_start, range_end))
+
+    range_size_after = get_range_size(destination_ranges)
+
+    assert range_size_before == range_size_after
 
     return destination_ranges
 
 
 def get_min_from_ranges(all_ranges):
     return min([start for (start, end) in all_ranges])
+
+def get_range_size(all_ranges):
+    return sum([end - start + 1 for (start, end) in all_ranges])
 
 def execute(input):
 
@@ -144,7 +155,7 @@ def execute(input):
 
     while current_state in all_maps:
         state_map = all_maps[current_state]
-        print(f'MAP FROM {state_map.from_state} to {state_map.to_state}')
+        print(f'MAP FROM {state_map.from_state} to {state_map.to_state} : {source_ranges}')
         desintation_ranges = map_ranges(state_map, source_ranges)
         current_state = state_map.to_state
         source_ranges = desintation_ranges
