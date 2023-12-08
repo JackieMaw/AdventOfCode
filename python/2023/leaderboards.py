@@ -69,7 +69,7 @@ def get_sum(stats):
 
 YEAR = 2023
 all_leaderboards = { "APAC":"1580364", "Switzerland":"212737", "EMEA":"825756", "AMER":"2328970" }
-goal=12
+goal=14
 
 stats = [process_leaderboard(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
 stats.sort(reverse=True, key=sort_by_total_stars)
