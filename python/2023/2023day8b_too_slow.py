@@ -1,6 +1,7 @@
 from utilities import *
-import math
-import copy
+
+
+
 
 #'GTK = (BQR, PFH)'
 def parse_node(line_parts):
@@ -16,21 +17,33 @@ def parse_input(input_lines):
     node_map = { node[0]: node for node in [parse_node(line) for line in input_lines[2:]] }
     return (instructions, node_map)
 
+movement_cache = []
+
+def get_next_node(current_node, instruction, node_map):    
+    (parent, left, right) = node_map[current_node]
+    if instruction == 'L':
+        current_node = left
+    elif instruction == 'R':
+        current_node = right
+    else:
+        raise Exception(f"Unhandled case - instruction: {instruction}")
+    return current_node
+
+def get_all_starting_nodes(node_map):
+    return list(filter(lambda node: node[-1] == "A", node_map.keys()))
+
+def all_nodes_end_in_z(current_nodes):
+    return all(node[-1] == "Z" for node in current_nodes)       
+
 def get_num_steps(instructions, node_map):
-    current_node = 'AAA'
-    desintation_node = 'ZZZ'
     num_steps = 0
+    current_nodes = get_all_starting_nodes(node_map)
     while True:
         for instruction in instructions:
-            (parent, left, right) = node_map[current_node]
             num_steps += 1
-            if instruction == 'L':
-                current_node = left
-            elif instruction == 'R':
-                current_node = right
-            else:
-                raise Exception(f"Unhandled case - instruction: {instruction}")
-            if current_node == desintation_node:
+            print(f"{num_steps} >> {current_nodes}")
+            current_nodes = [get_next_node(current_node, instruction, node_map) for current_node in current_nodes]         
+            if all_nodes_end_in_z(current_nodes):
                 return num_steps
         
 def execute(input_lines):
@@ -52,6 +65,9 @@ raw_input = get_input(YEAR, DAY, "_test1")
 input = get_strings(raw_input)
 assert execute(input) == 2
 raw_input = get_input(YEAR, DAY, "_test2")
+input = get_strings(raw_input)
+assert execute(input) == 6
+raw_input = get_input(YEAR, DAY, "_test3")
 input = get_strings(raw_input)
 assert execute(input) == 6
 print("TEST INPUT PASSED")
