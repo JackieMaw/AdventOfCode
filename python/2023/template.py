@@ -2,9 +2,16 @@ from utilities import *
 import math
 import copy
 
-def execute(input):
-    print(input)
-    result = 0
+def parse_input(input_lines):
+    return None
+
+def solve(initial_state):
+    return 0
+
+def execute(input_lines):
+    print(input_lines)
+    initial_state = parse_input(input_lines)
+    result = solve(initial_state)
     print(f"result: {result}")
     return result
 
@@ -23,6 +30,6 @@ DAY = 0
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
-input = get_strings(raw_input)
-assert execute(input) == 0
+input_lines = get_strings(raw_input)
+assert execute(input_lines) == 0
 print("ANSWER CORRECT")

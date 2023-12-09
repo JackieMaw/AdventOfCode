@@ -17,8 +17,21 @@ def parse_input(input_lines):
     return (instructions, node_map)
 
 def get_num_steps(instructions, node_map):
-    return len(instructions)
-
+    current_node = 'AAA'
+    desintation_node = 'ZZZ'
+    num_steps = 0
+    for instruction in instructions:
+        (parent, left, right) = node_map[current_node]
+        num_steps += 1
+        if instruction == 'L':
+            current_node = left
+        elif instruction == 'R':
+            current_node = right
+        else:
+            raise Exception(f"Unhandled case - instruction: {instruction}")
+        if current_node == desintation_node:
+            return num_steps
+        
 def execute(input_lines):
     print(input_lines)
     (instructions, node_map) = parse_input(input_lines)
