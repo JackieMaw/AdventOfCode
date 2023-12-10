@@ -1,6 +1,5 @@
 from utilities import *
-
-
+import math
 
 
 #'GTK = (BQR, PFH)'
@@ -20,6 +19,8 @@ def parse_input(input_lines):
 def get_next_node(current_node, instructions, node_map, movement_cache): 
 
     next_node = None
+    step_size = math.ceil(len(instructions) / 20)
+    num_iterations = math.ceil(len(instructions) / step_size)
 
     if (current_node, instructions) in movement_cache:      
         next_node = movement_cache[(current_node, instructions)]  
@@ -36,8 +37,15 @@ def get_next_node(current_node, instructions, node_map, movement_cache):
             else:
                 raise Exception(f"Unhandled case - instruction: {instruction}")
         else:
-            next_node = get_next_node(current_node, instructions[0], node_map, movement_cache)
-            next_node = get_next_node(next_node, instructions[1:], node_map, movement_cache)
+            next_node = current_node
+            for i in range(num_iterations - 1):
+                start_index = i * step_size
+                end_index = (i + 1) * step_size
+                #print(f"PROCESS SUBSTRING ({start_index}, {end_index})")
+                next_node = get_next_node(next_node, instructions[start_index : end_index], node_map, movement_cache)
+            start_index = (num_iterations - 1) * step_size
+            #print(f"PROCESS SUBSTRING END ({start_index}, {end_index})")
+            next_node = get_next_node(next_node, instructions[start_index:], node_map, movement_cache)
 
         movement_cache[(current_node, instructions)] = next_node
         #print(f"CACHE UPDATED ({current_node}, {instructions}) >> {next_node}")
