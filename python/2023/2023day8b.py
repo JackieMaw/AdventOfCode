@@ -71,16 +71,10 @@ def get_num_steps_for_single_node(instructions, node_map, starting_node):
             print(f"{starting_node} >> {current_node} == {num_steps}")
             return num_steps
 
-def get_lcm(list_of_numbers):
-    lcm = list_of_numbers[0]
-    for num in list_of_numbers:
-        lcm = math.lcm(lcm,num)
-    return lcm
-
 def get_num_steps(instructions, node_map):
     starting_nodes = get_all_starting_nodes(node_map)
     num_steps_for_all_nodes = [get_num_steps_for_single_node(instructions, node_map, starting_node) for starting_node in starting_nodes]
-    return get_lcm(num_steps_for_all_nodes)
+    return math.lcm(*num_steps_for_all_nodes)
         
 def execute(input_lines):
     print(input_lines)
