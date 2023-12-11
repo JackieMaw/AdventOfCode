@@ -1,4 +1,5 @@
 import heapq
+from itertools import count
 from utilities import *
 import math
 import copy
@@ -7,6 +8,8 @@ north = (-1, 0)
 east = (0, +1)
 south = (+1, 0)
 west = (0, -1)
+
+all_neighbour_offsets = [north, east, south, west]
 
 neighbour_rules = {'|' : [north, south],
               '-' : [east, west],
@@ -89,10 +92,24 @@ def get_all_distances(grid, starting_position):
     return distance_grid
 
 
+def get_max_turning_point(distance_grid):
+    
+    # for row in range(num_rows):
+    #     for col in range(num_cols):
+    #         distance = distance_grid[row][col]
+    #         ## if two neighbours have distance - 1
+    #         num_neighbours_less_one = sum(1 for (nrow, ncol) in get_neighbours() if distance_grid[nrow][ncol] == distance - 1)
+    #         if num_neighbours_less_one == 2:
+    #             return distance
+            
+    raise Exception("No Max Turning Point Found")
+
+
 def get_safest_distance_from_animal(input_lines):
     starting_position = get_starting_position(input_lines)
     distance_grid = get_all_distances(input_lines, starting_position)
-    return max([max(row) for row in distance_grid])
+    return get_max_turning_point(distance_grid)
+    #return max([max(row) for row in distance_grid])
 
 def execute(input_lines):
     print(input_lines)
