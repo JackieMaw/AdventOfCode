@@ -1,6 +1,5 @@
-import math
 from utilities import *
-import numpy as np
+import math
 
 
 #'GTK = (BQR, PFH)'
@@ -59,28 +58,16 @@ def get_all_starting_nodes(node_map):
 def all_nodes_end_in_z(current_nodes):
     return all(node[-1] == "Z" for node in current_nodes)       
 
-def get_num_steps_for_single_node(instructions, node_map, starting_node):
-    num_steps = 0
-    movement_cache = {}     
-    current_node = starting_node
-    step_size = len(instructions)
-    while True:
-        current_node = get_next_node(current_node, instructions, node_map, movement_cache)
-        num_steps += step_size
-        if current_node.endswith('Z'):
-            print(f"{starting_node} >> {current_node} == {num_steps}")
-            return num_steps
-
-def get_lcm(list_of_numbers):
-    lcm = list_of_numbers[0]
-    for num in list_of_numbers:
-        lcm = math.lcm(lcm,num)
-    return lcm
-
 def get_num_steps(instructions, node_map):
-    starting_nodes = get_all_starting_nodes(node_map)
-    num_steps_for_all_nodes = [get_num_steps_for_single_node(instructions, node_map, starting_node) for starting_node in starting_nodes]
-    return get_lcm(num_steps_for_all_nodes)
+    num_steps = 0
+    movement_cache = {}
+    current_nodes = get_all_starting_nodes(node_map)
+    while True:
+        #print(f"{num_steps} >> {current_nodes}")
+        current_nodes = [get_next_node(current_node, instructions, node_map, movement_cache) for current_node in current_nodes]              
+        num_steps += len(instructions)
+        if all_nodes_end_in_z(current_nodes):
+            return num_steps
         
 def execute(input_lines):
     print(input_lines)
