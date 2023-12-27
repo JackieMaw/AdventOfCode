@@ -38,9 +38,9 @@ Switzerland,36,Matthias Eberli,42
 Switzerland,37,rss1000,50
 Switzerland,38,Pietro Ferrari,41
 Switzerland,39,Calin Dragomir,46
-Switzerland,40,203017,45
-Switzerland,41,DiggerFlo,42
-Switzerland,42,Eric Puschel,38
+Switzerland,40,Eric Puschel,39
+Switzerland,41,203017,45
+Switzerland,42,DiggerFlo,42
 Switzerland,43,Dan Mareda,43
 Switzerland,44,Loic Nguyen,43
 Switzerland,45,Marius Barbulescu,35
@@ -63,10 +63,10 @@ Switzerland,61,3222150,33
 Switzerland,62,Jozsef Buzas,37
 Switzerland,63,Tim Parker,28
 Switzerland,64,Marco,28
-Switzerland,65,Andre Feusi,29
-Switzerland,66,Aleksander Wlodarczyk,34
-Switzerland,67,bokachsi,35
-Switzerland,68,Satya Betha,37
+Switzerland,65,Satya Betha,38
+Switzerland,66,Andre Feusi,29
+Switzerland,67,Aleksander Wlodarczyk,34
+Switzerland,68,bokachsi,35
 Switzerland,69,Ariel Alejandro Vasquez Morales,31
 Switzerland,70,Laura Gianoni,27
 Switzerland,71,Bjoern Winkler,36
@@ -74,13 +74,13 @@ Switzerland,72,Michal Zadorozny,32
 Switzerland,73,chei,27
 Switzerland,74,davidegeler,22
 Switzerland,75,Pedro Fernandes,28
-Switzerland,76,Simon Hardmeier,23
-Switzerland,77,Gabor Toth,24
-Switzerland,78,achani,29
-Switzerland,79,Mike Bochenek,24
+Switzerland,76,Mike Bochenek,25
+Switzerland,77,Simon Hardmeier,23
+Switzerland,78,Gabor Toth,24
+Switzerland,79,achani,29
 Switzerland,80,albertmercade,26
-Switzerland,81,Celine GOURAUD,26
-Switzerland,82,Darius Sidlauskas,22
+Switzerland,81,Darius Sidlauskas,22
+Switzerland,82,Celine GOURAUD,26
 Switzerland,83,Gitano8600,21
 Switzerland,84,Aldo Cerasani,28
 Switzerland,85,sergio alvarez,27
@@ -205,15 +205,15 @@ EMEA,19,Emilia Hrynacz,48
 EMEA,20,Mikolaj Pytel,47
 EMEA,21,Michael Hill,44
 EMEA,22,Philip Rycroft,44
-EMEA,23,Hasan M,47
-EMEA,24,Artur Schulz,42
+EMEA,23,Artur Schulz,43
+EMEA,24,Hasan M,47
 EMEA,25,Pawel Skwarcz,42
 EMEA,26,Nikolas Matiyuk,45
 EMEA,27,KrzysztofUrbanczyk,37
 EMEA,28,Peter Wilson,44
-EMEA,29,Tom Lewis,42
-EMEA,30,Chris Birt,41
-EMEA,31,Lukasz Chrzaszcz,40
+EMEA,29,Lukasz Chrzaszcz,41
+EMEA,30,Tom Lewis,42
+EMEA,31,Chris Birt,41
 EMEA,32,Richard Finch,40
 EMEA,33,Anna Lysova,41
 EMEA,34,Pawel Kosztowniak,39
@@ -362,8 +362,8 @@ APAC,11,Vin Low,50
 APAC,12,Ash Jawanjal,50
 APAC,13,ashish g,50
 APAC,14,varun bhalla,50
-APAC,15,Renu Gaindar,50
-APAC,16,sghodekar,50
+APAC,15,sghodekar,50
+APAC,16,Renu Gaindar,50
 APAC,17,leonardkang,44
 APAC,18,Praveen Phatak,50
 APAC,19,Sanjeevani Tadsare,50
@@ -385,8 +385,8 @@ APAC,34,Uday Jain,35
 APAC,35,Mcdon Rebello,31
 APAC,36,Ishwar398,34
 APAC,37,Seema Sanghavi,34
-APAC,38,3380004,32
-APAC,39,Bartlomiej Zawadka,29
+APAC,38,Bartlomiej Zawadka,29
+APAC,39,3380004,32
 APAC,40,Charles LEUNG,32
 APAC,41,ongjx,31
 APAC,42,Mario Dias,32
@@ -398,9 +398,9 @@ APAC,47,Pranav Verma,30
 APAC,48,h-j-k,25
 APAC,49,Vishwanath Mathurbutham,23
 APAC,50,Vinay Singh,23
-APAC,51,Ravi Sharma,25
-APAC,52,nikJ13,24
-APAC,53,Indranil Sinha,20
+APAC,51,nikJ13,24
+APAC,52,Ravi Sharma,25
+APAC,53,Indranil Sinha,22
 APAC,54,Pravin Sharma,20
 APAC,55,bradg769,20
 APAC,56,Ajay Chaudhary,19
@@ -413,91 +413,92 @@ APAC,62,Jobin Kurian,14
 APAC,63,Puneet Walia,20
 APAC,64,ritika srivastava,19
 APAC,65,Abhinab Kar,15
-APAC,66,Devashish Padgaonkar,13
-APAC,67,Shashank Singh,12
-APAC,68,Jairus Ser Aragon,15
-APAC,69,angelazczheng,10
-APAC,70,rajeshbailwal,11
-APAC,71,Kashishjain25,10
-APAC,72,Rajat Sharma,9
-APAC,73,itelikak,9
-APAC,74,Felix Kwan,13
-APAC,75,Nazia Shaikh,8
-APAC,76,maheshdpawar,8
+APAC,66,Varun Singh,12
+APAC,67,Devashish Padgaonkar,13
+APAC,68,Shashank Singh,12
+APAC,69,Jairus Ser Aragon,15
+APAC,70,angelazczheng,10
+APAC,71,rajeshbailwal,11
+APAC,72,Kashishjain25,10
+APAC,73,Rajat Sharma,9
+APAC,74,itelikak,9
+APAC,75,Felix Kwan,13
+APAC,76,Nazia Shaikh,8
 APAC,77,Aliasgar Musani,6
-APAC,78,Sachin Tandon,8
-APAC,79,Vrushali Mahajan,10
-APAC,80,Shradha Sharma,8
-APAC,81,Pushkar Verma,8
-APAC,82,Kushagra2010,7
-APAC,83,Tarun Sawlani,6
-APAC,84,Shivam Kabra,5
-APAC,85,Favin Fernandes,8
+APAC,78,maheshdpawar,8
+APAC,79,Sachin Tandon,8
+APAC,80,Vrushali Mahajan,10
+APAC,81,Shradha Sharma,8
+APAC,82,Pushkar Verma,8
+APAC,83,Kushagra2010,7
+APAC,84,Tarun Sawlani,6
+APAC,85,Shivam Kabra,5
 APAC,86,Atul Kumar Agrawal,5
-APAC,87,gourav gupta,7
-APAC,88,munmun gangwal,6
-APAC,89,AdolphViL2,5
-APAC,90,Rahul Vidhate,5
+APAC,87,Favin Fernandes,8
+APAC,88,gourav gupta,7
+APAC,89,munmun gangwal,6
+APAC,90,AdolphViL2,5
 APAC,91,Chandra Shekar Avula,4
-APAC,92,SUBHAM DASH,4
-APAC,93,3225650,5
-APAC,94,Murli Hiware,5
-APAC,95,Mangesh Shinde,4
-APAC,96,Ajay Porwal,5
-APAC,97,D T,6
-APAC,98,ashishmane,5
-APAC,99,ramkumar gopal,3
-APAC,100,Kunal Bhardwaj,6
+APAC,92,Rahul Vidhate,5
+APAC,93,SUBHAM DASH,4
+APAC,94,3225650,5
+APAC,95,Murli Hiware,5
+APAC,96,Mangesh Shinde,4
+APAC,97,Ajay Porwal,5
+APAC,98,D T,6
+APAC,99,ashishmane,5
+APAC,100,ramkumar gopal,3
 APAC,101,Shubhanshi Garg,4
-APAC,102,chandra prakash kabra,5
-APAC,103,Sandeep Kalra,4
-APAC,104,Yufei,4
-APAC,105,AngelPaul09,4
-APAC,106,Monika Priyadarshini,2
-APAC,107,Prapti Sankhe,2
-APAC,108,3286062,2
-APAC,109,Abhinanda Pal,2
-APAC,110,Aishwarya Nathani,2
-APAC,111,3216163,4
-APAC,112,neeraj maheshwari,2
-APAC,113,skant7,4
-APAC,114,pcs2030,4
-APAC,115,Frank Segginger,2
-APAC,116,Jerriel Loo,4
-APAC,117,Shweta Zawar,4
-APAC,118,3206252,2
-APAC,119,Ashish Fulkar,2
-APAC,120,Gunjan,2
-APAC,121,hexcyan,4
+APAC,102,Kunal Bhardwaj,6
+APAC,103,chandra prakash kabra,5
+APAC,104,Sandeep Kalra,4
+APAC,105,Yufei,4
+APAC,106,AngelPaul09,4
+APAC,107,Monika Priyadarshini,2
+APAC,108,Prapti Sankhe,2
+APAC,109,3286062,2
+APAC,110,Abhinanda Pal,2
+APAC,111,Aishwarya Nathani,2
+APAC,112,3216163,4
+APAC,113,neeraj maheshwari,2
+APAC,114,skant7,4
+APAC,115,pcs2030,4
+APAC,116,Frank Segginger,2
+APAC,117,Jerriel Loo,4
+APAC,118,Shweta Zawar,4
+APAC,119,3206252,2
+APAC,120,Ashish Fulkar,2
+APAC,121,Gunjan,2
 APAC,122,Sachin Shelar,4
-APAC,123,3213399,2
-APAC,124,KRISHNA SUDAN,1
-APAC,125,Ishan Agarwal,4
-APAC,126,Soumya Priyadarshini Nayak,2
-APAC,127,Annie Michael,2
-APAC,128,Nilesh Borse,3
-APAC,129,abhinesh patil,2
-APAC,130,Bharadwaj Pasupathi,2
-APAC,131,Rohan Tidame,1
+APAC,123,hexcyan,4
+APAC,124,3213399,2
+APAC,125,KRISHNA SUDAN,1
+APAC,126,Ishan Agarwal,4
+APAC,127,Soumya Priyadarshini Nayak,2
+APAC,128,Annie Michael,2
+APAC,129,Nilesh Borse,3
+APAC,130,abhinesh patil,2
+APAC,131,Bharadwaj Pasupathi,2
 APAC,132,Abhishek Sanghani,2
-APAC,133,Ketan Dangi,2
-APAC,134,Rishabh Ranka,2
-APAC,135,Ishani Rede,1
-APAC,136,Anzar Perween,1
-APAC,137,Madhanraj K,2
-APAC,138,Haikal R,1
-APAC,139,Shalini Agrawal,1
-APAC,140,PS2314,0
-APAC,141,bharti bakshi,0
-APAC,142,Johnson Zhuang,0
-APAC,143,Makarand Ahire,0
+APAC,133,Rohan Tidame,1
+APAC,134,Ketan Dangi,2
+APAC,135,Rishabh Ranka,2
+APAC,136,Ishani Rede,1
+APAC,137,Anzar Perween,1
+APAC,138,Madhanraj K,2
+APAC,139,Haikal R,1
+APAC,140,Shalini Agrawal,1
+APAC,141,bharti bakshi,1
+APAC,142,3829163,0
+APAC,143,sharath kumar,0
 APAC,144,Amit Pathak,0
-APAC,145,sharath kumar,0
-APAC,146,3829163,0
-APAC,147,Anil Kumar G,0
-APAC,148,Amey Jadiye,0
-APAC,149,cre8tion,0
-APAC,150,Bhavesh Ugemuge,0
+APAC,145,PS2314,0
+APAC,146,Bhavesh Ugemuge,0
+APAC,147,Amey Jadiye,0
+APAC,148,Makarand Ahire,0
+APAC,149,Johnson Zhuang,0
+APAC,150,Anil Kumar G,0
+APAC,151,cre8tion,0
 GLOBAL_TOP_100,1,vishal chauhan,50
 GLOBAL_TOP_100,2,Kapil Rajput,50
 GLOBAL_TOP_100,3,Igor Kovacevic,50
@@ -521,8 +522,8 @@ GLOBAL_TOP_100,20,Ruben Bronnimann,44
 GLOBAL_TOP_100,21,Yu Sheng Ngo,50
 GLOBAL_TOP_100,22,Henry Yim,50
 GLOBAL_TOP_100,23,trevmoody,48
-GLOBAL_TOP_100,24,Marc Schmid,48
-GLOBAL_TOP_100,25,Michael Hill,44
+GLOBAL_TOP_100,24,Michael Hill,44
+GLOBAL_TOP_100,25,Marc Schmid,48
 GLOBAL_TOP_100,26,Vladimir Kochanov,50
 GLOBAL_TOP_100,27,ashish g,50
 GLOBAL_TOP_100,28,Pawel Skwarcz,42
@@ -579,18 +580,18 @@ AMER,49,pattu01,1
 AMER,50,Suhas Dumbre,2
 AMER,51,brandon-red,1
 AMER,52,Cameron David Walker,1
-AMER,53,Herin Learning,0
-AMER,54,Leelakumar Katari,0
-AMER,55,Michael Mullally,0
-AMER,56,sachitgithubm,0
+AMER,53,Michael Mullally,0
+AMER,54,sachitgithubm,0
+AMER,55,Ilya Shoshenskiy,0
+AMER,56,princerajasingh,0
 AMER,57,davewjohnsen,0
 AMER,58,3202978,0
-AMER,59,Girish Lakade,0
-AMER,60,princerajasingh,0
+AMER,59,Herin Learning,0
+AMER,60,Harsh Shah,0
 AMER,61,devrecur,0
 AMER,62,Girish Lakade,0
-AMER,63,Srinivasan Kumaresan,0
-AMER,64,Harsh Shah,0
-AMER,65,Venkat C S,0
-AMER,66,Lenny Volchok,0
-AMER,67,Ilya Shoshenskiy,0
+AMER,63,Venkat C S,0
+AMER,64,Srinivasan Kumaresan,0
+AMER,65,Leelakumar Katari,0
+AMER,66,Girish Lakade,0
+AMER,67,Lenny Volchok,0
