@@ -12,12 +12,12 @@ west = (0, -1)
 
 all_neighbour_offsets = [north, east, south, west]
 
-neighbour_rules = {'|' : [north, south],
-              '-' : [east, west],
-              'L' : [north, east],
-              'J' : [north, west],
-              '7' : [west, south],
-              'F' : [east, south],
+neighbour_rules = {'|' : [north, south], #incoming vertical, outgoing vertical
+              '-' : [east, west], #incoming horizontal, outgoing horizontal
+              'L' : [north, east], #incoming vertical, outgoing horizontal
+              'J' : [north, west], #incoming horizontal, incoming vertical
+              '7' : [west, south], #incoming horizontal, outgoing vertical
+              'F' : [east, south], #outgoing horizontal, outgoing vertical
               '.' : [],
               'S' : [north, east, south, west]}
 
@@ -45,23 +45,43 @@ def is_valid_location(location):
         return False
     return True
 
+def get_starting_character(possible_neighbours):
+    if north in possible_neighbours and south in possible_neighbours:
+        return '|'
+    if north in possible_neighbours and east in possible_neighbours:
+        return 'J'
+    if north in possible_neighbours and west in possible_neighbours:
+        return 'J'
+    
+    if east in possible_neighbours and west in possible_neighbours:
+        return '-'
+    if east in possible_neighbours and south in possible_neighbours:
+        return 'F'
+    
+    if south in possible_neighbours and west in possible_neighbours:
+        return '7'
+    
+    raise Exception(f"Unexpected case for possible_neighbours of starting character: {possible_neighbours}")
+    
 
-def get_neighbours(current_location, grid, visited):    
+def get_neighbours(current_location, grid):
     (row, col) = current_location
     char = grid[row][col]
     possible_neighbours = []
-    for possible_neighbour in neighbour_rules[char]:
-        (row_offset, col_offset) = possible_neighbour
+    neighbour_offsets = []
+
+    for neighbour_offset in neighbour_rules[char]:
+        (row_offset, col_offset) = neighbour_offset
         new_row = row + row_offset
         new_col = col + col_offset
         new_location = (new_row, new_col)
         if is_valid_location(new_location):
             new_char = grid[new_row][new_col]
-            if new_char in compatability_rules[possible_neighbour]:
+            if new_char in compatability_rules[neighbour_offset]:
                 possible_neighbours.append(new_location)
-    
-    not_visited_yet = [possible_neighbour for possible_neighbour in possible_neighbours if possible_neighbour not in visited]
-    return not_visited_yet
+                neighbour_offsets.append(neighbour_offset)
+
+    return possible_neighbours, neighbour_offsets
 
 def display_matrix(matrix):
     print('-'.join(['-' for col in matrix[0]]))
@@ -100,7 +120,13 @@ def traverse_loop(grid, starting_position):
         already_visited[row][col] = 1
         simple_grid[row][col] = grid[row][col]
         #print(f"Visiting: {(row, col)}")
-        neighbours = get_neighbours((row, col), grid, already_visited)
+        possible_neighbours, neighbour_offsets = get_neighbours((row, col), grid)
+        
+        if grid[row][col] == 'S':
+            simple_grid[row][col] = get_starting_character(neighbour_offsets)
+
+        neighbours = [possible_neighbour for possible_neighbour in possible_neighbours if possible_neighbour not in already_visited]
+
         for (nrow, ncol) in neighbours:
             #print(f"  >> {(nrow, ncol)}")
             distance_to_neighbour = distance_grid[nrow][ncol]
@@ -130,6 +156,8 @@ def get_number_of_tiles_inside_loop(row):
     inside = False
     number_of_tiles_inside = 0
 
+    previous_corner = None
+
     for col, char in enumerate(row):
         if char == 'X':
             if inside:
@@ -139,8 +167,35 @@ def get_number_of_tiles_inside_loop(row):
                 row[col] = 'O'
         elif char == '-':
             pass
-        else:
+        elif char == '|':
             inside = not inside
+        elif char in ['F','J','L','7']:
+            if previous_corner is None:
+                previous_corner = char
+                inside = not inside
+            else:
+                if previous_corner == 'F':
+                    if char == '7': # diff direction
+                        inside = not inside
+                        previous_corner = None
+                    elif char == 'J': # same direction
+                        #inside = inside
+                        previous_corner = None
+                    else:
+                        raise Exception(f"Unexpected case for corner: {char}")
+                elif previous_corner == 'L':
+                    if char == '7': # same direction
+                        #inside = inside
+                        previous_corner = None
+                    elif char == 'J': # diff direction
+                        inside = not inside
+                        previous_corner = None
+                    else:
+                        raise Exception(f"Unexpected case for corner: {char}")
+                else:
+                    raise Exception(f"Unexpected case for corner: {char} and previous_corner: {char} for row: {row}")
+        else:
+            raise Exception(f"Unexpected case: {char}")
 
     return number_of_tiles_inside
 
@@ -148,8 +203,10 @@ def get_total_number_of_dots_inside_loop(input_lines):
     starting_position = get_starting_position(input_lines)
     simple_grid = traverse_loop(input_lines, starting_position)
     display_matrix(simple_grid)
+    print(simple_grid)
     result = sum(get_number_of_tiles_inside_loop(row) for row in simple_grid)
     display_matrix(simple_grid)
+    
     return result
 
 def execute(input_lines):
@@ -158,9 +215,15 @@ def execute(input_lines):
     print(f"result: {result}")
     return result
 
-# TESTS
-# assert execute(get_strings_csv(["ABCD"])) == 0
-# print("ALL TESTS PASSED")
+# UNIT TESTS
+#[['X', 'X', 'F', '7', 'X'], ['X', 'F', 'J', '|', 'X'], ['S', 'J', 'X', 'L', '7'], ['|', 'F', '-', '-', 'J'], ['L', 'J', 'X', 'X', 'X']]
+
+assert get_number_of_tiles_inside_loop(['X', 'X', 'F', '7', 'X']) == 0
+assert get_number_of_tiles_inside_loop(['X', 'F', 'J', '|', 'X']) == 0
+assert get_number_of_tiles_inside_loop(['F', 'J', 'X', 'L', '7']) == 1
+assert get_number_of_tiles_inside_loop(['|', 'F', '-', '-', 'J']) == 0
+assert get_number_of_tiles_inside_loop(['L', 'J', 'X', 'X', 'X']) == 0
+print("ALL UNIT TESTS PASSED")
 
 YEAR = 2023
 DAY = 10
