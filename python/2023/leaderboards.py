@@ -1,18 +1,32 @@
 import json
 import requests
 
-def remove_polish_characters(text):
+def remove_special_characters(text):
+
     # Dictionary mapping Polish characters to English equivalents
     polish_chars = {
-        'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o',
+        'ą': 'a', 'ć': 'c', 'ę': 'e', 'ï' : 'i', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ö': 'o',
         'ś': 's', 'ź': 'z', 'ż': 'z', 'Ą': 'A', 'Ć': 'C', 'Ę': 'E',
-        'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z'
+        'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z',
+        'ü': 'u',
+        'á': 'a',
+        'Š': 'S',
+        'ä': 'a',
+        'í': 'i',
+        'Ș': 'S',
     }
     
     # Replace Polish characters with their English equivalents
     for polish_char, english_char in polish_chars.items():
         text = text.replace(polish_char, english_char)
     
+    for c in text:
+        if ord(c) < 32 or ord(c) > 122:
+            print(f"SPECIAL CHAR FOUND: {c}")
+            assert False, f"SPECIAL CHAR FOUND: {c}"
+            #print(f"'{c}': '{c}',")
+            
+
     return text
 
 class MemberSummary():
@@ -24,7 +38,7 @@ class MemberSummary():
             #self.name = f"(anonymous user #{self.id})"
             self.name = f"{self.id}"
         else:
-            self.name = remove_polish_characters(self.name)
+            self.name = remove_special_characters(self.name)
         self.stars = member_info["stars"]
         self.local_score = member_info["local_score"]
         self.last_star_ts = member_info["last_star_ts"]
@@ -119,7 +133,7 @@ def get_sum(leaderboard_summaries):
 
 YEAR = 2023
 all_leaderboards = { "APAC":"1580364", "Switzerland":"212737", "EMEA":"825756", "AMER":"2328970", "GLOBAL_TOP_100":"2087277" }
-goal=34
+goal=50
 IGNORED_MEMBERS = {"UBS Admin"}
 
 leaderboard_summaries = [extract_leaderboard_summary(leaderboard, code) for (leaderboard, code) in all_leaderboards.items()]
