@@ -51,16 +51,13 @@ def get_starting_character(possible_neighbours):
     if north in possible_neighbours and east in possible_neighbours:
         return 'J'
     if north in possible_neighbours and west in possible_neighbours:
-        return 'J'
-    
+        return 'J'    
     if east in possible_neighbours and west in possible_neighbours:
         return '-'
     if east in possible_neighbours and south in possible_neighbours:
-        return 'F'
-    
+        return 'F'    
     if south in possible_neighbours and west in possible_neighbours:
-        return '7'
-    
+        return '7'    
     raise Exception(f"Unexpected case for possible_neighbours of starting character: {possible_neighbours}")
     
 
@@ -169,31 +166,32 @@ def get_number_of_tiles_inside_loop(row):
             pass
         elif char == '|':
             inside = not inside
-        elif char in ['F','J','L','7']:
+        elif char in ['F','L']: #starting corner
             if previous_corner is None:
-                previous_corner = char
                 inside = not inside
+                previous_corner = char
             else:
-                if previous_corner == 'F':
+                raise Exception(f"Unexpected case for corner: {char}")
+        elif char in ['J','7']: #closing corner
+            if previous_corner is None:
+                raise Exception(f"Unexpected case for corner: {char}")
+            elif previous_corner == 'F':
                     if char == '7': # diff direction
                         inside = not inside
-                        previous_corner = None
                     elif char == 'J': # same direction
-                        #inside = inside
-                        previous_corner = None
+                        inside = inside
                     else:
                         raise Exception(f"Unexpected case for corner: {char}")
-                elif previous_corner == 'L':
-                    if char == '7': # same direction
-                        #inside = inside
-                        previous_corner = None
-                    elif char == 'J': # diff direction
-                        inside = not inside
-                        previous_corner = None
-                    else:
-                        raise Exception(f"Unexpected case for corner: {char}")
+            elif previous_corner == 'L':
+                if char == '7': # same direction
+                    inside = inside
+                elif char == 'J': # diff direction
+                    inside = not inside
                 else:
-                    raise Exception(f"Unexpected case for corner: {char} and previous_corner: {char} for row: {row}")
+                    raise Exception(f"Unexpected case for corner: {char}")
+            else:
+                raise Exception(f"Unexpected case for corner: {char} and previous_corner: {previous_corner} for row: {row}")
+            previous_corner = None # close off this pair of corners
         else:
             raise Exception(f"Unexpected case: {char}")
 
@@ -202,6 +200,7 @@ def get_number_of_tiles_inside_loop(row):
 def get_total_number_of_dots_inside_loop(input_lines):
     starting_position = get_starting_position(input_lines)
     simple_grid = traverse_loop(input_lines, starting_position)
+    display_matrix(input_lines)
     display_matrix(simple_grid)
     print(simple_grid)
     result = sum(get_number_of_tiles_inside_loop(row) for row in simple_grid)
