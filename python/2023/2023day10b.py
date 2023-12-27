@@ -80,7 +80,7 @@ def traverse_loop(grid, starting_position):
     global num_cols
     num_cols = len(grid[0])
 
-    simple_grid = [ [ col for col in row ] for row in grid ]
+    simple_grid = [ [ 'X' for _ in range(num_cols) ] for _ in range(num_rows) ]
     distance_grid = [ [ 'X' for _ in range(num_cols) ] for _ in range(num_rows) ]
     already_visited = [ [ 0 for _ in range(num_cols) ] for _ in range(num_rows) ]
 
@@ -88,70 +88,72 @@ def traverse_loop(grid, starting_position):
     nodes_to_visit_priority_queue = [(0, starting_position)] # (cost, (row, col))
     distance_grid[row_start][col_start] = 0
     already_visited[row_start][col_start] = 1
-    simple_grid[row_start][col_start] = 'X'
+    simple_grid[row_start][col_start] = 'S'
 
-    display_matrix(grid)
-    display_matrix(simple_grid)
-    display_matrix(distance_grid)
-    display_matrix(already_visited)
+    # display_matrix(grid)
+    # display_matrix(simple_grid)
+    # display_matrix(distance_grid)
+    # display_matrix(already_visited)
 
     while len(nodes_to_visit_priority_queue) > 0:
         (distance_to_here, (row, col)) = heapq.heappop(nodes_to_visit_priority_queue)
         already_visited[row][col] = 1
-        simple_grid[row][col] = 'X'
-        print(f"Visiting: {(row, col)}")
+        simple_grid[row][col] = grid[row][col]
+        #print(f"Visiting: {(row, col)}")
         neighbours = get_neighbours((row, col), grid, already_visited)
         for (nrow, ncol) in neighbours:
-            print(f"  >> {(nrow, ncol)}")
+            #print(f"  >> {(nrow, ncol)}")
             distance_to_neighbour = distance_grid[nrow][ncol]
             new_distance_to_neighbour = distance_to_here + 1
             if distance_to_neighbour == 'X' or new_distance_to_neighbour < distance_to_neighbour:
-                print(f"    found shortest path to {(nrow, ncol)} : {new_distance_to_neighbour}")
+                #print(f"    found shortest path to {(nrow, ncol)} : {new_distance_to_neighbour}")
                 distance_grid[nrow][ncol] = new_distance_to_neighbour
                 # do not add if already visited
                 if not already_visited[nrow][ncol]:
                     heapq.heappush(nodes_to_visit_priority_queue, (new_distance_to_neighbour, (nrow, ncol)))
 
 
-    display_matrix(grid)
-    display_matrix(simple_grid)
+    # display_matrix(grid)
+    # display_matrix(simple_grid)
     display_matrix(distance_grid)
-    display_matrix(already_visited)
+    # display_matrix(already_visited)
 
     return simple_grid
 
 def is_not_none(x):
     return x != 'X'
 
-def get_max_distance(distance_grid):    
-    all_distances = itertools.chain(*[list(filter(is_not_none, row)) for row in distance_grid])
-    return max(all_distances)
-
-def get_safest_distance_from_animal(input_lines):
-    starting_position = get_starting_position(input_lines)
-    distance_grid = traverse_loop(input_lines, starting_position)
-    return get_max_distance(distance_grid)
 
 # ray-casting algorithm
-def get_number_of_dots_inside_loop(row):
-    count_edges = 0
-    number_of_dots_inside = 0
-    for item in row:
-        if item == '.':
-            # odd number of edges means we are inside the loop
-            if count_edges % 2 == 1:
-                number_of_dots_inside += 1
-        elif item == 'X':
-            count_edges += 1        
-    return number_of_dots_inside
+def get_number_of_tiles_inside_loop(row):
+
+    inside = False
+    number_of_tiles_inside = 0
+
+    for col, char in enumerate(row):
+        if char == 'X':
+            if inside:
+                number_of_tiles_inside += 1
+                row[col] = 'I'
+            else:
+                row[col] = 'O'
+        elif char == '-':
+            pass
+        else:
+            inside = not inside
+
+    return number_of_tiles_inside
 
 def get_total_number_of_dots_inside_loop(input_lines):
     starting_position = get_starting_position(input_lines)
     simple_grid = traverse_loop(input_lines, starting_position)
-    return sum(get_number_of_dots_inside_loop(row) for row in simple_grid)
+    display_matrix(simple_grid)
+    result = sum(get_number_of_tiles_inside_loop(row) for row in simple_grid)
+    display_matrix(simple_grid)
+    return result
 
 def execute(input_lines):
-    print(input_lines)
+    #print(input_lines)
     result = get_total_number_of_dots_inside_loop(input_lines)
     print(f"result: {result}")
     return result
@@ -169,16 +171,19 @@ input = get_strings(raw_input)
 assert execute(input) == 1
 raw_input = get_input(YEAR, DAY, "_test2")
 input = get_strings(raw_input)
-assert execute(input) == 25
+assert execute(input) == 1
 raw_input = get_input(YEAR, DAY, "_test3")
 input = get_strings(raw_input)
-assert execute(input) == 25
+assert execute(input) == 1
 raw_input = get_input(YEAR, DAY, "_test4")
 input = get_strings(raw_input)
-assert execute(input) == 25
+assert execute(input) == 1
 raw_input = get_input(YEAR, DAY, "_test5")
 input = get_strings(raw_input)
-assert execute(input) == 25
+assert execute(input) == 1
+raw_input = get_input(YEAR, DAY, "_test6")
+input = get_strings(raw_input)
+assert execute(input) == 4
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
