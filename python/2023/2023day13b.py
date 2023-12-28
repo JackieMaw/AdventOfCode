@@ -16,41 +16,45 @@ def parse_input(input_lines):
     chunks.append(this_chunk)
     return chunks
 
-def is_row_fold_at(row_fold, chunk):
+def check_row_fold_at(row_fold, chunk):
 
+    num_differences = 0
     num_rows = len(chunk)
-    print(f"row_fold {row_fold} - checking from offset 1 to {min(row_fold, num_rows - row_fold)}")
+    num_cols = len(chunk[0])
+    #print(f"row_fold {row_fold} - checking from offset 1 to {min(row_fold, num_rows - row_fold)}")
     for offset in range(1, min(row_fold, num_rows - row_fold) + 1):
         row_before = row_fold - offset
         row_after = row_fold - 1 + offset
         if row_before >= 0 and row_after < num_rows:
-            if chunk[row_before] != chunk[row_after]:
-                return False
+            for col_number in range(num_cols):
+                if chunk[row_before][col_number] != chunk[row_after][col_number]:
+                    num_differences += 1
     
-    return True
+    return num_differences
 
-def is_col_fold_at(col_fold, chunk):
+def check_col_fold_at(col_fold, chunk):
 
+    num_differences = 0
     num_cols = len(chunk[0])
-    print(f"col_fold {col_fold} - checking from offset 1 to {min(col_fold, num_cols - col_fold)}")
+    #print(f"col_fold {col_fold} - checking from offset 1 to {min(col_fold, num_cols - col_fold)}")
     for offset in range(1, min(col_fold, num_cols - col_fold) + 1):
         col_before = col_fold - offset
         col_after = col_fold - 1 + offset
         if col_before >= 0 and col_after < num_cols:
             for row in chunk:
                 if row[col_before] != row[col_after]:
-                    return False
+                    num_differences += 1
     
-    return True
+    return num_differences
 
 def get_reflection_value(chunk):
 
     for row_fold in range(1, len(chunk)):
-        if is_row_fold_at(row_fold, chunk):
+        if check_row_fold_at(row_fold, chunk) == 1:
             return row_fold * 100
 
     for col_fold in range(1, len(chunk[0])):
-        if is_col_fold_at(col_fold, chunk):
+        if check_col_fold_at(col_fold, chunk) == 1:
             return col_fold
 
     raise Exception("Unexpected case: No Fold")
@@ -84,11 +88,11 @@ input = get_strings(raw_input)
 assert execute(input) == 100
 raw_input = get_input(YEAR, DAY, "_test3")
 input = get_strings(raw_input)
-assert execute(input) == 500
+assert execute(input) == 400
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input_lines = get_strings(raw_input)
-assert execute(input_lines) == 35691
+assert execute(input_lines) == 39037
 print("ANSWER CORRECT")
