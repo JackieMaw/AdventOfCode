@@ -3,14 +3,15 @@ import math
 import copy
 
 def parse_input(input_lines):
-    return None
+    return []
 
 def solve(initial_state):
     return 0
 
-def execute(all_text):
-    print(all_text)
-    result = solve(all_text)
+def execute(input_lines):
+    print(input_lines)
+    initial_state = parse_input(input_lines)
+    result = solve(initial_state)
     print(f"result: {result}")
     return result
 
@@ -29,6 +30,6 @@ DAY = 0
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
-input_lines = get_strings_csv(raw_input)
+input_lines = get_strings(raw_input)
 assert execute(input_lines) == 0
 print("ANSWER CORRECT")
