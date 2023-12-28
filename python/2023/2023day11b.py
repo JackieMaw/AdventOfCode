@@ -39,10 +39,10 @@ def get_num_empty_between(start, end, empties, empty_size):
 def get_sum_of_shortest_paths(galaxy_locations, empty_rows, empty_columns, empty_size):
     sum_of_shortest_paths = 0
 
-    perms = list(itertools.combinations(galaxy_locations, 2))
-    print(f"{len(perms)} combinations of galaxies")
+    combos = list(itertools.combinations(galaxy_locations, 2))
+    print(f"{len(combos)} combinations of galaxies")
 
-    for ((g1_r, g1_c), (g2_r, g2_c)) in perms:
+    for ((g1_r, g1_c), (g2_r, g2_c)) in combos:
 
         num_empty_cols = get_num_empty_between(g1_c, g2_c, empty_columns, empty_size)
         num_empty_rows = get_num_empty_between(g1_r, g2_r, empty_rows, empty_size)

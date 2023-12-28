@@ -6,7 +6,7 @@ def parse_input(input_lines):
     return []
 
 def solve(initial_state):
-    return 0
+    return -1
 
 def execute(input_lines):
     print(input_lines)
@@ -24,8 +24,8 @@ DAY = 0
 
 # TEST INPUT DATA
 # raw_input = get_input(YEAR, DAY, "_test")
-# input = get_strings(raw_input)
-# assert execute(input) == 0
+# input_lines = get_strings(raw_input)
+# assert execute(input_lines) == 0
 # print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
