@@ -8,16 +8,15 @@ def parse_input(input_lines):
 def solve(initial_state):
     return 0
 
-def execute(input_lines):
-    print(input_lines)
-    initial_state = parse_input(input_lines)
-    result = solve(initial_state)
+def execute(all_text):
+    print(all_text)
+    result = solve(all_text)
     print(f"result: {result}")
     return result
 
 # TESTS
 # assert execute(get_strings_csv(["ABCD"])) == 0
-# print("ALL TESTS PASSED")
+# print("UNIT TESTS PASSED")
 
 YEAR = 2023
 DAY = 0
@@ -30,6 +29,6 @@ DAY = 0
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
-input_lines = get_strings(raw_input)
+input_lines = get_strings_csv(raw_input)
 assert execute(input_lines) == 0
 print("ANSWER CORRECT")
