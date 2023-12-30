@@ -2,6 +2,8 @@ from utilities import *
 import math
 import copy
 
+spin_cache = {}
+
 def parse_input(input_lines):
     return []
 
@@ -20,6 +22,7 @@ def move_next_marble_north(grid, row_num, col_num):
     for r in range(row_num + 1, len(grid)):
         char = grid[r][col_num]
         if char == "O":
+            print(f"moved north from ({r, col_num}) to ({row_num, col_num})")
             grid[row_num][col_num] = "O"
             grid[r][col_num] = "."
             return
@@ -28,9 +31,10 @@ def move_next_marble_north(grid, row_num, col_num):
         
 def move_next_marble_south(grid, row_num, col_num):
 
-    for r in range(row_num - 1, -1):
+    for r in range(row_num - 1, -1, -1):
         char = grid[r][col_num]
         if char == "O":
+            print(f"moved south from ({r, col_num}) to ({row_num, col_num})")
             grid[row_num][col_num] = "O"
             grid[r][col_num] = "."
             return
@@ -42,6 +46,7 @@ def move_next_marble_west(grid, row_num, col_num):
     for c in range(col_num + 1, len(grid[0])):
         char = grid[row_num][c]
         if char == "O":
+            print(f"moved west from ({row_num, c}) to ({row_num, col_num})")
             grid[row_num][col_num] = "O"
             grid[row_num][c] = "."
             return
@@ -50,9 +55,10 @@ def move_next_marble_west(grid, row_num, col_num):
 
 def move_next_marble_east(grid, row_num, col_num):
 
-    for c in range(col_num - 1, -1):
+    for c in range(col_num - 1, -1, -1):
         char = grid[row_num][c]
         if char == "O":
+            print(f"moved east from ({row_num, c}) to ({row_num, col_num})")
             grid[row_num][col_num] = "O"
             grid[row_num][c] = "."
             return
@@ -66,7 +72,7 @@ def roll_north(grid):
                 move_next_marble_north(grid, row_num, col_num)
 
 def roll_south(grid):
-    for row_num in range(len(grid), -1):
+    for row_num in range(len(grid) - 1, -1, -1):
         for col_num, char in enumerate(grid[row_num]):
             if char == ".":
                 move_next_marble_south(grid, row_num, col_num)
@@ -82,36 +88,61 @@ def roll_west(grid):
                 move_next_marble_west(grid, row_num, col_num)
 
 def roll_east(grid):
-    for col_num in range(len(grid[0]), -1):
+    for col_num in range(len(grid[0]) -1, -1, -1):
         for row_num in range(len(grid)):
             if grid[row_num][col_num] == ".":
                 move_next_marble_east(grid, row_num, col_num)
 
+def get_hash(grid):
+    hash = ""
+    for row_num, row in enumerate(grid):
+        for col_num, char in enumerate(row):
+            if char == "O":
+                hash += f"({row_num}, {col_num}) "
+    return hash
+
 def spin(grid):
-    print("BEFORE SPIN>>>")
-    display_matrix(grid)
+    grid_hash_before = get_hash(grid)
+    if grid_hash_before in spin_cache:
+        #print(f">>>>> CACHE HIT <<<<<")
+        return spin_cache[grid_hash_before]
+    
+    #print("BEFORE SPIN>>>")
+    #display_matrix(grid)
     roll_north(grid)
-    print("AFTER ROLL NORTH:")
-    display_matrix(grid)
+    #print("AFTER ROLL NORTH:")
+    #display_matrix(grid)
     roll_west(grid)
-    print("AFTER ROLL WEST")
-    display_matrix(grid)
+    #print("AFTER ROLL WEST")
+    #display_matrix(grid)
     roll_south(grid)
-    print("AFTER ROLL SOUTH")
-    display_matrix(grid)
+    #print("AFTER ROLL SOUTH")
+    #display_matrix(grid)
     roll_east(grid)
-    print("AFTER ROLL EAST")
-    display_matrix(grid)
+    #print("AFTER ROLL EAST")
+    #display_matrix(grid)
+
+    if get_hash(grid) == grid_hash_before:
+        raise Exception("No changes!")
+
+    spin_cache[grid_hash_before] = copy.deepcopy(grid)
+
+    return grid
 
 def execute(input_lines):
     
     print(input_lines)
     grid = [ list(line) for line in input_lines ]
-    print(grid)
+    #print(grid)
     
-    #for _ in range(1000000000):
-    for _ in range(1):
-        spin(grid)
+    #for _ in range(100):
+    for i in range(1000000000):
+    #for _ in range(1):
+        grid = spin(grid)
+        if i % 10000 == 0:
+            print(f"ITERATION {i}")
+            result = get_total_load(grid)
+            print(f"result: {result}")
 
     result = get_total_load(grid)
     print(f"result: {result}")
@@ -138,11 +169,11 @@ DAY = 14
 # TEST INPUT DATA
 raw_input = get_input(YEAR, DAY, "_test")
 input_lines = get_strings(raw_input)
-assert execute(input_lines) == 0
+assert execute(input_lines) == 64
 print("TEST INPUT PASSED")
 
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input_lines = get_strings(raw_input)
-assert execute(input_lines) == 108826
+assert execute(input_lines) == 0
 print("ANSWER CORRECT")
