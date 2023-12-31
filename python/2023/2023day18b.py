@@ -103,7 +103,7 @@ def draw_polygon(instructions):
 
     area = get_area_of_trench(corners)
     perimeter = get_perimeter_of_trench(corners)
-    result = area + perimeter
+    result = int(area + perimeter * 0.5) + 1
 
     print(f"area: {area}")
     print(f"perimeter: {perimeter}")
@@ -135,5 +135,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input_lines = get_strings(raw_input)
-assert execute(input_lines) == 48400
+assert execute(input_lines) == 72811019847283
 print("ANSWER CORRECT")
