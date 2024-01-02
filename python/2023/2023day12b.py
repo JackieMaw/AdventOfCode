@@ -150,5 +150,5 @@ print("TEST INPUT PASSED")
 # REAL INPUT DATA
 raw_input = get_or_download_input(YEAR, DAY)
 input_lines = get_strings(raw_input)
-assert execute(input_lines) == 7361
+assert execute(input_lines) == 0
 print("ANSWER CORRECT")
