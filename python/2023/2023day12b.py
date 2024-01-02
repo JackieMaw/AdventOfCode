@@ -6,13 +6,11 @@ import numpy as np
 
 def parse_input(input_lines):
     initial_state = []
-    #.#.###.#.###### 1,3,1,6 x 5
+    #.#.###.#.###### 1,3,1,6 >>> duplicate 5 times!
     for input_line in input_lines:
         [condition_record, condition_summary_str] = input_line.split()
         condition_record = condition_record + "?" + condition_record + "?" + condition_record + "?" + condition_record + "?" + condition_record
-        condition_record = list(filter(None, condition_record.split('.')))
-        condition_summary = [int(req) for req in condition_summary_str.split(',')]
-        condition_summary = condition_summary * 5
+        condition_summary = condition_summary + "," + condition_summary + "," + condition_summary + "," + condition_summary + "," + condition_summary
         initial_state.append((condition_record, condition_summary))
     return initial_state
 
@@ -26,109 +24,41 @@ def solve(initial_state):
         sum += result
     return sum
 
-def get_all_possible_strings(all_chunks):
+def get_num_arrangements(condition_record, condition_summary):
 
-    all_possible_strings = None
+    #condition_summary = [int(req) for req in condition_summary_str.split(',')]
 
-    for chunk in all_chunks:
-        possible_strings_for_this_chunk = get_all_possible_strings_for_a_single_chunk(chunk)
-        if all_possible_strings is None:
-            all_possible_strings = possible_strings_for_this_chunk
+    product = 1
+    for condition_chunk in list(filter(None, condition_record.split('.'))):
+        possible_summaries = get_possible_summaries(condition_chunk)
+        if len(possible_summaries) == 1:
+            print(f"BINGO: condition_chunk {condition_chunk} can only match one summary = {possible_summaries}")
+        product *= len(possible_summaries)
+
+    return product
+
+get_possible_summaries_cache = {}
+def get_possible_summaries(condition_chunk):
+    result = None
+    if condition_chunk in get_possible_summaries_cache:
+        result = get_possible_summaries_cache[condition_chunk]
+    else:
+        if condition_chunk.count("?") == 0:
+            result = [condition_chunk.count('#')]
+        elif len(condition_chunk) == 1: # then it must be a ?
+            result = [0, 1]
         else:
-            new_all_possible_strings = []
-            for first_part in all_possible_strings:
-                for next_part in possible_strings_for_this_chunk:
-                    new_all_possible_strings.append(first_part + "." + next_part)
-            all_possible_strings = new_all_possible_strings
-
-    return all_possible_strings
-
-@lru_cache(maxsize=None)
-def get_all_possible_strings_for_a_single_chunk(chunk):
-
-    if chunk.count("?") == 0:
-        return [chunk]
-
-    if len(chunk) == 1:
-        if chunk[0] == "?":
-            return [".", "#"]
-
-    split_point = len(chunk) // 2
-
-    #assert chunk[:split_point] + chunk[split_point:] == chunk
-
-    all_possible_chunks = []
-    for chunk1 in get_all_possible_strings_for_a_single_chunk(chunk[:split_point]):
-        for chunk2 in get_all_possible_strings_for_a_single_chunk(chunk[split_point:]):
-            all_possible_chunks.append(chunk1 + chunk2)
-    return all_possible_chunks
-
-@lru_cache(maxsize=None)
-def get_summary(chunk):
-    return [len(broken_chunk) for broken_chunk in filter(None, chunk.split("."))]
-
-def is_a_match(condition_record_str, condition_summary):
-    assert type(condition_record_str) is str
-    return get_summary(condition_record_str) == condition_summary
-
-def get_num_arrangements_brute_force(condition_record_chunks, condition_summary):
-
-    #print(f"get_num_arrangements_brute_force: {condition_record_chunks} {condition_summary}")
-
-    all_possible_strings = get_all_possible_strings(condition_record_chunks)
-    print(f"all_possible_strings: {len(all_possible_strings)}")
-    num_matching_strings = sum([is_a_match(s, condition_summary) for s in all_possible_strings])
-    print(f"num_matching_strings: {num_matching_strings}")
-
-    return num_matching_strings
-
-def get_num_arrangements(condition_record_chunks, condition_summary):
-
-    #print(f"get_num_arrangements: {condition_record_chunks} {condition_summary}")
-
-    if len(condition_record_chunks) == 0 or len(condition_summary) == 0:
-        assert len(condition_record_chunks) == 0
-        assert len(condition_summary) == 0
-        return 1
-
-
-    # before we attempt to brute force    
-    # let's see if we can reduce the problem size     
-
-    # SIMPLE REDUCTION: If the number of chunks is the same as the number of conditions
+            split_point = len(condition_chunk) // 2
+            all_possible_summaries = set()
+            for s1 in get_possible_summaries(condition_chunk[:split_point]):
+                for s2 in get_possible_summaries(condition_chunk[split_point:]):
+                    all_possible_summaries.add(s1 + s2)
+            result = list(all_possible_summaries)
+        get_possible_summaries_cache[condition_chunk] = result
     
-    # if len(condition_record_chunks) > 1 and len(condition_record_chunks) == len(condition_summary):
-    #     print('BINGO: we have an even split for chunks and conditions')
-    #     num_arrangements = 1
-    #     for i, chunk in enumerate(condition_record_chunks):
-    #         summary = condition_summary[i]
-    #         num_arrangements *= get_num_arrangements([chunk], [summary])
-    #     return num_arrangements
-    
-    # COMPLEX REDUCTION: If one of the chunks matches the maximum chunk, then we can eliminate this
+    print(f"{condition_chunk} >> {result}")
 
-    max_num = max(condition_summary)
-    count_max = condition_summary.count(max_num)
-
-    if len(condition_record_chunks) > 1 and count_max == 1:
-        index_of_chunk = None
-        for i, chunk in enumerate(condition_record_chunks):
-            if chunk.count("#") == max_num:
-                print(f'BINGO: chunk #{i} {chunk} meets the largest criteria {max_num}')
-                index_of_chunk = i
-                assert len(chunk) == max_num, f"We might be losing something if we dump this chunk: {chunk}"
-
-        if index_of_chunk is not None: 
-            # PROBLEM: we are removing the ENTIRE chunk here even though we might need the rest of it...
-            # we might need to split the chunk up by putting a dot in front or at the end and then processing the remaining chunk
-            index_of_max_num = condition_summary.index(max_num)
-            condition_summary_b4 = condition_summary[:index_of_max_num]
-            condition_summary_after = condition_summary[index_of_max_num+1:]
-            chunks_b4 = condition_record_chunks[:index_of_chunk]
-            chunks_after = condition_record_chunks[index_of_chunk+1:]
-            return get_num_arrangements(chunks_b4, condition_summary_b4) * get_num_arrangements(chunks_after, condition_summary_after)
-    
-    return get_num_arrangements_brute_force(condition_record_chunks, condition_summary)
+    return result
 
 def execute(input_lines):
     print(input_lines)
@@ -138,18 +68,16 @@ def execute(input_lines):
     return result
 
 # TESTS
-assert get_summary("###") == [3]
-assert get_summary("#.#") == [1, 1]
-assert get_summary("..#") == [1]
-assert get_summary("#..") == [1]
-print(get_all_possible_strings_for_a_single_chunk("???"))
-print(get_all_possible_strings(["???","###"]))
-assert get_all_possible_strings_for_a_single_chunk("???") == ['...', '..#', '.#.', '.##', '#..', '#.#', '##.', '###']
-assert get_all_possible_strings(["???","###"]) == ['....###', '..#.###', '.#..###', '.##.###', '#...###', '#.#.###', '##..###', '###.###']
-assert get_num_arrangements(["???","###"], [1,1,3]) == 1
-assert get_num_arrangements(['??', '??', '?##'], [1,1,3]) == 4
-assert get_num_arrangements(['????', '#', '#'], [4, 1, 1]) == 1
-assert get_num_arrangements(["?###????????"], [3,2,1]) == 10
+assert get_possible_summaries("###") == [3]
+assert get_possible_summaries("#?#") == [2, 3]
+assert get_possible_summaries("??#") == [1, 2, 3]
+assert get_possible_summaries("???") == [0, 1, 2, 3]
+assert get_possible_summaries("?###????????") == [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+assert get_num_arrangements("???.###", "1,1,3") == 1
+assert get_num_arrangements('??.??.?##', "1,1,3") == 4
+assert get_num_arrangements('????.#.#', "4,1,1") == 1
+assert get_num_arrangements("???????", "2,1") == 10
+assert get_num_arrangements("?###????????", "3,2,1") == 10
 print("UNIT TESTS PASSED")
 
 YEAR = 2023
