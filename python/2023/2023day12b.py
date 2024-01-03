@@ -37,6 +37,30 @@ def get_num_arrangements(condition_record, condition_summary):
 
     return product
 
+def get_possible_summaries_for_chunk_segments(condition_chunk):
+    split_point = len(condition_chunk) // 2
+    all_possible_summaries = []
+
+    for s1 in get_possible_summaries(condition_chunk[:split_point]):
+        for s2 in get_possible_summaries(condition_chunk[split_point:]):
+            all_possible_summaries.append(s1 + s2)
+
+    print(f".....{condition_chunk}.....{all_possible_summaries}")
+
+    return list(filter(None, all_possible_summaries))
+
+def get_possible_summaries_for_split_chunks(condition_chunk):
+    all_possible_summaries = []
+
+    for split_point in range(1, len(condition_chunk) - 1):
+        for s1 in get_possible_summaries(condition_chunk[:split_point]):
+            for s2 in get_possible_summaries(condition_chunk[split_point:]):
+                all_possible_summaries.append([s1, s2])
+
+    print(f".....{condition_chunk}.....{all_possible_summaries}")
+
+    return list(filter(None, all_possible_summaries))
+
 get_possible_summaries_cache = {}
 def get_possible_summaries(condition_chunk):
     result = None
@@ -44,16 +68,13 @@ def get_possible_summaries(condition_chunk):
         result = get_possible_summaries_cache[condition_chunk]
     else:
         if condition_chunk.count("?") == 0:
-            result = [condition_chunk.count('#')]
+            result = [[condition_chunk.count('#')]]
         elif len(condition_chunk) == 1: # then it must be a ?
-            result = [0, 1]
+            result = [[0], [1]]
         else:
-            split_point = len(condition_chunk) // 2
-            all_possible_summaries = set()
-            for s1 in get_possible_summaries(condition_chunk[:split_point]):
-                for s2 in get_possible_summaries(condition_chunk[split_point:]):
-                    all_possible_summaries.add(s1 + s2)
-            result = list(all_possible_summaries)
+            result = []
+            result.append(get_possible_summaries_for_chunk_segments(condition_chunk))
+            result.append(get_possible_summaries_for_split_chunks(condition_chunk))
         get_possible_summaries_cache[condition_chunk] = result
     
     print(f"{condition_chunk} >> {result}")
@@ -68,11 +89,12 @@ def execute(input_lines):
     return result
 
 # TESTS
-assert get_possible_summaries("###") == [3]
-assert get_possible_summaries("#?#") == [2, 3]
-assert get_possible_summaries("??#") == [1, 2, 3]
-assert get_possible_summaries("???") == [0, 1, 2, 3]
+assert get_possible_summaries("###") == [[3]]
+assert get_possible_summaries("#?#") == [[2], [3], [1,1]]
+assert get_possible_summaries("??#") == [[1, 2, 3]]
+assert get_possible_summaries("???") == [[0, 1, 2, 3], [1,1]]
 assert get_possible_summaries("?###????????") == [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
 assert get_num_arrangements("???.###", "1,1,3") == 1
 assert get_num_arrangements('??.??.?##', "1,1,3") == 4
 assert get_num_arrangements('????.#.#', "4,1,1") == 1
