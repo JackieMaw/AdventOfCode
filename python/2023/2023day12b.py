@@ -9,7 +9,7 @@ def parse_input(input_lines):
     initial_state = []
     #.#.###.#.###### 1,3,1,6 >>> duplicate 5 times!
     for input_line in input_lines:
-        [condition_record, condition_summary_str] = input_line.split()
+        [condition_record, condition_summary] = input_line.split()
         condition_record = condition_record + "?" + condition_record + "?" + condition_record + "?" + condition_record + "?" + condition_record
         condition_summary = condition_summary + "," + condition_summary + "," + condition_summary + "," + condition_summary + "," + condition_summary
         initial_state.append((condition_record, condition_summary))
