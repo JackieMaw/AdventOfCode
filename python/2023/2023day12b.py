@@ -3,6 +3,7 @@ import math
 import copy
 from functools import lru_cache
 import numpy as np
+import itertools
 
 def parse_input(input_lines):
     initial_state = []
@@ -23,6 +24,41 @@ def solve(initial_state):
         print(f">>> {condition_record} {condition_summary} >>> {result}")
         sum += result
     return sum
+
+def get_all_possible_strings_that_match(chunk, condition_summary):
+
+    num_hashes_expected = sum(condition_summary)
+    chunk_hashes = chunk.count("#")
+    need_more_hashes = num_hashes_expected - chunk_hashes
+
+    num_dots_expected = len(chunk) - num_hashes_expected
+    chunk_dots = chunk.count(".")
+    need_more_dots = num_dots_expected - chunk_dots
+
+    expected_chars = ["#" for _ in range(need_more_hashes)] + ["." for _ in range(need_more_hashes)]
+    print(expected_chars)
+
+    all_combinations = list(itertools.combinations(expected_chars))
+    print(all_combinations)
+
+    return []
+
+    # if chunk.count("?") == 0:
+    #     return [chunk]
+
+    # if len(chunk) == 1:
+    #     if chunk[0] == "?":
+    #         return [".", "#"]
+
+    # split_point = len(chunk) // 2
+
+    # #assert chunk[:split_point] + chunk[split_point:] == chunk
+
+    # all_possible_chunks = []
+    # for chunk1 in get_all_possible_strings_for_a_single_chunk(chunk[:split_point]):
+    #     for chunk2 in get_all_possible_strings_for_a_single_chunk(chunk[split_point:]):
+    #         all_possible_chunks.append(chunk1 + chunk2)
+    # return all_possible_chunks
 
 def get_num_arrangements(condition_record, condition_summary):
 
@@ -45,7 +81,7 @@ def get_possible_summaries_for_chunk_segments(condition_chunk):
         for s2 in get_possible_summaries(condition_chunk[split_point:]):
             all_possible_summaries.append(s1 + s2)
 
-    print(f".....{condition_chunk}.....{all_possible_summaries}")
+    print(f"______{condition_chunk}______{all_possible_summaries}")
 
     return list(filter(None, all_possible_summaries))
 
@@ -57,7 +93,7 @@ def get_possible_summaries_for_split_chunks(condition_chunk):
             for s2 in get_possible_summaries(condition_chunk[split_point:]):
                 all_possible_summaries.append([s1, s2])
 
-    print(f".....{condition_chunk}.....{all_possible_summaries}")
+    print(f"______{condition_chunk}______{all_possible_summaries}")
 
     return list(filter(None, all_possible_summaries))
 
@@ -89,6 +125,9 @@ def execute(input_lines):
     return result
 
 # TESTS
+
+assert get_all_possible_strings_that_match("?###????????", [3,2,1])
+
 assert get_possible_summaries("###") == [[3]]
 assert get_possible_summaries("#?#") == [[2], [3], [1,1]]
 assert get_possible_summaries("??#") == [[1, 2, 3]]
