@@ -25,40 +25,61 @@ def solve(initial_state):
         sum += result
     return sum
 
-def get_all_possible_strings_that_match(chunk, condition_summary):
+def get_summary(chunk):
+    return [len(broken_chunk) for broken_chunk in filter(None, chunk.split("."))]
 
+def is_a_match(condition_record_str, condition_summary):
+    assert type(condition_record_str) is str
+    return get_summary(condition_record_str) == condition_summary
+
+def apply_to_condition_record(condition_record, substring):
+
+    full_string = ""
+    substring_index = 0
+    for s in condition_record:
+        if s == "?":
+            full_string += substring[substring_index]
+            substring_index += 1
+        else:
+            full_string += s
+    return full_string
+
+def get_all_matching_strings(condition_record, condition_summary):
+
+    print(f"get_all_matching_strings: {condition_record} {condition_summary} >>>")
+
+    if condition_record.count("?") == 0:
+        return [condition_record]
+    
     num_hashes_expected = sum(condition_summary)
-    chunk_hashes = chunk.count("#")
+    chunk_hashes = condition_record.count("#")
     need_more_hashes = num_hashes_expected - chunk_hashes
 
-    num_dots_expected = len(chunk) - num_hashes_expected
-    chunk_dots = chunk.count(".")
+    if need_more_hashes == 0:
+        return [condition_record.replace("?", ".")]
+
+    num_dots_expected = len(condition_record) - num_hashes_expected
+    chunk_dots = condition_record.count(".")
     need_more_dots = num_dots_expected - chunk_dots
 
-    expected_chars = ["#" for _ in range(need_more_hashes)] + ["." for _ in range(need_more_hashes)]
-    print(expected_chars)
+    if need_more_hashes == 0:
+        return [condition_record.replace("?", "#")]
 
-    all_combinations = list(itertools.combinations(expected_chars))
-    print(all_combinations)
+    expected_chars = ["#" for _ in range(need_more_hashes)] + ["." for _ in range(need_more_dots)]
+    #print(expected_chars)
 
-    return []
+    all_permutations = set([''.join(perm) for perm in itertools.permutations(expected_chars)])
+    #print(all_permutations)
 
-    # if chunk.count("?") == 0:
-    #     return [chunk]
+    print(f"    all_permutations: {len(all_permutations)}")
 
-    # if len(chunk) == 1:
-    #     if chunk[0] == "?":
-    #         return [".", "#"]
+    all_matching_strings = [s for s in [apply_to_condition_record(condition_record, s) for s in all_permutations] if is_a_match(s, condition_summary)]
 
-    # split_point = len(chunk) // 2
+    print(f"    all_matching_strings: {len(all_matching_strings)}")
 
-    # #assert chunk[:split_point] + chunk[split_point:] == chunk
+    print(f"get_all_matching_strings: {condition_record} {condition_summary} >>> {sorted(all_matching_strings)}")
 
-    # all_possible_chunks = []
-    # for chunk1 in get_all_possible_strings_for_a_single_chunk(chunk[:split_point]):
-    #     for chunk2 in get_all_possible_strings_for_a_single_chunk(chunk[split_point:]):
-    #         all_possible_chunks.append(chunk1 + chunk2)
-    # return all_possible_chunks
+    return all_matching_strings   
 
 def get_num_arrangements(condition_record, condition_summary):
 
@@ -126,7 +147,8 @@ def execute(input_lines):
 
 # TESTS
 
-assert get_all_possible_strings_that_match("?###????????", [3,2,1])
+assert get_all_matching_strings("###", [3]) == ["###"]
+assert sorted(get_all_matching_strings("?###????????", [3,2,1])) == ['.###.##.#...', '.###.##..#..', '.###.##...#.', '.###.##....#', '.###..##.#..', '.###..##..#.', '.###..##...#', '.###...##.#.', '.###...##..#', '.###....##.#']
 
 assert get_possible_summaries("###") == [[3]]
 assert get_possible_summaries("#?#") == [[2], [3], [1,1]]
