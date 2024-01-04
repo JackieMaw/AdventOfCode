@@ -117,15 +117,20 @@ def split_by_max_num(condition_summary_chunks, max_num):
 
     return all_groups_of_chunks
 
-def split_by_max_hash(condition_record_chunks, second_max_num):
+def split_by_max_hash(condition_record_chunks, max_num):
     all_groups_of_chunks = []
 
     accumulated_chunks = []
     for chunk in condition_record_chunks:
-        if chunk.count('#') > second_max_num:
+        if chunk.count('#') == max_num:
             all_groups_of_chunks.append(accumulated_chunks)
-            accumulated_chunks = []            
-            all_groups_of_chunks.append([chunk]) # add the max as it's own group
+            accumulated_chunks = []
+
+            # what to do with the max chunk?
+            # add the max as it's own group
+            all_groups_of_chunks.append([chunk]) 
+            # surround by dots
+            index_of_first_hash = chunk.index("#")
         else:
             accumulated_chunks.append(chunk)
     
@@ -146,20 +151,21 @@ def apply_shortcut(condition_record_chunks, condition_summary_chunks):
 
     if len(numbers_less_than_max) == 0:
         return None # we cannot apply the shortcut
-    
-    second_max_num = max(numbers_less_than_max)    
-    chunks_with_max_count = [c for c in condition_record_chunks if c.count("#") > second_max_num]
+        
+    chunks_with_max_count = [c for c in condition_record_chunks if c.count("#") == max_num]    
+    # second_max_num = max(numbers_less_than_max)
+    # chunks_with_second_max_count = [c for c in condition_record_chunks if c.count("#") > second_max_num]
     count_max = len(chunks_with_max_count)
 
     if count_max != count_max_expected:
         return None # we cannot apply the shortcut
     
-    print(f'SHORTCUT 1: we can remove all chunks with # count greater than {second_max_num}')
+    print(f'SHORTCUT 1: we can remove all chunks with # count equal to {max_num}')
     # rather than removing the entire chunk, we should replace the chunk with a reduced chunk
     # ?###???????? >> .###.??????? >> ??????? TOO COMPLICATED
     # we can also split the chunks up
     
-    split_condition_record_chunks = split_by_max_hash(condition_record_chunks, second_max_num)
+    split_condition_record_chunks = split_by_max_hash(condition_record_chunks, max_num)
     split_condition_summary_chunks = split_by_max_num(condition_summary_chunks, max_num)
 
     zipped_chunks = list(zip(split_condition_record_chunks, split_condition_summary_chunks))
@@ -196,6 +202,8 @@ assert get_num_arrangements("???.###", "1,1,3") == 1
 assert get_num_arrangements('??.??.?##', "1,1,3") == 4
 assert get_num_arrangements('????.#.#', "4,1,1") == 1
 assert get_num_arrangements("???????", "2,1") == 10
+assert get_num_arrangements("???????", "0") == 1
+assert get_num_arrangements("????????###????????", "3,2,1") == 10
 assert get_num_arrangements("?###????????", "3,2,1") == 10
 print("UNIT TESTS PASSED")
 
