@@ -100,36 +100,82 @@ def get_num_arrangements(condition_record, condition_summary):
     condition_summary_chunks = [int(s) for s in condition_summary.split(',')]
     return get_num_arrangements_chunks(condition_record_chunks, condition_summary_chunks)
 
-def get_num_arrangements_chunks(condition_record_chunks, condition_summary_chunks):
+def split_by_max_num(condition_summary_chunks, max_num):
+    all_groups_of_chunks = []
 
-    print(f"get_num_arrangements_chunks: {condition_record_chunks} {condition_summary_chunks} >>>")
+    accumulated_chunks = []
+    for chunk in condition_summary_chunks:
+        if chunk == max_num:
+            all_groups_of_chunks.append(accumulated_chunks)
+            accumulated_chunks = []
+            all_groups_of_chunks.append([chunk]) # add the max as it's own group
+        else:
+            accumulated_chunks.append(chunk)
+    
+    if len(accumulated_chunks) > 0:
+        all_groups_of_chunks.append(accumulated_chunks)
 
+    return all_groups_of_chunks
+
+def split_by_max_hash(condition_record_chunks, second_max_num):
+    all_groups_of_chunks = []
+
+    accumulated_chunks = []
+    for chunk in condition_record_chunks:
+        if chunk.count('#') > second_max_num:
+            all_groups_of_chunks.append(accumulated_chunks)
+            accumulated_chunks = []            
+            all_groups_of_chunks.append([chunk]) # add the max as it's own group
+        else:
+            accumulated_chunks.append(chunk)
+    
+    if len(accumulated_chunks) > 0:
+        all_groups_of_chunks.append(accumulated_chunks)
+
+    return all_groups_of_chunks
+
+
+def apply_shortcut(condition_record_chunks, condition_summary_chunks):
     # before doing a brute force, let's check if any chunks are at the maximum hash length
     # or greater than the second maximum
     # these can all be eliminated against the maximum numbers
 
     max_num = max(condition_summary_chunks)
     count_max_expected = condition_summary_chunks.count(max_num)
-    second_max_num = max([c for c in condition_summary_chunks if c < max_num])
+    numbers_less_than_max = [c for c in condition_summary_chunks if c < max_num]
 
-    #max_hash_str = ''.join(["#" for _ in range(max_num)])
-    #count_max = condition_record_chunks.count(max_hash_str)
-
+    if len(numbers_less_than_max) == 0:
+        return None # we cannot apply the shortcut
+    
+    second_max_num = max(numbers_less_than_max)    
     chunks_with_max_count = [c for c in condition_record_chunks if c.count("#") > second_max_num]
     count_max = len(chunks_with_max_count)
 
-    if count_max == count_max_expected:
-        print(f'SHORTCUT 1: we can remove all chunks with # count greater than {second_max_num}')
-        # rather than removing the entire chunk, we should replace the chunk with a reduced chunk
-        # ?###???????? >> .###.??????? >> ???????
+    if count_max != count_max_expected:
+        return None # we cannot apply the shortcut
+    
+    print(f'SHORTCUT 1: we can remove all chunks with # count greater than {second_max_num}')
+    # rather than removing the entire chunk, we should replace the chunk with a reduced chunk
+    # ?###???????? >> .###.??????? >> ??????? TOO COMPLICATED
+    # we can also split the chunks up
+    
+    split_condition_record_chunks = split_by_max_hash(condition_record_chunks, second_max_num)
+    split_condition_summary_chunks = split_by_max_num(condition_summary_chunks, max_num)
 
-        assert False, "Jackie start here tomorrow"
+    zipped_chunks = list(zip(split_condition_record_chunks, split_condition_summary_chunks))
 
-        for condition_record_chunk in chunks_with_max_count:
-            condition_record_chunks.remove(condition_record_chunk)
-        condition_summary_chunks.remove(max_num)
+    result = np.prod([get_num_arrangements_chunks(condition_record_chunks, condition_summary_chunks) for [condition_record_chunks, condition_summary_chunks] in zipped_chunks])
 
-    result = get_num_matching_strings_brute_force(condition_record_chunks, condition_summary_chunks)
+    return result
+
+def get_num_arrangements_chunks(condition_record_chunks, condition_summary_chunks):
+
+    print(f"get_num_arrangements_chunks: {condition_record_chunks} {condition_summary_chunks} >>>")
+
+    result = apply_shortcut(condition_record_chunks, condition_summary_chunks)
+
+    if result is None:
+        result = get_num_matching_strings_brute_force(condition_record_chunks, condition_summary_chunks)
     
     print(f"get_num_arrangements_chunks: {condition_record_chunks} {condition_summary_chunks} >>> {result}")
 
