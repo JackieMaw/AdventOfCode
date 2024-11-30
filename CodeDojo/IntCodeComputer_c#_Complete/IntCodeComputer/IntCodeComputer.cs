@@ -16,7 +16,6 @@
 
         public Computer():this(new SimpleInteractionHandler())
         {
-            this.interactionHandler = interactionHandler;
         }
 
         public long Execute(long[] program)

@@ -14,7 +14,7 @@ namespace IntCodeComputer
             streamWriter = System.IO.File.CreateText($"InteractionLog_{DateTime.Now.ToString("yyyyMMdd_HHmm")}.txt");
         }
 
-        private List<long> ToAscii(string myString)
+        private List<long> ConvertFromTextToAsciiCode(string myString)
         {
             return (myString + "\n").ToCharArray().Select(c => ((long)c)).ToList();
         }
@@ -40,7 +40,8 @@ namespace IntCodeComputer
             streamWriter.Write(">>");
             Console.WriteLine(">>");
             var inputString = Console.ReadLine();
-            ToAscii(inputString).ForEach(i => inputs.Enqueue(i));
+            if (inputString != null)
+                ConvertFromTextToAsciiCode(inputString).ForEach(i => inputs.Enqueue(i));
         }
 
         public void Dispose()

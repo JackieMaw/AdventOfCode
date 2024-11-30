@@ -98,6 +98,7 @@ def get_leaderboard_summary(leaderboard_name, leaderboard_json) -> int:
 
 def extract_leaderboard_summary(leaderboard_name, code):
     leaderboard_json = get_leaderboard_json(YEAR, leaderboard_name, code)
+    print(leaderboard_json)
     return get_leaderboard_summary(leaderboard_name, leaderboard_json)
 
 def sort_by_local_score(member_summary : MemberSummary):
@@ -132,7 +133,7 @@ def get_sum(leaderboard_summaries):
 # process leaderboards
 
 YEAR = 2023
-all_leaderboards = { "APAC":"1580364", "Switzerland":"212737", "EMEA":"825756", "AMER":"2328970", "GLOBAL_TOP_100":"2087277" }
+all_leaderboards = { "APAC":"1580364", "Switzerland":"212737", "EMEA":"825756", "AMER":"2328970", "GLOBAL_TOP_100":"2087277", "GLOBAL_AI_ASSISTED":"3965894" }
 goal=50
 IGNORED_MEMBERS = {"UBS Admin"}
 

@@ -2,9 +2,9 @@
 
 ## c# Starter Project
 
-This is a started project for C# developers. I have setup a basic testing framework for executing the challenges.
+This is a starter project for C# developers. I have setup a basic testing framework for executing the challenges.
 I have entered the input data and corresponding answers from my personal account.
-If you'd like to earn starts on your own AoC account you can can replace the InputData.
+If you'd like to earn stars on your own AoC account you can can replace the InputData.
 If you run the tests, you will see that 2a has already been done for you.
 
 ### Commands for VSCode
