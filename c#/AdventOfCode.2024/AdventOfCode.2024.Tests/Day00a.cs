@@ -4,8 +4,8 @@ namespace AdventOfCode._2024.Tests;
 
 public class Day00
 {
-    private const int day = 9;
-    private const int year = 2021;
+    private const int day = 0;
+    private const int year = 2024;
     private IAoCSupplier aocSupplier = new AoCFilesSupplier();
 
     [SetUp]

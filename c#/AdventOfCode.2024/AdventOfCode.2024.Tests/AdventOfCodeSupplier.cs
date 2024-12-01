@@ -7,7 +7,7 @@ public class AoCFilesSupplier : IAoCSupplier
     {
         var fileName = $@"{filePath}\Input_{year}_{day}{suffix}.txt";
         if (File.Exists(fileName))
-            return System.IO.File.ReadAllLines(fileName);
+            return File.ReadAllLines(fileName);
         throw new Exception($"Input File Could not be found: {fileName}");
     }
 }
