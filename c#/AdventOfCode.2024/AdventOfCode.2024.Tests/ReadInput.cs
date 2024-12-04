@@ -18,9 +18,8 @@ public class ReadInput
         return inputLine.Split(',').Select(l => Convert.ToInt64(l)).ToArray();
     }
 
-    public static char[,] GetChars(string filename)
+    public static char[,] GetChars(string[] lines)
     {
-        string[] lines = System.IO.File.ReadAllLines(filename);
         var inputs = lines.Select(l => l.ToCharArray()).ToArray();
 
         char[,] charArray = new char[lines.Length, lines[0].Length];
