@@ -2,7 +2,7 @@
 
 namespace AdventOfCode._2024.Tests;
 
-public class Day00
+public class Day00a
 {
     private const int day = 0;
     private const int year = 2024;
