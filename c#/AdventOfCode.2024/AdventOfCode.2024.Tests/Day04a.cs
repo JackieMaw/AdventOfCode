@@ -39,8 +39,19 @@ public class Day04a
     public void TestSampleInput()
     {
         Console.WriteLine("Testing Sample Input...");
-        var expectedResult = 4;
+        var expectedResult = 18;
         var input = aocSupplier.GetPuzzleInput(year, day, "_test");
+        var result = Execute(input);
+        Console.WriteLine($"Result: {result}");
+        Assert.That(expectedResult, Is.EqualTo(result));
+    }
+
+    [Test]
+    public void TestSampleInput2()
+    {
+        Console.WriteLine("Testing Sample Input...");
+        var expectedResult = 4;
+        var input = aocSupplier.GetPuzzleInput(year, day, "_test2");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
         Assert.That(expectedResult, Is.EqualTo(result));
