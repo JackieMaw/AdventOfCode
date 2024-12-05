@@ -1,10 +1,11 @@
-﻿using AdventOfCode._2023;
+﻿using System.Data;
+using AdventOfCode._2023;
 
 namespace AdventOfCode._2024.Tests;
 
-public class Day00a
+public class Day05a
 {
-    private const int day = 0;
+    private const int day = 5;
     private const int year = 2024;
     private IAoCSupplier aocSupplier = new AoCFilesSupplier();
 
@@ -25,7 +26,7 @@ public class Day00a
     public void TestSampleInput()
     {
         Console.WriteLine("Testing Sample Input...");
-        var expectedResult = 0;
+        var expectedResult = 143;
         var input = aocSupplier.GetPuzzleInput(year, day, "_test");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -45,6 +46,29 @@ public class Day00a
 
     private long Execute(string[] input)
     {
-        return 0;
+        var (updateRules, pageUpdates) = ParseInput(input);
+        var goodUpdates = GetGoodUpdates(pageUpdates);
+        var result = GetSumOfMiddlePages(goodUpdates);
+    }
+
+    private (List<UpdateRule> updateRules, List<PageUpdate> pageUpdates) ParseInput(string[] input)
+    {
+        List<UpdateRule> updateRules = [];
+        List<PageUpdate> pageUpdates = [];
+
+        foreach (var inputLine in input)
+        {
+            if (inputLine.Contains("|"))
+        }
+
+        return (updateRules, pageUpdates);
+    }
+
+    private class UpdateRule
+    {
+    }
+
+    private class PageUpdate
+    {
     }
 }
