@@ -37,7 +37,7 @@ public class Day05b
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 5087;
+        var expectedResult = 0;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -49,6 +49,8 @@ public class Day05b
         var (updateRules, pageUpdates) = ParseInput(input);
         var badUpdates = GetBadUpdates(updateRules, pageUpdates);
         var correctUpdates = GetCorrectUpdates(badUpdates, updateRules);
+        var stillBadUpdates = GetBadUpdates(updateRules, correctUpdates);
+        Assert.That(stillBadUpdates.Count, Is.EqualTo(0));
         var result = GetSumOfMiddlePages(correctUpdates);
         return result;
     }
@@ -56,8 +58,8 @@ public class Day05b
     private List<PageUpdate> GetCorrectUpdates(List<PageUpdate> badUpdates, List<UpdateRule> updateRules)
     {
         var dependencyGraph = GetDependencyGraph(updateRules);
-        var topologicalOrder = GetTopologicalOrder(dependencyGraph);
-        return badUpdates.Select(x => x.CorrectOrdering(topologicalOrder)).ToList();        
+        //var topologicalOrder = GetTopologicalOrder(dependencyGraph);
+        return badUpdates.Select(x => x.GetCorrectedUpdate(dependencyGraph)).ToList();        
     }
 
     private Dictionary<string, Page> GetDependencyGraph(List<UpdateRule> updateRules)
@@ -93,14 +95,23 @@ public class Day05b
 
         while(mustVisit.Count > 0)
         {
-            Visit(mustVisit.First(), topologicalOrder, alreadyVisited, mustVisit);
+            var visitNext = mustVisit.First();            
+            Console.WriteLine($"Visiting Cluster: {visitNext.PageNumber} - {topologicalOrder.Count} of {pageMap.Values.Count} already ordered");
+
+            Visit(visitNext, topologicalOrder, alreadyVisited, mustVisit);
         }
+        
+        Console.WriteLine($"Topological Order: {string.Join(' ', topologicalOrder)}");
 
         return topologicalOrder;
     }
 
     private void Visit(Page currentPage, List<string> topologicalOrder, HashSet<string> alreadyVisited, List<Page> mustVisit)
     {
+        //Console.WriteLine($"Visiting: {currentPage.PageNumber}");
+        alreadyVisited.Add(currentPage.PageNumber);
+        mustVisit.Remove(currentPage);
+
         foreach (var prerequisite in currentPage.Prerequisites)
         {
             if (!alreadyVisited.Contains(prerequisite.PageNumber))
@@ -108,9 +119,8 @@ public class Day05b
                 Visit(prerequisite, topologicalOrder, alreadyVisited, mustVisit);
             }
         }
+
         topologicalOrder.Add(currentPage.PageNumber);
-        alreadyVisited.Add(currentPage.PageNumber);
-        mustVisit.Remove(currentPage);
     }
 
     private long GetSumOfMiddlePages(List<PageUpdate> goodUpdates)
@@ -214,6 +224,11 @@ public class Day05b
             Updates = new List<string>();
         }
 
+        public PageUpdate(PageUpdate copyFrom)
+        {
+            Updates = [.. copyFrom.Updates]; 
+        }
+
         public int GetMiddlePage()
         {
             var middlePage = Updates[Updates.Count / 2];
@@ -221,8 +236,66 @@ public class Day05b
             return Convert.ToInt32(middlePage);
         }
 
-        public PageUpdate CorrectOrdering(List<string> topologicalOrder)
+        internal PageUpdate GetCorrectedUpdate(Dictionary<string, Page> dependencyGraph)
         {
+            Console.WriteLine($"Incorrect Update: {this}");
+
+            var correctedUpdate = new PageUpdate(this);
+                
+            correctedUpdate.Updates.Sort(delegate(string x, string y)
+            {
+                var prerequisitesOfX = GetAllPrerequisites(dependencyGraph[x]); 
+                if (prerequisitesOfX.Contains(y))
+                {
+                    return 1;
+                }
+                var prerequisitesOfY = GetAllPrerequisites(dependencyGraph[y]); 
+                if (prerequisitesOfY.Contains(x))
+                {
+                    return -1;
+                }
+                return 0;
+            });
+
+            Console.WriteLine($"Corrected Update: {correctedUpdate}");
+
+            return correctedUpdate;
+        }
+
+        private HashSet<string> GetAllPrerequisites(Page page)
+        {
+            var prerequisites = new HashSet<string>();
+            var alreadyVisited = new HashSet<string>();
+            //Console.WriteLine($"GetAllPrerequisites: {page.PageNumber}");
+            GetPrerequisites(page, prerequisites, alreadyVisited);
+
+            prerequisites.Remove(page.PageNumber);
+            
+            Console.WriteLine($"All Prerequisites of {page.PageNumber} are: {string.Join(' ', prerequisites)}");
+
+            return prerequisites;
+        }
+
+        private void GetPrerequisites(Page currentPage, HashSet<string> prerequisites, HashSet<string> alreadyVisited)
+        {
+            //Console.WriteLine($"GetPrerequisites: {currentPage.PageNumber}");
+            alreadyVisited.Add(currentPage.PageNumber);
+
+            foreach (var prerequisite in currentPage.Prerequisites)
+            {
+                if (!alreadyVisited.Contains(prerequisite.PageNumber))
+                {
+                    GetPrerequisites(prerequisite, prerequisites, alreadyVisited);
+                }
+            }
+
+            prerequisites.Add(currentPage.PageNumber);
+        }
+
+        public PageUpdate GetCorrectedUpdateBasedonTopologicalOrder(List<string> topologicalOrder)
+        {
+            Console.WriteLine($"Incorrect Update: {this}");
+
             var correctedUpdate = new PageUpdate();
             foreach (var page in topologicalOrder)
             {
@@ -231,7 +304,15 @@ public class Day05b
                     correctedUpdate.Updates.Add(page);
                 }
             }
+
+            Console.WriteLine($"Corrected Update: {correctedUpdate}");
+
             return correctedUpdate;
+        }
+
+        public override string ToString()
+        {
+            return string.Join(' ', Updates);
         }
     }
 }
