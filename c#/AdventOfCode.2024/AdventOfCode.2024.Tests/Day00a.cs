@@ -29,7 +29,7 @@ public class Day00a
         var input = aocSupplier.GetPuzzleInput(year, day, "_test");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
-        Assert.That(expectedResult, Is.EqualTo(result));
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     [Test]
@@ -40,7 +40,7 @@ public class Day00a
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
-        Assert.That(expectedResult, Is.EqualTo(result));
+        Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     private long Execute(string[] input)

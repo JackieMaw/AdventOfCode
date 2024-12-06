@@ -68,14 +68,12 @@ public class Day05b
 
         foreach (var updateRule in updateRules)
         {
-            Page before;
-            if (!pageMap.TryGetValue(updateRule.Before, out before))
+            if (!pageMap.TryGetValue(updateRule.Before, out Page? before))
             {
                 before = new Page(updateRule.Before);
                 pageMap.Add(updateRule.Before, before);
             }
-            Page after;
-            if (!pageMap.TryGetValue(updateRule.After, out after))
+            if (!pageMap.TryGetValue(updateRule.After, out Page? after))
             {
                 after = new Page(updateRule.After);
                 pageMap.Add(updateRule.After, after);
