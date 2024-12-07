@@ -27,7 +27,7 @@ public class Day03b
     {
         Console.WriteLine("Testing Sample Input...");
         var expectedResult = 48;
-        var input = new string [] { "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"};
+        var input = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
         Assert.That(result, Is.EqualTo(expectedResult));
@@ -37,14 +37,14 @@ public class Day03b
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 0;
-        var input = aocSupplier.GetPuzzleInput(year, day);
+        var expectedResult = 63013756;
+        var input = aocSupplier.GetPuzzleInput_SingleLine(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
         Assert.That(result, Is.EqualTo(expectedResult));
     }
 
-    private long Execute(string[] input)
+    private long Execute(string input)
     {
         Dictionary<int, (long?, bool?)> resultAtIndex = [];
         PopulateMultiplications(input, resultAtIndex);
@@ -72,64 +72,56 @@ public class Day03b
         return result;
     }
 
-    private static void PopulateMultiplications(string[] input, Dictionary<int, (long?, bool?)> resultAtIndex)
+    private static void PopulateMultiplications(string input, Dictionary<int, (long?, bool?)> resultAtIndex)
     {
         string pattern = @"mul\((\d+),(\d+)\)";
-        Regex regex = new(pattern);
+        Regex regex = new(pattern, RegexOptions.Singleline);
 
-        foreach (var inputLine in input)
+        Match match = regex.Match(input);
+
+        while (match.Success)
         {
-            Match match = regex.Match(inputLine);
+            var x = Convert.ToInt32(match.Groups[1].Value);
+            var y = Convert.ToInt32(match.Groups[2].Value);
+            resultAtIndex[match.Index] = (x * y, null);
 
-            while (match.Success)
-            {
-                var x = Convert.ToInt32(match.Groups[1].Value);
-                var y = Convert.ToInt32(match.Groups[2].Value);
-                resultAtIndex[match.Index] = (x * y, null);
-
-                Console.WriteLine("Found match: " + match.Value);
-                match = match.NextMatch();
-            }
+            Console.WriteLine("Found match: " + match.Value);
+            match = match.NextMatch();
         }
+        
     }
 
     
 
-    private static void PopulateDisable(string[] input, Dictionary<int, (long?, bool?)> resultAtIndex)
+    private static void PopulateDisable(string input, Dictionary<int, (long?, bool?)> resultAtIndex)
     {
         string pattern = @"don't\(\)";
-        Regex regex = new(pattern);
+        Regex regex = new(pattern, RegexOptions.Singleline);
 
-        foreach (var inputLine in input)
+        Match match = regex.Match(input);
+
+        while (match.Success)
         {
-            Match match = regex.Match(inputLine);
+            resultAtIndex[match.Index] = (null, false);
 
-            while (match.Success)
-            {
-                resultAtIndex[match.Index] = (null, false);
-
-                Console.WriteLine("Found match: " + match.Value);
-                match = match.NextMatch();
-            }
+            Console.WriteLine("Found match: " + match.Value);
+            match = match.NextMatch();
         }
     }
 
-    private static void PopulateEnable(string[] input, Dictionary<int, (long?, bool?)> resultAtIndex)
+    private static void PopulateEnable(string input, Dictionary<int, (long?, bool?)> resultAtIndex)
     {
         string pattern = @"do\(\)";
-        Regex regex = new(pattern);
+        Regex regex = new(pattern, RegexOptions.Singleline);
+        
+        Match match = regex.Match(input);
 
-        foreach (var inputLine in input)
+        while (match.Success)
         {
-            Match match = regex.Match(inputLine);
+            resultAtIndex[match.Index] = (null, true);
 
-            while (match.Success)
-            {
-                resultAtIndex[match.Index] = (null, true);
-
-                Console.WriteLine("Found match: " + match.Value);
-                match = match.NextMatch();
-            }
+            Console.WriteLine("Found match: " + match.Value);
+            match = match.NextMatch();
         }
     }
 }

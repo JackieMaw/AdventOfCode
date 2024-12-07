@@ -10,4 +10,11 @@ public class AoCFilesSupplier : IAoCSupplier
             return File.ReadAllLines(fileName);
         throw new Exception($"Input File Could not be found: {fileName}");
     }
+    public string GetPuzzleInput_SingleLine(int year, int day, string suffix = "")
+    {
+        var fileName = $@"{filePath}\Input_{year}_{day}{suffix}.txt";
+        if (File.Exists(fileName))
+            return File.ReadAllText(fileName);
+        throw new Exception($"Input File Could not be found: {fileName}");
+    }
 }
