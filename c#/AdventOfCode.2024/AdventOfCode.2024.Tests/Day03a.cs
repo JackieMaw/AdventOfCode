@@ -50,7 +50,7 @@ public class Day03a
 
         string pattern = @"mul\((\d+),(\d+)\)";
 
-        Regex regex = new Regex(pattern);
+        Regex regex = new(pattern);
 
         foreach (var inputLine in input)
         {

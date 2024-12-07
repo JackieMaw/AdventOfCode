@@ -13,7 +13,7 @@ public static class PermutationGenerator<T>
         {
             List<List<T>> childPermuations = GetPermutations(options, numToGenerate - 1);
 
-            List<List<T>> allPermutations = new List<List<T>>();
+            List<List<T>> allPermutations = new();
             foreach (List<T> p in childPermuations)
             {
                 foreach (var option in options)

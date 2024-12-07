@@ -126,10 +126,10 @@ public class Day06a
 
     private readonly record struct Point(double X, double Y)
     {
-        public static Point Up = new Point(0, -1);
-        public static Point Right = new Point(1, 0);
-        public static Point Down = new Point(0, 1);
-        public static Point Left = new Point(-1, 0);
+        public static Point Up = new(0, -1);
+        public static Point Right = new(1, 0);
+        public static Point Down = new(0, 1);
+        public static Point Left = new(-1, 0);
     }
 
 }
