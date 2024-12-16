@@ -51,7 +51,7 @@ public class Day16a
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 0;
+        var expectedResult = 98520;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -69,7 +69,6 @@ public class Day16a
         HashSet<DirectedPosition> alreadyExplored = [];
         var notExploredYet = new PriorityQueue<DirectedPosition, long>();
         var shortestPaths = new Dictionary<DirectedPosition, long>();
-        long? shortestPathToEnd = null;
 
         Console.WriteLine($"Starting at {map.start} > {Point.Right}");
         var startingState = new DirectedPosition(map.start, Point.Right);
@@ -80,18 +79,18 @@ public class Day16a
         {
             var exploreMeNow = notExploredYet.Dequeue();
 
-            Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored);
+            var pathToEnd = Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored);
+
+            if (pathToEnd.HasValue)
+                return pathToEnd.Value;
 
             alreadyExplored.Add(exploreMeNow);
         }
         
-        if (shortestPathToEnd.HasValue)
-            return shortestPathToEnd.Value;
-        else
-            throw new Exception("No path found :-( Methinks something went wrong!");
+        throw new Exception("No path found :-( Methinks something went wrong!");
     }
 
-    private void Explore(DirectedPosition currentPosition, Map map, PriorityQueue<DirectedPosition, long> notExploredYet, Dictionary<DirectedPosition, long> shortestPaths, HashSet<DirectedPosition> alreadyExplored)
+    private long? Explore(DirectedPosition currentPosition, Map map, PriorityQueue<DirectedPosition, long> notExploredYet, Dictionary<DirectedPosition, long> shortestPaths, HashSet<DirectedPosition> alreadyExplored)
     {
         Console.WriteLine($"Exploring {currentPosition.Position} > {currentPosition.Direction}");
 
@@ -115,6 +114,11 @@ public class Day16a
             {
                 //if this is the first time we have found this node then this is the shortest path
                 shortestPaths[newPosition] = newCost;
+
+                if (newPosition.Position == map.end)
+                {
+                    return newCost;
+                }
             }
 
             if (!alreadyExplored.Contains(newPosition))
@@ -122,6 +126,8 @@ public class Day16a
                 notExploredYet.Enqueue(newPosition, newCost);
             }            
         }
+
+        return null;
     }
 
     private List<(DirectedPosition, long)> GetPossibleMoves(DirectedPosition currentPosition, Map map)
