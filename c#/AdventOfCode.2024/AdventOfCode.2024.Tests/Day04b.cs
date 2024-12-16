@@ -48,7 +48,7 @@ public class Day04b
 
     private long Execute(string[] input)
     {
-        var charArray = ReadInput.GetChars(input);
+        var charArray = ReadInput.GetCharGrid(input);
         var count = 0;
         for (int i = 0; i < charArray.GetLength(0); i++) 
         {

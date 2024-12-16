@@ -92,11 +92,3 @@ public class Map
         return (currentPosition.X >= 0) && (currentPosition.Y >= 0) && (currentPosition.X < maxX) && (currentPosition.Y < maxY);
     }    
 }
-
-public readonly record struct Point(double X, double Y)
-{
-    public static Point Up = new(0, -1);
-    public static Point Right = new(1, 0);
-    public static Point Down = new(0, 1);
-    public static Point Left = new(-1, 0);
-}

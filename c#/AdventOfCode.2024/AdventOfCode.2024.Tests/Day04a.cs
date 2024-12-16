@@ -16,7 +16,7 @@ public class Day04a
     [Test]
     public void TestCheckDirectionForwards()
     {
-        var charArray = ReadInput.GetChars(["XMAS", "    ", "    "]);
+        var charArray = ReadInput.GetCharGrid(["XMAS", "    ", "    "]);
         var found = CheckDirection(charArray, 0, 0, "MAS", (0, 1));
         Assert.That(found, Is.EqualTo(true));        
     } 
@@ -24,7 +24,7 @@ public class Day04a
     [Test]
     public void TestSearchForXmasAtPositionForwards()
     {
-        var charArray = ReadInput.GetChars(["XMAS", "    ", "    "]);
+        var charArray = ReadInput.GetCharGrid(["XMAS", "    ", "    "]);
         var numFound = SearchForXmasAtPosition(charArray, 0, 0);
         Assert.That(numFound, Is.EqualTo(1));        
     } 
@@ -70,7 +70,7 @@ public class Day04a
 
     private long Execute(string[] input)
     {
-        var charArray = ReadInput.GetChars(input);
+        var charArray = ReadInput.GetCharGrid(input);
         var count = 0;
         for (int i = 0; i < charArray.GetLength(0); i++) 
         {
