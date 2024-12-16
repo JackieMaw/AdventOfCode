@@ -2,7 +2,7 @@
 
 namespace AdventOfCode._2024.Tests;
 
-public class Day16a
+public class Day16b
 {
     private const int day = 16;
     private const int year = 2024;
@@ -11,13 +11,13 @@ public class Day16a
     [SetUp]
     public void Setup()
     {
-    }  
+    }
 
     [Test]
     public void TestSampleInput_1()
     {
         Console.WriteLine("Testing Sample Input 1...");
-        var expectedResult = 7036;
+        var expectedResult = 45;
         var input = aocSupplier.GetPuzzleInput(year, day, "_test1");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -28,7 +28,7 @@ public class Day16a
     public void TestSampleInput_2()
     {
         Console.WriteLine("Testing Sample Input 2...");
-        var expectedResult = 11048;
+        var expectedResult = 64;
         var input = aocSupplier.GetPuzzleInput(year, day, "_test2");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -39,46 +39,81 @@ public class Day16a
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 98520;
+        var expectedResult = 609;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
         Assert.That(result, Is.EqualTo(expectedResult));
     }    
-
-    private readonly record struct DirectedPosition(Point Position, Point Direction)
+    private long Execute(string[] input)
     {
+        var (shortestPaths, endPositions) = GetAllBestPaths(input);
+
+        HashSet<Point> allPointsOnPath = GetAllPointsOnBestPaths(shortestPaths, endPositions);
+        
+        return allPointsOnPath.Count;
     }
 
-    private long Execute(string[] input)
+    private HashSet<Point> GetAllPointsOnBestPaths(Dictionary<DirectedPosition, PathInfo> shortestPaths, HashSet<DirectedPosition> endPositions)
+    {
+        HashSet<Point> allPoints = [];
+        HashSet<DirectedPosition> allPositions = [];
+
+        foreach (var position in endPositions)
+        {
+            Console.WriteLine($"GetAllPointsOnBestPaths {position.Position} > {position.Direction}");
+            GetAllPointsOnPath(position, shortestPaths, allPoints, allPositions);
+        }
+
+        return allPoints;
+    }
+
+    private static void GetAllPointsOnPath(DirectedPosition position, Dictionary<DirectedPosition, PathInfo> shortestPaths, HashSet<Point> allPoints, HashSet<DirectedPosition> allPositions)
+    {
+        if (allPositions.Contains(position))
+            return; //we have already explored this position = point + direction
+
+        if (!allPoints.Contains(position.Position))
+            allPoints.Add(position.Position);
+
+        var pathInfo = shortestPaths[position];
+        foreach (var predecessor in pathInfo.Predecessors)
+        {
+            GetAllPointsOnPath(predecessor, shortestPaths, allPoints, allPositions);
+        }        
+    }
+
+    private (Dictionary<DirectedPosition, PathInfo> shortestPaths, HashSet<DirectedPosition> endPositions) GetAllBestPaths(string[] input)
     {
         var map = Map.CreateMap(input);
 
         HashSet<DirectedPosition> alreadyExplored = [];
         var notExploredYet = new PriorityQueue<DirectedPosition, long>();
-        var shortestPaths = new Dictionary<DirectedPosition, long>();
+        var shortestPaths = new Dictionary<DirectedPosition, PathInfo>();
+        var endPositions = new HashSet<DirectedPosition>();
 
         Console.WriteLine($"Starting at {map.start} > {Point.Right}");
         var startingState = new DirectedPosition(map.start, Point.Right);
         notExploredYet.Enqueue(startingState, 0);
-        shortestPaths.Add(startingState, 0);
+        shortestPaths.Add(startingState, (0, new HashSet<DirectedPosition>()));
 
-        while(notExploredYet.Count > 0)
+        while (notExploredYet.Count > 0)
         {
             var exploreMeNow = notExploredYet.Dequeue();
 
-            var pathToEnd = Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored);
-
-            if (pathToEnd.HasValue)
-                return pathToEnd.Value;
+            Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored, endPositions);
 
             alreadyExplored.Add(exploreMeNow);
         }
-        
-        throw new Exception("No path found :-( Methinks something went wrong!");
+
+        //remove any endPositions which are non-optimal
+        var minCost = endPositions.Min(p => shortestPaths[p].Cost);
+        endPositions = endPositions.Where(p => shortestPaths[p].Cost == minCost).ToHashSet();
+
+        return (shortestPaths, endPositions);
     }
 
-    private long? Explore(DirectedPosition currentPosition, Map map, PriorityQueue<DirectedPosition, long> notExploredYet, Dictionary<DirectedPosition, long> shortestPaths, HashSet<DirectedPosition> alreadyExplored)
+    private void Explore(DirectedPosition currentPosition, Map map, PriorityQueue<DirectedPosition, long> notExploredYet, Dictionary<DirectedPosition, PathInfo> shortestPaths, HashSet<DirectedPosition> alreadyExplored, HashSet<DirectedPosition> endPositions)    
     {
         Console.WriteLine($"Exploring {currentPosition.Position} > {currentPosition.Direction}");
 
@@ -86,26 +121,34 @@ public class Day16a
 
         foreach (var (newPosition, costToMove) in possibleMoves)
         {
-            var costToGetHere = shortestPaths[currentPosition];
+            var (costToGetHere, howToGetHere) = shortestPaths[currentPosition];
             var newCost = costToGetHere + costToMove;
             
             if (shortestPaths.ContainsKey(newPosition))
             {
                 //if we have found this node before, then we need to check if this new path is shorter
-                var currentCost = shortestPaths[newPosition];
-                if (newCost < currentCost)
+                var (costToGetToNewPosition, howToGetToNewPosition) = shortestPaths[newPosition];
+                if (newCost < costToGetToNewPosition)
                 {
-                    shortestPaths[newPosition] = newCost;
+                    //this new path is shorter
+                    shortestPaths[newPosition] = (newCost, new HashSet<DirectedPosition>() { currentPosition });
+                }
+                else if (newCost == costToGetToNewPosition)
+                {
+                    //this new path is the same, so we have found another good way
+                    if (!howToGetToNewPosition.Contains(currentPosition))
+                        howToGetToNewPosition.Add(currentPosition);
                 }
             }
             else
             {
                 //if this is the first time we have found this node then this is the shortest path
-                shortestPaths[newPosition] = newCost;
+                shortestPaths[newPosition] = (newCost, new HashSet<DirectedPosition>() { currentPosition });
 
                 if (newPosition.Position == map.end)
                 {
-                    return newCost;
+                    if (!endPositions.Contains(newPosition))
+                        endPositions.Add(newPosition);
                 }
             }
 
@@ -114,8 +157,6 @@ public class Day16a
                 notExploredYet.Enqueue(newPosition, newCost);
             }            
         }
-
-        return null;
     }
 
     private List<(DirectedPosition, long)> GetPossibleMoves(DirectedPosition currentPosition, Map map)
@@ -153,4 +194,22 @@ public class Day16a
 
         return possibleMoves;
     }    
+
+    readonly record struct DirectedPosition(Point Position, Point Direction);
+
+    readonly record struct PathInfo(long Cost, HashSet<DirectedPosition> Predecessors)
+    {
+        public static implicit operator (long, HashSet<DirectedPosition>)(PathInfo value)
+        {
+            return (value.Cost, value.Predecessors);
+        }
+
+        public static implicit operator PathInfo((long, HashSet<DirectedPosition>) value)
+        {
+            return new PathInfo(value.Item1, value.Item2);
+        }
+    }
 }
+
+
+
