@@ -52,14 +52,14 @@ public class Day16a
 
     private long Execute(string[] input)
     {
-        var map = Map.CreateMap(input);
+        var (map, start, end) = CreateMap(input);
 
         HashSet<DirectedPosition> alreadyExplored = [];
         var notExploredYet = new PriorityQueue<DirectedPosition, long>();
         var shortestPaths = new Dictionary<DirectedPosition, long>();
 
-        Console.WriteLine($"Starting at {map.start} > {Point.Right}");
-        var startingState = new DirectedPosition(map.start, Point.Right);
+        Console.WriteLine($"Starting at {start} > {Point.Right}");
+        var startingState = new DirectedPosition(start, Point.Right);
         notExploredYet.Enqueue(startingState, 0);
         shortestPaths.Add(startingState, 0);
 
@@ -67,7 +67,7 @@ public class Day16a
         {
             var exploreMeNow = notExploredYet.Dequeue();
 
-            var pathToEnd = Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored);
+            var pathToEnd = Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored, end);
 
             if (pathToEnd.HasValue)
                 return pathToEnd.Value;
@@ -78,7 +78,52 @@ public class Day16a
         throw new Exception("No path found :-( Methinks something went wrong!");
     }
 
-    private long? Explore(DirectedPosition currentPosition, Map map, PriorityQueue<DirectedPosition, long> notExploredYet, Dictionary<DirectedPosition, long> shortestPaths, HashSet<DirectedPosition> alreadyExplored)
+    private (Map map, Point start, Point end) CreateMap(string[] input)
+    {
+        HashSet<Point> obstacles = [];
+        Point? start = null;
+        Point? end = null;
+
+        int maxY = input.Length;
+        int maxX = input[0].Length;
+
+        for (int y = 0; y < input.Length; y++)
+        {
+            var inputLine = input[y];
+            for (int x = 0; x < inputLine.Length; x++)
+            {
+                switch (inputLine[x])
+                {
+                    case '#': obstacles.Add(new Point(x, y));
+                    break;
+                    
+                    case 'S': start = new Point(x, y);
+                    break;
+                    
+                    case 'E': end = new Point(x, y);
+                    break;
+
+                    case '.': break;
+
+                    default: throw new Exception($"Unexpected Input: {inputLine[x]}");
+                }
+            }
+        }
+
+        if (!start.HasValue)
+        {
+            throw new Exception("Didn't find a starting position");
+        }
+
+        if (!end.HasValue)
+        {
+            throw new Exception("Didn't find an ending position");
+        }
+
+        return (new Map(obstacles, maxX, maxY), start.Value, end.Value);
+    }
+
+    private long? Explore(DirectedPosition currentPosition, Map map, PriorityQueue<DirectedPosition, long> notExploredYet, Dictionary<DirectedPosition, long> shortestPaths, HashSet<DirectedPosition> alreadyExplored, Point end)
     {
         Console.WriteLine($"Exploring {currentPosition.Position} > {currentPosition.Direction}");
 
@@ -103,7 +148,7 @@ public class Day16a
                 //if this is the first time we have found this node then this is the shortest path
                 shortestPaths[newPosition] = newCost;
 
-                if (newPosition.Position == map.end)
+                if (newPosition.Position == end)
                 {
                     return newCost;
                 }
