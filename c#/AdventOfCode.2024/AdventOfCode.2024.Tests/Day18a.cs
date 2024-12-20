@@ -69,19 +69,26 @@ public class Day18a
         var start = new Point(0, 0);
         var end = new Point(gridSize, gridSize);
         Console.WriteLine($"Starting at {start} >");
-        notExploredYet.Enqueue(start, 0);
-        shortestPaths.Add(start, 0);
+
+        int costToGetHereFromStart = 0;
+        int costToGetToEndFromHere = GetHeuristicScore(start, end);
+        var score = costToGetHereFromStart + costToGetToEndFromHere;
+        notExploredYet.Enqueue(start, score);
+        shortestPaths.Add(start, costToGetHereFromStart);
 
         while(notExploredYet.Count > 0)
         {
             var exploreMeNow = notExploredYet.Dequeue();
+            alreadyExplored.Add(exploreMeNow);
+
+            Console.WriteLine();
+            Console.WriteLine($"Exploring {exploreMeNow} >> (alreadyExplored = {alreadyExplored.Count}, notExploredYet = {notExploredYet.Count})");
+            Console.WriteLine();
 
             var pathToEnd = Explore(exploreMeNow, map, notExploredYet, shortestPaths, alreadyExplored, end);
 
             if (pathToEnd.HasValue)
                 return pathToEnd.Value;
-
-            alreadyExplored.Add(exploreMeNow);
         }
         
         throw new Exception("No path found :-( Methinks something went wrong!");
@@ -89,38 +96,45 @@ public class Day18a
 
     private long? Explore(Point currentPosition, Map map, PriorityQueue<Point, long> notExploredYet, Dictionary<Point, long> shortestPaths, HashSet<Point> alreadyExplored, Point end)
     {
-        Console.WriteLine($"Exploring {currentPosition} >");
-
         var possibleMoves = map.GetNeighbours(currentPosition);
 
         foreach (var newPosition in possibleMoves.OrderBy(p => GetHeuristicScore(p, end)))
         {
             var costToGetHere = shortestPaths[currentPosition];
-            var newCost = costToGetHere + 1;
+            var costToGetToNewPosition = costToGetHere + 1;
             
             if (shortestPaths.ContainsKey(newPosition))
             {
                 //if we have found this node before, then we need to check if this new path is shorter
                 var currentCost = shortestPaths[newPosition];
-                if (newCost < currentCost)
+                if (costToGetToNewPosition < currentCost)
                 {
-                    shortestPaths[newPosition] = newCost;
+                    shortestPaths[newPosition] = costToGetToNewPosition;
                 }
             }
             else
             {
                 //if this is the first time we have found this node then this is the shortest path
-                shortestPaths[newPosition] = newCost;
+                shortestPaths[newPosition] = costToGetToNewPosition;
 
                 if (newPosition == end)
                 {
-                    return newCost;
+                    return costToGetToNewPosition;
                 }
             }
 
             if (!alreadyExplored.Contains(newPosition))
             {
-                notExploredYet.Enqueue(newPosition, newCost);
+                Point removed;
+                long priority;
+                notExploredYet.Remove(newPosition, out removed, out priority);
+
+                int costToGetToEndFromHere = GetHeuristicScore(newPosition, end);
+                var score = costToGetToNewPosition + costToGetToEndFromHere;
+                
+                Console.WriteLine($"     Adding {newPosition} to Q with score: {score} >> (neighbour of {currentPosition})");
+
+                notExploredYet.Enqueue(newPosition, score);
             }            
         }
 
