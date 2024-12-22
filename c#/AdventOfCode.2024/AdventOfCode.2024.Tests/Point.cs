@@ -1,6 +1,6 @@
 namespace AdventOfCode._2024.Tests;
 
-public readonly record struct Point(int X, int Y)
+public readonly record struct Point(long X, long Y)
 {
     public static Point Up = new(0, -1);
     public static Point Right = new(1, 0);

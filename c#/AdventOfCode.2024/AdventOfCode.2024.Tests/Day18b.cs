@@ -88,8 +88,8 @@ public class Day18b
         var start = new Point(0, 0);
         var end = new Point(gridSize, gridSize);
 
-        int costToGetHereFromStart = 0;
-        int costToGetToEndFromHere = GetHeuristicScore(start, end);
+        long costToGetHereFromStart = 0;
+        long costToGetToEndFromHere = GetHeuristicScore(start, end);
         var score = costToGetHereFromStart + costToGetToEndFromHere;
         notExploredYet.Enqueue(start, score);
         shortestPaths.Add(start, costToGetHereFromStart);
@@ -143,7 +143,7 @@ public class Day18b
                 long priority;
                 notExploredYet.Remove(newPosition, out removed, out priority);
 
-                int costToGetToEndFromHere = GetHeuristicScore(newPosition, end);
+                var costToGetToEndFromHere = GetHeuristicScore(newPosition, end);
                 var score = costToGetToNewPosition + costToGetToEndFromHere;
                 notExploredYet.Enqueue(newPosition, score);
             }            
@@ -152,7 +152,7 @@ public class Day18b
         return null;
     }
 
-    private int GetHeuristicScore(Point newPosition, Point end)
+    private long GetHeuristicScore(Point newPosition, Point end)
     {
         return Math.Abs(newPosition.X - end.X) + Math.Abs(newPosition.Y + end.Y);
     }
