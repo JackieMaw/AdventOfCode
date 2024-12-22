@@ -1,4 +1,5 @@
-﻿using AdventOfCode._2023;
+﻿using System.Security.Cryptography.X509Certificates;
+using AdventOfCode._2023;
 
 namespace AdventOfCode._2024.Tests;
 
@@ -14,18 +15,32 @@ public class Day013a
     }
 
     [Test]
-    public void UnitTests()
+    public void UnitTest_TestCase1()
     {
-        var result = 0;
-        var expectedResult = 0;
+        Console.WriteLine("Testing Case 1...");
+        var expectedResult = 280;
+        var input = new string [] { "Button A: X+94, Y+34", "Button B: X+22, Y+67", "Prize: X=8400, Y=5400" };
+        var result = Execute(input);
+        Console.WriteLine($"Result: {result}");
         Assert.That(result, Is.EqualTo(expectedResult));
     }    
+
+    [Test]
+    public void UnitTest_TestCase2()
+    {
+        Console.WriteLine("Testing Case 2...");
+        var expectedResult = 0;
+        var input = new string [] { "Button A: X+26, Y+66", "Button B: X+67, Y+21", "Prize: X=12748, Y=12176" };
+        var result = Execute(input);
+        Console.WriteLine($"Result: {result}");
+        Assert.That(result, Is.EqualTo(expectedResult));
+    } 
 
     [Test]
     public void TestSampleInput()
     {
         Console.WriteLine("Testing Sample Input...");
-        var expectedResult = 0;
+        var expectedResult = 480;
         var input = aocSupplier.GetPuzzleInput(year, day, "_test");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -47,7 +62,7 @@ public class Day013a
     {
         var clawGames = ParseInput(input);
 
-        long result = clawGames.Sum(game => GetMinimumCost(game));
+        long result = clawGames.Sum(GetMinimumCost);
 
         return result;
     }
@@ -56,7 +71,7 @@ public class Day013a
     {
         List<ClawGame> clawGames = [];
 
-        for (int i = 0; i < input.Length; i+=3)
+        for (int i = 0; i < input.Length; i+=4)
         {
             var buttonA = ParseButton(input[i]);
             var buttonB = ParseButton(input[i+1]);
@@ -84,12 +99,53 @@ Prize: X=12748, Y=12176
         return new Button(buttonParts[0], buttonParts[1]);
     }
 
-    private long GetMinimumCost(ClawGame game)
+    private int GetMinimumCost(ClawGame game)
     {
         int costA = 3;
         int costB = 1;
+        
+        int? lowestCost = null;
+
+        System.Console.WriteLine($"{game}");
+
+        for (int a = 0; a <= 100; a++)
+        {
+            double b = (game.PrizeLocation.X - (game.ButtonA.X * a))/(double)game.ButtonB.X;
+            if (((b % 1) == 0) && (b > 0) && (b <= 100))
+            {
+                int totalCost = costA * a + costB * (int)b;
+                System.Console.WriteLine($"    {a}x{costA} + {b}x{costB} = {totalCost}");
+
+                if (!lowestCost.HasValue)
+                {
+                    lowestCost = totalCost;
+                }
+                else if (totalCost < lowestCost.Value)
+                {
+                    lowestCost = totalCost;
+                }
+            }
+        }
+
+        return lowestCost ?? 0;
+    }
+
+    private long GetMinimumCost_Clever(ClawGame game)
+    {
+        int costA = 3;
+        int costB = 1;
+            
+        int top = game.PrizeLocation.X * game.ButtonB.Y - game.PrizeLocation.Y * game.ButtonA.X;
+        int bottom = game.ButtonB.X * game.ButtonA.Y - game.ButtonA.X * game.ButtonB.Y;
+        int B = top / bottom;
+
+        int A = (game.PrizeLocation.X - game.ButtonB.X * B) / game.ButtonA.X;
+
+        int totalCost = costA * A + costB + B;
+
+        return totalCost;
     }
 
     private record struct Button(int X, int Y);
-    private record struct ClawGame(Button A, Button B, Point PrizeLocation);
+    private record struct ClawGame(Button ButtonA, Button ButtonB, Point PrizeLocation);
 }
