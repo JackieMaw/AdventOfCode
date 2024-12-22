@@ -51,7 +51,7 @@ public class Day013a
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 0;
+        var expectedResult = 29201;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -99,7 +99,7 @@ Prize: X=12748, Y=12176
         return new Button(buttonParts[0], buttonParts[1]);
     }
 
-    private int GetMinimumCost(ClawGame game)
+    private int GetMinimumCost_Dumb(ClawGame game)
     {
         int costA = 3;
         int costB = 1;
@@ -108,10 +108,10 @@ Prize: X=12748, Y=12176
 
         System.Console.WriteLine($"{game}");
 
-        for (int a = 0; a <= 100; a++)
+        for (int a = 100; a >= 0; a--)
         {
             double b = (game.PrizeLocation.X - (game.ButtonA.X * a))/(double)game.ButtonB.X;
-            if (((b % 1) == 0) && (b > 0) && (b <= 100))
+            if (((b % 1) == 0) && (b >= 0) && (b <= 100))
             {
                 int totalCost = costA * a + costB * (int)b;
                 System.Console.WriteLine($"    {a}x{costA} + {b}x{costB} = {totalCost}");
@@ -130,20 +130,29 @@ Prize: X=12748, Y=12176
         return lowestCost ?? 0;
     }
 
-    private long GetMinimumCost_Clever(ClawGame game)
+    private long GetMinimumCost(ClawGame game)
     {
         int costA = 3;
         int costB = 1;
-            
-        int top = game.PrizeLocation.X * game.ButtonB.Y - game.PrizeLocation.Y * game.ButtonA.X;
-        int bottom = game.ButtonB.X * game.ButtonA.Y - game.ButtonA.X * game.ButtonB.Y;
-        int B = top / bottom;
 
-        int A = (game.PrizeLocation.X - game.ButtonB.X * B) / game.ButtonA.X;
+        double top = game.PrizeLocation.X * game.ButtonA.Y - game.PrizeLocation.Y * game.ButtonA.X;
+        double bottom = game.ButtonB.X * game.ButtonA.Y - game.ButtonA.X * game.ButtonB.Y;
+        double B = top / bottom;
+        double A = (game.PrizeLocation.X - game.ButtonB.X * B) / game.ButtonA.X;
 
-        int totalCost = costA * A + costB + B;
+        if (IsValidPlay(A) && IsValidPlay(B))
+        {
+            return costA * (int)A + costB * (int)B;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-        return totalCost;
+    private static bool IsValidPlay(double numClicks)
+    {
+        return ((numClicks % 1) == 0) && (numClicks >= 0) && (numClicks <= 100);
     }
 
     private record struct Button(int X, int Y);
