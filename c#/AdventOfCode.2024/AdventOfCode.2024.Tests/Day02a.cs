@@ -85,7 +85,7 @@ public class Day02a
                     increasing = diff > 0;
                 }
             }
-            Console.WriteLine($"{level} is OK");
+            //Console.WriteLine($"{level} is OK");
             previousLevel = level;
         }
         Console.WriteLine($"{inputLine} is SAFE");

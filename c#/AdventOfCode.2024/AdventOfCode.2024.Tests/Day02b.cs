@@ -16,14 +16,44 @@ public class Day02b
     [Test]
     public void UnitTests()
     {
-        Assert.Pass();
+        /*7 6 4 2 1: Safe without removing any level.
+        1 2 7 8 9: Unsafe regardless of which level is removed.
+        9 7 6 2 1: Unsafe regardless of which level is removed.
+        1 3 2 4 5: Safe by removing the second level, 3.
+        8 6 4 4 1: Safe by removing the third level, 4.
+        1 3 6 7 9: Safe without removing any level.
+        */
+
+        Assert.That(CanBeMadeSafe("7 6 4 2 1"), Is.EqualTo(true));
+        Assert.That(CanBeMadeSafe("1 2 7 8 9"), Is.EqualTo(false));
+        Assert.That(CanBeMadeSafe("1 3 2 4 5"), Is.EqualTo(true));        
+    }
+
+    private bool CanBeMadeSafe(string inputLine)
+    {
+        var numbers = GetNumbers(inputLine);
+
+        for (int i = 0; i < numbers.Count; i++)
+        {
+            List<int> listCopy = [.. numbers];
+            listCopy.RemoveAt(i);
+            if (IsSafe(listCopy))
+                return true;
+        }
+
+        return false;
+    }
+
+    private List<int> GetNumbers(string inputLine)
+    {
+        return inputLine.Split(' ').Select(x => int.Parse(x)).ToList();
     }    
 
     [Test]
     public void TestSampleInput()
     {
         Console.WriteLine("Testing Sample Input...");
-        var expectedResult = 2;
+        var expectedResult = 4;
         var input = aocSupplier.GetPuzzleInput(year, day, "_test");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -34,7 +64,7 @@ public class Day02b
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 686;
+        var expectedResult = 717;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -46,34 +76,41 @@ public class Day02b
         int count = 0;
         foreach (var inputLine in input)
         {
-            if (IsSafe(inputLine))
+            if (CanBeMadeSafe(inputLine))
+            {
+                //Console.WriteLine($"{inputLine} CAN be made SAFE");    
                 count += 1;
+            }
+            else
+            {
+                //Console.WriteLine($"{inputLine} CANNOT be made SAFE");    
+            }
         }
         return count;
     }
 
-    private bool IsSafe(string inputLine)
+    private bool IsSafe(List<int> numbers)
     {
-        var differences = GetDifferences(inputLine);
+        var differences = GetDifferences(numbers);
         bool allPositive = differences.All(n => n > 0);
         bool allNegative = differences.All(n => n < 0);
-        bool allInRange = differences.All(n =>  (Math.Abs(n) > 1) && (Math.Abs(n) <= 3));
-        if ((allPositive || allNegative) && allInRange)
-        {
-            return true;
-        }
-        
-        Console.WriteLine($"{inputLine} is SAFE");
+        if (allPositive || allNegative)
+        {            
+            bool allInRange = differences.All(n =>  (Math.Abs(n) >= 1) && (Math.Abs(n) <= 3));
+            if (allInRange)
+            {
+                return true;
+            }
+        }  
         return false;
     }
 
-    private List<int> GetDifferences(string inputLine)
+    private List<int> GetDifferences(List<int> numbers)
     { 
         var differences = new List<int>();
         int? previousLevel = null;
-        foreach (var levelString in inputLine.Split(' '))
+        foreach (var level in numbers)
         {
-            int level = int.Parse(levelString);
             if (previousLevel != null)
             {
                 differences.Add(level - previousLevel.Value);                
