@@ -78,28 +78,21 @@ public class Day01b
         foreach (var line in input)
         {
             var direction = line[0];
-            var magnitude = Convert.ToInt32(line[1..]);
+            var fullMagnitude = Convert.ToInt32(line[1..]);
+            var numberOfFullTurns = fullMagnitude / 100;
+            var magnitude = fullMagnitude % 100;
+
+            countTimesPassedZero += numberOfFullTurns;
+            if (numberOfFullTurns > 0)
+                Console.WriteLine($"   {numberOfFullTurns} x PASSES");
 
             switch (direction)
             {
                 case 'L':
                     // turn left
-                    
-                    if (dialPosition == 0)
-                    {
-                        //HACK
-                        countTimesPassedZero--;                        
-                    }
-
                     dialPosition = dialPosition - magnitude;
-                    
-                    if (dialPosition == 0)
-                    {
-                        countTimesPassedZero++;
-                        Console.WriteLine($"   AT ZERO");
-                    }
 
-                    while (dialPosition < 0)
+                    if (dialPosition < 0)
                     {
                         dialPosition += 100;
                         countTimesPassedZero++;                        
@@ -111,7 +104,7 @@ public class Day01b
                     // turn right
                     dialPosition = dialPosition + magnitude;
 
-                    while (dialPosition > 99)
+                    if (dialPosition > 99)
                     {
                         dialPosition -= 100;
                         countTimesPassedZero++;
