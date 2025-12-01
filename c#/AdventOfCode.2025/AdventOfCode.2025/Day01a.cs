@@ -45,7 +45,7 @@ public class Day01a
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 0;
+        var expectedResult = 1031;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
