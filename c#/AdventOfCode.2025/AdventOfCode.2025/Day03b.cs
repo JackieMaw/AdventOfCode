@@ -21,11 +21,8 @@ public class Day03b
     [Test]
     public void UnitTests()
     {
-        Assert.That(GetLargestJoltage("234234234234278"), Is.EqualTo(434234234278));
-
-
         Assert.That(GetLargestJoltage("123456789999999"), Is.EqualTo(456789999999));
-
+        Assert.That(GetLargestJoltage("987659876598765"), Is.EqualTo(989876598765));
         Assert.That(GetLargestJoltage("987654321111111"), Is.EqualTo(987654321111));
         Assert.That(GetLargestJoltage("811111111111119"), Is.EqualTo(811111111119));
         Assert.That(GetLargestJoltage("234234234234278"), Is.EqualTo(434234234278));
@@ -47,7 +44,7 @@ public class Day03b
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 17301;
+        var expectedResult = 172162399742349;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -68,33 +65,35 @@ public class Day03b
 
     private long GetLargestJoltage(string line)
     {
+        int lineLength = line.Length;
+        int windowLength = lineLength - 12;
+
         int[] originalDigits = [.. line.Select(c => (int)char.GetNumericValue(c))];
 
-        int[] finalDigits = [.. originalDigits[(originalDigits.Length - 12)..]];
+        int[] finalDigits = new int[12];
 
-        for (int position = 0; position < originalDigits.Length; position++)
+        int lastConsumedPosition = -1;
+
+        for (int digitCounter = 0; digitCounter < 12; digitCounter++)
         {
-            int thisDigit = originalDigits[position];
+            int maxValueForThisPosition = -1;
+            int positionOfMaxValue = -1;
 
-            bool resetRemainingDigits = false;
-            for (int digitCounter = 0; digitCounter < 12; digitCounter++)
+            //find the best option for this digit position
+            for (int position = lastConsumedPosition + 1; position <= digitCounter + windowLength; position++)
             {
-                if (resetRemainingDigits)
+                int thisDigit = originalDigits[position];
+
+                if (thisDigit > maxValueForThisPosition)
                 {
-                    //this digit has been consumed by a higher priority position
-                    finalDigits[digitCounter] = originalDigits[originalDigits.Length - 12 + digitCounter];
-                }
-                else if (thisDigit > finalDigits[digitCounter])
-                {
-                    //we can only use this digit if there are enough remaining digits to fill the rest
-                    if (position < originalDigits.Length - (12 - digitCounter))
-                    {
-                        finalDigits[digitCounter] = thisDigit;
-                        resetRemainingDigits = true; //we need to reset all remaining digits
-                    }
+                    maxValueForThisPosition = thisDigit;
+                    positionOfMaxValue = position;
                 }
             }
-        }
+
+            finalDigits[digitCounter] = maxValueForThisPosition;
+            lastConsumedPosition = positionOfMaxValue;          
+        }       
 
         return long.Parse(string.Concat(finalDigits));
     }
