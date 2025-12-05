@@ -22,13 +22,14 @@ public class Day05b
             (50, 60)
         ];
 
-        List<(long, long)> optimizedRanges =
+        List<(long, long)> expectedOptimizedRanges =
         [
             (30, 60)
         ];
 
-        var result = OptimizeRanges(ranges);
-        Assert.That(result, Is.EqualTo(optimizedRanges));        
+        var actualOptimizedRanges = OptimizeRanges(ranges);
+        Assert.That(actualOptimizedRanges, Has.Exactly(1).Items);  
+        Assert.That(actualOptimizedRanges, Is.EqualTo(expectedOptimizedRanges));     
     } 
 
     [Test]
@@ -41,13 +42,14 @@ public class Day05b
             (35, 55),
         ];
 
-        List<(long, long)> optimizedRanges =
+        List<(long, long)> expectedOptimizedRanges =
         [
             (30, 60)
         ];
 
-        var result = OptimizeRanges(ranges);
-        Assert.That(result, Is.EqualTo(optimizedRanges));        
+        var actualOptimizedRanges = OptimizeRanges(ranges);
+        Assert.That(actualOptimizedRanges, Has.Exactly(1).Items);  
+        Assert.That(actualOptimizedRanges, Is.EqualTo(expectedOptimizedRanges));        
     }    
 
     [Test]
@@ -81,6 +83,23 @@ public class Day05b
 
     private List<(long, long)> OptimizeRanges(List<(long, long)> ranges)
     {
+        Console.WriteLine($"Starting with {ranges.Count} ranges...");
+        var optimizedRanges = OptimizeRangesOnce(ranges);
+        Console.WriteLine($"Optimized to {optimizedRanges.Count} ranges");
+        while (optimizedRanges.Count < ranges.Count)
+        {
+            ranges = optimizedRanges;
+            optimizedRanges = OptimizeRangesOnce(ranges);
+            Console.WriteLine($"Optimized to {optimizedRanges.Count} ranges");
+        }
+        Console.WriteLine("===NO FURTHER OPTIMIZATION ACHIEVED===");
+        return optimizedRanges;
+    }
+
+    private List<(long, long)> OptimizeRangesOnce(List<(long, long)> ranges)
+    {
+        ranges.Sort();
+
         var optimizedRanges = new List<(long, long)>();
 
         foreach (var (startNewRange, endNewRange) in ranges)
