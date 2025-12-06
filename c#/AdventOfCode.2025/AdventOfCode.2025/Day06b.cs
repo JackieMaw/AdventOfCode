@@ -9,18 +9,135 @@
     {
     }
 
+    /*
+123 328  51 64 
+ 45 64  387 23 
+  6 98  215 314
+*   +   *   +  
+Reading the problems right-to-left one column at a time, the problems are now quite different:
+
+The rightmost problem is 4 + 431 + 623 = 1058
+The second problem from the right is 175 * 581 * 32 = 3253600
+The third problem from the right is 8 + 248 + 369 = 625
+Finally, the leftmost problem is 356 * 24 * 1 = 8544
+    */
+
     [Test]
-    public void UnitTests()
+    public void CanParseInputWithSpacesOnLeft()
     {
-        var result = 0;
-        var expectedResult = 0;
+        var input = new string[]
+        {
+            "123",
+            " 45",
+            "  6",
+            "*"
+        };
+
+        var allOperationInfo = ParseInput(input);
+        Assert.That(allOperationInfo, Has.Exactly(1).Items);
+
+        var operationInfo = allOperationInfo[0];
+        Assert.That(operationInfo.NumberStrings, Has.Exactly(3).Items);
+        Assert.That(operationInfo.NumberStrings[0], Is.EqualTo("123"));
+        Assert.That(operationInfo.NumberStrings[1], Is.EqualTo(" 45"));
+        Assert.That(operationInfo.NumberStrings[2], Is.EqualTo("  6"));
+    }
+
+    
+    [Test]
+    public void CanParseInputWithSpacesOnRight()
+    {
+        var input = new string[]
+        {
+            "64",
+            "23",
+            "314",
+            "+"
+        };
+
+        var allOperationInfo = ParseInput(input);
+        Assert.That(allOperationInfo, Has.Exactly(1).Items);
+
+        var operationInfo = allOperationInfo[0];
+        Assert.That(operationInfo.NumberStrings, Has.Exactly(3).Items);
+        Assert.That(operationInfo.NumberStrings[0], Is.EqualTo("64"));
+        Assert.That(operationInfo.NumberStrings[1], Is.EqualTo("23"));
+        Assert.That(operationInfo.NumberStrings[2], Is.EqualTo("314"));
+    }
+
+    [Test]
+    public void CanCollectNumbersWithSpacesOnRight()
+    {
+        List<string> numberStrings = 
+        [
+            "64",
+            "23",
+            "314",
+        ];
+
+        var numbers = CollectNumbers(numberStrings);
+        Assert.That(numbers, Has.Exactly(3).Items);
+
+        Assert.That(numbers[0], Is.EqualTo(623));
+        Assert.That(numbers[1], Is.EqualTo(431));
+        Assert.That(numbers[2], Is.EqualTo(4));
+    }
+
+    [Test]
+    public void CanCollectNumbersWithSpacesOnLeft()
+    {
+        List<string> numberStrings = 
+        [
+            "123",
+            " 45",
+            "  6"
+        ];
+
+        var numbers = CollectNumbers(numberStrings);
+        Assert.That(numbers, Has.Exactly(3).Items);
+
+        Assert.That(numbers[0], Is.EqualTo(1));
+        Assert.That(numbers[1], Is.EqualTo(24));
+        Assert.That(numbers[2], Is.EqualTo(356));
+    }
+
+    [Test]
+    public void CanHandleSpacesOnLeft()
+    {
+        var input = new string[]
+        {
+            "123",
+            " 45",
+            "  6",
+            "*"
+        };
+
+        var result = Execute(input);
+        var expectedResult = 8544;
+        Assert.That(result, Is.EqualTo(expectedResult));
+    }
+
+    
+    [Test]
+    public void CanHandleSpacesOnRight()
+    {
+        var input = new string[]
+        {
+            "64",
+            "23",
+            "314",
+            "+"
+        };
+
+
+        var result = Execute(input);
+        var expectedResult = 1058;
         Assert.That(result, Is.EqualTo(expectedResult));
     }    
 
     [Test]
     public void TestSampleInput()
     {
-        //4 + 431 + 623 = 1058
         //1058 + 3253600 + 625 + 8544 = 3263827.
         Console.WriteLine("Testing Sample Input...");
         var expectedResult = 3263827;
@@ -34,7 +151,7 @@
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 6378679666679;
+        var expectedResult = 11494432585168;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -43,40 +160,40 @@
 
     private long Execute(string[] input)
     {
-        var (numbers, operations) = ParseInput(input);
+        var allOperationInfo = ParseInput(input);
         
-        var result = ApplyOperations(numbers, operations);
+        var result = ApplyOperations(allOperationInfo);
 
         return result;
     }
 
-    private long ApplyOperations(List<string[]> numbers, string[] operations)
+    private long ApplyOperations(List<OperationInfo> allOperationInfo)
     {
         long grandTotal = 0;
 
-        for(int opIndex = 0; opIndex < operations.Length; opIndex++)
+        foreach (var operationInfo in allOperationInfo)
         {
-            var collectedNumbers = CollectNumbers(numbers, opIndex);
-            var operation = operations[opIndex];
-            long result = ApplyOperation(collectedNumbers, operation);
+            Console.WriteLine($"Operation: {operationInfo.Operation}, Numbers: '{string.Join("', '", operationInfo.NumberStrings)}'");
+            var collectedNumbers = CollectNumbers(operationInfo.NumberStrings);
+            long result = ApplyOperation(collectedNumbers, operationInfo.Operation);
             grandTotal += result;
-            Console.WriteLine($"#{opIndex} Result of [{operation}] = {result}, Grand Total = {grandTotal}");
+            Console.WriteLine($"Result of [{operationInfo.Operation}] = {result}, Grand Total = {grandTotal}");
         }
 
         return grandTotal;
     }
 
-    private static long ApplyOperation(List<long> collectedNumbers, string operation)
+    private static long ApplyOperation(List<long> collectedNumbers, char operation)
     {
-        var result = operation == "*" ? 1L : 0L;
+        var result = operation == '*' ? 1L : 0L;
         foreach (var operand in collectedNumbers)
         {
             switch (operation)
             {
-                case "+":
+                case '+':
                     result += operand;
                     break;
-                case "*":
+                case '*':
                     result *= operand;
                     break;
                 default:
@@ -87,59 +204,108 @@
         return result;
     }
 
-    private List<long> CollectNumbers(List<string[]> numbers, int opIndex)
+    private List<long> CollectNumbers(List<string> numberStrings)
     {
-        bool stillMoreNumbersToCollect = true;
-        int numberIndex = -1;
+        int maxLength = numberStrings.Max(ns => ns.Length);
+
         var collectedNumbers = new List<long>();
 
-        while (stillMoreNumbersToCollect)
+        for (int numberIndex = 0; numberIndex < maxLength; numberIndex++)
         {
-            numberIndex++;
             long accumulatedValue = 0L;
-            foreach (var operands in numbers)
+            foreach (var numberString in numberStrings)
             {
-                var operand = operands[opIndex];
-                if (numberIndex < operand.Length)
+                if (numberIndex < numberString.Length)
                 {
-                    int thisValue = int.Parse(operand[numberIndex].ToString());
-                    if (accumulatedValue == 0L)
+                    char thisDigit = numberString[numberIndex];
+                    if (thisDigit != ' ')
                     {
-                        accumulatedValue = thisValue;
-                    }
-                    else
-                    {
-                        accumulatedValue *= 10;
-                        accumulatedValue += thisValue;
+                        int thisValue = int.Parse(thisDigit.ToString());
+                        if (accumulatedValue == 0L)
+                        {
+                            accumulatedValue = thisValue;
+                        }
+                        else
+                        {
+                            accumulatedValue *= 10;
+                            accumulatedValue += thisValue;
+                        }
                     }
                 }
             }
-            if (accumulatedValue == 0L)
-            {
-                stillMoreNumbersToCollect = false;
-            }
-            else
-            {
-                collectedNumbers.Add(accumulatedValue);                
-            }
+            collectedNumbers.Add(accumulatedValue);      
         }
 
         return collectedNumbers;
     }
 
-    private (List<string[]> numbers, string[] operations) ParseInput(string[] input)
+    private List<OperationInfo> ParseInput(string[] input)
     {
-        var allNumbers = new List<string[]>();
-        for(int i = 0; i < input.Length - 1; i++)
-        {
-            var numberParts = input[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            allNumbers.Add(numberParts);
-        }
-
-        var operations = input[^1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-        return (allNumbers, operations);
+        List<OperationInfo> allOperationInfo = ParseOperations(input[^1]);
+        ParseNumberStrings(input, allOperationInfo);
+        return allOperationInfo;
     }
 
+    private static void ParseNumberStrings(string[] input, List<OperationInfo> allOperationInfo)
+    {
+        foreach (var operationInfo in allOperationInfo)
+        {
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                var inputLine = input[i];
+                if (operationInfo.EndsAt == -1)
+                {
+                    var numberString = inputLine.Substring(operationInfo.StartsAt);
+                    operationInfo.NumberStrings.Add(numberString);
+                }
+                else
+                {
+                    var numberString = inputLine.Substring(operationInfo.StartsAt, operationInfo.EndsAt - operationInfo.StartsAt);
+                    operationInfo.NumberStrings.Add(numberString);
+                }
+                
+            }
+        }
+    }
 
+    private static List<OperationInfo> ParseOperations(string operationalLine)
+    {
+        var operations = new List<OperationInfo>();
+        OperationInfo? operationInfo = null;
+        for (int i = 0; i < operationalLine.Length; i++)
+        {
+            var ch = operationalLine[i];
+            if (ch != ' ')
+            {
+                if (operationInfo == null)
+                {
+                    operationInfo = new OperationInfo(ch, i);
+                }
+                else
+                {
+                    operationInfo.EndsAt = i - 1;
+                    operations.Add(operationInfo);
+                    operationInfo = new OperationInfo(ch, i);
+                }
+            }
+        }
+        operations.Add(operationInfo);
+        return operations;
+    }
+
+    private class OperationInfo
+    {
+        public OperationInfo(char operation, int startsAt)
+        {
+            Operation = operation;
+            StartsAt = startsAt;
+            EndsAt = -1;
+            NumberStrings = [];
+        }
+
+        public char Operation { get; internal set; }
+        public int StartsAt { get; internal set; }
+        public int EndsAt { get; internal set; }
+        public List<string> NumberStrings { get; internal set;  }
+    }
 }
