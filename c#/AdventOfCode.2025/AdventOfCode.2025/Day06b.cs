@@ -289,6 +289,10 @@ Finally, the leftmost problem is 356 * 24 * 1 = 8544
                 }
             }
         }
+
+        if (operationInfo == null)
+            throw new Exception("No operations found in operational line.");
+            
         operations.Add(operationInfo);
         return operations;
     }
