@@ -67,7 +67,7 @@ public class Day05b
     public void TestFullInput()
     {
         Console.WriteLine("Testing Full Input...");
-        var expectedResult = 0;
+        var expectedResult = 346240317247002;
         var input = aocSupplier.GetPuzzleInput(year, day);
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -93,21 +93,19 @@ public class Day05b
         {
             if (previousRange.start == -1)
             {
-                optimizedRanges.Add(range);
                 previousRange = range;
             }
             else
             {                
-                //case 1: NO OVERLAP
+                //NO OVERLAP
                 if (range.start > previousRange.end)
                 {
                     //SAVE THE PREVIOUS RANGE
                     optimizedRanges.Add(previousRange);
                     previousRange = range;
                 }
-                else
-                {
-                    //MERGE RANGES
+                else //MERGE RANGES
+                {                    
                     previousRange.end = Math.Max(previousRange.end, range.end);                    
                 }
             }
