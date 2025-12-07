@@ -1,7 +1,7 @@
 ﻿
 
 
-public class Day05b
+public class Day05bFail
 {
     private const int day = 5;
     private const int year = 2024;
@@ -83,38 +83,75 @@ public class Day05b
 
     private List<(long, long)> OptimizeRanges(List<(long, long)> ranges)
     {
+        Console.WriteLine($"Starting with {ranges.Count} ranges...");
+        var optimizedRanges = OptimizeRangesOnce(ranges);
+        Console.WriteLine($"Optimized to {optimizedRanges.Count} ranges");
+        while (optimizedRanges.Count < ranges.Count)
+        {
+            ranges = optimizedRanges;
+            optimizedRanges = OptimizeRangesOnce(ranges);
+            Console.WriteLine($"Optimized to {optimizedRanges.Count} ranges");
+        }
+        Console.WriteLine("===NO FURTHER OPTIMIZATION ACHIEVED===");
+        return optimizedRanges;
+    }
+
+    private List<(long, long)> OptimizeRangesOnce(List<(long, long)> ranges)
+    {
         ranges.Sort();
 
         var optimizedRanges = new List<(long, long)>();
 
-        (long start, long end) previousRange = (-1, -1);
-
-        foreach ((long start, long end) range in ranges)
+        foreach (var (startNewRange, endNewRange) in ranges)
         {
-            if (previousRange.start == -1)
+            bool isOverLapping = false;
+            foreach (var (startExistingRange, endExistingRange) in optimizedRanges)
             {
-                optimizedRanges.Add(range);
-                previousRange = range;
-            }
-            else
-            {                
                 //case 1: NO OVERLAP
-                if (range.start > previousRange.end)
+                if (startExistingRange > endNewRange || startNewRange > endExistingRange)
                 {
-                    //SAVE THE PREVIOUS RANGE
-                    optimizedRanges.Add(previousRange);
-                    previousRange = range;
+                    //DO NOTHING, ignore this existing range and check the next one
+                    continue;
                 }
                 else
                 {
-                    //MERGE RANGES
-                    previousRange.end = Math.Max(previousRange.end, range.end);                    
+                    isOverLapping = true;
+                    if (startNewRange <= startExistingRange && endNewRange >= endExistingRange)
+                    {
+                        //case 2A: FULL OVERLAP - new range can replace the existing range
+                        optimizedRanges.Remove((startExistingRange, endExistingRange));
+                        optimizedRanges.Add((startExistingRange, endExistingRange));
+                    }
+                    else if (startExistingRange <= startNewRange && endExistingRange >= endNewRange)
+                    {
+                        //case 2A: FULL OVERLAP - existing range already contains the new range
+                        //DO NOTHING
+                    }
+                    else if (startNewRange <= startExistingRange && endNewRange < endExistingRange)
+                    {
+                        //case 3A: PARTIAL OVERLAP - new range comes first
+                        optimizedRanges.Remove((startExistingRange, endExistingRange));
+                        optimizedRanges.Add((startNewRange, endExistingRange));
+                    }
+                    else if (startExistingRange < startNewRange && endExistingRange < endNewRange)
+                    {
+                        //case 3B: PARTIAL OVERLAP - existing range comes first
+                        optimizedRanges.Remove((startExistingRange, endExistingRange));
+                        optimizedRanges.Add((startExistingRange,  endNewRange));
+                    }
+                    else
+                    {
+                        throw new Exception("Unhandled overlap case");
+                    }
+                    break; //exit the loop through existing ranges because we already found one
                 }
+                
+            }
+            if (!isOverLapping)
+            {
+                optimizedRanges.Add((startNewRange, endNewRange));
             }
         }
-
-        //SAVE THE LAST RANGE
-        optimizedRanges.Add(previousRange);
 
         return optimizedRanges;
     }
