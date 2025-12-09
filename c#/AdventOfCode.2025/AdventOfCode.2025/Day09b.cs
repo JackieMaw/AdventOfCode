@@ -23,7 +23,7 @@ public class Day09b
     public void TestSampleInput()
     {
         Console.WriteLine("Testing Sample Input...");
-        var expectedResult = 50;
+        var expectedResult = 24;
         var input = aocSupplier.GetPuzzleInput(year, day, "_sample");
         var result = Execute(input);
         Console.WriteLine($"Result: {result}");
@@ -60,6 +60,7 @@ public class Day09b
                 return (p1, p2);
             }
         }
+        throw new Exception("No rectangle found inside polygon");
     }
 
     private Polygon GetRectangle(Point p1, Point p2)
@@ -85,7 +86,7 @@ public class Day09b
     private (List<Point>, Polygon) ParseInput(string[] input)
     {
         var allPoints = new List<Point>();
-        var polygon = new Polygon();
+        var polygon = new Polygon([]);
 
         foreach (var line in input)
         {
