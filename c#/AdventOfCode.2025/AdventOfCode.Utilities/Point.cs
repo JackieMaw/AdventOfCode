@@ -17,3 +17,21 @@ public readonly record struct Point(long X, long Y)
         return new Point(X + direction.X, Y + direction.Y);
     }
 }
+
+public readonly record struct LineSegment(Point start, Point end)
+{
+    public bool Intersects(LineSegment anotherLineSegment)
+    {
+        return false;
+    }
+}
+
+public readonly record struct Polygon(List<LineSegment> edges)
+{
+    public bool Contains(Polygon anotherPolygon)
+    {
+        return false;
+    }
+}
+
+
