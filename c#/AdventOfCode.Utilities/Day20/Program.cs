@@ -12,7 +12,7 @@ namespace Day20
         {
             Console.WriteLine("What do you get if you multiply together the IDs of the four corner tiles?");
 
-            var answer = GetCornerIDs(ReadInput.GetStrings("Input.txt"));
+            var answer = GetCornerIDs(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_20.txt"));
 
             Console.WriteLine($"answer={answer}");
 

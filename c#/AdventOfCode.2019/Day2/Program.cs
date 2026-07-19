@@ -33,7 +33,7 @@ namespace Day2
 
             Console.WriteLine("What BOOST keycode does it produce?");
             Console.WriteLine();
-            program = ReadInput.GetLongsFromSingleLine(ReadInput.GetStrings("Input.txt")[0]);
+            program = ReadInput.GetLongsFromSingleLine(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2019\input\input_2019_2_csharp.txt")[0]);
             answer = GetFinalOutput(program);
             Console.WriteLine($"answer: {answer}");
 

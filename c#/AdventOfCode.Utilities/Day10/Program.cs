@@ -11,21 +11,21 @@ namespace Day10
         {
             Console.WriteLine("What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?");
 
-            long answer = GetAnswer(ReadInput.GetInts("Input.txt"));
+            long answer = GetAnswer(ReadInput.GetInts(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_10.txt"));
 
             Console.WriteLine($"answer={answer}");
 
             Console.WriteLine("What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?");
 
-            answer = GetDistinctCombinations(ReadInput.GetInts("Input_Sample.txt"));
+            answer = GetDistinctCombinations(ReadInput.GetInts(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_10_test.txt"));
 
             Console.WriteLine($"answer={answer}");
 
-            answer = GetDistinctCombinations(ReadInput.GetInts("Input_Sample2.txt"));
+            answer = GetDistinctCombinations(ReadInput.GetInts(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_10_test2.txt"));
 
             Console.WriteLine($"answer={answer}");
 
-            answer = GetDistinctCombinations(ReadInput.GetInts("Input.txt"));
+            answer = GetDistinctCombinations(ReadInput.GetInts(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_10.txt"));
 
             Console.WriteLine($"answer={answer}");
 

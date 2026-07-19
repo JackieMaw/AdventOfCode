@@ -9,7 +9,7 @@ namespace Day13
     {
         static void Main(string[] args)
         {
-            var inputs = ReadInput.GetStrings("Input.txt");
+            var inputs = ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_13.txt");
             long answer = PartTwoWithJumps(inputs);
             Console.WriteLine($"answer = {answer}");
         }

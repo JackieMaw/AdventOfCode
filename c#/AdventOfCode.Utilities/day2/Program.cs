@@ -8,7 +8,7 @@ namespace day2
         static void Main(string[] args)
         {
             Console.WriteLine("How many passwords are valid according to their policies?");
-            var inputs = ReadInput.GetStrings("Input.txt");
+            var inputs = ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_2.txt");
 
             int numberOfValidPasswords = 0;
             foreach (var input in inputs)

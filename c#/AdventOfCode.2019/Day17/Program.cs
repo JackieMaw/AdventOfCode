@@ -12,7 +12,7 @@ namespace Day17
             Console.WriteLine("Run your ASCII program. What is the sum of the alignment parameters for the scaffold intersections?");
             Console.WriteLine();
 
-            var program = ReadInput.GetLongsFromSingleLine(ReadInput.GetStrings("Input.txt")[0]);
+            var program = ReadInput.GetLongsFromSingleLine(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2019\input\input_2019_17_csharp.txt")[0]);
             using (var bot = new StupidBot())
             {
                 var answer = new IntCodeComputer(bot).RunProgram(program);
@@ -20,7 +20,7 @@ namespace Day17
                 Console.WriteLine($"answer: {answer}");
             }
 
-            //var answer = GetAlignmentParameters(ReadInput.GetStrings("Input_Ascii.txt"));
+            //var answer = GetAlignmentParameters(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2019\input\input_2019_17_ascii.txt"));
 
         }
 

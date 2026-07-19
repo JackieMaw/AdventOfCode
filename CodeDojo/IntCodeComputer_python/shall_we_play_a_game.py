@@ -3,7 +3,7 @@ from model.intcode_computer import IntCodeComputer
 from model.interaction_handler import CommandInteractionHandler, SimpleInteractionHandler
 from model.auto_pilot.commander.commander_orchestrator import CommanderOrchestrator
 
-with open("./input/day25_actual.txt", "r", encoding="utf-8") as text_file:
+with open("../../Data/2019/input/input_2019_25.txt", "r", encoding="utf-8") as text_file:
     intcode_program = [int(l) for l in text_file.read().split(",")]
 
 print("=====================")

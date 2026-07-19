@@ -10,7 +10,7 @@ namespace Day24
         {
             Console.WriteLine("How many tiles are left with the black side up?");
 
-            var answer = HowManyBlackTiles(ReadInput.GetStrings("Input.txt"));
+            var answer = HowManyBlackTiles(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_24.txt"));
 
             Console.WriteLine($"answer={answer}");
 

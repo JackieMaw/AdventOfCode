@@ -49,7 +49,7 @@ def execute(intcode_program):
 
 def execute_all():
 
-    with open("./input/day2_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_2_intcode_python.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     assert run_intcode_with(intcode_program, 12, 2) == 3706713

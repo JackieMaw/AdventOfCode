@@ -9,13 +9,13 @@ namespace Day8
         {
             Console.WriteLine("Immediately before any instruction is executed a second time, what value is in the accumulator?");
 
-            long answer = GetValueInAccumulatorBeforeInfiniteLoop(ReadInput.GetStrings("Input.txt"));
+            long answer = GetValueInAccumulatorBeforeInfiniteLoop(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_8.txt"));
 
             Console.WriteLine($"answer={answer}");
 
             Console.WriteLine("Fix the program so that it terminates normally by changing exactly one jmp (to nop) or nop (to jmp). What is the value of the accumulator after the program terminates?");
 
-            answer = GetValueInAccumulatorAfterRemovingInfiniteLoop(ReadInput.GetStrings("Input.txt"));
+            answer = GetValueInAccumulatorAfterRemovingInfiniteLoop(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_8.txt"));
 
             Console.WriteLine($"answer={answer}");
 

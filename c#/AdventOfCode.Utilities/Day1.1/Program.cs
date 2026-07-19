@@ -9,7 +9,7 @@ namespace Day1
         static readonly int sum = 2020;
         static void Main(string[] args)
         {
-            var inputs = ReadInput.GetInts("Input.txt");
+            var inputs = ReadInput.GetInts(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_1.txt");
 
             Console.WriteLine("Find the two entries that sum to 2020; what do you get if you multiply them together?");
 

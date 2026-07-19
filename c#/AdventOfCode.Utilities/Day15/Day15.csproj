@@ -14,12 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Input.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Input_Sample.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

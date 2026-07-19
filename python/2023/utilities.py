@@ -1,12 +1,15 @@
 import requests
 from os.path import exists
+from pathlib import Path
+
+DATA_ROOT = Path(__file__).resolve().parents[2] / "Data"
 
 def get_session_id():
     with open("session_id.txt", "r") as text_file:
         return text_file.read()
 
 def get_or_download_input(year, day):
-    filename = f"input\Input_{year}_{day}.txt"
+    filename = DATA_ROOT / str(year) / "input" / f"input_{year}_{day}.txt"
     if not(exists(filename)):
         download_input(year, day, filename)    
     print(f"Reading input from file: {filename}")
@@ -14,7 +17,7 @@ def get_or_download_input(year, day):
         return text_file.read().splitlines()
 
 def get_input(year, day, postfix):
-    filename = f"input\Input_{year}_{day}{postfix}.txt"
+    filename = DATA_ROOT / str(year) / "input" / f"input_{year}_{day}{postfix}.txt"
     print(f"Reading input from file: {filename}")
     with open(filename, "r") as text_file:
         return text_file.read().splitlines()
@@ -24,6 +27,7 @@ def download_input(year, day, filename):
     print(f"Reading input from uri: {uri}")
     response = requests.get(uri, cookies={'session': get_session_id()})
     print(f"Writing input to file: {filename}")
+    filename.parent.mkdir(parents=True, exist_ok=True)
     with open(filename, "w") as text_file:
         text_file.write(response.text)
 

@@ -10,7 +10,7 @@ namespace Day21
         static void Main(string[] args)
         {
             Console.WriteLine("How many times do any of those ingredients appear?");
-            long answer = GetNumberOfNonAllergenic(ReadInput.GetStrings("Input.txt"));
+            long answer = GetNumberOfNonAllergenic(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_21.txt"));
 
             Console.WriteLine($"answer={answer}");
 

@@ -11,7 +11,7 @@ namespace Day15
         {
             Console.WriteLine("Given your starting numbers, what will be the 2020th number spoken?");
 
-            var answer = GetNthGuess(ReadInput.GetStrings("Input.txt"), 30000000);
+            var answer = GetNthGuess(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_15.txt"), 30000000);
 
             Console.WriteLine($"answer={answer}");
 

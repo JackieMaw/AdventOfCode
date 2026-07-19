@@ -10,11 +10,11 @@ namespace day16
         {
             //Console.WriteLine("Consider the validity of the nearby tickets you scanned. What is your ticket scanning error rate?");
 
-            //var answer = GetErrorScanningRate(ReadInput.GetStrings("Input.txt"));
+            //var answer = GetErrorScanningRate(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_16.txt"));
 
             Console.WriteLine("Once you work out which field is which, look for the six fields on your ticket that start with the word departure. What do you get if you multiply those six values together?");
 
-            var answer = GetProductOfDepartureFields(ReadInput.GetStrings("Input.txt"), "departure");
+            var answer = GetProductOfDepartureFields(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_16.txt"), "departure");
 
             Console.WriteLine($"answer={answer}");
 

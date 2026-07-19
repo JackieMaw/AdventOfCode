@@ -9,7 +9,7 @@ namespace Day17
         {
             Console.WriteLine("How many cubes are left in the active state after the sixth cycle?");
 
-            long answer = GetNumberOfActiveCubesAfterNCycles(ReadInput.GetChars("Input.txt"), 6);
+            long answer = GetNumberOfActiveCubesAfterNCycles(ReadInput.GetChars(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_17.txt"), 6);
 
             Console.WriteLine($"answer={answer}");
 

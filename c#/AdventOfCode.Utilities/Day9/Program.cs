@@ -12,7 +12,7 @@ namespace Day9
         {
             Console.WriteLine("The first step of attacking the weakness in the XMAS data is to find the first number in the list (after the preamble) which is not the sum of two of the 25 numbers before it. What is the first number that does not have this property?");
 
-            long answer1 = GetFirstNumberWhichFails(ReadInput.GetLongs("Input.txt"), 25);
+            long answer1 = GetFirstNumberWhichFails(ReadInput.GetLongs(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_9.txt"), 25);
 
             Console.WriteLine($"answer={answer1}");
 
@@ -21,14 +21,14 @@ namespace Day9
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            long answer = GetMinPlusMax_Slow(ReadInput.GetLongs("Input.txt"), answer1);
+            long answer = GetMinPlusMax_Slow(ReadInput.GetLongs(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_9.txt"), answer1);
             Console.WriteLine($"answer={answer}");
 
             stopWatch.Stop();
             Console.WriteLine($"RunTime: {stopWatch.Elapsed.Hours:00}:{stopWatch.Elapsed.Minutes:00}:{stopWatch.Elapsed.Seconds:00}.{stopWatch.Elapsed.Milliseconds:00}");
             stopWatch.Start();
 
-            answer = GetMinPlusMax_Faster(ReadInput.GetLongs("Input.txt"), answer1);
+            answer = GetMinPlusMax_Faster(ReadInput.GetLongs(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_9.txt"), answer1);
             Console.WriteLine($"answer={answer}");
 
             stopWatch.Stop();

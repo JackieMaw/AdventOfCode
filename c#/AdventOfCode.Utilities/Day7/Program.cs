@@ -10,13 +10,13 @@ namespace Day7
         {
             Console.WriteLine("How many bag colors can eventually contain at least one shiny gold bag?");
 
-            long answer = CalculateHowManyBagsCanContain(ReadInput.GetStrings("Input.txt"), "shiny gold");
+            long answer = CalculateHowManyBagsCanContain(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_7.txt"), "shiny gold");
 
             Console.WriteLine($"answer={answer}");
 
             Console.WriteLine("How many bag colors can eventually contain at least one shiny gold bag?");
 
-            answer = CalculateNumberOfBagsAreContainedBy(ReadInput.GetStrings("Input.txt"), "shiny gold");
+            answer = CalculateNumberOfBagsAreContainedBy(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_7.txt"), "shiny gold");
 
             Console.WriteLine($"answer={answer}");
 

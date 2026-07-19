@@ -9,7 +9,7 @@ namespace Day11
         {
             Console.WriteLine("GetNumberOfOccupiedSeatsAtEnd?");
 
-            long answer = GetNumberOfOccupiedSeatsAtEnd(ReadInput.GetChars("Input.txt"));
+            long answer = GetNumberOfOccupiedSeatsAtEnd(ReadInput.GetChars(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_11.txt"));
 
             Console.WriteLine($"answer={answer}");
 

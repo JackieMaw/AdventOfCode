@@ -41,7 +41,7 @@ namespace Day18
             /////////////////////////////////////////
 
             answer = 0;
-            var maths = ReadInput.GetStrings("Input.txt");
+            var maths = ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_18.txt");
             foreach (var m in maths)
             {
                 answer += new Calculator().DoMath(m);

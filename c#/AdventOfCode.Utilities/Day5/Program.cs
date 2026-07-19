@@ -10,7 +10,7 @@ namespace Day5
         {
             Console.WriteLine("What is the highest seat ID on a boarding pass?");
 
-            var inputs = ReadInput.GetStrings("Input.txt");
+            var inputs = ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_5.txt");
 
             //GetHighestSeatId(inputs);
 

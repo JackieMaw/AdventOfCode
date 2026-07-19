@@ -11,7 +11,7 @@ namespace Day19
         {
             Console.WriteLine("How many messages completely match rule 0?");
 
-            long answer = HowManyMessagesMatchRule0(ReadInput.GetStrings("Input_WithLoops.txt"));
+            long answer = HowManyMessagesMatchRule0(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_19_withloops.txt"));
 
             Console.WriteLine($"answer={answer}");
 

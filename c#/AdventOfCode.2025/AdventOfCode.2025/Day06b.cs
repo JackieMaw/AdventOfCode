@@ -1,7 +1,7 @@
 ﻿public class Day06b
 {
     private const int day = 6;
-    private const int year = 2024;
+    private const int year = 2025;
     private IAoCSupplier aocSupplier = new AoCFilesSupplier();
 
     [SetUp]

@@ -10,7 +10,7 @@ namespace Day14
         {
             Console.WriteLine("What is the sum of all values left in memory after it completes?");
 
-            var answer = GetSumOfMemoryValues(ReadInput.GetStrings("Input.txt"));
+            var answer = GetSumOfMemoryValues(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_14.txt"));
 
             Console.WriteLine($"answer={answer}");
 

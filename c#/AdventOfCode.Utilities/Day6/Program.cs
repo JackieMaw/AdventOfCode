@@ -11,7 +11,7 @@ namespace Day6
         {
             Console.WriteLine("What is the sum of those counts?");
 
-            long answer = CalculateSumOfIntersection(ReadInput.GetStrings("Input.txt"));
+            long answer = CalculateSumOfIntersection(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_6.txt"));
 
             Console.WriteLine($"answer={answer}");
 

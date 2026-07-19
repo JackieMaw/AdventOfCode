@@ -8,7 +8,7 @@ namespace Day3
     {   
         static void Main(string[] args)
         {
-            var inputs = ReadInput.GetStrings("Input.txt");
+            var inputs = ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_3.txt");
 
             Console.WriteLine("Part One: Starting at the top-right corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?");
 

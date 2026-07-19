@@ -12,7 +12,7 @@ def execute_diagnostic_test(intcode_program, fixed_input):
 
 def test_execute_2a():
 
-    with open("./input/day5_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_5.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     intcode_program[1] = 12
@@ -23,7 +23,7 @@ def test_execute_2a():
 
 def test_execute_2b():
 
-    with open("./input/day5_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_5.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [])
@@ -31,7 +31,7 @@ def test_execute_2b():
 
 def test_execute_5a():
 
-    with open("./input/day5_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_5.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [1])
@@ -40,7 +40,7 @@ def test_execute_5a():
 
 def test_execute_5b():
 
-    with open("./input/day5_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_5.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [2])
@@ -49,7 +49,7 @@ def test_execute_5b():
 
 def test_execute_9a():
 
-    with open("./input/day9_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_9.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [1])
@@ -58,7 +58,7 @@ def test_execute_9a():
 
 def test_execute_9b():
 
-    with open("./input/day9_actual.txt", "r", encoding="utf-8") as text_file:
+    with open("../../Data/2019/input/input_2019_9.txt", "r", encoding="utf-8") as text_file:
         intcode_program = [int(l) for l in text_file.read().split(",")]
 
     result = execute_diagnostic_test(intcode_program, [2])

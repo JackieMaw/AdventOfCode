@@ -9,7 +9,7 @@ namespace Day12
         {
             Console.WriteLine("What is the Manhattan distance between that location and the ship's starting position?");
 
-            long answer = GetDistance(ReadInput.GetStrings("Input.txt"));
+            long answer = GetDistance(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_12.txt"));
 
             Console.WriteLine($"answer={answer}");
 

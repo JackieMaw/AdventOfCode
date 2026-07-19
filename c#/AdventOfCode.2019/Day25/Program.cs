@@ -11,7 +11,7 @@ namespace Day25
             Console.WriteLine("Look around the ship and see if you can find the password for the main airlock.");
             Console.WriteLine();
 
-            var program = ReadInput.GetLongsFromSingleLine(ReadInput.GetStrings("Input.txt")[0]);
+            var program = ReadInput.GetLongsFromSingleLine(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2019\input\input_2019_25_csharp.txt")[0]);
             using (var bot = new ExplorerBot())
             {
                 var answer = new IntCodeComputer(bot).RunProgram(program);

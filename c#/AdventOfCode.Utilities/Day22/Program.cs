@@ -10,7 +10,7 @@ namespace Day22
         static void Main(string[] args)
         {
             Console.WriteLine("What is the winning player's score?");
-            long answer = PlayTheGame(ReadInput.GetStrings("Input.txt"));
+            long answer = PlayTheGame(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_22.txt"));
 
             Console.WriteLine($"answer={answer}");
 

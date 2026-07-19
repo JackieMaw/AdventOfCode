@@ -11,11 +11,11 @@ namespace Day4
         {
             Console.WriteLine("In your batch file, how many passports are valid?");
 
-            CalculateNumberOfValidPassports(ReadInput.GetStrings("Input_Valid.txt"));
+            CalculateNumberOfValidPassports(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_4_valid.txt"));
 
-            CalculateNumberOfValidPassports(ReadInput.GetStrings("Input_Invalid.txt"));
+            CalculateNumberOfValidPassports(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_4_invalid.txt"));
 
-            CalculateNumberOfValidPassports(ReadInput.GetStrings("Input.txt"));
+            CalculateNumberOfValidPassports(ReadInput.GetStrings(@"C:\Work\AdventOfCode\Data\2020\input\input_2020_4.txt"));
 
             Console.WriteLine("All Done!");
         }
