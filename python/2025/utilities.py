@@ -8,10 +8,15 @@ load_dotenv()
 SESSIONID = os.getenv("SESSIONID")
 DATA_ROOT = Path(__file__).resolve().parents[2] / "Data"
 
+def get_expected_result(year, day, part, postfix=''):
+    filename = DATA_ROOT / str(year) / "results" / f"result_{year}_{day}{part}{postfix}.txt"
+    with open(filename, "r") as text_file:
+        return int(text_file.read())
+
 def get_or_download_input(year, day):
     filename = DATA_ROOT / str(year) / "input" / f"input_{year}_{day}.txt"
     if not(exists(filename)):
-        download_input(year, day, filename)    
+        download_input(year, day, filename)
     with open(filename, "r") as text_file:
         return text_file.read().splitlines()
 
